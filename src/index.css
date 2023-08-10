@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+  
+  /* .active {
+    @apply font-medium tracking-wide  text-secondary transition-colors duration-200 bg-yellow-800;
+  } */
