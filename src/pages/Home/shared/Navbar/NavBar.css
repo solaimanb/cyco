@@ -58,4 +58,10 @@
       }
     }
   }
+
+  @media screen and (max-width: 640px) {
+    #nav {
+      display: none;
+    }
+  }
   
