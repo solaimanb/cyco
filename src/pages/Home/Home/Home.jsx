@@ -2,7 +2,7 @@
 
 const Home = () => {
     return (
-        <div className="bg-white h-screen">
+        <div className="">
             <h1>Comming Soon</h1>
         </div>
     );
