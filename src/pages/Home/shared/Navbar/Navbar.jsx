@@ -84,7 +84,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/poscast"
+                to="/podcast"
                 aria-label="Podcast"
                 title="Podcast"
                 className={({ isActive }) => (isActive ? "active" : "default")}
