@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,6 +7,7 @@ import {
   signOut,
 
   updateProfile
+
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
