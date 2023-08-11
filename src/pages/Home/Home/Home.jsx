@@ -1,11 +1,12 @@
 
 import React from 'react';
-import FeaturedMovo from '../FeatureMarquee/FeaturedMovo';
 import Marquee from 'react-fast-marquee';
-import "./Home.css";
-import Categories from '../Categories/Categories';
-import TopPicks from '../TopPicks/TopPicks';
+import LiveTv from '../../../components/Live-tv/LiveTv';
 import Title from '../../../components/Title/Title';
+import Categories from '../Categories/Categories';
+import FeaturedMovo from '../FeatureMarquee/FeaturedMovo';
+import TopPicks from '../TopPicks/TopPicks';
+import "./Home.css";
 const Home = () => {
   return (
     <div className="bg-[#090909] min-h-screen ">
@@ -15,6 +16,7 @@ const Home = () => {
           <FeaturedMovo />
         </Marquee>
       </div>
+      <LiveTv/>
       <div className='grid-layout text-green-600 md:mx-12 lg:mx-24'>
         <div className='bg-[#090909]'>
          

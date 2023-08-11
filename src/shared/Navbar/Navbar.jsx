@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import "./NavBar.css";
-import {  useState } from "react";
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import './NavBar.css';
 
 const Navbar = () => {
-
   const user = true;
   // const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,22 +15,20 @@ const Navbar = () => {
   return (
     <div className="">
       <div className="relative ">
-        <div className="gray-800 px-44 text-white  flex items-center justify-between py-2">
-     
+        <div className="gray-800 hidden px-44 text-white  lg:flex items-center justify-between py-2">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="">CyCo</h3>
           </Link>
-       
+
           <ul className="nav-ul items-center hidden  lg:flex font-bold md:mx-20">
-          
             <li>
               <NavLink
                 id="nav"
                 to="/"
                 aria-label="home"
                 title="Home"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Home
               </NavLink>
@@ -43,7 +39,7 @@ const Navbar = () => {
                 to="/trailor"
                 aria-label="Trailor"
                 title="Trailor"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Trailor
               </NavLink>
@@ -54,7 +50,7 @@ const Navbar = () => {
                 to="/movie"
                 aria-label="Movie"
                 title="Movie"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Movie
               </NavLink>
@@ -65,7 +61,7 @@ const Navbar = () => {
                 to="/series"
                 aria-label="Series"
                 title="Series"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Series
               </NavLink>
@@ -76,7 +72,7 @@ const Navbar = () => {
                 to="/tv"
                 aria-label="Live TV"
                 title="Live TV"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Live TV
               </NavLink>
@@ -87,22 +83,20 @@ const Navbar = () => {
                 to="/podcast"
                 aria-label="Podcast"
                 title="Podcast"
-                className={({ isActive }) => (isActive ? "active" : "default")}
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
               >
                 Podcast
               </NavLink>
             </li>
-            
 
-            
             {/* <li className="ml-8">
               <DarkLight />
             </li> */}
           </ul>
           <li className="flex items-center">
-              {user ? (
-                <>
-                  {/* <NavLink
+            {user ? (
+              <>
+                {/* <NavLink
                     id="nav"
                     to="/dashboard "
                     aria-label="Dashboard "
@@ -113,34 +107,28 @@ const Navbar = () => {
                   >
                     Dashboard
                   </NavLink> */}
-                  <button id="nav" className="">
-                    Logout
-                  </button>
-                  
-                </>
-              ) : (
-                <NavLink
-                  id="nav"
-                  to="/login"
-                  aria-label="login"
-                  title="Login"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "default"
-                  }
-                >
-                  Login
-                </NavLink>
-              )}
-            </li>
+                <button id="nav" className="">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <NavLink
+                id="nav"
+                to="/login"
+                aria-label="login"
+                title="Login"
+                className={({ isActive }) => (isActive ? 'active' : 'default')}
+              >
+                Login
+              </NavLink>
+            )}
+          </li>
         </div>
-
-
-
 
         {/* Responsive small device */}
 
-
-        <div className="lg:hidden">
+        <div className="flex items-center justify-between lg:hidden py-5 px-10">
+          <div>
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -162,6 +150,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
+          </div>
           {isMenuOpen && (
             <div className="absolute z-10 top-0 left-0 w-full">
               <div className="p-5 bg-white border rounded shadow-sm">
@@ -179,7 +168,9 @@ const Navbar = () => {
                           alt=""
                           className="flex-shrink-0 w-5 h-5 rounded-full "
                         /> */}
-                        <h3 className="flex-shrink-0 w-5 h-5 rounded-full ">CyCo</h3>
+                        <h3 className="flex-shrink-0 w-5 h-5 rounded-full ">
+                          CyCo
+                        </h3>
                       </div>
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         CyCo TV
@@ -235,7 +226,6 @@ const Navbar = () => {
                         Series
                       </Link>
                     </li>
-                    
 
                     <li>
                       <Link
@@ -252,10 +242,14 @@ const Navbar = () => {
               </div>
             </div>
           )}
+
+          <div>
+            <h2 className='font-bold'>CYCO</h2>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
