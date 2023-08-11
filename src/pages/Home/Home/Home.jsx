@@ -1,3 +1,4 @@
+
 import React from 'react';
 import FeaturedMovo from '../FeatureMarquee/FeaturedMovo';
 import Marquee from 'react-fast-marquee';
@@ -19,6 +20,7 @@ const Home = () => {
         <div className='bg-[#090909]'>
           {/* <h1>Category</h1> */}
           <Categories/>
+
         </div>
       </div>
     </div>
