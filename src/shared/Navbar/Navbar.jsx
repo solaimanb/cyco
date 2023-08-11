@@ -15,13 +15,13 @@ const Navbar = () => {
   return (
     <div className="">
       <div className="relative ">
-        <div className="gray-800 hidden px-44 text-white  lg:flex items-center justify-between py-2">
+        <div className="gray-800 hidden px-44 text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="">CyCo</h3>
           </Link>
 
-          <ul className="nav-ul items-center hidden  lg:flex font-bold md:mx-20">
+          <ul className="nav-ul items-center hidden lg:flex font-bold md:mx-20">
             <li>
               <NavLink
                 id="nav"
@@ -172,9 +172,9 @@ const Navbar = () => {
                           CyCo
                         </h3>
                       </div>
-                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                      {/* <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         CyCo TV
-                      </span>
+                      </span> */}
                     </Link>
                   </div>
                   <div>
