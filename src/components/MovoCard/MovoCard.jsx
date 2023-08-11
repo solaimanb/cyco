@@ -1,8 +1,8 @@
 
-const MovoCard = (img) => {
+const MovoCard = ({img}) => {
     return (
-        <div>
-            <img className="w-[240px] h-[331px]" src={img} alt="" />
+        <div className="w-full md:w-[127px] h-[200px]">
+            <img className="w-full h-full object-cover rounded hover:brightness-110" src={img} alt="" />
         </div>
     );
 };
