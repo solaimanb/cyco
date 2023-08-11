@@ -1,3 +1,4 @@
+import FeaturedMovo from "../FeatureMarquee/FeaturedMovo";
 import Marquee from "react-fast-marquee";
 import LiveTv from "../../../components/Live-tv/LiveTv";
 import FeaturedMovo from "../FeatureMarquee/FeaturedMovo";

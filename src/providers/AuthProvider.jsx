@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import {
     createUserWithEmailAndPassword,
     getAuth,
@@ -6,7 +5,6 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
-    updateProfile,
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
@@ -17,8 +15,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
-
-  // providers:
 
   // create a new user:
   const createUser = (email, password) => {
