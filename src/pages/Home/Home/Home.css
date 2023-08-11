@@ -1,0 +1,11 @@
+.grid-layout {
+    display: grid;
+    
+    /*Using the full width/height of the designated box elements, use fr as in example below */
+    grid-template-columns: 1fr 1fr ;
+    /* grid-template-rows: 1fr 1fr ; */
+    /*Delete the two lines above and add more/less columns/rows by specifying one more for each below */
+    grid-template-columns: 900px 220px;
+    /* grid-template-rows: 300px 50px; */
+    grid-gap: 37px;
+  }
