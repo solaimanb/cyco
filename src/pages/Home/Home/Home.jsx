@@ -2,6 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import Title from '../../../components/Title/Title';
 import Categories from '../Categories/Categories';
+import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
 import MostRecent from '../mostRecent/MostRecent';
 import TopPicks from '../topPicks/TopPicks';
@@ -35,6 +36,9 @@ const Home = () => {
           <Categories />
         </div>
       </div>
+
+      {/* Ads */}
+      <FeaturedAds/>
     </div>
   );
 };
