@@ -102,7 +102,7 @@ const Home = () => {
           <h1 className="border-l-4 ps-3 text-white text-xl font-bold">
             Featured Movies
           </h1>
-          <div className="bg-gray-800 px-5 mt-5">
+          <div className="bg-zinc-900 px-5 mt-5">
             <Marquee speed={20}>
               <FeaturedMovies />
             </Marquee>

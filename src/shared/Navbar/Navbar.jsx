@@ -41,7 +41,7 @@ const Navbar = () => {
                 title="Trailor"
                 className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
-                Trailor
+                Trailer
               </NavLink>
             </li>
             <li>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 title="Movie"
                 className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
-                Movie
+                Movies
               </NavLink>
             </li>
             <li>
@@ -74,7 +74,7 @@ const Navbar = () => {
                 title="Live TV"
                 className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
-                Live TV
+                LiveTV
               </NavLink>
             </li>
             <li>
