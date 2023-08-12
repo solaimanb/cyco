@@ -1,4 +1,4 @@
-import MovoCard from '../../../components/MovoCard/MovoCard';
+import MovoCard from '../../../components/movoCard/MovoCard';
 
 const MostRecent = () => {
     const movies = [

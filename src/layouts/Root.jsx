@@ -5,11 +5,14 @@ import Navbar from "../shared/Navbar/Navbar";
 
 const Root = () => {
     return (
-        <div className="bg-black w-full">
+        <div className="w-full">
             <Navbar/>
             
             <div className="min-h-[calc(100vh-160px)]">
+            <div className="w-[90%] mx-auto">
             <Outlet/>
+
+            </div>
             </div>
             
             <Footer/>
