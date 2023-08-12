@@ -2,7 +2,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className="bg-gradient-to-r mt-20">
-          <footer className="bg-black text-gray-300 py-12">
+          <footer className="bg-black bg-opacity-60 text-gray-300 py-12">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
           <img src="/cyco-logo.png" alt="cyco Logo" className="w-40" />

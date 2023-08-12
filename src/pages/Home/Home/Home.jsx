@@ -4,7 +4,7 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import LiveTv from '../../../components/Live-tv/LiveTv';
 import Title from '../../../components/title/Title';
-import Categories from '../Categories/Categories';
+import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
 import MostRecent from '../mostRecent/MostRecent';
@@ -64,7 +64,7 @@ const Home = () => {
               color: '#ffffff',
               distance: 150,
               enable: true,
-              opacity: 0.5,
+              opacity: 0.2,
               width: 1,
             },
             move: {
@@ -85,7 +85,7 @@ const Home = () => {
               value: 80,
             },
             opacity: {
-              value: 0.5,
+              value: 0.2,
             },
             shape: {
               type: 'circle',
@@ -114,7 +114,7 @@ const Home = () => {
           <LiveTv />
         </div>
         <div className="flex justify-between gap-3">
-          <div className="bg-[#090909]">
+          <div className="">
             <div className="mt-10">
               <Title title={'Most Recent'} />
               <MostRecent />
@@ -124,7 +124,7 @@ const Home = () => {
               <TopPicks />
             </div>
           </div>
-          <div className="bg-[#090909] mt-5 w-[30%] hidden md:block">
+          <div className="mt-5 w-[30%] hidden md:block">
             <Title title={'Categories'} />
             <Categories />
           </div>
