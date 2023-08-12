@@ -1,6 +1,6 @@
 const Container = ({children}) => {
     return (
-        <div className="max-w-[2520px]">
+        <div className="w-80%">
             {children}
         </div>
     );

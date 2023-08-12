@@ -1,6 +1,6 @@
 import MovoCard from '../../../components/MovoCard/MovoCard';
 
-const TopPicks = () => {
+const MostRecent = () => {
   const imageUrls = [
     'https://i.ibb.co/TYp2Y5C/8-jpg.png',
     'https://i.ibb.co/TYp2Y5C/8-jpg.png',
@@ -22,4 +22,4 @@ const TopPicks = () => {
   );
 };
 
-export default TopPicks;
+export default MostRecent;
