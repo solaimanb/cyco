@@ -15,20 +15,20 @@ const Navbar = () => {
   return (
     <div className="">
       <div className="relative ">
-        <div className="gray-800 hidden px-44 text-white lg:flex items-center justify-between py-5">
+        <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
-            <h3 className="">CyCo</h3>
+            <h3 className="font-bold text-2xl">CYCO</h3>
           </Link>
 
-          <ul className="nav-ul items-center hidden lg:flex font-bold md:mx-20">
+          <ul className="nav-ul items-center hidden lg:flex font-bold md:mx-20 text-sm lg:text-base">
             <li>
               <NavLink
                 id="nav"
                 to="/"
                 aria-label="home"
                 title="Home"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Home
               </NavLink>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 to="/trailor"
                 aria-label="Trailor"
                 title="Trailor"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Trailor
               </NavLink>
@@ -50,7 +50,7 @@ const Navbar = () => {
                 to="/movie"
                 aria-label="Movie"
                 title="Movie"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Movie
               </NavLink>
@@ -61,7 +61,7 @@ const Navbar = () => {
                 to="/series"
                 aria-label="Series"
                 title="Series"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Series
               </NavLink>
@@ -72,7 +72,7 @@ const Navbar = () => {
                 to="/tv"
                 aria-label="Live TV"
                 title="Live TV"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Live TV
               </NavLink>
@@ -83,7 +83,7 @@ const Navbar = () => {
                 to="/podcast"
                 aria-label="Podcast"
                 title="Podcast"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Podcast
               </NavLink>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 to="/login"
                 aria-label="login"
                 title="Login"
-                className={({ isActive }) => (isActive ? 'active' : 'default')}
+                className={({ isActive }) => (isActive ? 'bg-[#A70000]' : 'default')}
               >
                 Login
               </NavLink>
@@ -125,8 +125,8 @@ const Navbar = () => {
           </li>
         </div>
 
-        {/* Responsive small device */}
 
+        {/* Responsive small device */}
         <div className="flex items-center justify-between lg:hidden py-5 px-10">
           <div>
             <button
@@ -169,7 +169,7 @@ const Navbar = () => {
                           className="flex-shrink-0 w-5 h-5 rounded-full "
                         /> */}
                         <h3 className="flex-shrink-0 w-5 h-5 rounded-full ">
-                          CyCo
+                          CYCO
                         </h3>
                       </div>
                       {/* <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
@@ -244,7 +244,7 @@ const Navbar = () => {
           )}
 
           <div>
-            <h2 className="font-bold">CYCO</h2>
+            <h2 className="text-white font-doddddddddddddddddddddd">CYCO</h2>
           </div>
         </div>
       </div>
