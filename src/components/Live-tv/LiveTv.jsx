@@ -2,36 +2,42 @@ import React from 'react';
 
 const LiveTv = () => {
   return (
-    <div className="flex justify-around w-[80%] mx-auto">
-      <div className="avatar mx-auto">
+    <div className="flex flex-wrap gap-5 justify-around w-[70%] my-10 mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOkabZU7sNPqXeMlwoumUwIq5isrW5TsJ8vA&usqp=CAU" />
+          <img src="/fox.png" className="object-center" />
         </div>
+        <span>FOX</span>
       </div>
-      <div className="avatar mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF3vKhgEnfuXVJavNB-4zgPP8qdbQM4nsBTQ&usqp=CAU" />
+          <img src="espn.webp" />
         </div>
+        <span>ESPN</span>
       </div>
-      <div className="avatar mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxCtJsTAR76p1QAClJrjz2PxQauky26fCsHA&usqp=CAU" />
+          <img src="cnn.png" />
         </div>
+        <span>CNN</span>
       </div>
-      <div className="avatar mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3WjFwmCc84-xeYZxV6A1Dwq1KF-sq5F-qRg&usqp=CAU" />
+          <img src="hbo.png" />
         </div>
+        <span>HBO</span>
       </div>
-      <div className="avatar mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrAtiqbwq-m1unl4RIa1vujvmJQ2wDeakrrA&usqp=CAU" />
+          <img src="ea.webp" />
         </div>
+        <span>EA</span>
       </div>
-      <div className="avatar mx-auto">
+      <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
         <div className="w-24 h-2w-24 rounded-full">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlE2eUsYJeosQNbrlPSmB_2kBOoCyysC7rDw&usqp=CAU" />
+          <img src="bbc-news.png" />
         </div>
+        <span>BBC</span>
       </div>
     </div>
   );

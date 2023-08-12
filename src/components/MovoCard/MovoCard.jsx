@@ -1,5 +1,4 @@
 const MovoCard = ({movie}) => {
-    console.log(movie?.title);
   return (
     <div className="w-full mt-10 mb-20 h-80 md:w-[250px] lg:w-[280px] lg:h-[380px]">
       <img
