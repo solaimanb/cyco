@@ -17,7 +17,7 @@ const Categories = () => {
     <div className="sticky top-5">
       <ul className='space-y-3'>
         {categoriesItem.map((category, index) => (
-          <li className="btn w-full text-sm" key={index}>
+          <li className="btn w-full text-sm rounded-sm" key={index}>
             {category}
           </li>
         ))}

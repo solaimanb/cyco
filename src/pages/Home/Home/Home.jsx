@@ -13,26 +13,24 @@ const Home = () => {
           Featured Movies
         </h1>
         <div className="bg-gray-800 px-5 mt-5">
-          <Marquee
-          speed={20}
-          >
+          <Marquee speed={20}>
             <FeaturedMovies />
           </Marquee>
         </div>
       </div>
       {/* <LiveTv /> */}
-      <div className="flex justify-between gap-5 text-green-600 mx-5 md:mx-12 lg:mx-24">
+      <div className="flex justify-between gap-3 text-green-600 mx-5 md:mx-12 lg:mx-24">
         <div className="bg-[#090909]">
-          <div>
+          <div className="mt-10">
             <Title title={'Most Recent'} />
             <MostRecent />
           </div>
-          <div>
+          <div className="mt-20">
             <Title title={'Top Picks'} />
             <TopPicks />
           </div>
         </div>
-        <div className="bg-[#090909] w-[30%] hidden md:block">
+        <div className="bg-[#090909] mt-5 w-[30%] hidden md:block">
           <Title title={'Categories'} />
           <Categories />
         </div>
