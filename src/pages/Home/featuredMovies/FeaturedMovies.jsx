@@ -15,7 +15,7 @@ const FeaturedMovies = () => {
   ];
 
   return (
-    <div className="mx-5 py-5">
+    <div className="mx-5 py-5 z-10">
       <div className="flex flex-row md:flex-row gap-4 md:gap-8">
         {imageUrls.map((image, index) => (
           <div key={index} className="w-full md:w-[180px] h-[280px]">

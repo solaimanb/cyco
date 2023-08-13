@@ -7,6 +7,7 @@ import Title from '../../../components/title/Title';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
+import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
 import TopPicks from '../topPicks/TopPicks';
 
@@ -18,6 +19,7 @@ const Home = () => {
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
   };
+
   return (
     <>
       <Particles
@@ -98,30 +100,37 @@ const Home = () => {
         }}
       />
       <div className="min-h-screen">
-        <div className="px-4 md:px-10 py-6 md:py-8">
+        {/* Hero */}
+        <Hero />
+
+        {/* Featured Movies */}
+        <div className="px-4 z-10 py-6 md:py-8 mt-[70%]">
           <h1 className="border-l-4 ps-3 text-white text-xl font-bold">
             Featured Movies
           </h1>
-          <div className="bg-zinc-900 px-5 mt-5">
-            <Marquee speed={20}>
+          <div className="bg-zinc-900 px-5">
+            <Marquee speed={10}>
               <FeaturedMovies />
             </Marquee>
           </div>
         </div>
+
         {/* Live TV's */}
         <div>
           <Title title={'Popular TVs'} />
           <LiveTv />
         </div>
+
+        {/* Movies/Categories */}
         <div className="flex justify-between gap-3">
           <div className="">
             <div className="mt-10">
-              <Title title={'Most Recent'} />
-              <MostRecent />
-            </div>
-            <div className="mt-20">
               <Title title={'Top Picks'} />
               <TopPicks />
+            </div>
+            <div className="mt-20">
+              <Title title={'Most Recent'} />
+              <MostRecent />
             </div>
           </div>
           <div className="mt-5 w-[30%] hidden md:block">

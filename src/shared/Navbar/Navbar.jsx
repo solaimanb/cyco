@@ -13,8 +13,8 @@ const Navbar = () => {
   //     .catch((error) => console.log(error));
   // };
   return (
-    <div className="">
-      <div className="relative ">
+    <div className="absolute sticky top-0 z-10 md:backdrop-blur-2xl w-full">
+      <div className="">
         <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
