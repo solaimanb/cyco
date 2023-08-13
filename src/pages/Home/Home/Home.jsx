@@ -2,8 +2,8 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-import LiveTv from '../../../components/Live-tv/LiveTv';
 import Title from '../../../components/title/Title';
+import Tvs from '../../../components/tvs/Tvs';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
@@ -118,7 +118,7 @@ const Home = () => {
         {/* Live TV's */}
         <div>
           <Title title={'Popular TVs'} />
-          <LiveTv />
+          <Tvs />
         </div>
 
         {/* Movies/Categories */}
