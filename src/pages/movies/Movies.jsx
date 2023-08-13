@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import MovoCard from '../../components/movoCard/MovoCard';
+import Pagination from '../../components/paginaition/Pagination';
 
 const Movies = () => {
   const movies = [
@@ -334,6 +336,14 @@ const Movies = () => {
       duration: '3h 1m',
     },
   ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+
+  const handlePageChange = (newPage)=>{
+    setCurrentPage(newPage);
+  }
+
   return (
     <div className="mt-10">
       <div className="flex items-center gap-3 justify-center">
@@ -350,6 +360,13 @@ const Movies = () => {
           <MovoCard key={index} movie={movie}></MovoCard>
         ))}
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
