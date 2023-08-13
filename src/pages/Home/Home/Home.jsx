@@ -2,6 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
+import Subscription from '../../../components/Subscription/Subscription';
 import Title from '../../../components/title/Title';
 import Tvs from '../../../components/tvs/Tvs';
 import Categories from '../categories/Categories';
@@ -141,6 +142,9 @@ const Home = () => {
 
         {/* Ads */}
         <FeaturedAds />
+
+        {/* Subscription Plan/Tier*/}
+        <Subscription />
       </div>
     </>
   );

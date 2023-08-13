@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
 
-import Subscription from '../components/Subscription/Subscription';
 import Footer from '../shared/Footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
 // import Footer from '../shared/footer/Footer';
@@ -16,7 +15,6 @@ const Root = () => {
           <Outlet />
         </div>
       </div>
-      <Subscription />
       <Footer />
     </div>
   );

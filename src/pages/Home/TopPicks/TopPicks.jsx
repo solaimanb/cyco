@@ -1,4 +1,4 @@
-import MovoCard from '../../../components/movoCard/MovoCard';
+import MovieCard from '../../../components/movieCard/MovieCard';
 
 const TopPicks = () => {
   const movies = [
@@ -107,7 +107,7 @@ const TopPicks = () => {
   return (
     <div className="w-full flex flex-wrap gap-1">
       {movies.map((movie, index) => (
-        <MovoCard key={index} movie={movie}></MovoCard>
+        <MovieCard key={index} movie={movie}></MovieCard>
       ))}
     </div>
   );
