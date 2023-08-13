@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import Home from "../pages/Home/Home/Home";
+
+import Registration from "../pages/registration/Registration";
+import Login from "../pages/login/Login";
 import LiveTv from "../pages/liveTv/LiveTv";
 import Movies from "../pages/movies/Movies";
 import Podcast from "../pages/podcast/Podcast";
 import Series from "../pages/series/Series";
 import Trailer from "../pages/trailer/Trailer";
+
 
 const router = createBrowserRouter([
     {path: '/',
@@ -33,7 +37,15 @@ const router = createBrowserRouter([
         },
         {
             path: "/podcast",
-            element: <Podcast/>,
+            element: <Home/>,
+        },
+        {
+            path:'/registration',
+            element:<Registration/>
+        },
+        {
+            path:'/login',
+            element:<Login/>
         }
      ]
     }
