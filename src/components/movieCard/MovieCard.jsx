@@ -27,7 +27,6 @@ const MovieCard = ({ movie }) => {
         <p className="mt-2 text-sm">{movie?.duration}</p>
         <p className="text-sm">Released: {movie?.releaseYear}</p>
       </div>
-
       {isMovieOpen && (
         <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
           <div className="flex justify-center">
