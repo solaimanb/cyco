@@ -27,8 +27,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-top: 2px solid #a70000;
-    border-bottom: 2px solid #a70000;
+    border-top: 2px solid #800000;
+    border-bottom: 2px solid #800000;
     transform: scaleY(2);
     opacity: 0;
     transition: 0.3s;
@@ -40,7 +40,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #a70000;
+    background-color: #800000;
     transform: scale(0);
     opacity: 0;
     transition: 0.3s;
