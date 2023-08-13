@@ -27,16 +27,16 @@ the demand for on-demand entertainment soars. CYCO is poised to meet these evolv
 ### User-Centric Approach
 
 ```
-Differentiated by user-focused design, CYCO is more than content delivery. Our role-based system seamlessly
-shifts viewers to contributors. This iterative approach evolves alongside user engagement.
+Differentiated by user-focused design, CYCO is more than content delivery. Our role-based system
+seamlessly shifts viewers to contributors. This iterative approach evolves alongside user engagement.
 
 ```
 
 ### Personalization at its Core
 
 ```
-Meticulously curated content, advanced search, and personalized recommendations define CYCO's video library.
-Categories, tags, and genres cater to diverse interests, offering an unmatched viewing experience.
+Meticulously curated content, advanced search, and personalized recommendations define CYCO's video
+library. Categories, tags, and genres cater to diverse interests, offering an unmatched viewing experience.
 
 ```
 
@@ -54,7 +54,7 @@ our vision, we're redefining engaging and personalized OTT experiences.
 CYCO is a tech-driven mission to reshape entertainment for the better. Embracing innovation, collaboration,
 and tech's power for positive change, we invite you to join us in revolutionizing OTT platforms.
 
-In search of a sponsor, donor, or investor to support our vision. With unwavering belief in our plan's potential,
-we welcome your valuable suggestions as we forge ahead.
+In search of a sponsor, donor, or investor to support our vision. With unwavering belief in our plan's
+potential, we welcome your valuable suggestions as we forge ahead.
 
 ```
