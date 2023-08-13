@@ -339,6 +339,21 @@ const Movies = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
+  // const [movies, loading, refetch] = useMovies()
+  // const movies = useMovies()
+  
+  // const [movies, setMovies] = useState([]);
+  
+  // useEffect(()=>{
+  //   const fetchedMovies = async ()=>{
+  //     const data = await useMovies();
+  //     setMovies(data)
+  //   }
+  //   fetchedMovies()
+  // },[])
+  
+  console.log(movies);
+
   const totalPages = 10;
 
   const handlePageChange = (newPage) => {
