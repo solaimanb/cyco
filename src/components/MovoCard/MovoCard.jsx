@@ -1,6 +1,6 @@
 const MovoCard = ({movie}) => {
   return (
-    <div className="w-full mt-10 mb-20 h-80 md:w-[250px] lg:w-[280px] lg:h-[380px]">
+    <div className="w-full mt-10 mb-20 h-80 md:w-[250px]">
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
         src={movie?.image}
