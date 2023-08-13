@@ -13,7 +13,7 @@ const Navbar = () => {
   //     .catch((error) => console.log(error));
   // };
   return (
-    <div className="sticky top-0 z-10 md:backdrop-blur-2xl w-full">
+    <div className="sticky top-0 z-10 backdrop-blur-sm md:backdrop-blur-2xl w-full">
       <div className="">
         <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
@@ -38,9 +38,9 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/trailor"
-                aria-label="Trailor"
-                title="Trailor"
+                to="/trailer"
+                aria-label="Trailer"
+                title="Trailer"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'
                 }
@@ -51,9 +51,9 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/movie"
-                aria-label="Movie"
-                title="Movie"
+                to="/movies"
+                aria-label="Movies"
+                title="Movies"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'
                 }
@@ -77,7 +77,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/tv"
+                to="/live-tv"
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>

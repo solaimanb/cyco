@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section className="w-[100vw]">
       <img
-        className="absolute top-0 w-[100v] opacity-90 left-0"
+        className="absolute top-20 md:top-0 w-[100v] opacity-90 left-0"
         src="/snow-white-movies-banner-cyco.webp"
         alt="snow-white-movies-banner"
       />
