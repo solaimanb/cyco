@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LiveTv = () => {
+const Tvs = () => {
   return (
     <div className="flex flex-wrap gap-5 justify-around w-[70%] my-10 mx-auto">
       <div className="avatar flex flex-col items-center gap-4 text-white font-bold mx-auto">
@@ -43,4 +43,4 @@ const LiveTv = () => {
   );
 };
 
-export default LiveTv;
+export default Tvs;
