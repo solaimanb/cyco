@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import MovoCard from '../../components/movoCard/MovoCard';
+import MovieCard from '../../components/movieCard/MovieCard';
 import Pagination from '../../components/paginaition/Pagination';
 
 const Movies = () => {
@@ -37,6 +37,7 @@ const Movies = () => {
       rating: 9.0,
       director: 'Christopher Nolan',
       duration: '2h 32m',
+      movieURL: 'https://www.youtube.com/watch?v=atnW4D6pc-w',
     },
     {
       title: 'Moonlight',
@@ -340,9 +341,19 @@ const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
 
-  const handlePageChange = (newPage)=>{
+  const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-  }
+  };
+
+  // const [isMovieOpen, setIsMovieOpen] = useState(false);
+
+  // const openMoviePlayer = () => {
+  //   setIsMovieOpen(true);
+  // };
+
+  // const closeMoviePlayer = () => {
+  //   setIsMovieOpen(false);
+  // };
 
   return (
     <div className="mt-10">
@@ -357,7 +368,7 @@ const Movies = () => {
 
       <div className="mt-10 w-full flex justify-center flex-wrap gap-1">
         {movies.map((movie, index) => (
-          <MovoCard key={index} movie={movie}></MovoCard>
+          <MovieCard key={index} movie={movie}></MovieCard>
         ))}
       </div>
 
