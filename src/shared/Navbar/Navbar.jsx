@@ -212,6 +212,17 @@ const Navbar = () => {
                   <ul className="space-y-4 mt-10 ml-5">
                     <li className="">
                       <Link
+                        to="/"
+                        aria-label="Home"
+                        title="Home"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    
+                    <li className="">
+                      <Link
                         to="/trailer"
                         aria-label="Trailer"
                         title="Trailer"
