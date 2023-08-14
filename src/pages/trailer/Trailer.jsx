@@ -65,6 +65,16 @@ const Trailer = () => {
             duration: '2h 32m',
         },
         {
+            title: 'GARGOYLE OF GOTHAM Official Trailer (2023)',
+            genre: 'Gargoyle of Gotham.',
+            releaseYear: '2023',
+            image: 'https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/710fb97a-cf47-4b68-826c-50d7eeab6be4/Screen+Shot+2023-07-20+at+2.50.46+PM.jpg',
+            video:'https://www.youtube.com/embed/atnW4D6pc-w',
+            rating: 8.8,
+            director: 'Gargoyle of Gotham.',
+            duration: '2h 58m',
+        },
+        {
             title: 'KingMaster Pro Official Trailer (2023)',
             genre: 'Action, Crime, Drama',
             releaseYear: '2023',
@@ -93,7 +103,7 @@ const Trailer = () => {
             rating: 9.0,
             director: 'Christopher Nolan',
             duration: '2h 32m',
-        },
+        }
     ];
     return (
         <div className="w-full flex flex-wrap gap-1">
