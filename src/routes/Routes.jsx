@@ -9,11 +9,13 @@ import Podcast from "../pages/podcast/Podcast";
 import Register from "../pages/register/Register";
 import Series from "../pages/series/Series";
 import Trailer from "../pages/trailer/Trailer";
+import ErrorPage from '../pages/Error/ErrorPage';
 
 
 const router = createBrowserRouter([
     {path: '/',
      element: <Root/>,
+     errorElement: <ErrorPage/>,
      children: [
         {
             path: "/",
