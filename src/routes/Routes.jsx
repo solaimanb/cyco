@@ -15,6 +15,7 @@ import SeriesCard from "../components/series/SeriesCard";
 import SeriesDetails from "../components/series/SeriesDetails";
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from "../pages/About-Us/About";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,11 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      // initial checked path,
+      {
+        path: "/chekout",
+        element: <Payment/>
+      }
     ],
   },
 ]);
