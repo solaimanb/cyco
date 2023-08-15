@@ -15,7 +15,7 @@ const About = () => {
                     {/* Team Leader Info */}
                     <div className="card w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src="https://avatars.githubusercontent.com/u/128588177?v=4" alt="Shoes" className="rounded-xl" />
+                            <img src="https://i.ibb.co/BKxwwSr/badsha-removebg-preview.png" alt="A Person Image" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Soloman Badsha</h2>
@@ -30,7 +30,7 @@ const About = () => {
                     {/* Kabir Ahmed Bhai */}
                     <div className="card w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src="https://avatars.githubusercontent.com/u/26973543?v=4" alt="Shoes" className="rounded-xl" />
+                            <img src="https://i.ibb.co/W6sDx0C/kabuir-removebg-preview.png" alt="A Person Image" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Kabir Shuvo</h2>
@@ -45,7 +45,7 @@ const About = () => {
                     {/* Sarowar Islam */}
                     <div className="card w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src="https://camo.githubusercontent.com/919e0398bad60d0bf005d1332f535a204996d600d90dc369f6bc4dac4f7b242c/68747470733a2f2f692e6962622e636f2f506d59314664372f5361726f3537363134393139303139383935302d353435393331333437393439303031353139332d6e2d72656d6f766562672d707265766965772e706e67" alt="Shoes" className="rounded-xl" />
+                            <img src="https://i.ibb.co/mNKBrT0/saro-removebg-preview.png" alt="A Person Image" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Mohammad Sarowar</h2>
@@ -60,7 +60,7 @@ const About = () => {
                     {/* Naimul Islam */}
                     <div className="card w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src="https://cdn.discordapp.com/attachments/1135706366275756032/1141088402301796403/Naimulhasan.jpg" alt="Shoes" className="rounded-xl" />
+                            <img src="https://i.ibb.co/9cJht8r/Naimulhasan-removebg-preview.png" alt="A Person Image" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Naimul Islam</h2>
@@ -74,8 +74,8 @@ const About = () => {
                     </div>
                     {/* Raihan SHARIF */}
                     <div className="card w-96 bg-base-100 shadow-xl">
-                        <figure className="px-10 pt-10">
-                            <img src="https://avatars.githubusercontent.com/u/109515629?s=400&u=9de12aeb47e008185184a5b598ca288e4db86442&v=4" alt="Shoes" className="rounded-xl" />
+                        <figure className="px-10 pt-8">
+                            <img src="https://i.ibb.co/3r79kgW/109515629-1.png" alt="A Person Image" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">Raihanul Islam Sharif</h2>
