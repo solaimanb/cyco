@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "playlistName": "Let Your Dreams Take Flight: More Than Just A Mom eBook",
+        "playlistID": "PL12345",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsFgAVQ8s2AM-VbJOXYLQeHZUEXjlS0A33-2Rx0cJhQ-LpOyIEh5jKo_6HSwBm6HY9Np0&usqp=CAU",
+        "numberOfVideos": 15
+    },
+    {
+        "id": 2,
+        "playlistName": "When Dreams Take Flight (2011) - IMDb",
+        "playlistID": "PL67890",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJgZnvAJPeZkDdGnc5PwUwsklV5-v6WeDo8aLBK-xgcqIe9EJ91DoE9MbZJOIAas2AwPY&usqp=CAU",
+        "numberOfVideos": 20
+    },
+    {
+        "id": 3,
+        "playlistName": "Let your dreams fly high — Steemit",
+        "playlistID": "PL54321",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSj1AstKP_S4WSb5_ievjB5c4e3PS2ZBZbBYy7RbdCyPnAX-tS3vCvi3gSbyGLrwqGAkE&usqp=CAU",
+        "numberOfVideos": 10
+    }
+]

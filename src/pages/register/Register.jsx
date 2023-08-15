@@ -16,6 +16,7 @@ const Register = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero hero-content lg:h-[600px] w-96 mx-auto lg:w-[1000px] flex-col lg:flex-row card card-body bg-white shadow-2xl">
+      <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm" />
         <div className="bg-white p-8 w-full">
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <form>
