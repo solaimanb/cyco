@@ -13,6 +13,7 @@ import Series from "../pages/series/Series";
 import Trailer from "../pages/trailer/Trailer";
 import SeriesCard from "../components/series/SeriesCard";
 import SeriesDetails from "../components/series/SeriesDetails";
+import ErrorPage from '../pages/Error/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -60,5 +61,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 export default router;
