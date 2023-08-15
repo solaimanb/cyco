@@ -14,10 +14,12 @@ import Trailer from "../pages/trailer/Trailer";
 import SeriesCard from "../components/series/SeriesCard";
 import SeriesDetails from "../components/series/SeriesDetails";
 import ErrorPage from '../pages/Error/ErrorPage';
+import About from "../pages/About-Us/About";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<ErrorPage/>,
     element: <Root />,
     children: [
       {
@@ -47,8 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/podcast",
-
         element: <Podcast />,
+      },
+      {
+        path: "/about-us",
+        element: <About />,
       },
       {
         path: "/register",
