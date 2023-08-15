@@ -10,7 +10,7 @@ const About = () => {
                 targeted audience life.For providing LIVE news, DSNG (Digital satellite news gathering) and Bonding Technology are used for emergency and live news. For news coverage beyond Dhaka, there are nine Bureau offices including all the divisional cities and more than 56 district correspondents with modern technologies to send news and video footage instantly.International News feed is taken directly from Reuters, APTN and SNTV. Special emphasis is given on Channel look and feel; Branding and Look is created by an international branding agency. Somoy Television can be seen throughout North America, some countries of Europe, Middle East, South Africa and some countries of Asia. It can also be seen through Internet with the web address www.somoynews.tv, Programs are also news based, focusing on the news and information, analysis of the news.</p>
             <div>
                 <p className='text-center text-3xl'>Meet Our Development Team </p>
-                <div className='grid grid-cols-3'>
+                <div className='grid md:grid-cols-3'>
                     {/* it will be dynamic when we interigate backend  */}
                     {/* Team Leader Info */}
                     <div className="card w-96 bg-base-100 shadow-xl">
@@ -87,6 +87,10 @@ const About = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                {/* Question Answer:  */}
+                <div>
+                    
                 </div>
             </div>
         </div>
