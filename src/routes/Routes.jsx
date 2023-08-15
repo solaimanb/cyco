@@ -38,6 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/series/seriesDetails",
         element: <SeriesDetails/>,
+        
       },
       {
         path: "/live-tv",
