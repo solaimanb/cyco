@@ -1,4 +1,5 @@
 import React from 'react';
+import './Categories.css';
 
 const Categories = () => {
   const categoriesItem = [
@@ -17,7 +18,7 @@ const Categories = () => {
     <div className="sticky top-5">
       <ul className='space-y-3'>
         {categoriesItem.map((category, index) => (
-          <li className="btn w-full border border-gray-500 text-sm rounded-sm" key={index}>
+          <li className="cyco-btn btn w-full border border-gray-500 text-sm rounded-sm" key={index}>
             {category}
           </li>
         ))}
