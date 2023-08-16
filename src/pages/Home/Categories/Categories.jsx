@@ -15,10 +15,14 @@ const Categories = () => {
     'Classic Movies',
   ];
   return (
-    <div className="sticky top-5">
-      <ul className='space-y-3'>
+    <div className="sticky top-24">
+      <ul className="space-y-3">
         {categoriesItem.map((category, index) => (
-          <li className="cyco-btn btn w-full border border-gray-500 text-sm rounded-sm" key={index}>
+          <li
+            role="button"
+            className="cyco-btn btn w-full h-full py-1 bg-zinc-800 border border-gray-200 rounded-sm"
+            key={index}
+          >
             {category}
           </li>
         ))}
