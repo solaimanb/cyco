@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div className="bg-gradient-to-r mt-20">
@@ -11,33 +12,33 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10">
             <div className="flex flex-col items-center md:items-start">
               <h3 className="text-lg font-semibold mb-2">Explore</h3>
-              <a
-                href="#"
+              <Link
+                to='/'
                 className="hover:text-white transition-colors duration-300"
               >
                 Home
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to='/tvShow'
                 className="hover:text-white transition-colors duration-300"
               >
                 TV Shows
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to='/movies'
                 className="hover:text-white transition-colors duration-300"
               >
                 Movies
-              </a>
+              </Link>
             </div>
             <div className="flex flex-col items-center md:items-start">
               <h3 className="text-lg font-semibold mb-2">Help</h3>
-              <a
-                href="#"
+              <Link
+                to='/faq'
                 className="hover:text-white transition-colors duration-300"
               >
                 FAQs
-              </a>
+              </Link>
               <a
                 href="#"
                 className="hover:text-white transition-colors duration-300"
@@ -47,18 +48,18 @@ const Footer = () => {
             </div>
             <div className="flex flex-col items-center md:items-start">
               <h3 className="text-lg font-semibold mb-2">Legal</h3>
-              <a
-                href="#"
+              <Link
+                to='/PrivacyPolicy'
                 className="hover:text-white transition-colors duration-300"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to='TermsConditions'
                 className="hover:text-white transition-colors duration-300"
               >
                 Terms of Use
-              </a>
+              </Link>
             </div>
           </div>
         </div>

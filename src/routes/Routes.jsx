@@ -13,6 +13,9 @@ import SeriesParts from '../components/series/SeriesParts';
 import ErrorPage from '../pages/Error/ErrorPage';
 import Series from '../pages/series/Series';
 import Trailer from '../pages/trailer/Trailer';
+import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
+import TermsConditions from "../pages/terms-conditions/TermsConditions";
+
 
 const router = createBrowserRouter([
   {
@@ -45,11 +48,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/podcast',
-
         element: <Podcast />,
       },
       {
-        path: '/register',
+       path:'/PrivacyPolicy',
+       element:<PrivacyPolicy/>
+      },
+      {
+       path: '/TermsConditions',
+       element: <TermsConditions/>
+      },
+      {
+        path: "/register",
         element: <Register />,
       },
       {
