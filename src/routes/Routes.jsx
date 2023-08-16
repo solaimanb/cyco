@@ -1,66 +1,67 @@
-import { createBrowserRouter } from "react-router-dom";
-import Root from "../layouts/Root";
-import Home from "../pages/Home/Home/Home";
+import { createBrowserRouter } from 'react-router-dom';
+import Root from '../layouts/Root';
+import Home from '../pages/Home/Home/Home';
 
-import LiveTv from "../pages/liveTv/LiveTv";
+import LiveTv from '../pages/liveTv/LiveTv';
 
-import Login from "../pages/login/Login";
-import Movies from "../pages/movies/Movies";
-import Podcast from "../pages/podcast/Podcast";
-import Register from "../pages/register/Register";
+import Login from '../pages/login/Login';
+import Movies from '../pages/movies/Movies';
+import Podcast from '../pages/podcast/Podcast';
+import Register from '../pages/register/Register';
 
-import Series from "../pages/series/Series";
-import Trailer from "../pages/trailer/Trailer";
-import SeriesCard from "../components/series/SeriesCard";
-import SeriesDetails from "../components/series/SeriesDetails";
+import SeriesParts from '../components/series/SeriesParts';
 import ErrorPage from '../pages/Error/ErrorPage';
+import Series from '../pages/series/Series';
+import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/trailer",
+        path: '/trailer',
         element: <Trailer />,
       },
       {
-        path: "/movies",
+        path: '/movies',
         element: <Movies />,
       },
       {
-        path: "/series",
-        element: <SeriesCard />,
+        path: '/series',
+        element: <Series />,
       },
       {
-        path: "/series/seriesDetails",
-        element: <SeriesDetails/>,
-        
+        path: '/series/seriesParts',
+        element: <SeriesParts />,
       },
       {
-        path: "/live-tv",
+        path: '/live-tv',
         element: <LiveTv />,
       },
       {
-        path: "/podcast",
+        path: '/podcast',
 
         element: <Podcast />,
       },
       {
-        path: "/register",
+        path: '/register',
         element: <Register />,
       },
       {
-        path: "/login",
+        path: '/login',
         element: <Login />,
       },
     ],
   },
+  {
+    path: '*',
+    element: <ErrorPage />,
+  },
 ]);
-
 
 export default router;
