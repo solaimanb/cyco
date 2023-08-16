@@ -14,10 +14,13 @@ import Trailer from "../pages/trailer/Trailer";
 import SeriesCard from "../components/series/SeriesCard";
 import SeriesDetails from "../components/series/SeriesDetails";
 import ErrorPage from '../pages/Error/ErrorPage';
+import About from "../pages/About-Us/About";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<ErrorPage/>,
     element: <Root />,
     children: [
       {
@@ -47,8 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/podcast",
-
         element: <Podcast />,
+      },
+      {
+        path: "/about-us",
+        element: <About />,
       },
       {
         path: "/register",
@@ -58,6 +64,11 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      // initial checked path,
+      {
+        path: "/chekout",
+        element: <Payment/>
+      }
     ],
   },
 ]);
