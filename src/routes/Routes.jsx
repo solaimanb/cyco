@@ -14,6 +14,8 @@ import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
 import TermsConditions from "../pages/terms-conditions/TermsConditions";
 import About from "../pages/About-Us/About";
 import Payment from "../pages/Payment/Payment";
+import Dashboard from '../layouts/Dashboard';
+import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +82,16 @@ const router = createBrowserRouter([
     path: '*',
     element: <ErrorPage />,
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        path: 'admin-home',
+        element: <AdminHome />
+      }
+    ]
+  }
 ]);
 
 export default router;
