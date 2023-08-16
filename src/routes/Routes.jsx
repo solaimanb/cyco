@@ -1,21 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
+import SeriesParts from '../components/series/SeriesParts';
+import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
+import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+import ErrorPage from '../pages/Error/ErrorPage';
 import Home from '../pages/Home/Home/Home';
+import Payment from "../pages/Payment/Payment";
+import About from '../pages/about/About';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import Podcast from '../pages/podcast/Podcast';
-import Register from '../pages/register/Register';
-import SeriesParts from '../components/series/SeriesParts';
-import ErrorPage from '../pages/Error/ErrorPage';
-import Series from '../pages/series/Series';
-import Trailer from '../pages/trailer/Trailer';
 import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
+import Register from '../pages/register/Register';
+import Series from '../pages/series/Series';
 import TermsConditions from "../pages/terms-conditions/TermsConditions";
-import About from "../pages/About-Us/About";
-import Payment from "../pages/Payment/Payment";
-import Dashboard from '../layouts/Dashboard';
-import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
        element: <TermsConditions/>
       },
       {
-        path: "/about-us",
+        path: "/about",
         element: <About />,
       },
       {
