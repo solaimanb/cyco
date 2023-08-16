@@ -100,6 +100,19 @@ const Navbar = () => {
                 Podcast
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                id="nav"
+                to="/about-us"
+                aria-label="about-us"
+                title="About Us"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[#800000]' : 'default'
+                }
+              >
+                About
+              </NavLink>
+            </li>
 
             {/* <li className="ml-8">
               <DarkLight />

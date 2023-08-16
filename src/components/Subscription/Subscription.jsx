@@ -1,6 +1,12 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { FaAlignJustify, FaCheckDouble, FaInfoCircle } from 'react-icons/fa';
 const Subscription = () => {
+  // that's will vary some information with Onclick Button 
+  const SubscriptionBasicInfo = { type: "basic", regularPrice: 29.99, discountPrice: 10.99 }
+  const SubscriptionPremiumInfo = { type: "premium", regularPrice: 59.99, discountPrice: 34.99 }
+  const SubscriptionUltaPremiumInfo = { type: "Ultapremium", regularPrice: 99.99, discountPrice: 54.99 }
+
   return (
     <div className="hero mt-20">
       <div className="hero-content text-center text-neutral-content">
@@ -29,9 +35,11 @@ const Subscription = () => {
                   </h1>
                 </div>
 
-                <button className="btn btn-outline btn-secondary">
+                <Link
+                  className="btn btn-outline btn-secondary "
+                  to='/chekout'>
                   Subscription
-                </button>
+                </Link>
                 <hr />
                 <div className="card-actions justify-start mt-5">
                   <div className=" ">
@@ -85,9 +93,11 @@ const Subscription = () => {
                   </h1>
                 </div>
 
-                <button className="btn btn-outline btn-secondary">
+                <Link
+                  className="btn btn-outline btn-secondary"
+                  to='/chekout'>
                   Subscription
-                </button>
+                </Link>
                 <hr />
                 <div className="card-actions justify-start mt-5">
                   <div className=" ">
@@ -138,9 +148,11 @@ const Subscription = () => {
                   </h1>
                 </div>
 
-                <button className="btn btn-outline btn-secondary">
+                <Link
+                  className="btn btn-outline btn-secondary"
+                  to='/chekout'>
                   Subscription
-                </button>
+                </Link>
                 <hr />
                 <div className="card-actions justify-start mt-5">
                   <div className=" ">
