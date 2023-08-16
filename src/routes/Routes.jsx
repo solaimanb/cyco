@@ -5,22 +5,32 @@ import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import ErrorPage from '../pages/Error/ErrorPage';
 import Home from '../pages/Home/Home/Home';
-import Payment from "../pages/Payment/Payment";
+import Payment from '../pages/Payment/Payment';
 import About from '../pages/about/About';
+import Action from '../pages/home/categories/action/Action';
+import Animation from '../pages/home/categories/animation/Animation';
+import Classic from '../pages/home/categories/classic/Classic';
+import Comedy from '../pages/home/categories/comedy/Comedy';
+import Documentary from '../pages/home/categories/documentary/Documentary';
+import Drama from '../pages/home/categories/drama/Drama';
+import Horror from '../pages/home/categories/horror/Horror';
+import Romantic from '../pages/home/categories/romantic/Romantic';
+import Science from '../pages/home/categories/science/Science';
+import TvShows from '../pages/home/categories/tvShows/TvShows';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import Podcast from '../pages/podcast/Podcast';
-import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
+import PrivacyPolicy from '../pages/privacy-policy/PrivacyPolicy';
 import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
-import TermsConditions from "../pages/terms-conditions/TermsConditions";
+import TermsConditions from '../pages/terms-conditions/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    errorElement:<ErrorPage/>,
+    path: '/',
+    errorElement: <ErrorPage />,
     element: <Root />,
     children: [
       {
@@ -52,30 +62,39 @@ const router = createBrowserRouter([
         element: <Podcast />,
       },
       {
-       path:'/PrivacyPolicy',
-       element:<PrivacyPolicy/>
+        path: '/PrivacyPolicy',
+        element: <PrivacyPolicy />,
       },
       {
-       path: '/TermsConditions',
-       element: <TermsConditions/>
+        path: '/TermsConditions',
+        element: <TermsConditions />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
       },
       {
-        path: "/register",
+        path: '/register',
         element: <Register />,
       },
       {
         path: '/login',
         element: <Login />,
       },
-      // initial checked path,
       {
-        path: "/chekout",
-        element: <Payment/>
-      }
+        path: '/checkout',
+        element: <Payment />,
+      },
+      { path: 'action-movies', element: <Action /> },
+      { path: 'comedy-movies', element: <Comedy /> },
+      { path: 'drama-movies', element: <Drama /> },
+      { path: 'science-movies', element: <Science /> },
+      { path: 'horror-movies', element: <Horror /> },
+      { path: 'animated-movies', element: <Animation /> },
+      { path: 'romantic-movies', element: <Romantic /> },
+      { path: 'documentary-movies', element: <Documentary /> },
+      { path: 'tv-shows', element: <TvShows /> },
+      { path: 'classic-movies', element: <Classic /> },
     ],
   },
   {
@@ -88,10 +107,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'admin-home',
-        element: <AdminHome />
-      }
-    ]
-  }
+        element: <AdminHome />,
+      },
+    ],
+  },
 ]);
 
 export default router;
