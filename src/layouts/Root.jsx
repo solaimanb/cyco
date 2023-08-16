@@ -8,7 +8,7 @@ import Navbar from '../shared/navbar/Navbar';
 const Root = () => {
   return (
     <div className="w-full">
-      {/* <Navbar /> */}
+      <Navbar />
 
       <div className="min-h-[calc(100vh-160px)]">
         <div className="w-[90%] mx-auto">
