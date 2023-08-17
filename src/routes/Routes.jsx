@@ -8,6 +8,7 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import Home from '../pages/Home/Home/Home';
 import Payment from '../pages/Payment/Payment';
 import About from '../pages/about/About';
+import Contacts from '../pages/contacts/Contacts';
 import AddNewMedia from '../pages/dashboard/admin/AddNewMedia';
 import UsersHome from '../pages/dashboard/user/UsersHome';
 import Action from '../pages/home/categories/action/Action';
@@ -22,6 +23,7 @@ import Science from '../pages/home/categories/science/Science';
 import TvShows from '../pages/home/categories/tvShows/TvShows';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
+import MovieInfo from '../pages/movie-info/MovieInfo';
 import Movies from '../pages/movies/Movies';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -36,25 +38,25 @@ import VideoPlayer from '../pages/video-player/VideoPlayer';
 const router = createBrowserRouter([
   {
     path: '/',
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     element: <Root />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/trailer', element: <Trailer /> },
-      { path: '/movies', element: <Movies />},
-      { path: '/movieDetails', element: <MovieInfo/>},
-      { path: '/video-player', element: <VideoPlayer/>},
-      { path: '/series', element: <Series /> },
-      { path: '/series/seriesParts', element: <SeriesParts /> },
-      { path: '/live-tv', element: <LiveTv /> },
-      { path: '/podcast', element: <Podcast /> },
-      { path: '/PrivacyPolicy', element: <PrivacyPolicy /> },
-      { path: '/TermsConditions', element: <TermsConditions /> },
-      { path: '/about', element: <About /> },
-      { path: '/contact', element: <Contacts /> },
-      { path: '/register', element: <Register /> },
-      { path: '/login', element: <Login /> },
-      { path: '/checkout', element: <Payment /> },
+      { path: 'trailer', element: <Trailer /> },
+      { path: 'movies', element: <Movies /> },
+      { path: 'movieDetails', element: <MovieInfo /> },
+      { path: 'series', element: <Series /> },
+      { path: 'series/seriesParts', element: <SeriesParts /> },
+      { path: 'live-tv', element: <LiveTv /> },
+      { path: 'podcast', element: <Podcast /> },
+      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
+      { path: 'TermsConditions', element: <TermsConditions /> },
+      { path: 'about', element: <About /> },
+      { path: 'contact', element: <Contacts /> },
+      { path: 'register', element: <Register /> },
+      { path: 'login', element: <Login /> },
+      { path: 'checkout', element: <Payment /> },
+
       { path: 'action-movies', element: <Action /> },
       { path: 'comedy-movies', element: <Comedy /> },
       { path: 'drama-movies', element: <Drama /> },

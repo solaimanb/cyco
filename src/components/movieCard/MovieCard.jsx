@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
-  
+  const isMovieOpen = false;
+  console.log(movie);
+
   const openMovie = () => {
+
     navigate('/movieDetails', { state: { movie } })
   };
-
-  
 
   return (
     <div
@@ -19,7 +17,7 @@ const MovieCard = ({ movie }) => {
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
-        src={movie?.Poster}
+        src={movie?.image}
         alt=""
       />
       <div className="p-2 text-white">
@@ -36,7 +34,6 @@ const MovieCard = ({ movie }) => {
             controls
             preload="auto"
             width="80%"
-            // height="264"
             poster="MY_VIDEO_POSTER.jpg"
             data-setup="{}"
           >
