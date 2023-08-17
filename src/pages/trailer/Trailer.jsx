@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const Trailer = () => {
     const [movies, setMovies] = useState([]);
