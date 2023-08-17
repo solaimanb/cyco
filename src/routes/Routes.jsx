@@ -29,6 +29,7 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import Contacts from '../pages/contacts/Contacts';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: '/PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: '/TermsConditions', element: <TermsConditions /> },
       { path: '/about', element: <About /> },
+      { path: '/contact', element: <Contacts /> },
       { path: '/register', element: <Register /> },
       { path: '/login', element: <Login /> },
       { path: '/checkout', element: <Payment /> },
