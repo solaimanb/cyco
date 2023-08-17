@@ -1,7 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
 const Register = () => {
+  const {createUser} = useAuth();
+  // const [accepted, setAccepted] = useState(false);
+
+  // const [error, setError] = useState('');
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    // const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+   console.log(name, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   
 
   return (
@@ -12,7 +37,7 @@ const Register = () => {
         <div className="bg-white p-8 w-full">
          
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mb-4">
               <label
                 htmlFor="username"
@@ -58,7 +83,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label
                 htmlFor="profileImage"
                 className="block text-sm font-medium text-gray-700"
@@ -73,7 +98,7 @@ const Register = () => {
               
                 className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               />
-            </div>
+            </div> */}
             <div className="mb-6">
               <button
                 type="submit"
