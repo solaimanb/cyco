@@ -21,13 +21,13 @@ const Dashboard = () => {
 
       {/* Sidebar */}
       <nav
-        className={`bg-gray-900 w-64 md:w-350 transition-all duration-300 ${
+        className={`bg-gray-900 text-right w-64 md:w-350 transition-all duration-300 ${
           isSidebarOpen ? 'block' : 'hidden md:block'
         }`}
       >
         <div className="py-4">
           <div className="text-white text-xl font-semibold ml-4 mb-6">
-            <img src={logo} alt="Website Logo" />
+            <img src={logo} alt="Website Logo" className='rounded-lg -px-2' />
           </div>
           <ul className="space-y-2">
             <li>
@@ -35,7 +35,7 @@ const Dashboard = () => {
                 to="/dashboard/admin-home"
                 className="block px-4 py-2 text-white hover:bg-gray-800"
               >
-                Admin
+                Admin :
               </Link>
             </li>
             <li>
@@ -43,7 +43,7 @@ const Dashboard = () => {
                 to="/dashboard/users-home"
                 className="block px-4 py-2 text-white hover:bg-gray-800"
               >
-                User
+                User :
               </Link>
             </li>
             <li>
@@ -51,7 +51,7 @@ const Dashboard = () => {
                 to="/dashboard/add-new-media"
                 className="block px-4 py-2 text-white hover:bg-gray-800"
               >
-                Add New Media
+                Add New Media : 
               </Link>
             </li>
             <li>
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 to="/dashboard/payments"
                 className="block px-4 py-2 text-white hover:bg-gray-800"
               >
-                Payments
+                Payments :
               </Link>
             </li>
             {/* Add more links as needed */}
@@ -70,6 +70,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-grow text-center">
         <div>
+          <div><h3>Dashing Dashboard</h3></div>
         <Outlet />
         </div>
       </div>
