@@ -33,58 +33,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <Root />,
     children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/trailer',
-        element: <Trailer />,
-      },
-      {
-        path: '/movies',
-        element: <Movies />,
-      },
-      {
-        path: '/series',
-        element: <Series />,
-      },
-      {
-        path: '/series/seriesParts',
-        element: <SeriesParts />,
-      },
-      {
-        path: '/live-tv',
-        element: <LiveTv />,
-      },
-      {
-        path: '/podcast',
-        element: <Podcast />,
-      },
-      {
-        path: '/PrivacyPolicy',
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: '/TermsConditions',
-        element: <TermsConditions />,
-      },
-      {
-        path: '/about',
-        element: <About />,
-      },
-      {
-        path: '/register',
-        element: <Register />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/checkout',
-        element: <Payment />,
-      },
+      { path: '/', element: <Home /> },
+      { path: '/trailer', element: <Trailer /> },
+      { path: '/movies', element: <Movies /> },
+      { path: '/series', element: <Series /> },
+      { path: '/series/seriesParts', element: <SeriesParts /> },
+      { path: '/live-tv', element: <LiveTv /> },
+      { path: '/podcast', element: <Podcast /> },
+      { path: '/PrivacyPolicy', element: <PrivacyPolicy /> },
+      { path: '/TermsConditions', element: <TermsConditions /> },
+      { path: '/about', element: <About /> },
+      { path: '/register', element: <Register /> },
+      { path: '/login', element: <Login /> },
+      { path: '/checkout', element: <Payment /> },
       { path: 'action-movies', element: <Action /> },
       { path: 'comedy-movies', element: <Comedy /> },
       { path: 'drama-movies', element: <Drama /> },
@@ -97,18 +58,9 @@ const router = createBrowserRouter([
       { path: 'classic-movies', element: <Classic /> },
     ],
   },
-  {
-    path: '*',
-    element: <ErrorPage />,
-  },
-  {
-    path: '/dashboard',
-    element: <Dashboard />,
-    children: [
-      {
-        path: 'admin-home',
-        element: <AdminHome />,
-      },
+  {path: '*',element: <ErrorPage />,},
+  {path: '/dashboard',element: <Dashboard />,children: [
+      {path: 'admin-home',element: <AdminHome />,},
     ],
   },
 ]);
