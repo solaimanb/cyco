@@ -1,31 +1,33 @@
 import { useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 const MovieCard = ({ movie }) => {
-  const [isMovieOpen, setIsMovieOpen] = useState(false);
-
-  const openMoviePlayer = () => {
-    setIsMovieOpen(true);
+  const navigate = useNavigate();
+  
+  const openMovie = () => {
+    navigate('/movieDetails')
   };
 
-  const closeMoviePlayer = () => {
-    setIsMovieOpen(false);
-  };
+  
 
   return (
     <div
-      onClick={openMoviePlayer}
+      onClick={openMovie}
       className="card w-full mt-10 mb-20 h-80 md:w-[250px]"
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
-        src={movie?.image}
+        src={movie?.Poster}
         alt=""
       />
       <div className="p-2 text-white">
-        <h2 className="text- font-semibold">{movie?.title}</h2>
-        <p className="mt-2 text-sm">{movie?.duration}</p>
-        <p className="text-sm">Released: {movie?.releaseYear}</p>
+        <h2 className="text- font-semibold">{movie?.Title}</h2>
+        <p className="mt-2 text-sm">{movie?.Runtime}</p>
+        <p className="text-sm">Released: {movie?.Released}</p>
       </div>
+
       {isMovieOpen && (
         <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
           <video

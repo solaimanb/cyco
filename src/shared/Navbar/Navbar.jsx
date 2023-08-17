@@ -105,6 +105,7 @@ const Navbar = () => {
                 id="nav"
                 to="/about"
                 aria-label="about"
+
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'

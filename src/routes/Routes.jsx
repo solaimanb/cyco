@@ -29,6 +29,8 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import Contacts from '../pages/contacts/Contacts';
+import MovieInfo from '../pages/movie-info/MovieInfo';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/trailer', element: <Trailer /> },
-      { path: '/movies', element: <Movies /> },
+      { path: '/movies', element: <Movies />},
+      { path: '/movieDetails', element: <MovieInfo/>},
       { path: '/series', element: <Series /> },
       { path: '/series/seriesParts', element: <SeriesParts /> },
       { path: '/live-tv', element: <LiveTv /> },
@@ -46,6 +49,7 @@ const router = createBrowserRouter([
       { path: '/PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: '/TermsConditions', element: <TermsConditions /> },
       { path: '/about', element: <About /> },
+      { path: '/contact', element: <Contacts /> },
       { path: '/register', element: <Register /> },
       { path: '/login', element: <Login /> },
       { path: '/checkout', element: <Payment /> },
