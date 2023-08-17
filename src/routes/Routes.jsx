@@ -31,6 +31,7 @@ import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
 import Contacts from '../pages/contacts/Contacts';
 import MovieInfo from '../pages/movie-info/MovieInfo';
+import VideoPlayer from '../pages/video-player/VideoPlayer';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       { path: '/trailer', element: <Trailer /> },
       { path: '/movies', element: <Movies />},
       { path: '/movieDetails', element: <MovieInfo/>},
+      { path: '/video-player', element: <VideoPlayer/>},
       { path: '/series', element: <Series /> },
       { path: '/series/seriesParts', element: <SeriesParts /> },
       { path: '/live-tv', element: <LiveTv /> },
