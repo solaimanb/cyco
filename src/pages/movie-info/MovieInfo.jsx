@@ -1,19 +1,24 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FaPlayCircle, FaFolderPlus, FaCloudDownloadAlt } from "react-icons/fa";
 import FeaturedMovies from '../Home/featuredMovies/featuredMovies';
 import Marquee from 'react-fast-marquee';
 
 const MovieInfo = () => {
+    const navigate = useNavigate();
+
     const location = useLocation();
     const { movie } = location.state;
     const { Title, Released, Director, Actors, Poster, Runtime, Language, Plot } = movie || {};
+    const PlayButton =()=>{
+        navigate('/video-player')
+    }
     return (
         <div>
             <div className="hero min-h-screen rounded-lg" style={{ backgroundImage: `url(${Poster})` }}>
                 {/* <img src={Poster} className='w-[100%] h-[50%] mt-0' alt="" /> */}
                 <div className="hero-overlay bg-opacity-60"></div>
-                <div className='w-1/3'>
+                <div className='w-1/3 md: -ml-[650px]'>
                     <h2 className='text-4xl semibold'>{Title}</h2>
                     <div className='flex space-x-1'>
                         <button className='btn btn-sm btn-outline'>Cyco+</button>
@@ -27,7 +32,7 @@ const MovieInfo = () => {
                         <p>Actors: {Actors}</p>
                     </div>
                     <div className='flex my-3 space-x-3'>
-                        <button title='Continue Video' className='btn btn-primary text-xl rounded-e-lg'><FaPlayCircle /> Play Now</button>
+                        <button title='Continue Video' onClick={PlayButton} className='btn btn-primary text-xl rounded-e-lg'><FaPlayCircle /> Play Now</button>
                         <button title='Add to Watchlist' className='btn btn-primary text-xl rounded-lg'><FaFolderPlus /> Add to Watchlist</button>
                         <button title='Download' className='btn btn-primary text-xl rounded-lg'><FaCloudDownloadAlt /> Download</button>
                     </div>
