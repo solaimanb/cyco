@@ -1,16 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+
+
+const {signIn} = useAuth()
+
+
   const handleLogin = (event) => {
+
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // Handle login logic here
-  };
-  const handleGoogleSignIn = () => {
-    // Handle Google Sign-In logic here
-  };
-  const handleGoogleGithub = () => {
-    // Handle gitHub Sign-In logic here
   };
 
   return (
@@ -63,25 +79,12 @@ const Login = () => {
         </form>
         <div className="flex mx-auto gap-2 ">
           <div className="text-center mx-auto">
-            <button
-              onClick={handleGoogleSignIn}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-            >
-              Sign in with Google
-            </button>
-          </div>
-          <div className="text-center mx-auto">
-            <button
-              onClick={handleGoogleGithub}
-              className="bg-gradient-to-r from-purple-500 hover:to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-            >
-              Sign in with GitHub
-            </button>
+            <SocialLogin />
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-5">
-          Don't have an account?{' '}
-          <Link to="/registration" className="text-indigo-500 hover:underline">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-indigo-500 hover:underline">
             Register
           </Link>
         </p>
