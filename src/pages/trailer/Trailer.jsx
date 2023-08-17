@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 const Trailer = () => {
     const [movies, setMovies] = useState([]);
+    // const [movies, setMovies] = useState([]);
+
 
     useEffect(() => {
         fetch('/MoviesWithDetails.json') 
