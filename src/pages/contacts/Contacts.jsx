@@ -3,6 +3,7 @@ import bg from "../../../public/contact-bg.jpg"
 
 
 const Contacts = () => {
+    // Adress
 
     const addresses = [
         {
