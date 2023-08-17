@@ -2,7 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-import Subscription from '../../../components/Subscription/Subscription';
+import Subscription from '../../../components/subscription/Subscription';
 import Title from '../../../components/title/Title';
 import Tvs from '../../../components/tvs/Tvs';
 import Categories from '../categories/Categories';
@@ -14,7 +14,6 @@ import TopPicks from '../topPicks/TopPicks';
 
 const Home = () => {
   const cycoParticles = async (main) => {
-    console.log(main);
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
