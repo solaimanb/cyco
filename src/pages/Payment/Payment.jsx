@@ -11,7 +11,7 @@ const Payment = () => {
     const currentDate = formatDate(new Date());
     return (
         <div>
-            <section className="flex flex-col justify-center antialiased bg-gray-200 text-gray-600 min-h-screen p-4">
+            <section className="flex flex-col justify-center antialiased text-gray-600 min-h-screen p-4">
                 <div className="h-full">
                     {/* Card */}
                     <div className="max-w-[360px] mx-auto">

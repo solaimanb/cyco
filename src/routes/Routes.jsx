@@ -24,10 +24,10 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import Podcast from '../pages/podcast/Podcast';
-import PrivacyPolicy from '../pages/privacy-policy/PrivacyPolicy';
+import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
 import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
-import TermsConditions from '../pages/terms-conditions/TermsConditions';
+import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([

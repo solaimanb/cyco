@@ -1,6 +1,5 @@
 import React from 'react';
-import MovieCard from '../../components/movieCard/MovieCard';
-import TrailerCard from '../../components/TrailerCard/TrailerCard';
+import TrailerCard from '../../components/trailerCard/TrailerCard';
 
 const Trailer = () => {
     const movies = [

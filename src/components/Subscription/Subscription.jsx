@@ -37,7 +37,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary "
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />
@@ -95,7 +95,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary"
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />
@@ -150,7 +150,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary"
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />
