@@ -9,6 +9,12 @@ const LiveVideoList = () => {
     { name: 'HBO', imageSrc: 'hbo.png' },
     { name: 'EA', imageSrc: 'ea.webp' },
     { name: 'BBC', imageSrc: 'bbc-news.png' },
+    { name: 'FOX', imageSrc: '/fox.png' },
+    { name: 'ESPN', imageSrc: 'espn.webp' },
+    { name: 'CNN', imageSrc: 'cnn.png' },
+    { name: 'HBO', imageSrc: 'hbo.png' },
+    { name: 'EA', imageSrc: 'ea.webp' },
+    { name: 'BBC', imageSrc: 'bbc-news.png' },
   ];
 
   return (
