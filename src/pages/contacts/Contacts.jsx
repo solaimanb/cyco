@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import bg from "../../../public/contact-bg.jpg"
 
 
 const Contacts = () => {
@@ -46,7 +45,7 @@ const Contacts = () => {
         <>
         <div className="flex relative  justify-center items-center h-56 bg-gray-100">
             <img
-                src={bg}
+                src={""}
                 alt="Contact Background"
                 className="object-cover h-full w-full "
             />
