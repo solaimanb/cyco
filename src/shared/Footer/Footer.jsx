@@ -6,7 +6,8 @@ const Footer = () => {
       <footer className="bg-black bg-opacity-60 text-gray-300 py-12">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
-            <img src="" alt="cyco Logo" className="w-40" />
+            <h2 className='font-bold text-2xl lg:text-3xl -rotate-3 text-[#800000]'>CYCO</h2>
+            {/* <img src="" alt="cyco Logo" className="w-40" /> */}
             <p className="mt-4 text-sm">CYCO BELONGS TO CYBERCORPS</p>
           </div>
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10">
