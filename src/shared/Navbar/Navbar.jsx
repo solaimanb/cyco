@@ -104,7 +104,8 @@ const Navbar = () => {
               <NavLink
                 id="nav"
                 to="/about"
-                aria-label="about-us"
+                aria-label="about"
+
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'
@@ -233,7 +234,7 @@ const Navbar = () => {
                         Home
                       </Link>
                     </li>
-                    
+
                     <li className="">
                       <Link
                         to="/trailer"
