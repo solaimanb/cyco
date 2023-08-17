@@ -3,6 +3,7 @@ import SeriesParts from '../components/series/SeriesParts';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import ErrorPage from '../pages/Error/ErrorPage';
 import Home from '../pages/Home/Home/Home';
 import Payment from '../pages/Payment/Payment';
@@ -58,9 +59,15 @@ const router = createBrowserRouter([
       { path: 'classic-movies', element: <Classic /> },
     ],
   },
-  {path: '*',element: <ErrorPage />,},
-  {path: '/dashboard',element: <Dashboard />,children: [
-      {path: 'admin-home',element: <AdminHome />,},
+  { path: '*', element: <ErrorPage /> },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      { path: 'admin-home', element: <AdminHome /> },
+      { path: 'users-home', element: <UsersHome /> },
+      { path: 'add-new-media', element: <AddNewMedia /> },
+      { path: 'payments', element: <Payments /> },
     ],
   },
 ]);
