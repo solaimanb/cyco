@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   
   const openMovie = () => {
-    navigate('/movieDetails')
+    navigate('/movieDetails', { state: { movie } })
   };
 
   
@@ -28,7 +28,7 @@ const MovieCard = ({ movie }) => {
         <p className="text-sm">Released: {movie?.Released}</p>
       </div>
 
-      {isMovieOpen && (
+      {/* {isMovieOpen && (
         <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
           <video
             id="my-video"
@@ -44,7 +44,7 @@ const MovieCard = ({ movie }) => {
             <source src="MY_VIDEO.webm" type="video/webm" />
           </video>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
