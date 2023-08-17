@@ -1,10 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
 
 const useMovies = async () => {
-  try{
-    const res = await fetch('http://localhost:8080')
-  }catch(error){
-
-  }
+  const {
+    data: movies = [],
+    isLoading: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ['movies'],
+    queryFn: async ()=>{
+      const res = await fetch('http://localhost:8080/movies');
+      return res;
+    }
+  })
+  return [ movies, loading, refetch]
 
   // const [axiosSecure] = useAxiosSecure();
 
