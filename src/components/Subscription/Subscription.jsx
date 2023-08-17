@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { FaAlignJustify, FaCheckDouble, FaInfoCircle } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 const Subscription = () => {
   // that's will vary some information with Onclick Button 
   const SubscriptionBasicInfo = { type: "basic", regularPrice: 29.99, discountPrice: 10.99 }
@@ -25,9 +25,9 @@ const Subscription = () => {
                 </p>
                 <div className=" text-white mt-5">
                   <small className="line-through">$29.99</small>
-                  <spam className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
+                  <span className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
                     SAVE 75%
-                  </spam>
+                  </span>
 
                   <h1 className="mt-4">
                     $<span className="text-6xl">10.99 </span>/mo
@@ -37,7 +37,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary "
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />
@@ -83,9 +83,9 @@ const Subscription = () => {
                 </p>
                 <div className=" text-white mt-5">
                   <small className="line-through">$59.99</small>
-                  <spam className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
+                  <span className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
                     SAVE 75%
-                  </spam>
+                  </span>
 
                   <h1 className="mt-4">
                     $<span className="text-6xl">34.99 </span>/mo
@@ -95,7 +95,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary"
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />
@@ -138,9 +138,9 @@ const Subscription = () => {
                 </p>
                 <div className=" text-white mt-5">
                   <small className="line-through">$99.99</small>
-                  <spam className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
+                  <span className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
                     SAVE 75%
-                  </spam>
+                  </span>
 
                   <h1 className="mt-4">
                     $<span className="text-6xl">54.99 </span>/mo
@@ -150,7 +150,7 @@ const Subscription = () => {
 
                 <Link
                   className="btn btn-outline btn-secondary"
-                  to='/chekout'>
+                  to='/checkout'>
                   Subscription
                 </Link>
                 <hr />

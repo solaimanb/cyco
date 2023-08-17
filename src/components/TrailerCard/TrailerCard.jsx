@@ -1,7 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 
 const TrailerCard = ({ movie }) => {
     const [isMovieOpen, setIsMovieOpen] = useState(false);
@@ -38,13 +36,13 @@ const TrailerCard = ({ movie }) => {
                         <FaTimes size={20} />
                     </button>
                     {/* <iframe src={movie?.movieURL} frameborder="0" allowFullScreen title={movie?.title}></iframe> */}
-                    <iframe
+                    {/* <iframe
                         className="w-[80vw] h-[80vh]"
                         src={movie?.video}
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    ></iframe>
+                    ></iframe> */}
                 </div>
             </div>
         )}
