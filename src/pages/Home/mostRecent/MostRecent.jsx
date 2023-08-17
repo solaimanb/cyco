@@ -11,6 +11,7 @@ const MostRecent = () => {
           .then(data => setMovies(data))
           .catch(error => console.error('Error fetching data:', error));
   }, []);
+
   return (
     <div className="w-full flex flex-wrap gap-1">
        {movies.map((movie, index) => (

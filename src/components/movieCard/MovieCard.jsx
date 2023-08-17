@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
-        src={movie?.image}
+        src={movie?.Poster}
         alt=""
       />
       <div className="p-2 text-white">
