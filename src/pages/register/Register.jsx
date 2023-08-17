@@ -1,23 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../components/socialLogin/SocialLogin';
 const Register = () => {
-  const handleGoogleSignIn = () => {
-    // Handle Google Sign-In logic here
-  };
-  const handleGoogleGithub = () => {
-    // Handle gitHub Sign-In logic here
-  };
-
-  const handleImageUpload = (event) => {
-    const imageFile = event.target.files[0];
-    // Handle image upload logic here
-  };
+  
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero hero-content lg:h-[600px] w-96 mx-auto lg:w-[1000px] flex-col lg:flex-row card card-body bg-white shadow-2xl">
-      <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm" />
+      <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm z-30" />
+       <SocialLogin />
         <div className="bg-white p-8 w-full">
+         
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <form>
             <div className="mb-4">
@@ -77,7 +70,7 @@ const Register = () => {
                 accept="image/*"
                 id="profileImage"
                 name="profileImage"
-                onChange={handleImageUpload}
+              
                 className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               />
             </div>
@@ -92,21 +85,10 @@ const Register = () => {
           </form>
           <div className="flex mx-auto gap-2 ">
             <div className="text-center mx-auto">
-              <button
-                onClick={handleGoogleSignIn}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-              >
-                Sign in with Google
-              </button>
+             
+              <SocialLogin />
             </div>
-            <div className="text-center mx-auto">
-              <button
-                onClick={handleGoogleGithub}
-                className="bg-gradient-to-r from-purple-500 hover:to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-              >
-                Sign in with GitHub
-              </button>
-            </div>
+           
           </div>
 
           <p className="text-sm text-gray-600 mt-2">

@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './NavBar.css';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
-  const user = true;
-  // const { user, logOut } = useContext(AuthContext);
+  
+  const { user, logOut } = useAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then()
-  //     .catch((error) => console.log(error));
-  // };
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="sticky top-0 z-10 backdrop-blur-sm md:backdrop-blur-2xl w-full">
       <div className="">
@@ -122,7 +123,7 @@ const Navbar = () => {
           <li className="flex items-center">
             {user ? (
               <>
-                {/* <NavLink
+                <NavLink
                     id="nav"
                     to="/dashboard "
                     aria-label="Dashboard "
@@ -132,8 +133,8 @@ const Navbar = () => {
                     }
                   >
                     Dashboard
-                  </NavLink> */}
-                <button id="nav" className="">
+                  </NavLink>
+                <button onClick={handleLogOut} id="nav" className="">
                   Logout
                 </button>
               </>
