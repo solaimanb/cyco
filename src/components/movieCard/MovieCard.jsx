@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
 
 const MovieCard = ({ movie }) => {
   const [isMovieOpen, setIsMovieOpen] = useState(false);
@@ -29,22 +28,19 @@ const MovieCard = ({ movie }) => {
       </div>
       {isMovieOpen && (
         <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
-          <div className="flex justify-center">
-            <button
-              className="fixed mt-10 border border-white rounded-full p-1"
-              onClick={closeMoviePlayer}
-            >
-              <FaTimes size={20} />
-            </button>
-            {/* <iframe src={movie?.movieURL} frameborder="0" allowFullScreen title={movie?.title}></iframe> */}
-            {/* <iframe
-              className="w-[80vw] h-[80vh]"
-              src="https://www.youtube.com/embed/atnW4D6pc-w"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe> */}
-          </div>
+          <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="80%"
+            // height="264"
+            poster="MY_VIDEO_POSTER.jpg"
+            data-setup="{}"
+          >
+            <source src="MY_VIDEO.mp4" type="video/mp4" />
+            <source src="MY_VIDEO.webm" type="video/webm" />
+          </video>
         </div>
       )}
     </div>
