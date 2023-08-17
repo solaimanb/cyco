@@ -19,12 +19,12 @@ const TrailerCard = ({ movie }) => {
     >
         <img
             className="w-full h-full object-cover rounded-sm hover:brightness-110"
-            src={movie?.image}
+            src={movie?.Poster}
             alt=""
         />
         <div className="p-2 text-white">
-            <h2 className="text- font-semibold">{movie?.title}</h2>
-            <p className="text-sm">Will Be Release: {movie?.releaseYear}</p>
+            <h2 className="text- font-semibold">{movie?.Title}</h2>
+            <p className="text-sm">Will Be Release: {movie?.Year}</p>
         </div>
         {isMovieOpen && (
             <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
