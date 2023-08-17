@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 const Trailer = () => {
     const [movies, setMovies] = useState([]);
-    
 
     useEffect(() => {
         fetch('/MoviesWithDetails.json') 
@@ -16,7 +15,10 @@ const Trailer = () => {
     return (
         <div className="w-full flex flex-wrap gap-1">
             {movies.map((movie, index) => (
-                <TrailerCard key={index} movie={movie}> </TrailerCard>
+                <TrailerCard
+                key={index} 
+                movie={movie}
+                ></TrailerCard>
             ))}
         </div>
     );
