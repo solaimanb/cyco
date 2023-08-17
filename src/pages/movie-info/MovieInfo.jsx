@@ -13,7 +13,7 @@ const MovieInfo = () => {
             <div className="hero min-h-screen rounded-lg" style={{ backgroundImage: `url(${Poster})` }}>
                 {/* <img src={Poster} className='w-[100%] h-[50%] mt-0' alt="" /> */}
                 <div className="hero-overlay bg-opacity-60"></div>
-                <div className='w-1/3'>
+                <div className='w-1/3 md: -ml-[650px]'>
                     <h2 className='text-4xl semibold'>{Title}</h2>
                     <div className='flex space-x-1'>
                         <button className='btn btn-sm btn-outline'>Cyco+</button>
