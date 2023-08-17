@@ -103,7 +103,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/about-us"
+                to="/about"
                 aria-label="about-us"
                 title="About Us"
                 className={({ isActive }) =>
