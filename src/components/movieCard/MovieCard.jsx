@@ -37,13 +37,13 @@ const MovieCard = ({ movie }) => {
               <FaTimes size={20} />
             </button>
             {/* <iframe src={movie?.movieURL} frameborder="0" allowFullScreen title={movie?.title}></iframe> */}
-            <iframe
+            {/* <iframe
               className="w-[80vw] h-[80vh]"
               src="https://www.youtube.com/embed/atnW4D6pc-w"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
+            ></iframe> */}
           </div>
         </div>
       )}

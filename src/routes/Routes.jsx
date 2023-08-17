@@ -8,6 +8,8 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import Home from '../pages/Home/Home/Home';
 import Payment from '../pages/Payment/Payment';
 import About from '../pages/about/About';
+import AddNewMedia from '../pages/dashboard/admin/AddNewMedia';
+import UsersHome from '../pages/dashboard/user/UsersHome';
 import Action from '../pages/home/categories/action/Action';
 import Animation from '../pages/home/categories/animation/Animation';
 import Classic from '../pages/home/categories/classic/Classic';
