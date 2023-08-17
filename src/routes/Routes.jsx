@@ -31,6 +31,9 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import Contacts from '../pages/contacts/Contacts';
+import MovieInfo from '../pages/movie-info/MovieInfo';
+import VideoPlayer from '../pages/video-player/VideoPlayer';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +56,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'checkout', element: <Payment /> },
+
       { path: 'action-movies', element: <Action /> },
       { path: 'comedy-movies', element: <Comedy /> },
       { path: 'drama-movies', element: <Drama /> },
