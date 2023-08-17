@@ -16,6 +16,9 @@ import About from "../pages/About-Us/About";
 import Payment from "../pages/Payment/Payment";
 import Dashboard from '../layouts/Dashboard';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+import UsersHome from '../pages/DashBoard/Users/UsersHome';
+import AddNewMedia from '../pages/DashBoard/Admin/AddNewMedia';
+import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 
 const router = createBrowserRouter([
   {
@@ -89,9 +92,21 @@ const router = createBrowserRouter([
       {
         path: 'admin-home',
         element: <AdminHome />
+      },
+      {
+        path: 'users-home',
+        element: <UsersHome />
+      },
+      {
+        path: 'add-new-media',
+        element: <AddNewMedia />
+      },
+      {
+        path: 'payments',
+        element: <Payments />
       }
-    ]
-  }
+    ],
+  },
 ]);
 
 export default router;
