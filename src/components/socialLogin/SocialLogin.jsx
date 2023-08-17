@@ -15,23 +15,9 @@ const SocialLogin = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        // const saveUser = {
-        //   name: loggedInUser.displayName,
-        //   email: loggedInUser.email,
-        // //   photoURL: loggedInUser.photoURL,
-        // };
-        // fetch("http://localhost:5000/users", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(saveUser),
-        // })
-        //   .then((res) => res.json())
-        //   .then(() => {
-        //     console.log(from)
-        //     navigate(from, { replace: true });
-        //   });
+
+        // Redirect the user to the home page or replace current entry
+        navigate(from, { replace: true });
       });
   };
 
@@ -43,7 +29,7 @@ const SocialLogin = () => {
           onClick={handleGoogleSignIn}
           className="btn btn-circle btn-outline border-b-yellow-500 text-cyan-500"
         >
-          <FaGoogle></FaGoogle>
+          <FaGoogle />
         </button>
       </div>
     </div>
