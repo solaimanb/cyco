@@ -78,7 +78,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/live-tv"
+                to="live-tv"
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
