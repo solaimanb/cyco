@@ -5,8 +5,8 @@ const Hero = () => {
     <section className="w-[100vw]">
       <img
         className="absolute top-10 md:top-0 w-[100vw] opacity-90 left-0"
-        // src="/snow-white-movies-banner-cyco.webp"
-        src="/oblivion-cyco.jpg"
+        src="/snow-white-movies-banner-cyco.webp"
+        // src="/oblivion-cyco.jpg"
         alt="snow-white-movies-banner"
       />
 
