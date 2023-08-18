@@ -10,6 +10,7 @@ const Movies = () => {
   const [movies,  loading] = useMovies()
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
+
   // const [movies, loading, refetch] = useMovies()
   // const movies = useMovies()
 
@@ -23,7 +24,7 @@ const Movies = () => {
   //   fetchedMovies()
   // },[])
 
-  console.log(movies);
+//   console.log(movies);
 
   const totalPages = 10;
 
