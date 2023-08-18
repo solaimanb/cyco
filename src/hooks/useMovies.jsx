@@ -1,18 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 
-const useMovies = async () => {
+const useMovies = () => {
   const {
     data: movies = [],
     isLoading: loading,
     refetch,
   } = useQuery({
     queryKey: ['movies'],
-    queryFn: async ()=>{
-      const res = await fetch('http://localhost:8080/movies');
-      return res;
-    }
-  })
-  return [ movies, loading, refetch]
+    queryFn: async () => {
+      const res = await fetch('MoviesWithDetails.json');
+      const data = await res.json();
+      return data;
+    },
+  });
+  return [movies, loading, refetch];
 
   // const [axiosSecure] = useAxiosSecure();
 
