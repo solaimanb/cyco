@@ -7,12 +7,6 @@ const Trailer = () => {
   const [movies, loading] = useMovies();
   console.log(movies);
 
-//   useEffect(() => {
-//     fetch('/MoviesWithDetails.json')
-//       .then((res) => res.json())
-//       .then((data) => setMovies(data))
-//       .catch((error) => console.error('Error fetching data:', error));
-//   }, []);
 if (loading) {
     // You can display a loading indicator here
     return <Loading/>;
