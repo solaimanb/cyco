@@ -13,6 +13,15 @@ import MostRecent from '../mostRecent/MostRecent';
 import TopPicks from '../topPicks/TopPicks';
 
 const Home = () => {
+
+  // const [loading] = useMovies()
+  
+  // if (loading) {
+  //   // You can display a loading indicator here
+  //   return <Loading/>;
+  // }
+
+  
   const cycoParticles = async (main) => {
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -126,7 +135,7 @@ const Home = () => {
           <div className="">
             <div className="mt-20">
               <Title title={'Most Recent'} />
-              <MostRecent />
+              <MostRecent/>
             </div>
             <div className="mt-10">
               <Title title={'Top Picks'} />

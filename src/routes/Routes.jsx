@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import SeriesParts from '../components/series/SeriesParts';
-import LiveTv from '../components/tvs/LiveTv';
+// import LiveTv from '../components/tvs/LiveTv';
 import LiveVideo from '../components/tvs/LiveVideo';
 import Tvs from '../components/tvs/Tvs';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
@@ -24,7 +24,9 @@ import Horror from '../pages/home/categories/horror/Horror';
 import Romantic from '../pages/home/categories/romantic/Romantic';
 import Science from '../pages/home/categories/science/Science';
 import TvShows from '../pages/home/categories/tvShows/TvShows';
+import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
+import MovieInfo from '../pages/movie-info/MovieInfo';
 import Movies from '../pages/movies/Movies';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
@@ -64,6 +66,7 @@ const router = createBrowserRouter([
       { path: 'tv-shows', element: <TvShows /> },
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
+      { path: 'movieDetails', element: <MovieInfo /> },
     ],
   },
   { path: '*', element: <ErrorPage /> },
