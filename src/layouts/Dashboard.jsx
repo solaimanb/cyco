@@ -157,7 +157,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-grow text-center">
         <div>
-          <div><h3>Dashing Dashboard</h3></div>
+          <div><h3 className=''>Dashing Dashboard</h3></div>
         <Outlet />
         </div>
       </div>

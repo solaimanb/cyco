@@ -1,8 +1,12 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import SocialLogin from '../../components/socialLogin/SocialLogin';
-import useAuth from '../../hooks/useAuth';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import { useRef } from "react";
+import {getAuth, sendPasswordResetEmail, onAuthStateChanged } from "@firebase/auth";
 
+const auth = getAuth();
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -22,8 +26,25 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage("Invalid email or password");
       });
   };
+  const handleResetPassword = (event) => {
+          const email = (emailRef.current.value);
+          if (!email){
+            alert('please provide your email address first')
+            return;
+          }
+
+          sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert('Please check your email')
+          })
+          .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message)
+          })
+  }
 
   return (
     <div className="flex justify-center items-center h-screen hero">
@@ -41,6 +62,7 @@ const Login = () => {
               type="email"
               id="email"
               name="email"
+              ref={emailRef}
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               required
             />
@@ -60,10 +82,12 @@ const Login = () => {
               required
             />
             <label className="flex justify-end">
-              <a className="link link-primary text-sm">Forgot password</a>
+             <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
             </label>
           </div>
-
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+          )}
           <div className="mb-6">
             <button
               type="submit"
