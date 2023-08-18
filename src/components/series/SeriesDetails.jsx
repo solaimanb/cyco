@@ -12,7 +12,7 @@ const SeriesDetails = () => {
             uniqueName="THIS_PLAYLIST_INSTANCE_NAME"
           />
 
-          
+
         </div>
       </div>
     </div>

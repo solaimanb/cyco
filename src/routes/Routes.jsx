@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import Home from "../pages/Home/Home/Home";
 
-import LiveTv from "../pages/liveTv/LiveTv";
+
 
 import Login from "../pages/login/Login";
 import Movies from "../pages/movies/Movies";
@@ -16,6 +16,10 @@ import SeriesDetails from "../components/series/SeriesDetails";
 import ErrorPage from '../pages/Error/ErrorPage';
 import PrivacyPolicy from "../pages/privacy-policy/PrivacyPolicy";
 import TermsConditions from "../pages/terms-conditions/TermsConditions";
+import LiveTv from "../components/tvs/LiveTv";
+import LiveVideo from "../components/tvs/LiveVideo";
+import { getData } from "../api/getLiveData";
+import Tvs from "../components/tvs/Tvs";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +49,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/live-tv",
-        element: <LiveTv />,
+        element: <Tvs/>
+      },
+      {
+        path:'/live-tv/live/:id',
+        element:<LiveVideo/>,
+        loader: ({ params }) =>
+        fetch('/tvData.json')
+        .then(res => res.json())
+        .then(data => data)
+    
       },
       {
         path: "/podcast",

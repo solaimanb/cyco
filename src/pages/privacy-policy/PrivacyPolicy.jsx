@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 const PrivacyPolicy = () => {
+
     return (
         <div className=" min-h-screen flex items-center justify-center">
             <div className="bg-white p-8 mx-auto max-w-2xl shadow-md rounded-lg">
