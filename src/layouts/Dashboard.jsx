@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import logo from '/cy-ico.png'
 import Divider from '../components/divider/Divider';
@@ -14,21 +14,27 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen">
       {/* Hamburger Menu */}
-      <div className="md:hidden">
-        <button onClick={toggleSidebar} className="text-gray-700 ml-4 mt-4">
-          <FaBars size={24} />
-        </button>
+      <div className="lg:hidden">
+        {isSidebarOpen ? (
+          <button onClick={toggleSidebar} className="close-button">
+            <FaTimes size={24} />
+          </button>
+        ) : (
+          <button onClick={toggleSidebar} className="text-gray-700 ml-2 mt-4">
+            <FaBars size={24} />
+          </button>
+        )}
       </div>
 
       {/* Sidebar */}
       <nav
         className={`bg-[#111] bg-opacity-60 text-right w-64 md:w-350 transition-all duration-300 ${
-          isSidebarOpen ? 'block' : 'hidden md:block'
+          isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
         <div className="py-4">
           <div className="text-white text-xl font-semibold ml-4 mb-6 flex justify-end">
-            <img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' />
+            <Link to='/dashboard'><img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' /></Link>
           </div>
           <ul className="space-y-2">
             <li>

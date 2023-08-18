@@ -30,9 +30,9 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center h-screen hero">
-      <div className="bg-white p-8 rounded shadow-lg w-96 h-auto">
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+    <div className="bg-[#111] opacity-80 flex justify-center items-center h-screen hero">
+      <div className="p-8 rounded shadow-lg w-96 h-auto">
+        <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label
