@@ -15,6 +15,9 @@ const Movies = () => {
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
+  const handleNumberClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   useEffect(() => {
     fetch("MoviesWithDetails.json")
       .then((res) => res.json())
@@ -45,6 +48,7 @@ const Movies = () => {
         currentPage={currentPage}
         totalPages={Math.ceil(movies.length / moviesPerPage)}
         onPageChange={handlePageChange}
+        onNumberClick={handleNumberClick}
       />
     </div>
   );

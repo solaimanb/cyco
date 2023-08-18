@@ -47,6 +47,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, onNumberClick }) =>
                 ? 'bg-[#800000]'
                 : 'bg-white text-[#800000]'
             }`}
+            onClick={() => onNumberClick(pageNumber)}
           >
             {pageNumber}
           </button>
