@@ -23,7 +23,7 @@ const Movies = () => {
   //   fetchedMovies()
   // },[])
 
-  console.log(movies);
+  // console.log(movies);
 
   const totalPages = 10;
 
