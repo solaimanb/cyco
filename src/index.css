@@ -25,3 +25,6 @@ body {
 .dashBoard-bg{
   @apply flex justify-center items-center h-screen bg-[#111] opacity-50 text-gray-300;
 }
+.close-button {
+  @apply absolute top-1 left-48 ;
+}

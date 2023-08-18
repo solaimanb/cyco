@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import logo from '/cy-ico.png'
 import Divider from '../components/divider/Divider';
@@ -15,9 +15,15 @@ const Dashboard = () => {
     <div className="flex h-screen">
       {/* Hamburger Menu */}
       <div className="lg:hidden">
-        <button onClick={toggleSidebar} className="text-gray-700 ml-2 mt-4">
-          <FaBars size={24} />
-        </button>
+        {isSidebarOpen ? (
+          <button onClick={toggleSidebar} className="close-button">
+            <FaTimes size={24} />
+          </button>
+        ) : (
+          <button onClick={toggleSidebar} className="text-gray-700 ml-2 mt-4">
+            <FaBars size={24} />
+          </button>
+        )}
       </div>
 
       {/* Sidebar */}
