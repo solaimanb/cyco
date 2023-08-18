@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
 
 
-const {signIn} = useAuth()
+const {signIn} = useAuth();
+const navigate = useNavigate();
 
 
   const handleLogin = (event) => {
@@ -21,12 +22,11 @@ const {signIn} = useAuth()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         console.log(error);
       });
-    // Handle login logic here
   };
 
   return (

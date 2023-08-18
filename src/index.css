@@ -21,3 +21,7 @@ body {
 .Categorybtn {
   @apply font-medium w-[190px] h-[40px] my-3 py-2 px-2 text-center items-center rounded-md bg-[#272727] text-white   transition-colors;
 }
+
+.dashBoard-bg{
+  @apply flex justify-center items-center h-screen bg-[#111] opacity-50 text-gray-300;
+}
