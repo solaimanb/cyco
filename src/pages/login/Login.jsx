@@ -3,16 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import { useRef } from "react";
+import {getAuth, sendPasswordResetEmail, onAuthStateChanged } from "@firebase/auth";
 
+
+const auth = getAuth();
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const emailRef = useRef();
 
-const {signIn} = useAuth();
-const navigate = useNavigate();
+  const { signIn } = useAuth();
 
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
-
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -27,9 +31,25 @@ const navigate = useNavigate();
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("Invalid email or password")
+        setErrorMessage("Invalid email or password");
       });
   };
+  const handleResetPassword = (event) => {
+          const email = (emailRef.current.value);
+          if (!email){
+            alert('please provide your email address first')
+            return;
+          }
+
+          sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert('Please check your email')
+          })
+          .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message)
+          })
+  }
 
   return (
     <div className="bg-[#111] opacity-80 flex justify-center items-center h-screen hero">
@@ -47,6 +67,7 @@ const navigate = useNavigate();
               type="email"
               id="email"
               name="email"
+              ref={emailRef}
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               required
             />
@@ -66,14 +87,12 @@ const navigate = useNavigate();
               required
             />
             <label className="flex justify-end">
-              <a className="link link-primary text-sm mt-4 text-zinc-300">Forgot password</a>
+             <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
             </label>
           </div>
-{
-  errorMessage && (
-    <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
-  )
-}
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+          )}
           <div className="mb-6">
             <button
               type="submit"
