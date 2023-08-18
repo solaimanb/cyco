@@ -1,40 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 const Register = () => {
   const {createUser} = useAuth();
+  const navigate = useNavigate()
   // const [accepted, setAccepted] = useState(false);
 
   // const [error, setError] = useState('');
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    // const photo = form.photo.value;
+    const name = form.username.value; 
     const email = form.email.value;
     const password = form.password.value;
 
-   console.log(name, email, password);
+    try {
+      const result = await createUser(email, password);
+      const createdUser = result.user;
 
-    createUser(email, password)
-      .then((result) => {
-        const createdUser = result.user;
-        console.log(createdUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      // Registration successful
+      console.log(createdUser);
+
+      // Redirect the user to the home page
+      navigate('/');
+    } catch (error) {
+      console.error('Registration failed', error);
+    }
   };
   
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero hero-content lg:h-[600px] w-96 mx-auto lg:w-[1000px] flex-col lg:flex-row card card-body bg-white shadow-2xl">
-      <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm z-30" />
+     <div className='flex flex-col justify-between items-center gap-7 w-full'>
+     <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm z-30" />
+      <h3>Use Google to hasselFree LogIn</h3>
        <SocialLogin />
-        <div className="bg-white p-8 w-full">
+     </div>
+        <div className="bg-[#111] p-8 w-full">
          
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <form onSubmit={handleRegister}>
