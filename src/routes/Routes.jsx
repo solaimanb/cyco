@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import SeriesParts from '../components/series/SeriesParts';
+import VideoPlayer from '../components/video-player/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
       { path: 'documentary-movies', element: <Documentary /> },
       { path: 'tv-shows', element: <TvShows /> },
       { path: 'classic-movies', element: <Classic /> },
+      { path: 'video-player', element: <VideoPlayer /> },
     ],
   },
   { path: '*', element: <ErrorPage /> },
