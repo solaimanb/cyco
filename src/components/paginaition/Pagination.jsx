@@ -55,9 +55,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
       <button
         className={`px-2 py-1 rounded-sm flex items-center gap-2 ${
-          isFirstPage ? 'bg-[#800000] cursor-not-allowed' : 'bg-white'
+          isFirstPage ? 'bg-[#800000] cursor-pointer' : 'bg-white'
         }`}
-        onClick={() => handlePageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={isLastPage}
       >
         Next <FaAngleRight />

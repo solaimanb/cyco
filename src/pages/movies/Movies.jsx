@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import MovieCard from '../../components/movieCard/MovieCard';
-import Pagination from '../../components/paginaition/Pagination';
-import { useEffect } from 'react';
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import MovieCard from "../../components/movieCard/MovieCard";
+import Pagination from "../../components/paginaition/Pagination";
+import { useEffect } from "react";
 import useMovies from '../../hooks/useMovies';
 import Loading from '../../components/loading/Loading';
 
 const Movies = () => {
-  const [movies, loading] = useMovies()
-
+  const [movies,  loading] = useMovies()
   const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 12;
   // const [movies, loading, refetch] = useMovies()
   // const movies = useMovies()
 
@@ -30,6 +30,12 @@ const Movies = () => {
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
+  useEffect(() => {
+    fetch("MoviesWithDetails.json")
+      .then((res) => res.json())
+      .then((data) => setMovies(data));
+  });
+  // there will be spinner
 
   if (loading) {
     // You can display a loading indicator here
@@ -51,15 +57,17 @@ const Movies = () => {
       </div>
 
       <div className="mt-10 w-full flex justify-center flex-wrap gap-1">
-        {movies.map((movie, index) => (
-          <MovieCard key={index} movie={movie}></MovieCard>
-        ))}
+        {movies
+          .slice((currentPage - 1) * moviesPerPage, currentPage * moviesPerPage)
+          .map((movie, index) => (
+            <MovieCard key={index} movie={movie}></MovieCard>
+          ))}
       </div>
 
       {/* Pagination */}
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={Math.ceil(movies.length / moviesPerPage)}
         onPageChange={handlePageChange}
       />
     </div>
