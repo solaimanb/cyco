@@ -1,17 +1,13 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from "../../components/socialLogin/SocialLogin";
-import useAuth from "../../hooks/useAuth";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SocialLogin from '../../components/socialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-
-
-const {signIn} = useAuth();
-const navigate = useNavigate();
-
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
-
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -22,7 +18,7 @@ const navigate = useNavigate();
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +79,7 @@ const navigate = useNavigate();
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-5">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link to="/register" className="text-indigo-500 hover:underline">
             Register
           </Link>
