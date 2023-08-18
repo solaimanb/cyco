@@ -2,9 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 
 const Login = () => {
-
+  const [errorMessage, setErrorMessage] = useState("");
 
 const {signIn} = useAuth();
 const navigate = useNavigate();
@@ -26,6 +27,7 @@ const navigate = useNavigate();
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage("Invalid email or password")
       });
   };
 
@@ -64,10 +66,14 @@ const navigate = useNavigate();
               required
             />
             <label className="flex justify-end">
-              <a className="link link-primary text-sm">Forgot password</a>
+              <a className="link link-primary text-sm mt-4 text-zinc-300">Forgot password</a>
             </label>
           </div>
-
+{
+  errorMessage && (
+    <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+  )
+}
           <div className="mb-6">
             <button
               type="submit"

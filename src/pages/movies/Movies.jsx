@@ -8,7 +8,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
-  console.log(movies);
+  
 
   const totalPages = 10;
 
