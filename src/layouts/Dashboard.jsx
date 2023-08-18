@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import logo from '/cy-ico.png'
+import Divider from '../components/divider/Divider';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -21,13 +22,13 @@ const Dashboard = () => {
 
       {/* Sidebar */}
       <nav
-        className={`bg-gray-900 text-right w-64 md:w-350 transition-all duration-300 ${
+        className={`bg-[#111] bg-opacity-60 text-right w-64 md:w-350 transition-all duration-300 ${
           isSidebarOpen ? 'block' : 'hidden md:block'
         }`}
       >
         <div className="py-4">
-          <div className="text-white text-xl font-semibold ml-4 mb-6">
-            <img src={logo} alt="Website Logo" className='rounded-lg -px-2' />
+          <div className="text-white text-xl font-semibold ml-4 mb-6 flex justify-end">
+            <img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' />
           </div>
           <ul className="space-y-2">
             <li>
@@ -64,6 +65,86 @@ const Dashboard = () => {
             </li>
             {/* Add more links as needed */}
           </ul>
+          <div>
+            <Divider />
+          </div>
+          <div>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                Home :
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+               Example 1 :
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                Example 2 : 
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                Example 3 :
+              </Link>
+            </li>
+            {/* Add more links as needed */}
+          </ul>
+          </div>
+          <div>
+            <Divider />
+          </div>
+          <div>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                someThing :
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+               someThing 1 :
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                someThing 2 : 
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 text-white hover:bg-gray-800"
+              >
+                someThing 3 :
+              </Link>
+            </li>
+            {/* Add more links as needed */}
+          </ul>
+          </div>
         </div>
       </nav>
 

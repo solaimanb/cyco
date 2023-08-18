@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.username.value; // Use 'username' instead of 'name'
+    const name = form.username.value; 
     const email = form.email.value;
     const password = form.password.value;
 
@@ -40,7 +40,7 @@ const Register = () => {
       <h3>Use Google to hasselFree LogIn</h3>
        <SocialLogin />
      </div>
-        <div className="bg-white p-8 w-full">
+        <div className="bg-[#111] p-8 w-full">
          
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <form onSubmit={handleRegister}>
