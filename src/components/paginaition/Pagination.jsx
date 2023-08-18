@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange, onNumberClick }) => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
 
