@@ -6,14 +6,9 @@ import { useState } from "react";
 import { useRef } from "react";
 import {getAuth, sendPasswordResetEmail, onAuthStateChanged } from "@firebase/auth";
 
-
 const auth = getAuth();
 const Login = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const emailRef = useRef();
-
   const { signIn } = useAuth();
-
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
@@ -27,7 +22,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -52,8 +47,8 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-[#111] opacity-80 flex justify-center items-center h-screen hero">
-      <div className="p-8 rounded shadow-lg w-96 h-auto">
+    <div className="flex justify-center items-center h-screen hero">
+      <div className="p-8 bg-zinc-900 rounded-sm shadow-lg w-96 h-auto">
         <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -96,7 +91,7 @@ const Login = () => {
           <div className="mb-6">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
             >
               Login
             </button>
@@ -108,7 +103,7 @@ const Login = () => {
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-5">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link to="/register" className="text-indigo-500 hover:underline">
             Register
           </Link>

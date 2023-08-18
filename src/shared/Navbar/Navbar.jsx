@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import './NavBar.css';
 import useAuth from '../../hooks/useAuth';
+import './NavBar.css';
 
 const Navbar = () => {
   
@@ -78,7 +78,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="/live-tv"
+                to="live-tv"
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 LiveTV
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 id="nav"
                 to="/podcast"
@@ -100,7 +100,7 @@ const Navbar = () => {
               >
                 Podcast
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 id="nav"

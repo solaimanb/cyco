@@ -18,7 +18,7 @@ import app from '../firebase/firebase.config';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
-  const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -53,7 +53,7 @@ const auth = getAuth(app);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      
+
       // if (currentUser && currentUser?.email) {
       //   axios
       //     .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
@@ -87,7 +87,7 @@ const auth = getAuth(app);
     loading,
     setLoading,
     createUser,
-   
+
     signIn,
     googleSignIn,
     logOut,
