@@ -24,7 +24,6 @@ const Movies = () => {
   //   fetchedMovies()
   // },[])
 
-//   console.log(movies);
 
   const totalPages = 10;
 
