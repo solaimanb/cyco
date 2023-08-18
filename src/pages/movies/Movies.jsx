@@ -10,6 +10,7 @@ const Movies = () => {
   const [movies,  loading] = useMovies()
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
+
   // const [movies, loading, refetch] = useMovies()
   // const movies = useMovies()
 
@@ -23,12 +24,14 @@ const Movies = () => {
   //   fetchedMovies()
   // },[])
 
-  // console.log(movies);
 
   const totalPages = 10;
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+  };
+  const handleNumberClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
   useEffect(() => {
     fetch("MoviesWithDetails.json")
@@ -69,6 +72,7 @@ const Movies = () => {
         currentPage={currentPage}
         totalPages={Math.ceil(movies.length / moviesPerPage)}
         onPageChange={handlePageChange}
+        onNumberClick={handleNumberClick}
       />
     </div>
   );

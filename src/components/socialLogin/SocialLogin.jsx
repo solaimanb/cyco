@@ -27,9 +27,9 @@ const SocialLogin = () => {
       <div className="w-full text-center my-4">
         <button
           onClick={handleGoogleSignIn}
-          className="btn btn-circle btn-outline border-b-yellow-500 text-cyan-500"
+          className="btn btn-circle btn-outline border-[#800000] text-[#800000]"
         >
-          <FaGoogle />
+          <FaGoogle size={18} />
         </button>
       </div>
     </div>

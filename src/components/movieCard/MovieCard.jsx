@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const isMovieOpen = false;
-  console.log(movie);
+  // console.log(movie);
 
   const openMovie = () => {
 

@@ -2,16 +2,16 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import { useRef } from "react";
+import {getAuth, sendPasswordResetEmail, onAuthStateChanged } from "@firebase/auth";
 
+const auth = getAuth();
 const Login = () => {
-
-
-const {signIn} = useAuth();
-const navigate = useNavigate();
-
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
-
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -22,16 +22,33 @@ const navigate = useNavigate();
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage("Invalid email or password");
       });
   };
+  const handleResetPassword = (event) => {
+          const email = (emailRef.current.value);
+          if (!email){
+            alert('please provide your email address first')
+            return;
+          }
+
+          sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert('Please check your email')
+          })
+          .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message)
+          })
+  }
 
   return (
-    <div className="bg-[#111] opacity-80 flex justify-center items-center h-screen hero">
-      <div className="p-8 rounded shadow-lg w-96 h-auto">
+    <div className="flex justify-center items-center h-screen hero">
+      <div className="p-8 bg-zinc-900 rounded-sm shadow-lg w-96 h-auto">
         <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -45,6 +62,7 @@ const navigate = useNavigate();
               type="email"
               id="email"
               name="email"
+              ref={emailRef}
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               required
             />
@@ -64,14 +82,16 @@ const navigate = useNavigate();
               required
             />
             <label className="flex justify-end">
-              <a className="link link-primary text-sm">Forgot password</a>
+             <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
             </label>
           </div>
-
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+          )}
           <div className="mb-6">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
             >
               Login
             </button>
@@ -83,7 +103,7 @@ const navigate = useNavigate();
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-5">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link to="/register" className="text-indigo-500 hover:underline">
             Register
           </Link>
