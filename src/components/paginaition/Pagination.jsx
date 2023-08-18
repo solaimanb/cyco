@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange, onNumberClick }) => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
 
@@ -47,6 +47,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 ? 'bg-[#800000]'
                 : 'bg-white text-[#800000]'
             }`}
+            onClick={() => onNumberClick(pageNumber)}
           >
             {pageNumber}
           </button>

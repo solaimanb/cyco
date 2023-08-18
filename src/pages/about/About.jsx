@@ -1,12 +1,15 @@
 import React from 'react';
 import { FaFacebook, FaGithub, FaInstagramSquare } from 'react-icons/fa';
+import Divider from '../../components/divider/Divider';
 
 const About = () => {
   return (
     <div>
-      <h2 className="text-center text-4xl mt-3">About Cyco Tv</h2>
-      <span className="divider"></span>
-      <p>
+      <h2 className="text-center text-4xl mt-4 bg-base-100 opacity-60 py-4 rounded-3xl hover:text-white">About Cyco Tv</h2>
+      <span className="divider">
+        <Divider />
+      </span>
+      <p className='text-center py-4'>
         "Cyco TV" is a streaming platform and movie collection website, it's
         likely that it offers a range of movies, TV shows, and possibly other
         forms of entertainment content for users to watch online. Streaming
@@ -26,12 +29,12 @@ const About = () => {
         www.somoynews.tv, Programs are also news based, focusing on the news and
         information, analysis of the news.
       </p>
-      <div>
-        <p className="text-center text-3xl">Meet Our Development Team </p>
+      <div className='py-4'>
+        <p className="text-center text-3xl bg-base-100 opacity-60 my-8 rounded-3xl py-4  hover:text-white">Meet Our Development Team </p>
         <div className="grid md:grid-cols-3">
           {/* it will be dynamic when we interigate backend  */}
           {/* Team Leader Info */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src="https://i.ibb.co/BKxwwSr/badsha-removebg-preview.png"
@@ -50,7 +53,7 @@ const About = () => {
             </div>
           </div>
           {/* Kabir Ahmed Bhai */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src="https://i.ibb.co/W6sDx0C/kabuir-removebg-preview.png"
@@ -69,7 +72,7 @@ const About = () => {
             </div>
           </div>
           {/* Sarowar Islam */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src="https://i.ibb.co/mNKBrT0/saro-removebg-preview.png"
@@ -88,7 +91,7 @@ const About = () => {
             </div>
           </div>
           {/* Naimul Islam */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src="https://i.ibb.co/9cJht8r/Naimulhasan-removebg-preview.png"
@@ -107,7 +110,7 @@ const About = () => {
             </div>
           </div>
           {/* Raihan SHARIF */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
             <figure className="px-10 pt-8">
               <img
                 src="https://i.ibb.co/3r79kgW/109515629-1.png"
@@ -128,7 +131,7 @@ const About = () => {
         </div>
         {/* Question Answer:  */}
         <div>
-          <h2 className="text-3xl text-center my-3">
+          <h2 className="text-3xl text-center bg-base-100 opacity-60 py-4 rounded-3xl my-16  hover:text-white">
             Important Question And Answer (FQA)
           </h2>
           {/* <div tabIndex={0} className="collapse bg-primary text-primary-content focus:bg-secondary focus:text-secondary-content">
@@ -142,7 +145,7 @@ const About = () => {
           {/* 1 */}
           <div
             tabIndex={0}
-            className="collapse text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">
               Transforming OTT with User-Centric Experience
@@ -159,7 +162,7 @@ const About = () => {
           {/* 2 */}
           <div
             tabIndex={0}
-            className="collapse text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">Our Vision</div>
             <div className="collapse-content">
@@ -173,7 +176,7 @@ const About = () => {
           {/* 3 */}
           <div
             tabIndex={0}
-            className="collapse text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">Industry Insights</div>
             <div className="collapse-content">
@@ -189,7 +192,7 @@ const About = () => {
           {/* 4 */}
           <div
             tabIndex={0}
-            className="collapse  text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl  text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">User-Centric Approach</div>
             <div className="collapse-content">
@@ -205,7 +208,7 @@ const About = () => {
           {/* 5 */}
           <div
             tabIndex={0}
-            className="collapse  text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl  text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">Personalization at its Core</div>
             <div className="collapse-content">
@@ -221,7 +224,7 @@ const About = () => {
           {/* 5 */}
           <div
             tabIndex={0}
-            className="collapse text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">Roadmap to Success</div>
             <div className="collapse-content">
@@ -235,7 +238,7 @@ const About = () => {
           {/* 6 */}
           <div
             tabIndex={0}
-            className="collapse  text-primary-content focus:bg-secondary focus:text-secondary-content"
+            className="collapse bg-base-100 bg-opacity-60 mb-4 rounded-3xl  text-primary-content focus:bg-secondary focus:text-secondary-content"
           >
             <div className="collapse-title">Join the Revolution</div>
             <div className="collapse-content">
