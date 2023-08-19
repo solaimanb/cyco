@@ -21,8 +21,8 @@ import Romantic from '../pages/home/categories/romantic/Romantic';
 import Science from '../pages/home/categories/science/Science';
 import TvShows from '../pages/home/categories/tvShows/TvShows';
 import Home from '../pages/home/home/Home';
-import LiveVideo from '../pages/home/popularTvs/LiveVideo';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
+import PopularTv from '../pages/home/popularTvs/popularTv';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import MovieInfo from '../pages/movie-info/MovieInfo';
@@ -65,6 +65,7 @@ const router = createBrowserRouter([
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieDetails', element: <MovieInfo /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
+      { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
     ],
@@ -77,14 +78,14 @@ const router = createBrowserRouter([
       { path: 'users-home', element: <UsersHome /> },
       { path: 'add-new-media', element: <AddNewMedia /> },
       { path: 'payments', element: <Payments /> },
-      {
-        path: 'live-tv/live/:id',
-        element: <LiveVideo />,
-        loader: ({ params }) =>
-          fetch('/tvData.json')
-            .then((res) => res.json())
-            .then((data) => data),
-      },
+      // {
+      //   path: 'live-tv/live/:id',
+      //   element: <LiveVideo />,
+      //   loader: ({ params }) =>
+      //     fetch('/tvData.json')
+      //       .then((res) => res.json())
+      //       .then((data) => data),
+      // },
     ],
   },
   { path: '*', element: <ErrorPage /> },

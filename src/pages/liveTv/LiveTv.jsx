@@ -6,7 +6,7 @@ import VideoPlayer from './VideoPlayer';
 const LiveTv = () => {
   return (
     <div className="fle flex-col items-center md:flex-row p-4">
-      <div className="w-full h-[600px] md:pr-4">
+      <div className="w-[90%] mx-auto h-[600px] md:pr-4">
         <VideoPlayer />
         {/* <CommentSection /> */}
       </div>
