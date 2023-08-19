@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
-        <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
+        <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="font-bold text-2xl">CYCO</h3>
