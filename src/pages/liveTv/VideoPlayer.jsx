@@ -1,15 +1,19 @@
 // VideoPlayer.js
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 const VideoPlayer = () => {
+  const movie = [];
+
   return (
-    <div className="bg-gray-800 rounded-lg p-2">
-      <iframe
-        src="https://www.youtube.com/embed/atnW4D6pc-w"
-        title="Live Video"
+    <div className="bg-gray-800 h-full rounded-sm p-2">
+      <ReactPlayer
+        url={'https://www.youtube.com/watch?v=kW5fwGkQgxk'}
+        width={'100%'}
+        height={'100%'}
+        controls
         allowFullScreen
-        className="w-full h-64"
-      ></iframe>
+      />
     </div>
   );
 };

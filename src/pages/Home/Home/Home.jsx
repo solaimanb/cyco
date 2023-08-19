@@ -5,22 +5,19 @@ import { loadSlim } from 'tsparticles-slim';
 import Loading from '../../../components/loading/Loading';
 import Subscription from '../../../components/subscription/Subscription';
 import Title from '../../../components/title/Title';
-import Tvs from '../../../components/tvs/Tvs';
 import useMovies from '../../../hooks/useMovies';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
 import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
+import PopularTvs from '../popularTvs/PopularTvs';
 import TopPicks from '../topPicks/TopPicks';
 
 const Home = () => {
   const [loading] = useMovies();
 
   const cycoParticles = async (engine) => {
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadSlim(engine);
 
     if (loading) {
@@ -31,7 +28,6 @@ const Home = () => {
   return (
     <>
       <Particles
-        // id="tsparticles"
         init={cycoParticles}
         options={{
           fullScreen: {
@@ -123,10 +119,10 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Live TV's */}
+        {/* Popular TVs */}
         <div>
           <Title title={'Popular TVs'} />
-          <Tvs />
+          <PopularTvs />
         </div>
 
         {/* Movies/Categories */}
@@ -150,7 +146,7 @@ const Home = () => {
         {/* Ads */}
         <FeaturedAds />
 
-        {/* Subscription Plan/Tier*/}
+        {/* Subscription Plan/Tier */}
         <Subscription />
       </div>
     </>
