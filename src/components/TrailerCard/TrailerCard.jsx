@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player';
 
 const TrailerCard = ({ movie }) => {
   const [isMovieOpen, setIsMovieOpen] = useState(false);
-//   console.log(movie);
+    console.log(movie);
 
   const openMoviePlayer = () => {
     setIsMovieOpen(true);
@@ -13,15 +13,6 @@ const TrailerCard = ({ movie }) => {
     setIsMovieOpen(false);
   };
 
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
   return (
     <div
       onClick={openMoviePlayer}
@@ -29,7 +20,7 @@ const TrailerCard = ({ movie }) => {
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
-        src={movie?.Poster}
+        src={movie?.Thumbnail}
         alt=""
       />
       <div className="p-2 text-white">
@@ -38,7 +29,12 @@ const TrailerCard = ({ movie }) => {
       </div>
       {isMovieOpen && (
         <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
-          <YouTube videoId={"Kmz5oyaIEMI&list=RD9kKvwuXP-tI&index=6"} opts={opts} />
+          <ReactPlayer
+            url={movie?.Trailer?.Source}
+            width={'70%'}
+            height={'70%'}
+            controls
+          />
         </div>
       )}
     </div>
