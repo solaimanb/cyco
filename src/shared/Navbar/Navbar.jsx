@@ -29,7 +29,7 @@ const Navbar = () => {
                 aria-label="home"
                 title="Home"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Home
@@ -42,7 +42,7 @@ const Navbar = () => {
                 aria-label="Trailer"
                 title="Trailer"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Trailer
@@ -55,7 +55,7 @@ const Navbar = () => {
                 aria-label="Movies"
                 title="Movies"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Movies
@@ -68,7 +68,7 @@ const Navbar = () => {
                 aria-label="Series"
                 title="Series"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Series
@@ -81,7 +81,7 @@ const Navbar = () => {
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 LiveTV
@@ -94,7 +94,7 @@ const Navbar = () => {
                 aria-label="Podcast"
                 title="Podcast"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Podcast
@@ -107,7 +107,7 @@ const Navbar = () => {
                 aria-label="about"
                 title="About Us"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 About
@@ -120,7 +120,7 @@ const Navbar = () => {
                 aria-label="contact"
                 title="About Us"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Contact US
@@ -156,7 +156,7 @@ const Navbar = () => {
                 aria-label="login"
                 title="Login"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Login
@@ -192,7 +192,7 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute z-10 top-0 left-0 w-full">
-              <div className="p-5 bg-[#800000] text-white shadow-sm">
+              <div className="p-5 bg-cyred text-white shadow-sm">
                 <div className="flex flex-row-reverse items-center justify-between mb-4">
                   <div>
                     <Link
@@ -222,7 +222,7 @@ const Navbar = () => {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <svg
-                        className="w-5 text-white hover:text-[#800000]"
+                        className="w-5 text-white hover:text-cyred"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -241,7 +241,7 @@ const Navbar = () => {
                         to="/"
                         aria-label="Home"
                         title="Home"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Home
                       </Link>
@@ -252,7 +252,7 @@ const Navbar = () => {
                         to="/trailer"
                         aria-label="Trailer"
                         title="Trailer"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Trailer
                       </Link>
@@ -263,7 +263,7 @@ const Navbar = () => {
                         to="/movies"
                         aria-label="Movies"
                         title="Movies"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Movies
                       </Link>
@@ -273,7 +273,7 @@ const Navbar = () => {
                         to="/series"
                         aria-label="Series"
                         title="Series"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Series
                       </Link>
@@ -284,7 +284,7 @@ const Navbar = () => {
                         to="/login"
                         aria-label="Login"
                         title="Login"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Login
                       </Link>
@@ -295,7 +295,7 @@ const Navbar = () => {
                         to="/register"
                         aria-label="Register"
                         title="Register"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Register
                       </Link>
