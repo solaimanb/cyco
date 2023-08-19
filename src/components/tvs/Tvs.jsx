@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import LiveTv from './LiveTv';
 
 const Tvs = () => {
-  const [datas, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('/tvData.json')
-      .then(res => res.json())
-      .then(data => setData(data));
+      .then((res) => res.json())
+      .then((data) => setData(data));
   }, []);
 
   return (
     <div className="flex flex-wrap gap-5 justify-around w-[70%] my-10 mx-auto">
-      {datas.map(data => (
-        <LiveTv key={data.id} data={data} />
+      {data?.map((data) => (
+        <LiveTv key={data?.id} data={data} />
       ))}
     </div>
   );
