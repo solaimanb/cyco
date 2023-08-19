@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 
 
 const Contacts = () => {
-    // Adress
-
     const addresses = [
         {
             name: 'Location 1',
@@ -45,7 +43,7 @@ const Contacts = () => {
         <>
         <div className="flex relative  justify-center items-center h-56 bg-gray-100">
             <img
-                src={""}
+                src={"https://media.discordapp.net/attachments/1135626695613890600/1142115592686551091/contact-bg.jpg?width=1192&height=701"}
                 alt="Contact Background"
                 className="object-cover h-full w-full "
             />
@@ -95,7 +93,7 @@ const Contacts = () => {
             {/* Right Side */}
             <div className="w-1/2 pl-8">
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-                        {addresses.map((address, index) => (
+                        {addresses?.map((address, index) => (
                             <div key={index} className="p-6 rounded-lg shadow-md">
                                 <h3 className="text-3xl font-semibold mb-3">{address.name}</h3>
                                 <p>

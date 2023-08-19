@@ -115,6 +115,20 @@ const Navbar = () => {
                 About
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                id="nav"
+                to="/contact"
+                aria-label="contact"
+
+                title="About Us"
+                className={({ isActive }) =>
+                  isActive ? 'bg-[#800000]' : 'default'
+                }
+              >
+                Contact US
+              </NavLink>
+            </li>
 
             {/* <li className="ml-8">
               <DarkLight />
