@@ -1,8 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import SeriesParts from '../components/series/SeriesParts';
-// import LiveTv from '../components/tvs/LiveTv';
-import LiveVideo from '../components/tvs/LiveVideo';
-import Tvs from '../components/tvs/Tvs';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
@@ -24,6 +21,8 @@ import Romantic from '../pages/home/categories/romantic/Romantic';
 import Science from '../pages/home/categories/science/Science';
 import TvShows from '../pages/home/categories/tvShows/TvShows';
 import Home from '../pages/home/home/Home';
+import LiveVideo from '../pages/home/popularTvs/LiveVideo';
+import PopularTvs from '../pages/home/popularTvs/PopularTvs';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import MovieInfo from '../pages/movie-info/MovieInfo';
@@ -48,12 +47,10 @@ const router = createBrowserRouter([
       { path: 'series/seriesParts', element: <SeriesParts /> },
       { path: 'live-tv', element: <LiveTv /> },
       { path: 'podcast', element: <Podcast /> },
-      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
-      { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
-      { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
       { path: 'checkout', element: <Payment /> },
       { path: 'action-movies', element: <Action /> },
       { path: 'comedy-movies', element: <Comedy /> },
@@ -67,9 +64,11 @@ const router = createBrowserRouter([
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieDetails', element: <MovieInfo /> },
+      { path: 'popular-tvs', element: <PopularTvs /> },
+      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
+      { path: 'TermsConditions', element: <TermsConditions /> },
     ],
   },
-  { path: '*', element: <ErrorPage /> },
   {
     path: '/dashboard',
     element: <Dashboard />,
@@ -78,11 +77,6 @@ const router = createBrowserRouter([
       { path: 'users-home', element: <UsersHome /> },
       { path: 'add-new-media', element: <AddNewMedia /> },
       { path: 'payments', element: <Payments /> },
-      { path: '', element: <Home /> },
-      { path: 'trailer', element: <Trailer /> },
-      { path: 'movies', element: <Movies /> },
-      { path: 'series/seriesDetails', element: <SeriesParts /> },
-      { path: 'live-tv', element: <Tvs /> },
       {
         path: 'live-tv/live/:id',
         element: <LiveVideo />,
@@ -91,13 +85,9 @@ const router = createBrowserRouter([
             .then((res) => res.json())
             .then((data) => data),
       },
-      { path: 'podcast', element: <Podcast /> },
-      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
-      { path: 'TermsConditions', element: <TermsConditions /> },
-      { path: 'register', element: <Register /> },
-      { path: 'login', element: <Login /> },
     ],
   },
+  { path: '*', element: <ErrorPage /> },
 ]);
 
 export default router;
