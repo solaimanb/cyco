@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import Loading from '../../components/loading/Loading';
 import MovieCard from "../../components/movieCard/MovieCard";
 import Pagination from "../../components/paginaition/Pagination";
@@ -48,14 +49,14 @@ const Movies = () => {
 
   return (
     <div className="mt-10">
-      {/* <div className="flex items-center gap-3 justify-center">
+      <div className="flex items-center gap-3 justify-center">
         <input
           type="search"
           className="rounded-full px-3 py-2 w-[30%]"
           placeholder="Search movies"
         />
         <FaSearch size={22} />
-      </div> */}
+      </div>
 
       <div className="mt-10 w-full flex justify-center flex-wrap gap-1">
         {movies

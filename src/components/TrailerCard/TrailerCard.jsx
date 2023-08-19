@@ -1,53 +1,44 @@
 import React, { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import ReactPlayer from 'react-player';
 
 const TrailerCard = ({ movie }) => {
-    const [isMovieOpen, setIsMovieOpen] = useState(false);
+  const [isMovieOpen, setIsMovieOpen] = useState(false);
+    console.log(movie);
 
-    const openMoviePlayer = () => {
-        setIsMovieOpen(true);
-    };
+  const openMoviePlayer = () => {
+    setIsMovieOpen(true);
+  };
 
-    const closeMoviePlayer = () => {
-        setIsMovieOpen(false);
-    };
+  const closeMoviePlayer = () => {
+    setIsMovieOpen(false);
+  };
 
-    return (
+  return (
     <div
-        onClick={openMoviePlayer}
-        className="card w-full mt-10 mb-20 h-80 md:w-[250px]"
+      onClick={openMoviePlayer}
+      className="card w-full mt-10 mb-20 h-[200px] md:h-[250px] lg:h-[350px]"
     >
-        <img
-            className="w-full h-full object-cover rounded-sm hover:brightness-110"
-            src={movie?.Poster}
-            alt=""
-        />
-        <div className="p-2 text-white">
-            <h2 className="text- font-semibold">{movie?.Title}</h2>
-            <p className="text-sm">Will Be Release: {movie?.Year}</p>
+      <img
+        className="w-full h-full object-cover rounded-sm hover:brightness-110"
+        src={movie?.Thumbnail}
+        alt=""
+      />
+      <div className="p-2 text-white">
+        <h2 className="text- font-semibold">{movie?.Title}</h2>
+        <p className="text-sm">Will Be Release: {movie?.Year}</p>
+      </div>
+      {isMovieOpen && (
+        <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
+          <ReactPlayer
+            url={movie?.Trailer?.Source}
+            width={'70%'}
+            height={'70%'}
+            controls
+          />
         </div>
-        {isMovieOpen && (
-            <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
-                <div className="flex justify-center">
-                    <button
-                        className="fixed mt-10 border border-white rounded-full p-1"
-                        onClick={closeMoviePlayer}
-                    >
-                        <FaTimes size={20} />
-                    </button>
-                    {/* <iframe src={movie?.movieURL} frameborder="0" allowFullScreen title={movie?.title}></iframe> */}
-                    {/* <iframe
-                        className="w-[80vw] h-[80vh]"
-                        src={movie?.video}
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    ></iframe> */}
-                </div>
-            </div>
-        )}
+      )}
     </div>
-    );
+  );
 };
 
 export default TrailerCard;

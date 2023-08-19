@@ -11,9 +11,8 @@ import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import ErrorPage from '../pages/Error/ErrorPage';
-import Home from '../pages/Home/Home/Home';
 import About from '../pages/about/About';
-import Contacts from '../pages/contacts/Contacts';
+import Contact from '../pages/contact/Contact';
 import Action from '../pages/home/categories/action/Action';
 import Animation from '../pages/home/categories/animation/Animation';
 import Classic from '../pages/home/categories/classic/Classic';
@@ -24,6 +23,7 @@ import Horror from '../pages/home/categories/horror/Horror';
 import Romantic from '../pages/home/categories/romantic/Romantic';
 import Science from '../pages/home/categories/science/Science';
 import TvShows from '../pages/home/categories/tvShows/TvShows';
+import Home from '../pages/home/home/Home';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import MovieInfo from '../pages/movie-info/MovieInfo';
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'about', element: <About /> },
-      { path: 'contact', element: <Contacts /> },
+      { path: 'contact', element: <Contact /> },
       { path: 'register', element: <Register /> },
       { path: 'login', element: <Login /> },
       { path: 'checkout', element: <Payment /> },
