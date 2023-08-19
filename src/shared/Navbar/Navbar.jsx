@@ -4,8 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import './NavBar.css';
 
 const Navbar = () => {
-  
-  const { user, logOut } = useAuth()
+  const { user, logOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogOut = () => {
@@ -14,7 +13,7 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className="sticky top-0 z-10 backdrop-blur-sm md:backdrop-blur-2xl w-full">
+    <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
         <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
@@ -78,7 +77,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 id="nav"
-                to="live-tv"
+                to="/live-tv"
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
@@ -106,7 +105,6 @@ const Navbar = () => {
                 id="nav"
                 to="/about"
                 aria-label="about"
-
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'
@@ -120,7 +118,6 @@ const Navbar = () => {
                 id="nav"
                 to="/contact"
                 aria-label="contact"
-
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-[#800000]' : 'default'
@@ -138,16 +135,16 @@ const Navbar = () => {
             {user ? (
               <>
                 <NavLink
-                    id="nav"
-                    to="/dashboard "
-                    aria-label="Dashboard "
-                    title="Dashboard "
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Dashboard
-                  </NavLink>
+                  id="nav"
+                  to="/dashboard "
+                  aria-label="Dashboard "
+                  title="Dashboard "
+                  className={({ isActive }) =>
+                    isActive ? 'active' : 'default'
+                  }
+                >
+                  Dashboard
+                </NavLink>
                 <button onClick={handleLogOut} id="nav" className="">
                   Logout
                 </button>

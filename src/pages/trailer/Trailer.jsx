@@ -5,11 +5,10 @@ import useMovies from '../../hooks/useMovies';
 
 const Trailer = () => {
   const [movies, loading] = useMovies();
-  console.log(movies);
+  // console.log(movies);
 
-if (loading) {
-    // You can display a loading indicator here
-    return <Loading/>;
+  if (loading) {
+    return <Loading />;
   }
 
   if (!Array.isArray(movies)) {
