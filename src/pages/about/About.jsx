@@ -128,6 +128,25 @@ const About = () => {
               </div>
             </div>
           </div>
+          {/* Annisha Siddika */}
+          <div className="card w-96 bg-base-100 opacity-60 mb-4 rounded-3xl shadow-xl">
+            <figure className="px-10 pt-8">
+              <img
+                src="https://i.ibb.co/hLTyV0w/annisha.jpg"
+                alt="A Person Image"
+                className="rounded-xl"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">Annisha Siddika</h2>
+              <p>Web Developer at CYCO</p>
+              <div className="card-actions">
+                <FaFacebook className="text-3xl" />
+                <FaGithub className="text-3xl" />
+                <FaInstagramSquare className="text-3xl" />
+              </div>
+            </div>
+          </div>
         </div>
         {/* Question Answer:  */}
         <div>
