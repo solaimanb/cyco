@@ -1,38 +1,37 @@
 import { NavLink } from 'react-router-dom';
-
 const Contacts = () => {
   const addresses = [
     {
-      name: 'Location 1',
+      name: 'Head Office',
       address: '123 Main Street',
-      city: 'City 1',
-      state: 'State 1',
+      city: 'Dhaka Bangladesh',
+      state: 'Mirpor Road',
       postalCode: '12345',
-      country: 'Country 1',
+      country: 'Bangladesh',
     },
     {
-      name: 'Location 2',
+      name: 'Brance',
       address: '456 Elm Avenue',
-      city: 'City 2',
+      city: 'China, Lorems',
       state: 'State 2',
       postalCode: '67890',
-      country: 'Country 2',
+      country: 'China ',
     },
     {
-      name: 'Location 3',
+      name: 'Control Room',
       address: '789 Oak Lane',
-      city: 'City 3',
+      city: 'trailo, USA',
       state: 'State 3',
       postalCode: '54321',
-      country: 'Country 3',
+      country: 'USA',
     },
     {
-      name: 'Location 4',
+      name: 'Helpline',
       address: '101 Pine Street',
-      city: 'City 4',
-      state: 'State 4',
+      city: 'Nioh,china',
+      state: 'Chinais Complex',
       postalCode: '98765',
-      country: 'Country 4',
+      country: 'China',
     },
   ];
 
@@ -63,7 +62,7 @@ const Contacts = () => {
       <div className="flex p-8">
         {/* Left Side */}
         <div className="w-1/2 pr-8">
-          <h1 className="text-2xl font-semibold mb-4">Contact Us</h1>
+          <h1 className="text-2xl font-semibold mb-4 text-center">Contact Us</h1>
           <div className="mb-4">
             <label className="block font-medium mb-1">Your Name</label>
             <input
@@ -91,6 +90,7 @@ const Contacts = () => {
         </div>
         {/* Right Side */}
         <div className="w-1/2 pl-8">
+        <h1 className="text-2xl font-semibold mb-4 text-center">Our Office</h1>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
             {addresses?.map((address, index) => (
               <div key={index} className="p-6 rounded-lg shadow-md">
