@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 
