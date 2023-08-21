@@ -121,10 +121,12 @@ const Trailer = () => {
                 <TrailerCard key={index} movie={movie}> </TrailerCard>
             ))}
         </div>
+
+
         {/* Pagination  */}
         <div className='align-middle mb-3'>
             {
-                pageNumbers.map(number => <button key={number}>{number}</button>)
+                pageNumbers?.map(number => <button key={number}>{number}</button>)
             }
         </div>
         </>
