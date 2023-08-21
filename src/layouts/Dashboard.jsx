@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Divider from '../components/divider/Divider';
 import logo from '/cy-ico.png';
 
@@ -154,13 +154,13 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      {/* Main Content */}
-      {/* <div className="flex-grow text-center">
+      Main Content
+      <div className="flex-grow text-center">
         <div>
           <div><h3 className=''>Dashing Dashboard</h3></div>
         <Outlet />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
