@@ -3,7 +3,7 @@ import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
-import AddNewMedia from '../pages/DashBoard/Admin/AddNewMedia';
+import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
