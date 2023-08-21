@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "CNN",
+    "image": "/cnn.png",
+    "tvUrl": "https://www.youtube.com/embed/iencvYwg3iA",
+    "tv": "Live"
+  },
+  {
+    "id": 2,
+    "name": "BBC",
+    "image": "/bbc-news.png",
+    "tvUrl": "'https://www.youtube.com/embed/iencvYwg3iA",
+    "tv": "Live"
+  },
+  {
+    "id": 3,
+    "name": "ESPN",
+    "image": "/espn.webp",
+    "tvUrl": "https://www.youtube.com/embed/iencvYwg3iA",
+    "tv": "Live"
+  },
+  {
+    "id": 4,
+    "name": "EA",
+    "image": "/ea.webp",
+    "tvUrl": "https://www.youtube.com/embed/iencvYwg3iA",
+    "live": "Live"
+  },
+  {
+    "id": 5,
+    "name": "HBO",
+    "image": "/hbo.png",
+    "tvUrl": "https://www.youtube.com/embed/iencvYwg3iA",
+    "tv": "Live"
+  },
+  {
+    "id": 6,
+    "name": "FOX",
+    "image": "fox.png",
+    "tvUrl": "https://www.youtube.com/embed/iencvYwg3iA",
+    "tv": "Live"
+  },
+  {
+    "id": 7,
+    "name": "CN",
+    "image": "cn.png",
+    "tv": "Live"
+  }
+]

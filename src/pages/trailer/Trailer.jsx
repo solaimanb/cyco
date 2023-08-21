@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import { useState } from 'react';
+=======
+import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import Loading from '../../components/loading/Loading';
+>>>>>>> c192f5b76744d7ea8360116aa73587af96827996
 import TrailerCard from '../../components/trailerCard/TrailerCard';
+import useMovies from '../../hooks/useMovies';
 
 
 const Trailer = () => {
@@ -182,6 +189,7 @@ const Trailer = () => {
       </nav>
         </>
     );
+
 };
 
 export default Trailer;

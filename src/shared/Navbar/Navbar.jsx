@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import './NavBar.css';
 
 const Navbar = () => {
-  const user = true;
-  // const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then()
-  //     .catch((error) => console.log(error));
-  // };
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
-    <div className="sticky top-0 z-10 backdrop-blur-sm md:backdrop-blur-2xl w-full">
+    <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
-        <div className="gray-800 hidden px-20 mx-auto text-white lg:flex items-center justify-between py-5">
+        <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="font-bold text-2xl">CYCO</h3>
@@ -29,7 +29,7 @@ const Navbar = () => {
                 aria-label="home"
                 title="Home"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Home
@@ -42,7 +42,7 @@ const Navbar = () => {
                 aria-label="Trailer"
                 title="Trailer"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Trailer
@@ -55,7 +55,7 @@ const Navbar = () => {
                 aria-label="Movies"
                 title="Movies"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Movies
@@ -68,7 +68,7 @@ const Navbar = () => {
                 aria-label="Series"
                 title="Series"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Series
@@ -81,37 +81,49 @@ const Navbar = () => {
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 LiveTV
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 id="nav"
                 to="/podcast"
                 aria-label="Podcast"
                 title="Podcast"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Podcast
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 id="nav"
                 to="/about"
                 aria-label="about"
-
                 title="About Us"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                id="nav"
+                to="/contact"
+                aria-label="contact"
+                title="About Us"
+                className={({ isActive }) =>
+                  isActive ? 'bg-cyred' : 'default'
+                }
+              >
+                Contact US
               </NavLink>
             </li>
 
@@ -122,18 +134,18 @@ const Navbar = () => {
           <li className="flex items-center">
             {user ? (
               <>
-                {/* <NavLink
-                    id="nav"
-                    to="/dashboard "
-                    aria-label="Dashboard "
-                    title="Dashboard "
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Dashboard
-                  </NavLink> */}
-                <button id="nav" className="">
+                <NavLink
+                  id="nav"
+                  to="/dashboard "
+                  aria-label="Dashboard "
+                  title="Dashboard "
+                  className={({ isActive }) =>
+                    isActive ? 'active' : 'default'
+                  }
+                >
+                  Dashboard
+                </NavLink>
+                <button onClick={handleLogOut} id="nav" className="">
                   Logout
                 </button>
               </>
@@ -144,7 +156,7 @@ const Navbar = () => {
                 aria-label="login"
                 title="Login"
                 className={({ isActive }) =>
-                  isActive ? 'bg-[#800000]' : 'default'
+                  isActive ? 'bg-cyred' : 'default'
                 }
               >
                 Login
@@ -180,7 +192,7 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute z-10 top-0 left-0 w-full">
-              <div className="p-5 bg-[#800000] text-white shadow-sm">
+              <div className="p-5 bg-cyred text-white shadow-sm">
                 <div className="flex flex-row-reverse items-center justify-between mb-4">
                   <div>
                     <Link
@@ -210,7 +222,7 @@ const Navbar = () => {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <svg
-                        className="w-5 text-white hover:text-[#800000]"
+                        className="w-5 text-white hover:text-cyred"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -229,7 +241,7 @@ const Navbar = () => {
                         to="/"
                         aria-label="Home"
                         title="Home"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Home
                       </Link>
@@ -240,7 +252,7 @@ const Navbar = () => {
                         to="/trailer"
                         aria-label="Trailer"
                         title="Trailer"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Trailer
                       </Link>
@@ -251,7 +263,7 @@ const Navbar = () => {
                         to="/movies"
                         aria-label="Movies"
                         title="Movies"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Movies
                       </Link>
@@ -261,7 +273,7 @@ const Navbar = () => {
                         to="/series"
                         aria-label="Series"
                         title="Series"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Series
                       </Link>
@@ -272,7 +284,7 @@ const Navbar = () => {
                         to="/login"
                         aria-label="Login"
                         title="Login"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Login
                       </Link>
@@ -283,7 +295,7 @@ const Navbar = () => {
                         to="/register"
                         aria-label="Register"
                         title="Register"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-[#800000] font-bold pr-[100%] py-2 pl-1"
+                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
                       >
                         Register
                       </Link>
