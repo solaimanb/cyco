@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
-import logo from '/cy-ico.png'
+import { Link } from 'react-router-dom';
 import Divider from '../components/divider/Divider';
+import logo from '/cy-ico.png';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -155,12 +155,12 @@ const Dashboard = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="flex-grow text-center">
+      {/* <div className="flex-grow text-center">
         <div>
           <div><h3 className=''>Dashing Dashboard</h3></div>
         <Outlet />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -6,8 +6,7 @@ const MovieCard = ({ movie }) => {
   // console.log(movie);
 
   const openMovie = () => {
-
-    navigate('/movieDetails', { state: { movie } })
+    navigate('/movieDetails', { state: { movie } });
   };
 
   return (

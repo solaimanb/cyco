@@ -15,6 +15,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://assets.gadgets360cdn.com/pricee/assets/product/202303/Haunted-Mansion_1678182019.jpg",
+    "Thumbnail": "https://dapsmagic.com/wp-content/uploads/2023/03/Haunted-Mansion-Featured-Image-1-1-1024x576.jpg?ezimgfmt=ngcb2/notWebP",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -43,7 +44,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=AjLKTz81bj8",
       "Type": "Video"
     },
     "Reviews": [
@@ -62,7 +63,7 @@
     ]
   },
   {
-    "Title": "The Shawshank Redemption",
+    "Title": "The Avatar",
     "movieCode": 2,
     "Year": "2023",
     "Rated": "PG-13",
@@ -77,6 +78,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2020/01/Avatar-Highest-Grossing-Hollywood-Movies.jpg",
+    "Thumbnail": "https://wallpapercave.com/dwp1x/wp9424755.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -105,7 +107,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=a6VVrAZUnsc",
       "Type": "Video"
     },
     "Reviews": [
@@ -124,7 +126,7 @@
     ]
   },
   {
-    "Title": "The Conjuring",
+    "Title": "The Conjuring 2",
     "movieCode": 3,
     "Year": "2023",
     "Rated": "PG-13",
@@ -139,6 +141,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/07/the-conjuring-best-hollywood-movies-of-recent-times-691x1024.jpg",
+    "Thumbnail": "https://wallpapercave.com/dwp1x/wp1922359.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -167,7 +170,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=VFsmuRPClr4",
       "Type": "Video"
     },
     "Reviews": [
@@ -201,6 +204,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/04/moonlight-best-hollywood-lgbtq-movies-1-691x1024.jpg",
+    "Thumbnail": "https://www.superherohype.com/wp-content/uploads/sites/4/2022/05/moon-knight-poster-featured.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -229,7 +233,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=x7Krla_UxRg",
       "Type": "Video"
     },
     "Reviews": [
@@ -263,6 +267,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/03/boyhood-oscar-winning-movies-691x1024.jpg",
+    "Thumbnail": "https://e1.pxfuel.com/desktop-wallpaper/976/295/desktop-wallpaper-best-6-boyhood-on-hip-boyhood-thumbnail.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -291,7 +296,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
       "Type": "Video"
     },
     "Reviews": [
@@ -325,6 +330,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/05/inception-best-movies-of-christopher-nolan-691x1024.jpg",
+    "Thumbnail": "https://w0.peakpx.com/wallpaper/289/913/HD-wallpaper-movie-inception-ellen-page-joseph-gordon-levitt-leonardo-dicaprio-tom-hardy-thumbnail.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -353,7 +359,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=8hP9D6kZseM",
       "Type": "Video"
     },
     "Reviews": [
@@ -387,6 +393,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/04/brokeback-mountain-best-hollywood-lgbtq-movies.jpg",
+    "Thumbnail": "https://shirinleung.files.wordpress.com/2015/03/clipartbrokebackmountainhome2.gif",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -415,7 +422,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=kMA30rThECg",
       "Type": "Video"
     },
     "Reviews": [
@@ -449,6 +456,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/02/under-the-silver-lake-underrated-hollywood-movies.jpg",
+    "Thumbnail": "https://scontent.fdac148-1.fna.fbcdn.net/v/t39.30808-6/305304851_418522937044637_3814107734544982971_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeE877p7NtrAVhGFQ4cmefwwMsEowFIUKn8ywSjAUhQqf0-wo01oy59R6kRfh9Q3Tjxg9qPSi1-GwfTtaxR9sDtE&_nc_ohc=W5mAoeJbchoAX8rz0Qv&_nc_ht=scontent.fdac148-1.fna&oh=00_AfDhzRFmzTYx6zIGljYT5-buqilseqHVcHFJsHxN_HK9gA&oe=64E566B2",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -477,7 +485,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=ZSI6GbbRc8Q",
       "Type": "Video"
     },
     "Reviews": [
@@ -496,7 +504,7 @@
     ]
   },
   {
-    "Title": "Black Panther",
+    "Title": "Space Jam: A New Legacy",
     "movieCode": 10,
     "Year": "2023",
     "Rated": "PG-13",
@@ -511,6 +519,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://www.scrolldroll.com/wp-content/uploads/2021/02/black-panther-best-hollywood-superhero-movies-702x1024.jpg",
+    "Thumbnail": "https://i.ytimg.com/vi/NKNELPLPMiw/maxresdefault.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -539,7 +548,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=olXYZOsXw_o",
       "Type": "Video"
     },
     "Reviews": [
@@ -573,6 +582,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTJmZmYxZTItZjI3Ni00ZGYyLTg2MWUtNmUwOTNmYjlkNThhXkEyXkFqcGdeQXVyMDAyMjM2OQ@@._V1_SY139_CR3,0,92,139_.jpg",
+    "Thumbnail": "https://static1.srcdn.com/wordpress/wp-content/uploads/2019/12/Featured-Black-Panther-Poster-Hidden-Details.jpg?q=50&fit=contain&w=943&h=&dpr=1.5",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -601,7 +611,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=xjDjIWPwcPU",
       "Type": "Video"
     },
     "Reviews": [
@@ -620,7 +630,7 @@
     ]
   },
   {
-    "Title": "Tiger Met",
+    "Title": "Mortal Engines",
     "movieCode": 12,
     "Year": "2023",
     "Rated": "PG-13",
@@ -635,6 +645,7 @@
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
     "Poster": "https://m.media-amazon.com/images/M/MV5BNjc3OTJhMzQtMjA0OC00YWViLThmMGUtMjcwOTFiYzRlMTA2XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SY139_CR1,0,92,139_.jpg",
+    "Thumbnail": "https://w0.peakpx.com/wallpaper/621/220/HD-wallpaper-mortal-engines-2018-promo-poster-hera-hilmar-hester-shaw-hera-hilmarsdottir-icelandic-actress.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -663,7 +674,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=IRsFc2gguEg",
       "Type": "Video"
     },
     "Reviews": [
@@ -682,7 +693,7 @@
     ]
   },
   {
-    "Title": "Hridoy e Tomi",
+    "Title": "Blue Beetle",
     "movieCode": 13,
     "Year": "2023",
     "Rated": "PG-13",
@@ -696,7 +707,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNDM5MzQ0ZDQtZDMwZi00ZjBlLTg2MmMtZGZmZTlhZTVkNjVmXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_SY139_CR3,0,92,139_.jpg",
+    "Poster": "https://rare-gallery.com/thumbnail/1422222-blue-beetle-2023-movies-movies-superheroes-hd.jpg",
+    "Thumbnail": "https://img.uhdpaper.com/wallpaper/blue-beetle-movie-character-poster-815@1@k-thumb.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -725,7 +737,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=vS3_72Gb-bI",
       "Type": "Video"
     },
     "Reviews": [
@@ -744,7 +756,7 @@
     ]
   },
   {
-    "Title": "Ek Sohor Valobhasa",
+    "Title": "Dune",
     "movieCode": 14,
     "Year": "2023",
     "Rated": "PG-13",
@@ -758,7 +770,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMGMzNzEyZWItYjUwZC00NmVkLTk5MWUtZGVjNWJlMjBjODA4XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/2a5bb2105168471.5f733bb4cec20.jpg",
+    "Thumbnail": "https://1.bp.blogspot.com/-WcCXxvbic7w/YVApHdxxw0I/AAAAAAAAKzw/gaaxBC6yMRwyIw_oRz5oQFS75CAqyLd5ACPcBGAsYHg/w919/dune-2021-movie-4k-uhdpaper.com-117.0_c-thumbnail.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -787,7 +800,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=_YUzQa_1RCE",
       "Type": "Video"
     },
     "Reviews": [
@@ -806,7 +819,7 @@
     ]
   },
   {
-    "Title": "Amazing zone",
+    "Title": "Black Widow",
     "movieCode": 15,
     "Year": "2023",
     "Rated": "PG-13",
@@ -820,7 +833,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTlmYTFkNTMtYWMyYy00NTdlLWEwZTctOWJlYzYzYmQ5OGJlXkEyXkFqcGdeQXVyNDc0Njc1NTY@._V1_SX92_CR0,0,92,139_.jpg",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BZGRlNTY3NGYtM2YzZS00N2YyLTg0ZDYtNmY2ZDg2NDM3N2JlXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_FMjpg_UX1000_.jpg",
+    "Thumbnail": "https://w0.peakpx.com/wallpaper/148/292/HD-wallpaper-black-widow-poster-black-widow-2021-movies-movies.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -849,7 +863,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=Fp9pNPdNwjI",
       "Type": "Video"
     },
     "Reviews": [
@@ -868,7 +882,7 @@
     ]
   },
   {
-    "Title": "Black Chitar",
+    "Title": "A Quiet Place Part II",
     "movieCode": 16,
     "Year": "2023",
     "Rated": "PG-13",
@@ -882,7 +896,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNjcxOTJhZTEtMWFiYi00NTkwLTlkMzktZDQwMGQ0ZjM3YWU2XkEyXkFqcGdeQXVyMTAxNzQ1NzI@._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTE2ODU4NDEtNmRjNS00OTk1LTg4NmMtNTAzYzVlNzJmYjgzXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+    "Thumbnail": "https://rare-gallery.com/thumbs/357819-4k-wallpaper.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -911,7 +926,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=BpdDN9d9Jio&t=37s",
       "Type": "Video"
     },
     "Reviews": [
@@ -930,7 +945,7 @@
     ]
   },
   {
-    "Title": "The Sea Wire",
+    "Title": "The Suicide Squad",
     "movieCode": 17,
     "Year": "2023",
     "Rated": "PG-13",
@@ -944,7 +959,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SY139_CR0,0,92,139_.jpg",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMWU4NDQ2NjEtNjhkOS00Y2MwLWJkODItZmJhZGE0MDU1OWM4XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg",
+    "Thumbnail": "https://m.media-amazon.com/images/M/MV5BOWZkMTc5NjktZThlMi00MzRlLThkMTAtNGY1MzMzMmIyYjkzXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -973,7 +989,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=JuDLepNa7hw",
       "Type": "Video"
     },
     "Reviews": [
@@ -1006,7 +1022,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BYTUxYjczMWUtYzlkZC00NTcwLWE3ODQtN2I2YTIxOTU0ZTljXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMmZiN2VmMjktZDE5OC00ZWRmLWFlMmEtYWViMTY4NjM3ZmNkXkEyXkFqcGdeQXVyMTI2MTc2ODM3._V1_FMjpg_UX1000_.jpg",
+    "Thumbnail": "https://w0.peakpx.com/wallpaper/212/572/HD-wallpaper-evil-dead-rise-movie-poster-2023.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -1035,7 +1052,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=smTK_AeAPHs",
       "Type": "Video"
     },
     "Reviews": [
@@ -1068,7 +1085,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BODAwZDQ5ZjEtZDI1My00MTFiLTg0ZjUtOGE2YTBkOTdjODFhXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2022/11/cocaine-bear-1.png?ssl=1",
+    "Thumbnail": "https://www.insidehook.com/wp-content/uploads/2023/02/01-cb-dm-mobile-banner-1080x745-pl-f01-112222-638e6de200084-1.jpeg?fit=1200%2C800",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -1097,7 +1115,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=DuWEEKeJLMI",
       "Type": "Video"
     },
     "Reviews": [
@@ -1130,7 +1148,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMmZiN2VmMjktZDE5OC00ZWRmLWFlMmEtYWViMTY4NjM3ZmNkXkEyXkFqcGdeQXVyMTI2MTc2ODM3._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://posterspy.com/wp-content/uploads/2023/02/Boogeyman_Poster_02.jpg",
+    "Thumbnail": "https://pbs.twimg.com/media/Fxk5xOxWIAYhGFb.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -1159,7 +1178,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=cFqCmIU0-_M",
       "Type": "Video"
     },
     "Reviews": [
@@ -1178,7 +1197,7 @@
     ]
   },
   {
-    "Title": "Shes Pother Sathi",
+    "Title": "Jungle Cruise",
     "movieCode": 21,
     "Year": "2023",
     "Rated": "PG-13",
@@ -1192,7 +1211,8 @@
     "Language": "English",
     "Country": "United States",
     "Awards": "Nominated for 3 Oscars.",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNzNkYmE1NDYtMmI4Mi00YjU2LTkxZDEtMWI0ZDE4MTczZDRjXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SY139_CR1,0,92,139_.jpg",
+    "Poster": "https://media.comicbook.com/2019/10/jungle-cruise-poster-the-rock-emily-blunt-1191276.jpeg?auto=webp&width=691&height=1024&crop=691:1024,smart",
+    "Thumbnail": "https://w0.peakpx.com/wallpaper/289/41/HD-wallpaper-dwayne-johnson-jungle-cruise.jpg",
     "Ratings": [
       {
         "Source": "IMDb",
@@ -1221,7 +1241,7 @@
       "Tagline": "Unforgettable Adventure Awaits."
     },
     "Trailer": {
-      "Source": "https://youtube.com/watch?v=1234567890",
+      "Source": "https://www.youtube.com/watch?v=f_HvoipFcA8",
       "Type": "Video"
     },
     "Reviews": [
@@ -1240,4 +1260,3 @@
     ]
   }
 ]
-

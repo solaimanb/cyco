@@ -18,14 +18,18 @@ const LiveVideoList = () => {
   ];
 
   return (
-    <div className="space-y-7  md:justify-around w-[70%] my-10 mx-auto md:space-y-0 md:flex md:flex-wrap">
-      {channels.map((channel, index) => (
+    <div className="space-y-7 md:justify-around w-[80%] my-10 mx-auto md:space-y-0 md:flex md:flex-wrap gap-3">
+      {channels?.map((channel, index) => (
         <div
           key={index}
           className="avatar space-y-3 flex flex-col items-center gap-4 text-white font-bold mx-auto"
         >
           <div className="w-24 h-24 rounded-full overflow-hidden">
-            <img src={channel.imageSrc} className="object-cover w-full h-full" alt={channel.name} />
+            <img
+              src={channel.imageSrc}
+              className="object-cover w-full h-full"
+              alt={channel.name}
+            />
           </div>
           <span>{channel.name}</span>
         </div>

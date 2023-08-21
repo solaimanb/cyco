@@ -1,19 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 
-const usePlayList = () => {
+const usePopularTvs = () => {
   const {
-    data: playList = [],
+    data: popularTvs = [],
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ['playList'],
+    queryKey: ['popularTvs'],
     queryFn: async () => {
-      const res = await fetch('playListData.json');
+      const res = await fetch('tvData.json');
       const data = await res.json();
       return data;
     },
   });
-  return [playList, loading, refetch];
+  return [popularTvs, loading, refetch];
 };
 
-export default usePlayList;
+export default usePopularTvs;

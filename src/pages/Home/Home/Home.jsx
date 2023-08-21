@@ -1,38 +1,33 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
+import { loadSlim } from 'tsparticles-slim';
+import Loading from '../../../components/loading/Loading';
 import Subscription from '../../../components/subscription/Subscription';
 import Title from '../../../components/title/Title';
-import Tvs from '../../../components/tvs/Tvs';
+import useMovies from '../../../hooks/useMovies';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
 import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
+import PopularTvs from '../popularTvs/PopularTvs';
 import TopPicks from '../topPicks/TopPicks';
 
 const Home = () => {
+  const [loading] = useMovies();
 
-  // const [loading] = useMovies()
-  
-  // if (loading) {
-  //   // You can display a loading indicator here
-  //   return <Loading/>;
-  // }
+  const cycoParticles = async (engine) => {
+    await loadSlim(engine);
 
-  
-  const cycoParticles = async (main) => {
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    await loadFull(main);
+    if (loading) {
+      return <Loading />;
+    }
   };
 
   return (
     <>
       <Particles
-        id="tsparticles"
         init={cycoParticles}
         options={{
           fullScreen: {
@@ -124,10 +119,10 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Live TV's */}
+        {/* Popular TVs */}
         <div>
           <Title title={'Popular TVs'} />
-          <Tvs />
+          <PopularTvs />
         </div>
 
         {/* Movies/Categories */}
@@ -135,7 +130,7 @@ const Home = () => {
           <div className="">
             <div className="mt-20">
               <Title title={'Most Recent'} />
-              <MostRecent/>
+              <MostRecent />
             </div>
             <div className="mt-10">
               <Title title={'Top Picks'} />
@@ -151,7 +146,7 @@ const Home = () => {
         {/* Ads */}
         <FeaturedAds />
 
-        {/* Subscription Plan/Tier*/}
+        {/* Subscription Plan/Tier */}
         <Subscription />
       </div>
     </>
