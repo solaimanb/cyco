@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { FaBeer } from 'react-icons/fa';
 const Payment = () => {
   // Function to format the date as "MMM DD, YYYY"
   const formatDate = (date) => {
@@ -10,9 +10,13 @@ const Payment = () => {
   const currentDate = formatDate(new Date());
 
   return (
-    <div className="flex justify-center items-center min-h-screen backdrop-filter bg-zinc-950">
+    <div className="relative flex justify-center items-center min-h-screen backdrop-filter bg-zinc-950 opacity-80">
+      <div className='absolute top-28 animate-pulse'>
+      <FaBeer />
+      </div>
       <div className="w-full max-w-md p-6 bg-white bg-opacity-80 shadow-md rounded-sm backdrop-blur-xl">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Payment Details</h2>
+        <h2 className="text-2xl font-semibold text-[#800000] mb-6 -rotate-1">Payment Details</h2>
+
         <form>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">Card Number</label>
