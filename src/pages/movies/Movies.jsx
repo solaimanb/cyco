@@ -6,7 +6,7 @@ import Pagination from "../../components/paginaition/Pagination";
 import useMovies from '../../hooks/useMovies';
 
 const Movies = () => {
-  const [movies,  loading] = useMovies()
+  const [movies, loading] = useMovies()
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
 
@@ -46,6 +46,9 @@ const Movies = () => {
   if (!Array.isArray(movies)) {
     return <div>Error: Movies data is not an array.</div>;
   }
+  const searchHandle =(event)=>{
+    console.warn(event.target.value)
+  }
 
   return (
     <div className="mt-10">
@@ -54,6 +57,7 @@ const Movies = () => {
           type="search"
           className="rounded-full px-3 py-2 w-[30%]"
           placeholder="Search movies"
+          onChange={searchHandle}
         />
         <FaSearch size={22} />
       </div>
