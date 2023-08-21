@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBeer } from 'react-icons/fa';
+import { FaFulcrum } from 'react-icons/fa';
 const Payment = () => {
   // Function to format the date as "MMM DD, YYYY"
   const formatDate = (date) => {
@@ -12,10 +12,13 @@ const Payment = () => {
   return (
     <div className="relative flex justify-center items-center min-h-screen backdrop-filter bg-zinc-950 opacity-80">
       <div className='absolute top-28 animate-pulse'>
-      <FaBeer />
+      <FaFulcrum className='lg:text-4xl text-[#800000]'/>
+      <div>
+        <h3>Onetime Pay Lifetime Achievements</h3>
+      </div>
       </div>
       <div className="w-full max-w-md p-6 bg-white bg-opacity-80 shadow-md rounded-sm backdrop-blur-xl">
-        <h2 className="text-2xl font-semibold text-[#800000] mb-6 -rotate-1">Payment Details</h2>
+        <h2 className="text-3xl font-semibold text-[#800000] mb-6 -rotate-1">Payment Details</h2>
 
         <form>
           <div className="mb-4">
@@ -36,7 +39,7 @@ const Payment = () => {
             type="submit"
             className="w-full transition duration-300 border-2 border-black bg-zinc-100 text-black font-bold"
           >
-            Pay Now
+            Subscribe Now !!!
           </button>
         </form>
       </div>
