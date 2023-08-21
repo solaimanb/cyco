@@ -6,8 +6,8 @@ const CommentSection = () => {
   const [comments, setComments] = useState([
     { id: 1, author: 'User1', text: 'Great video!' },
     { id: 2, author: 'User2', text: 'Thanks for sharing!' },
-    { id: 3, author: 'User2', text: 'CyCo Man Solaiman Badsha he is creazy Person!' },
-    { id: 4, author: 'User2', text: 'Solaiman Badsha bro if you want please customize your wish!' },
+    { id: 3, author: 'User2', text: 'CyCo Man Solaiman Badshah he is crazy Person!' },
+    { id: 4, author: 'User2', text: 'Solaiman Badsha bro, customize it as you wish!' },
     // Add more comments here
   ]);
 
