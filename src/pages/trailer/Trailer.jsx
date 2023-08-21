@@ -57,7 +57,7 @@ const Trailer = () => {
         {isSearchClicked && filteredMovies.length === 0 ? (
           <div>No results found.</div>
         ) : searchQuery && isSearchClicked ? (
-          filteredMovies.map((movie, index) => (
+          filteredMovies?.map((movie, index) => (
             <TrailerCard key={index} movie={movie} />
           ))
         ) : (
@@ -66,12 +66,6 @@ const Trailer = () => {
           ))
         )}
       </div>
-
-      {/* <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
-        {records?.map((movie, index) => (
-          <TrailerCard key={index} movie={movie} />
-        ))}
-      </div> */}
 
       {/* Pagination */}
       <nav>
