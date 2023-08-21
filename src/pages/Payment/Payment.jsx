@@ -16,12 +16,12 @@ const Payment = () => {
       <div className="absolute top-20 animate-pulse">
         <FaFulcrum className="text-4xl text-cyred" />
         <div>
-          <h3>Onetime Subscription Lifetime Achievements</h3>
+          <h3>Onetime Subscription <span className="text-cyred text-xl md:text-3xl">Lifetime</span> Achievements</h3>
         </div>
       </div>
-      <div className="absolute bottom-20 animate-pulse">
+      <div className="absolute bottom-20 ">
         <div>
-          <h3>Onetime Subscription Lifetime Achievements</h3>
+          <h3><span className="text-cyred text-xl md:text-3xl animate-pulse">Subscribe</span> & Get Free Access of <span className="text-cyred text-xl md:text-3xl">VIP</span> club </h3>
         </div>
         <div className="flex justify-end ">
           <div></div>
@@ -41,7 +41,7 @@ const Payment = () => {
               </label>
               <input
                 type="text"
-                className="mt-1 p-2 w-full border focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
+                className="mt-1 p-2 w-full border border-cyred focus:border-none focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
               />
             </div>
             <div className="flex flex-col md:flex-row md:space-x-4">
@@ -51,7 +51,7 @@ const Payment = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
+                  className="mt-1 p-2 w-full border border-cyred focus:border-none focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
                 />
               </div>
               <div className="mb-4 md:w-1/2">
@@ -60,13 +60,13 @@ const Payment = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
+                  className="mt-1 p-2 w-full border border-cyred focus:border-none focus:outline-none focus:ring-2 focus:ring-cyred text-cyred"
                 />
               </div>
             </div>
             <button
               type="submit"
-              className="md:mt-6 rounded-lg w-full transition duration-300 border-2 py-1 border-black bg-zinc-100 font-bold text-cyred"
+              className="md:mt-6 rounded-lg w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
             >
               Subscribe Now !!!
             </button>
