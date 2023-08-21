@@ -115,12 +115,12 @@ const Trailer = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 4;
+  const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = movies.slice(firstIndex, lastIndex);
+  const records = movies?.slice(firstIndex, lastIndex);
   const npage = Math.ceil(movies.length / recordsPerPage);
-  const numbers = [...Array(npage + 1).keys()].slice(1);
+  const numbers = [...Array(npage + 1)?.keys()]?.slice(1);
 
   function prePage() {
     if (currentPage != 1) {
@@ -138,12 +138,13 @@ const Trailer = () => {
 
   return (
     <>
-      <div className="w-full flex flex-wrap gap-1">
-        {records.map((movie, index) => (
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
+        {records?.map((movie, index) => (
           <TrailerCard key={index} movie={movie} />
         ))}
       </div>
 
+      {/* Pagination */}
       <nav>
         <ul className="flex justify-center space-x-2 mt-4">
           <li>
