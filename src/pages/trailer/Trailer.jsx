@@ -104,12 +104,27 @@ const Trailer = () => {
             duration: '2h 32m',
         }
     ];
+
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(movies / itemsPerPage);
+
+    const pageNumbers = [...Array(10).keys()]
+ 
+
     return (
+        <>
         <div className="w-full flex flex-wrap gap-1">
             {movies.map((movie, index) => (
                 <TrailerCard key={index} movie={movie}> </TrailerCard>
             ))}
         </div>
+        {/* Pagination  */}
+        <div className='align-middle mb-3'>
+            {
+                pageNumbers.map(number => <button key={number}>{number}</button>)
+            }
+        </div>
+        </>
     );
 };
 
