@@ -1,19 +1,22 @@
 import { React, useEffect, useState } from 'react';
 import { MdOutlinePlaylistAdd } from 'react-icons/md'; // Corrected import path
 import { Link } from 'react-router-dom';
+import usePlayList from '../../hooks/usePlayList';
+import Loading from '../../components/loading/Loading';
 
 const Series = () => {
-    const [data, setData] = useState([]);
+    const [playList,loading] = usePlayList()
 
-    useEffect(() => {
-      fetch('/playListData.json')
-        .then((res) => res.json())
-        .then((data) => setData(data));
-    }, []);
-
+    if (loading) {
+      // You can display a loading indicator here
+      return <Loading />;
+    }
+    if (!Array.isArray(playList)) {
+      return <div>Error: Movies data is not an array.</div>;
+    }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-    {data.map((item) => (
+    {playList.map((item) => (
       <Link
         key={item?.id}
         to="/series/seriesParts"

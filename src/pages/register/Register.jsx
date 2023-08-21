@@ -1,29 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-const Register = () => {
-  const handleGoogleSignIn = () => {
-    // Handle Google Sign-In logic here
-  };
-  const handleGoogleGithub = () => {
-    // Handle gitHub Sign-In logic here
-  };
+import { Link, useNavigate } from 'react-router-dom';
 
-  const handleImageUpload = (event) => {
-    const imageFile = event.target.files[0];
-    // Handle image upload logic here
+import SocialLogin from '../../components/socialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
+const Register = () => {
+  const {createUser} = useAuth();
+  const navigate = useNavigate()
+  // const [accepted, setAccepted] = useState(false);
+
+  // const [error, setError] = useState('');
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.username.value; 
+    const email = form.email.value;
+    const password = form.password.value;
+
+    try {
+      const result = await createUser(email, password);
+      const createdUser = result.user;
+
+      // Registration successful
+      console.log(createdUser);
+
+      // Redirect the user to the home page
+      navigate('/');
+    } catch (error) {
+      console.error('Registration failed', error);
+    }
   };
+  
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero hero-content lg:h-[600px] w-96 mx-auto lg:w-[1000px] flex-col lg:flex-row card card-body bg-white shadow-2xl">
-      <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm" />
-        <div className="bg-white p-8 w-full">
+    <div className="hero min-h-screen bg-[#111] opacity-60">
+      <div className="hero hero-content lg:h-[600px] w-96 mx-auto lg:w-[1000px] flex-col lg:flex-row card card-body bg-[#111] shadow-2xl">
+     <div className='md:flex flex-col items-center gap-7 w-full h-full hidden'>
+     <img src="https://static.vecteezy.com/system/resources/previews/016/140/880/original/register-now-icon-in-comic-style-registration-cartoon-illustration-on-isolated-background-member-notification-splash-effect-sign-business-concept-vector.jpg" className="max-w-sm z-30" />
+      <h3>Use Google to hasselFree LogIn</h3>
+       <SocialLogin />
+     </div>
+        <div className="bg-[#111] p-8 w-full">
+         
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mb-4">
               <label
                 htmlFor="username"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-300"
               >
                 Username
               </label>
@@ -38,7 +62,7 @@ const Register = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-300"
               >
                 Email
               </label>
@@ -53,7 +77,7 @@ const Register = () => {
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-300"
               >
                 Password
               </label>
@@ -65,7 +89,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label
                 htmlFor="profileImage"
                 className="block text-sm font-medium text-gray-700"
@@ -77,10 +101,10 @@ const Register = () => {
                 accept="image/*"
                 id="profileImage"
                 name="profileImage"
-                onChange={handleImageUpload}
+              
                 className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               />
-            </div>
+            </div> */}
             <div className="mb-6">
               <button
                 type="submit"
@@ -90,23 +114,13 @@ const Register = () => {
               </button>
             </div>
           </form>
-          <div className="flex mx-auto gap-2 ">
-            <div className="text-center mx-auto">
-              <button
-                onClick={handleGoogleSignIn}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-              >
-                Sign in with Google
-              </button>
+          <div className="flex flex-col justify-center items-center mx-auto gap-2 md:hidden">
+            <h3>LogIn With Google</h3>
+            <div className="text-center mx-auto -mt-8">
+             
+              <SocialLogin />
             </div>
-            <div className="text-center mx-auto">
-              <button
-                onClick={handleGoogleGithub}
-                className="bg-gradient-to-r from-purple-500 hover:to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-              >
-                Sign in with GitHub
-              </button>
-            </div>
+           
           </div>
 
           <p className="text-sm text-gray-600 mt-2">

@@ -1,22 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { getAuth } from "@firebase/auth";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
+const auth = getAuth();
 const Login = () => {
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+
   const handleLogin = (event) => {
     event.preventDefault();
-    // Handle login logic here
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMessage("Invalid email or password");
+      });
   };
-  const handleGoogleSignIn = () => {
-    // Handle Google Sign-In logic here
-  };
-  const handleGoogleGithub = () => {
-    // Handle gitHub Sign-In logic here
-  };
+  // const handleResetPassword = (event) => {
+  //         const email = (emailRef.current.value);
+  //         if (!email){
+  //           alert('please provide your email address first')
+  //           return;
+  //         }
+
+  //         sendPasswordResetEmail(auth, email)
+  //         .then(() => {
+  //           alert('Please check your email')
+  //         })
+  //         .catch(error => {
+  //           console.log(error);
+  //           setErrorMessage(error.message)
+  //         })
+  // }
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center h-screen hero">
-      <div className="bg-white p-8 rounded shadow-lg w-96 h-auto">
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+    <div className="flex justify-center items-center h-screen hero">
+      <div className="p-8 bg-zinc-900 rounded-sm shadow-lg w-96 h-auto">
+        <h2 className="text-2xl font-semibold mb-4 ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label
@@ -29,6 +60,7 @@ const Login = () => {
               type="email"
               id="email"
               name="email"
+              // ref={emailRef}
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               required
             />
@@ -47,15 +79,17 @@ const Login = () => {
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
               required
             />
-            <label className="flex justify-end">
-              <a className="link link-primary text-sm">Forgot password</a>
-            </label>
+            {/* <label className="flex justify-end">
+             <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
+            </label> */}
           </div>
-
+          {/* {errorMessage && (
+            <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+          )} */}
           <div className="mb-6">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-indigo-200"
             >
               Login
             </button>
@@ -63,25 +97,12 @@ const Login = () => {
         </form>
         <div className="flex mx-auto gap-2 ">
           <div className="text-center mx-auto">
-            <button
-              onClick={handleGoogleSignIn}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-            >
-              Sign in with Google
-            </button>
-          </div>
-          <div className="text-center mx-auto">
-            <button
-              onClick={handleGoogleGithub}
-              className="bg-gradient-to-r from-purple-500 hover:to-pink-500 text-white p-2 rounded-md hover:bg-gradient-to-r hover:from-cyan-500 to-blue-500 focus:outline-none focus:ring focus:ring-red-200"
-            >
-              Sign in with GitHub
-            </button>
+            <SocialLogin />
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-5">
           Don't have an account?{' '}
-          <Link to="/registration" className="text-indigo-500 hover:underline">
+          <Link to="/register" className="text-indigo-500 hover:underline">
             Register
           </Link>
         </p>

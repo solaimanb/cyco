@@ -1,5 +1,8 @@
 import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import Loading from '../../components/loading/Loading';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
+import useMovies from '../../hooks/useMovies';
 
 const Trailer = () => {
     const movies = [
@@ -126,6 +129,7 @@ const Trailer = () => {
         </div>
         </>
     );
+
 };
 
 export default Trailer;
