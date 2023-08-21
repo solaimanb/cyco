@@ -3,12 +3,17 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import Divider from '../components/divider/Divider';
 import logo from '/cy-ico.png';
+import About from '../pages/about/About';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [linkClicked, setLinkClicked] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+  const handleLinkClick = () => {
+    setLinkClicked(true);
   };
   const [isAdmin, SetAdmin] = [true];
 
@@ -29,10 +34,10 @@ const Dashboard = () => {
 
       {/* Sidebar */}
       <nav
-        className={`bg-[#111] bg-opacity-60 text-right w-64 md:w-350 transition-all duration-300 ${isSidebarOpen ? 'block' : 'hidden lg:block'
+        className={`bg-[#2d2386c8] bg-opacity-60 text-right w-64 md:w-350 transition-all duration-300 ${isSidebarOpen ? 'block' : 'hidden lg:block'
           }`}
       >
-        <div className="py-4 bg-[#2d2386c8] px-7 ">
+        <div className="py-4  px-7 ">
           <div className="text-white text-xl font-semibold ml-4 mb-6 flex justify-end">
             <Link to='/dashboard'><img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' /></Link>
           </div>
@@ -42,6 +47,7 @@ const Dashboard = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/admin-home"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
@@ -50,6 +56,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/admin-home"
                     className="block px-4 py-2  text-white hover:bg-gray-800"
                   >
@@ -59,6 +66,7 @@ const Dashboard = () => {
 
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/add-new-media"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
@@ -67,10 +75,11 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/payments"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
-                    Cash :
+                    Users Payments :
                   </Link>
                 </li>
               </ul>
@@ -78,15 +87,17 @@ const Dashboard = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/users-home"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
-                    User :
+                    User Profile :
                   </Link>
                 </li>
 
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
@@ -95,6 +106,16 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={handleLinkClick}
+                    to="/dashboard/"
+                    className="block px-4 py-2 text-white hover:bg-gray-800"
+                  >
+                    Try Premium :
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
@@ -103,6 +124,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
+                    onClick={handleLinkClick}
                     to="/dashboard/"
                     className="block px-2 py-2 text-white hover:bg-gray-800"
                   >
@@ -133,7 +155,7 @@ const Dashboard = () => {
                   to="/"
                   className="block px-4 py-2 text-white hover:bg-gray-800"
                 >
-                  Example 1 :
+                  Movies :
                 </Link>
               </li>
               <li>
@@ -141,7 +163,7 @@ const Dashboard = () => {
                   to="/"
                   className="block px-4 py-2 text-white hover:bg-gray-800"
                 >
-                  Example 2 :
+                  About Us :
                 </Link>
               </li>
               <li>
@@ -149,62 +171,25 @@ const Dashboard = () => {
                   to="/"
                   className="block px-4 py-2 text-white hover:bg-gray-800"
                 >
-                  Example 3 :
+                  Live Tv :
                 </Link>
               </li>
               {/* Add more links as needed */}
             </ul>
           </div>
-          <div>
-            <Divider />
-          </div>
-          <div>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white hover:bg-gray-800"
-                >
-                  someThing :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white hover:bg-gray-800"
-                >
-                  someThing 1 :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white hover:bg-gray-800"
-                >
-                  someThing 2 :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white hover:bg-gray-800"
-                >
-                  someThing 3 :
-                </Link>
-              </li>
-              {/* Add more links as needed */}
-            </ul>
-          </div>
+
         </div>
       </nav >
 
       {/* Main Content */}
       < div className="flex-grow bg-[#160665]" >
-        <div>
+        {!linkClicked ? (
+          <h2>This is Dashboard for Initial root</h2>
+        ) : (
           <div>
-            <h3 className=''>Dashing Dashboard</h3></div>
-          <Outlet />
-        </div>
+            <Outlet />
+          </div>
+        )}
       </div >
     </div >
   );
