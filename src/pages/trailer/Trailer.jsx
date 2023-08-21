@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
 
 const Trailer = () => {
   const [movies] = useMovies();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
@@ -26,12 +31,40 @@ const Trailer = () => {
     setCurrentPage(id);
   }
 
+  const searchHandle = async () => {
+    setCurrentPage(1);
+    setIsSearchClicked(true);
+    const moviesMatchingSearch = movies.filter((movie) =>
+      movie.Title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredMovies(moviesMatchingSearch);
+  };
+
   return (
     <>
+      <div className="flex items-center gap-3 justify-center mt-10">
+        <input
+          type="search"
+          className="rounded-full px-3 py-2 w-[30%]"
+          placeholder="Search for Trailer"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+        />
+        <FaSearch size={22} onClick={searchHandle} />
+      </div>
+
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
-        {records?.map((movie, index) => (
-          <TrailerCard key={index} movie={movie} />
-        ))}
+        {isSearchClicked && filteredMovies.length === 0 ? (
+          <div>No results found.</div>
+        ) : searchQuery && isSearchClicked ? (
+          filteredMovies?.map((movie, index) => (
+            <TrailerCard key={index} movie={movie} />
+          ))
+        ) : (
+          records?.map((movie, index) => (
+            <TrailerCard key={index} movie={movie} />
+          ))
+        )}
       </div>
 
       {/* Pagination */}

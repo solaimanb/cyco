@@ -3,9 +3,9 @@ import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
-import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
+import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
-      { path: 'testpayments', element: <Payment /> },
+      { path: 'payment', element: <Payment /> },
     ],
   },
   {
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       { path: 'admin-home', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'add-new-media', element: <AddNewMedia /> },
-      { path: 'payments', element: <Payments /> },
+      { path: 'payment', element: <Payments /> },
       // {
       //   path: 'live-tv/live/:id',
       //   element: <LiveVideo />,
