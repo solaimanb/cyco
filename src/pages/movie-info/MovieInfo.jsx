@@ -20,7 +20,7 @@ const MovieInfo = () => {
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="md:w-1/3 md:-ml-[650px] p-4 md:p-8">
                     <h2 className="text-2xl md:text-4xl font-semibold">{Title}</h2>
-                    <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-1 font-family">
+                    <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-1 ">
                         <button className="btn btn-sm btn-outline md:mr-2">Cyco+</button>
                         <p className="my-1 md:my-0">{Runtime}•</p>
                         <p className="my-1 md:my-0">{Released}•</p>
