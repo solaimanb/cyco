@@ -68,6 +68,7 @@ const router = createBrowserRouter([
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
+      { path: 'testpayments', element: <Payment /> },
     ],
   },
   {
