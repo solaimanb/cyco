@@ -34,6 +34,7 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import Testimonials from '../pages/testimonials/Testimonials';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import FaqPage from '../pages/faq/FaqPage';
 
@@ -70,6 +71,8 @@ const router = createBrowserRouter([
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
+      { path: 'testpayments', element: <Payment /> },
+      { path: 'testimonials', element: <Testimonials /> },
       { path: 'faqPage', element: <FaqPage /> },
       { path: 'payment', element: <Payment /> },
     ],
