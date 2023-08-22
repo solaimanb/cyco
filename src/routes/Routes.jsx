@@ -34,6 +34,8 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
+import FaqPage from '../pages/faq/FaqPage';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,7 @@ const router = createBrowserRouter([
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
+      { path: 'faqPage', element: <FaqPage /> },
       { path: 'payment', element: <Payment /> },
     ],
   },
@@ -77,7 +80,7 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'add-new-media', element: <AddNewMedia /> },
+      { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },
       // {
       //   path: 'live-tv/live/:id',

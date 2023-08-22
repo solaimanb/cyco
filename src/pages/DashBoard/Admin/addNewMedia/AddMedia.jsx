@@ -1,58 +1,61 @@
 import React, { useContext } from 'react';
-
 import { useState } from 'react';
-import { imageUpload } from '../../api/ultils';
 
-import { addRoom } from '../../api/room';
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import AddNewMediaForm from './AddNewMedia';
 import { AuthContext } from '../../../../providers/AuthProvider';
 
-const AddMedia = () => {
+const AddRoom = () => {
   const {user} = useContext(AuthContext)
-   const navigate = useNavigate()
     const [loading,setLoading] = useState(false)
- 
     const [uploadButtonText , setUploadButtonText] = useState('Upload image')
     //handle from submit 
     const handleSubmit = (event)=>{
        event.preventDefault()
        setLoading(true)
-       const location = event.target.location.value
        const title = event.target.title.value
-     
-       const price = event.target.price.value
-       const guests = event.target.total_guest.value
-       const bedrooms = event.target.bedrooms.value
-       const bathrooms = event.target.bathrooms.value
-       const description = event.target.description.value
-       const category = event.target.category.value
+       const actors = event.target.actors.value
+       const thumbnail = event.target.thumbnail.value
+       const source = event.target.source.value
+       const director = event.target.director.value
+       const writer = event.target.writer.value
+       const country = event.target.country.value
+       const boxOffice = event.target.boxOffice.value
+       const awards = event.target.awards.value
+       const production = event.target.production.value
        const image = event.target.image.files[0]
+       const released = event.target.released.value
+       const year = event.target.year.value
+       const description = event.target.description.value
+     
        setUploadButtonText('Uploading.....')
-       imageUpload(image)
-       .then(data=>{
-        const roomData = {
-          image: data.data.display_url,
+      console.log(image);
+        const Data = {
+          // image: data?.data?.display_url,
           location,
           title,
-          host:{
-            name:user?.displayName,
-            image:user?.photoURL,
-            email:user?.email
-          },
-         
-          price,
-          guests,
-          bedrooms,
-          bathrooms,
-          description,
-          category,
+          // host:{
+          //   name:user?.displayName,
+          //   image:user?.photoURL,
+          //   email:user?.email
+          // },
+         title,
+         actors,
+         thumbnail,
+         source,
+         director,
+         writer,
+         country,
+         boxOffice,
+         awards,
+         production,
+         image,
+         released,
+         year,
+         description
         }
-        console.log('hello from',roomData);
-       })
+   
         
-       
+       console.log('hello from', Data);
     }
     const handleImageChange = image => {
         setUploadButtonText(image.name)
@@ -65,6 +68,7 @@ const AddMedia = () => {
         <div>
            <AddNewMediaForm
             handleSubmit={handleSubmit}
+
             loading={loading}
             handleDateChange={handleDateChange}
             handleImageChange={handleImageChange} 
@@ -73,4 +77,4 @@ const AddMedia = () => {
     );
 };
 
-export default AddMedia;
+export default AddRoom;
