@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 import Divider from '../components/divider/Divider';
 import logo from '/cy-ico.png';
 import About from '../pages/about/About';
+import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,6 +16,9 @@ const Dashboard = () => {
   const handleLinkClick = () => {
     setLinkClicked(true);
   };
+  const handleLinkFalse =()=>{
+    setLinkClicked(false);
+  }
   const [isAdmin, SetAdmin] = [true];
 
   return (
@@ -39,7 +43,7 @@ const Dashboard = () => {
       >
         <div className="py-4  px-7 ">
           <div className="text-white text-xl font-semibold ml-4 mb-6 flex justify-end">
-            <Link to='/dashboard'><img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' /></Link>
+            <Link onClick={handleLinkFalse} to='/dashboard'><img src={logo} alt="Website Logo" className='rounded-lg -px-2 w-24 h-24' /></Link>
           </div>
           {/* Admin Dashbord */}
           {
@@ -48,7 +52,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/admin-home"
+                    to="/dashboard"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
                     Admin Home
@@ -57,7 +61,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/admin-home"
+                    to="/dashboard/manage-users"
                     className="block px-4 py-2  text-white hover:bg-gray-800"
                   >
                     Manage Users
@@ -182,10 +186,9 @@ const Dashboard = () => {
       </nav >
 
 
-      {/* Main Content */}
       < div className="flex-grow bg-[#160665]" >
         {!linkClicked ? (
-          <h2>This is Dashboard for Initial root</h2>
+          <AdminHome/>
         ) : (
           <div>
             <Outlet />
