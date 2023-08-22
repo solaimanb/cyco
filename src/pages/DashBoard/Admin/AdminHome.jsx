@@ -1,4 +1,5 @@
 import React from 'react'
+import Chart from '../../../components/chart/Chart'
 
 const AdminHome = () => {
   return (
@@ -74,7 +75,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div>
-        
+        <Chart/>
       </div>
     </div>
   )
