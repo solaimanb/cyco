@@ -13,6 +13,7 @@ import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
 import PopularTvs from '../popularTvs/PopularTvs';
 import TopPicks from '../topPicks/TopPicks';
+import Testimonials from '../../testimonials/Testimonials';
 
 const Home = () => {
   const [loading] = useMovies();
@@ -148,6 +149,9 @@ const Home = () => {
 
         {/* Subscription Plan/Tier */}
         <Subscription />
+
+        {/* testimonials */}
+        <Testimonials />
       </div>
     </>
   );

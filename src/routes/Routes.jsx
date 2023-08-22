@@ -34,6 +34,7 @@ import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
+import Testimonials from '../pages/testimonials/Testimonials';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'testpayments', element: <Payment /> },
+      { path: 'testimonials', element: <Testimonials /> },
     ],
   },
   {
