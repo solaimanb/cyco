@@ -24,6 +24,7 @@
     "react-tsparticles": "^2.12.2",
     "react-window": "^1.8.9",
     "react-youtube": "^10.1.0",
+    "recharts": "^2.7.3",
     "sort-by": "^1.2.0",
     "styled-components": "^6.0.7",
     "tsparticles-slim": "^2.12.0",

@@ -75,7 +75,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: 'admin-home', element: <AdminHome /> },
+      { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'add-new-media', element: <AddNewMedia /> },
       { path: 'payment', element: <Payments /> },
