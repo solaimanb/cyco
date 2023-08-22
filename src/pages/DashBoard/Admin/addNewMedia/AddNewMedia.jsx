@@ -66,7 +66,7 @@ const AddNewMediaForm = ({
             </div>
             <div>
             <div className='space-y-1 text-sm'>
-//                 <label htmlFor='thumbnail' className='block text-gray-600'>
+                               {/* <label htmlFor='thumbnail' className='block text-gray-600'> */}
                 <label htmlFor='bedrooms' className='block text-gray-600'>
                 Thumbnail
                 </label>
