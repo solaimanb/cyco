@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { TbFidgetSpinner } from 'react-icons/tb'
+import { TbFidgetSpinner } from 'react-icons/tb';
 
 // import { categories } from '../Categories/CategoriesData'
 
@@ -48,7 +48,7 @@ const AddNewMediaForm = ({
             <div>
             <div className='space-y-1 text-sm'>
                 <label htmlFor='bedrooms' className='block text-gray-600'>
-                Thumnail
+                Thumbnail
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
@@ -58,7 +58,7 @@ const AddNewMediaForm = ({
                   placeholder='Thumnail'
                   required
                 />
-              </div>
+              </div>c
             </div>
           
             </div>
