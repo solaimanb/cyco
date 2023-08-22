@@ -1,13 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-import { TbFidgetSpinner } from 'react-icons/tb'
+import { TbFidgetSpinner } from 'react-icons/tb';
 
+export const categories = [
+  {
+    label: 'Action',
+  },
+  {
+    label: 'Adventure',
+  },
+  {
+    label: 'Sci-Fi',
+  },
+  {
+    label: 'Emotional',
+  },
+  {
+    label: 'Sad',
+  },
+]
 // import { categories } from '../Categories/CategoriesData'
 
 const AddNewMediaForm = ({
   handleSubmit,
-  dates,
-  handleDateChange,
   loading = false,
   handleImageChange,
   uploadButtonText,
@@ -24,8 +39,8 @@ const AddNewMediaForm = ({
               </label>
               <input
                 className='w-full px-4 py-3 border text-gray-800 bg-white border-rose-300 focus:outline-rose-500 rounded-md '
-                name='Actors'
-                id='Actors'
+                name='actors'
+                id='actors'
                 type='text'
                 placeholder='Actors'
                 required
@@ -34,43 +49,48 @@ const AddNewMediaForm = ({
 
             <div className='flex justify-between gap-2 '>
             <div className='space-y-1 text-sm w-full'>
-      <label htmlFor='category' className='block text-gray-600'>
-              Genre
+      <label htmlFor='genre' className='block text-gray-600'>
+             Movies Type
               </label>
               <select
                 required
                 className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md'
-                name='category'
+                name='genre'
               >
-      
+       {categories.map(category => (
+                  <option value={category.label} key={category.label}>
+                    {category.label}
+                  </option>
+                ))}
               </select>
             </div>
             <div>
             <div className='space-y-1 text-sm'>
+//                 <label htmlFor='thumbnail' className='block text-gray-600'>
                 <label htmlFor='bedrooms' className='block text-gray-600'>
-                Thumnail
+                Thumbnail
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Thumnail'
-                  id='Thumnail'
+                  name='thumbnail'
+                  id='thumbnail'
                   type='text'
-                  placeholder='Thumnail'
+                  placeholder='Thumbnail'
                   required
                 />
-              </div>
+              </div>c
             </div>
           
             </div>
 
             <div className='space-y-1'>
-              <label htmlFor='location' className='block text-gray-600'>
+              <label htmlFor='source' className='block text-gray-600'>
               Source Link
               </label>
               <input
                 className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                name='Source'
-                id='Source'
+                name='source'
+                id='source'
                 type='text'
                 placeholder='Source Link'
                 required
@@ -78,13 +98,13 @@ const AddNewMediaForm = ({
             </div>
             <div className='flex justify-between gap-2'>
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bedrooms' className='block text-gray-600'>
+                <label htmlFor='director' className='block text-gray-600'>
                 Director
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Director'
-                  id='Director'
+                  name='director'
+                  id='director'
                   type='text'
                   placeholder='Director'
                   required
@@ -92,13 +112,13 @@ const AddNewMediaForm = ({
               </div>
 
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bathrooms' className='block text-gray-600'>
+                <label htmlFor='writer' className='block text-gray-600'>
                 Writer
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Writer'
-                  id='Writer'
+                  name='writer'
+                  id='writer'
                   type='text'
                   placeholder='Writer'
                   required
@@ -112,8 +132,8 @@ const AddNewMediaForm = ({
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Country'
-                  id='Country'
+                  name='country'
+                  id='country'
                   type='text'
                   placeholder='Country'
                   required
@@ -121,13 +141,13 @@ const AddNewMediaForm = ({
               </div>
 
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bathrooms' className='block text-gray-600'>
+                <label htmlFor='boxOffice' className='block text-gray-600'>
                 BoxOffice
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='BoxOffice'
-                  id='BoxOffice'
+                  name='boxOffice'
+                  id='boxOffice'
                   type='text'
                   placeholder='BoxOffice'
                   required
@@ -136,13 +156,13 @@ const AddNewMediaForm = ({
             </div>
             <div className='flex justify-between gap-2'>
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bedrooms' className='block text-gray-600'>
+                <label htmlFor='awards' className='block text-gray-600'>
                 Awards
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Awards'
-                  id='Awards'
+                  name='awards'
+                  id='awards'
                   type='text'
                   placeholder='Awards'
                   required
@@ -150,13 +170,13 @@ const AddNewMediaForm = ({
               </div>
 
               <div className='space-y-1 text-sm'>
-                <label htmlFor='bathrooms' className='block text-gray-600'>
+                <label htmlFor='production' className='block text-gray-600'>
                 Production
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='Production'
-                  id='Production'
+                  name='production'
+                  id='production'
                   type='text'
                   placeholder='Production'
                   required
@@ -194,7 +214,8 @@ const AddNewMediaForm = ({
                       hidden
                     />
                     <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                    Poster
+ 
+                   {uploadButtonText}
                     </div>
                   </label>
                 </div>
@@ -202,13 +223,13 @@ const AddNewMediaForm = ({
             </div>
             <div className='flex justify-between gap-2'>
               <div className='space-y-1 text-sm'>
-                <label htmlFor='price' className='block text-gray-600'>
+                <label htmlFor='released' className='block text-gray-600'>
                 Released
                 </label>
                 <input
                   className='w-full px-4 py-3 bg-white text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='price'
-                  id='price'
+                  name='released'
+                  id='released'
                   type='number'
                   placeholder='Released'
                   required
@@ -216,13 +237,13 @@ const AddNewMediaForm = ({
               </div>
 
               <div className='space-y-1 text-sm'>
-                <label htmlFor='guest' className='block text-gray-600'>
+                <label htmlFor='year' className='block text-gray-600'>
                 Year
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 bg-white border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='total_guest'
-                  id='guest'
+                  name='year'
+                  id='year'
                   type='number'
                   placeholder='Year'
                   required
@@ -267,7 +288,7 @@ const AddNewMediaForm = ({
 
               <textarea
                 id='description'
-                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3text-gray-800 bg-white  border border-rose-300 focus:outline-rose-500 '
+                className=' block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 bg-white  border border-rose-300 focus:outline-rose-500 '
                 name='description'
               ></textarea>
             </div>

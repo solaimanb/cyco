@@ -3,9 +3,9 @@ import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
-import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
+import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
@@ -35,6 +35,8 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Trailer from '../pages/trailer/Trailer';
 import Testimonials from '../pages/testimonials/Testimonials';
+import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
+import FaqPage from '../pages/faq/FaqPage';
 
 const router = createBrowserRouter([
   {
@@ -71,16 +73,18 @@ const router = createBrowserRouter([
       { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'testpayments', element: <Payment /> },
       { path: 'testimonials', element: <Testimonials /> },
+      { path: 'faqPage', element: <FaqPage /> },
+      { path: 'payment', element: <Payment /> },
     ],
   },
   {
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: 'admin-home', element: <AdminHome /> },
+      { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'add-new-media', element: <AddNewMedia /> },
-      { path: 'payments', element: <Payments /> },
+      { path: 'add-new-media', element: <AddMedia /> },
+      { path: 'payment', element: <Payments /> },
       // {
       //   path: 'live-tv/live/:id',
       //   element: <LiveVideo />,
