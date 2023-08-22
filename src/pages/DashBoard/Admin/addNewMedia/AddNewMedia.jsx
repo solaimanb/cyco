@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { TbFidgetSpinner } from 'react-icons/tb'
+import { TbFidgetSpinner } from 'react-icons/tb';
 
 export const categories = [
   {
@@ -66,7 +66,8 @@ const AddNewMediaForm = ({
             </div>
             <div>
             <div className='space-y-1 text-sm'>
-                <label htmlFor='thumbnail' className='block text-gray-600'>
+//                 <label htmlFor='thumbnail' className='block text-gray-600'>
+                <label htmlFor='bedrooms' className='block text-gray-600'>
                 Thumbnail
                 </label>
                 <input
@@ -77,7 +78,7 @@ const AddNewMediaForm = ({
                   placeholder='Thumbnail'
                   required
                 />
-              </div>
+              </div>c
             </div>
           
             </div>
