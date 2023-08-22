@@ -75,19 +75,3 @@ const FaqPage = () => {
 };
 
 export default FaqPage;
-
-{
-  /* <div className="bg-gray-100 min-h-screen py-8">
-<div className="max-w-3xl mx-auto px-4">
-  
-  <div className="space-y-6">
-    {faqData.map((faq, index) => (
-      <div key={index} className="bg-white rounded-lg p-4 shadow-md">
-        <h2 className="text-xl font-medium mb-2">{faq.question}</h2>
-        <p className="text-gray-700">{faq.answer}</p>
-      </div>
-    ))}
-  </div>
-</div>
-</div> */
-}

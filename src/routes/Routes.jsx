@@ -5,11 +5,12 @@ import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
-import AddNewMedia from '../pages/DashBoard/Admin/addNewMedia/AddNewMedia';
+import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
+import FaqPage from '../pages/faq/FaqPage';
 import Action from '../pages/home/categories/action/Action';
 import Animation from '../pages/home/categories/animation/Animation';
 import Classic from '../pages/home/categories/classic/Classic';
@@ -33,10 +34,8 @@ import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
 import Register from '../pages/register/Register';
 import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
-import Trailer from '../pages/trailer/Trailer';
 import Testimonials from '../pages/testimonials/Testimonials';
-import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
-import FaqPage from '../pages/faq/FaqPage';
+import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
@@ -73,7 +72,7 @@ const router = createBrowserRouter([
       { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'testpayments', element: <Payment /> },
       { path: 'testimonials', element: <Testimonials /> },
-      { path: 'faqPage', element: <FaqPage /> },
+      { path: 'faq', element: <FaqPage /> },
       { path: 'payment', element: <Payment /> },
     ],
   },
