@@ -18,6 +18,12 @@ const FeaturedMovies = () => {
       .then(data => setFeatureMovies(data))
 
   },[]);
+  // useEffect(() => {
+  //   fetch('MoviesWithDetails.json')
+  //     .then(res => res.json())
+  //     .then(data => setFeatureMovies(data))
+
+  // },[]);
 
   return (
     <div className="mx-5 py-5 z-10">
