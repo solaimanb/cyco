@@ -16,6 +16,8 @@ const Navbar = () => {
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
+        
+        {/* Responsive wide screen device */}
         <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
             <h3 className="font-bold text-2xl">CYCO</h3>
@@ -149,7 +151,7 @@ const Navbar = () => {
         </div>
 
         {/* Responsive small device */}
-        <div className="flex items-center justify-between lg:hidden py-5 px-10">
+        <div className="flex items-center justify-between lg:hidden py-5 px-5">
           <div>
             <button
               aria-label="Open Menu"
@@ -175,7 +177,7 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute z-10 top-0 left-0 w-full">
-              <div className="p-5 bg-cyred text-white shadow-sm">
+              <div className="py-5 bg-cyred text-white shadow-sm">
                 <div className="flex flex-row-reverse items-center justify-between mb-4">
                   <div>
                     <Link
