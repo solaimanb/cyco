@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@codesweetly/react-youtube-playlist": "^1.0.13",
+    "@codesweetly/react-youtube-playlist": "^1.0.16",
     "@tanstack/react-query": "^4.32.6",
     "axios": "^1.4.0",
     "firebase": "^10.1.0",
@@ -20,10 +20,16 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.0",
     "react-icons": "^4.10.1",
+    "react-player": "^2.12.0",
     "react-router-dom": "^6.14.2",
     "react-tsparticles": "^2.12.2",
+    "react-window": "^1.8.9",
+    "react-youtube": "^10.1.0",
+    "react-youtube-playlist": "^2.2.8",
+    "recharts": "^2.7.3",
     "sort-by": "^1.2.0",
-    "tsparticles": "^2.12.0",
+    "styled-components": "^6.0.7",
+    "swiper": "^10.2.0",
     "tsparticles-slim": "^2.12.0",
     "vite": "^4.4.9"
   },
