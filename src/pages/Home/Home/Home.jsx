@@ -6,6 +6,7 @@ import Loading from '../../../components/loading/Loading';
 import Subscription from '../../../components/subscription/Subscription';
 import Title from '../../../components/title/Title';
 import useMovies from '../../../hooks/useMovies';
+import Testimonials from '../../testimonials/Testimonials';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
 import FeaturedMovies from '../featuredMovies/featuredMovies';
@@ -13,7 +14,6 @@ import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
 import PopularTvs from '../popularTvs/PopularTvs';
 import TopPicks from '../topPicks/TopPicks';
-import Testimonials from '../../testimonials/Testimonials';
 
 const Home = () => {
   const [loading] = useMovies();
@@ -109,11 +109,11 @@ const Home = () => {
         <Hero />
 
         {/* Featured Movies */}
-        <div className="px-4 z-10 py-6 md:py-8 mt-[70%]">
+        <div className="z-10 py-6 md:py-8 mt-[70%]">
           <h1 className="border-l-4 ps-3 text-white text-xl font-bold">
             Featured Movies
           </h1>
-          <div className="bg-zinc-900 px-5">
+          <div className="px-5">
             <Marquee speed={10}>
               <FeaturedMovies />
             </Marquee>
