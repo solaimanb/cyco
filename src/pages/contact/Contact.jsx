@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import contactImg from '../../../public/contact-img.jpg';
+
 const Contacts = () => {
   const addresses = [
     {
@@ -37,13 +39,11 @@ const Contacts = () => {
 
   return (
     <>
-      <div className="flex relative  justify-center items-center h-56 bg-gray-100">
+      <div className="flex relative rounded-lg  justify-center items-center h-56 bg-gray-100">
         <img
-          src={
-            'https://media.discordapp.net/attachments/1135626695613890600/1142115592686551091/contact-bg.jpg?width=1192&height=701'
-          }
+          src={contactImg}
           alt="Contact Background"
-          className="object-cover h-full w-full "
+          className="object-cover h-full w-full rounded-lg "
         />
         <div className="absolute top-1/2 right-1/2 text-red-800">
           <NavLink
@@ -90,7 +90,7 @@ const Contacts = () => {
         </div>
         {/* Right Side */}
         <div className="w-1/2 pl-8">
-        <h1 className="text-2xl font-semibold mb-4 text-center">Our Office</h1>
+          <h1 className="text-2xl font-semibold mb-4 text-center">Our Office</h1>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
             {addresses?.map((address, index) => (
               <div key={index} className="p-6 rounded-lg shadow-md">
