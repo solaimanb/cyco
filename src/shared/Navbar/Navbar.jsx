@@ -12,12 +12,12 @@ const Navbar = () => {
       .then()
       .catch((error) => console.log(error));
   };
+
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
         <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
-            {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="font-bold text-2xl">CYCO</h3>
           </Link>
 
@@ -87,19 +87,6 @@ const Navbar = () => {
                 LiveTV
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                id="nav"
-                to="/podcast"
-                aria-label="Podcast"
-                title="Podcast"
-                className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
-                }
-              >
-                Podcast
-              </NavLink>
-            </li> */}
             <li>
               <NavLink
                 id="nav"
@@ -108,7 +95,7 @@ const Navbar = () => {
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-cyred' : 'default'
-                }lk
+                }
               >
                 About
               </NavLink>
@@ -126,10 +113,6 @@ const Navbar = () => {
                 Contact US
               </NavLink>
             </li>
-
-            {/* <li className="ml-8">
-              <DarkLight />
-            </li> */}
           </ul>
           <li className="flex items-center">
             {user ? (
