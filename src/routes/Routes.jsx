@@ -38,6 +38,10 @@ import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
 import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
 import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
+import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
+import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
+import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
+
 
 const router = createBrowserRouter([
   {
@@ -85,8 +89,11 @@ const router = createBrowserRouter([
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'watchlist', element: <Watchlist /> },
-      { path: 'users-home', element: <UsersHome /> },
       { path: 'try-premium', element: <TryPremium /> },
+      { path: 'my-package', element: <MyPackage /> },
+      { path: 'payment-history', element: <PaymentHistory /> },
+      { path: 'account-settings', element: <ProfileSettings /> },
+
       { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },
       // {

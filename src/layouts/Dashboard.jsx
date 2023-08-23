@@ -120,7 +120,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/"
+                    to="/dashboard/my-package"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
                     My Packages :
@@ -129,13 +129,22 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/"
+                    to="/dashboard/payment-history"
                     className="block px-2 py-2 text-white hover:bg-gray-800"
                   >
                     Payment History:
                   </Link>
                 </li>
-                {/* Add more links as needed */}
+                <li>
+                  <Link
+                    onClick={handleLinkClick}
+                    to="/dashboard/account-settings"
+                    className="block px-2 py-2 text-white hover:bg-gray-800"
+                  >
+                    Account Settings:
+                  </Link>
+                </li>
+                
               </ul>
             )
           }
