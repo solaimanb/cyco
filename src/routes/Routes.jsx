@@ -43,7 +43,6 @@ import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
