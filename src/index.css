@@ -28,3 +28,7 @@ body {
 .close-button {
   @apply absolute top-1 left-48;
 }
+
+.border-animation {
+  @apply rounded-lg
+}
