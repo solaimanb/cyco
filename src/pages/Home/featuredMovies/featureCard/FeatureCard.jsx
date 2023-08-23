@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const FeatureCard = ({movie,index}) => {
     const navigate = useNavigate();
     const handleOnclick =()=>{
-        navigate('/movieDetails', { state: { movie } })
+        navigate('/movieInfo', { state: { movie } })
     }
 
     return (
