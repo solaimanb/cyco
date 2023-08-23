@@ -3,7 +3,6 @@ import ReactPlayer from 'react-player';
 import useMovies from '../../hooks/useMovies';
 import { useParams } from 'react-router-dom'; 
 
-
 const PlayerPage = () => {
   const [ movies] = useMovies();
   const { index } = useParams();
