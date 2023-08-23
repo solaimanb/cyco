@@ -151,7 +151,7 @@ const Navbar = () => {
         </div>
 
         {/* Responsive small device */}
-        <div className="flex items-center justify-between lg:hidden py-5 px-5">
+        <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">
           <div>
             <button
               aria-label="Open Menu"
