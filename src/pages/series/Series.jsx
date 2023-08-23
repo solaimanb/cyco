@@ -32,7 +32,9 @@ const Series = () => {
         <div className="card-body absolute">
           <h2 className="relative top-28 mb-2">{item?.playlistName}</h2>
           <p className="text-5xl relative top-24 flex">
-            <MdOutlinePlaylistAdd />
+            <MdOutlinePlaylistAdd 
+              
+            />
             {item?.numberOfVideos}
             <small className="text-sm relative top-5">Videos</small>
           </p>
