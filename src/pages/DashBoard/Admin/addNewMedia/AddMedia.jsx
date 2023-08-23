@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
-import AddNewMediaForm from './AddNewMedia';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import AddNewMediaForm from './AddNewMedia';
 
 const AddRoom = () => {
   const {user} = useContext(AuthContext)
@@ -32,7 +31,6 @@ const AddRoom = () => {
         const Data = {
           // image: data?.data?.display_url,
           location,
-          title,
           // host:{
           //   name:user?.displayName,
           //   image:user?.photoURL,
