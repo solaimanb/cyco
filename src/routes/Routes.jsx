@@ -36,6 +36,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import PlayerPage from '../components/TrailerCard/PlayerPage';
 import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
 import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
 import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: 'trailer', element: <Trailer /> },
+      { path: 'trailer/:index', element: <PlayerPage /> },
       { path: 'movies', element: <Movies /> },
       { path: 'series', element: <Series /> },
       { path: 'series/seriesParts', element: <SeriesParts /> },
