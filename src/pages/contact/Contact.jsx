@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import contactImg from '../../../public/contact-img.jpg';
+import contactImg from '/contact-img.jpg';
 
 const Contacts = () => {
   const addresses = [

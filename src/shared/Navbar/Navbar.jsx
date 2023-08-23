@@ -108,7 +108,7 @@ const Navbar = () => {
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-cyred' : 'default'
-                }
+                }lk
               >
                 About
               </NavLink>
