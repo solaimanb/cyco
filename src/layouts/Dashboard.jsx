@@ -19,7 +19,7 @@ const Dashboard = () => {
   const handleLinkFalse =()=>{
     setLinkClicked(false);
   }
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
 
   return (
     <div className="flex h-screen">
@@ -102,7 +102,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/"
+                    to="/dashboard/watchlist"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
                     My WatchList :
@@ -111,7 +111,7 @@ const Dashboard = () => {
                 <li>
                   <Link
                     onClick={handleLinkClick}
-                    to="/dashboard/"
+                    to="/dashboard/try-premium"
                     className="block px-4 py-2 text-white hover:bg-gray-800"
                   >
                     Try Premium :
