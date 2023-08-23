@@ -3,6 +3,7 @@ import usePopularTvs from '../../../hooks/usePopularTvs';
 import Channel from './Channel';
 
 const PopularTvs = () => {
+  
   const [popularTvs] = usePopularTvs();
 
   return (
