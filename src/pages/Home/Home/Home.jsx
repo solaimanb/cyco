@@ -9,7 +9,7 @@ import useMovies from '../../../hooks/useMovies';
 import Testimonials from '../../testimonials/Testimonials';
 import Categories from '../categories/Categories';
 import FeaturedAds from '../featuredAds/FeaturedAds';
-import FeaturedMovies from '../featuredMovies/featuredMovies';
+import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
 import PopularTvs from '../popularTvs/PopularTvs';
@@ -127,9 +127,9 @@ const Home = () => {
         </div>
 
         {/* Movies/Categories */}
-        <div className="flex justify-between gap-3">
+        <div className="flex justify-between gap-5 mt-10">
           <div className="">
-            <div className="mt-20">
+            <div className="mt-10">
               <Title title={'Most Recent'} />
               <MostRecent />
             </div>
