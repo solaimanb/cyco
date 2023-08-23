@@ -7,7 +7,7 @@ const PopularTvs = () => {
   const [popularTvs] = usePopularTvs();
 
   return (
-    <div className="flex flex-wrap gap-5 justify-around w-[70%] my-10 mx-auto">
+    <div className="flex flex-wrap gap-2 justify-around w-[90%] my-10 mx-auto">
       {popularTvs?.map((data) => (
         <Channel key={data?.id} data={data} />
       ))}

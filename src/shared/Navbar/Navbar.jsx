@@ -12,12 +12,14 @@ const Navbar = () => {
       .then()
       .catch((error) => console.log(error));
   };
+
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
+        
+        {/* Responsive wide screen device */}
         <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
-            {/* <img src={logo} alt="" className="w-44" /> */}
             <h3 className="font-bold text-2xl">CYCO</h3>
           </Link>
 
@@ -87,19 +89,6 @@ const Navbar = () => {
                 LiveTV
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                id="nav"
-                to="/podcast"
-                aria-label="Podcast"
-                title="Podcast"
-                className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
-                }
-              >
-                Podcast
-              </NavLink>
-            </li> */}
             <li>
               <NavLink
                 id="nav"
@@ -108,7 +97,7 @@ const Navbar = () => {
                 title="About Us"
                 className={({ isActive }) =>
                   isActive ? 'bg-cyred' : 'default'
-                }lk
+                }
               >
                 About
               </NavLink>
@@ -126,10 +115,6 @@ const Navbar = () => {
                 Contact US
               </NavLink>
             </li>
-
-            {/* <li className="ml-8">
-              <DarkLight />
-            </li> */}
           </ul>
           <li className="flex items-center">
             {user ? (
@@ -166,7 +151,7 @@ const Navbar = () => {
         </div>
 
         {/* Responsive small device */}
-        <div className="flex items-center justify-between lg:hidden py-5 px-10">
+        <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">
           <div>
             <button
               aria-label="Open Menu"
@@ -192,7 +177,7 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute z-10 top-0 left-0 w-full">
-              <div className="p-5 bg-cyred text-white shadow-sm">
+              <div className="py-5 bg-cyred text-white shadow-sm">
                 <div className="flex flex-row-reverse items-center justify-between mb-4">
                   <div>
                     <Link
