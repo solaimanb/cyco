@@ -11,21 +11,21 @@ const testimonialData = [
   {
     image: '/t-avt-1.png',
     name: 'Anne Smith',
-    position: 'Customer',
+    position: 'VIP-Club-Member',
     message:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
+      'Cyco tv is Game changing concept in online streeming Platform. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
   },
   {
     image: '/t-avt-2.png',
     name: 'Jane Doe',
-    position: 'Customer',
+    position: 'Subscriber',
     message:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
   },
   {
     image: '/t-avt-3.png',
     name: 'Jhon Doe',
-    position: 'Customer',
+    position: 'User',
     message:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
   },
@@ -58,7 +58,7 @@ const TestimonialSlider = () => {
                     />
                   </div>
                   {/* name */}
-                  <div className="text-lg">{feedBack.name}</div>
+                  <div className="text-lg ">{feedBack.name}</div>
                   {/* position */}
                   <div className="text-[12px] uppercase font-extralight tracking-widest">
                     {feedBack.position}
@@ -73,7 +73,7 @@ const TestimonialSlider = () => {
                   {/* icon */}
                   <FaQuoteLeft className="text-4xl xl:text-6xl text-cyred mx-auto md:mx-0 " />
                 </div>
-                <div className="xl:text-lg text-center md:text-left mb-4 text-cyred">
+                <div className="xl:text-lg text-center md:text-left mb-4 text-white">
                   {feedBack.message}
                 </div>
               </div>
