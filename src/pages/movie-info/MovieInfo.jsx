@@ -2,7 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaFolderPlus, FaPlayCircle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
-import FeaturedMovies from '../Home/featuredMovies/featuredMovies';
+import FeaturedMovies from '../home/featuredMovies/FeaturedMovies';
 
 const MovieInfo = () => {
     const navigate = useNavigate();
