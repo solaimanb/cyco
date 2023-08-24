@@ -18,8 +18,9 @@ const PopularTv = () => {
       <h2>{data?.name}</h2>
       <div className="fixed inset-0 flex justify-center items-center backdrop-blur-2xl">
         <ReactPlayer
-          url={data.tvUrl}
+          url={data?.tvUrl}
           width={"60%"}
+          height={"50%"}
           controls
         />
       </div>
