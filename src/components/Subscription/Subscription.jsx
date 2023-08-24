@@ -23,7 +23,7 @@ const Subscription = () => {
     <div className="hero mt-20">
       <div className="hero-content text-center text-neutral-content">
         <div className="">
-          <div className="mb-20 text-white">
+          <div className="mb-10 text-white">
             <h1 className="text-4xl font-bold">Tier Plan</h1>
             <p>Join the whitelist your perfect option below</p>
           </div>

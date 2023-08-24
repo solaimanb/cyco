@@ -6,13 +6,13 @@ const MovieCard = ({ movie }) => {
   // console.log(movie);
 
   const openMovie = () => {
-    navigate('/movieDetails', { state: { movie } });
+    navigate('/movieInfo', { state: { movie } });
   };
 
   return (
     <div
       onClick={openMovie}
-      className="card w-full mt-10 mb-14 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
+      className="card w-full my-2 md:mt-10 md:mb-14 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
