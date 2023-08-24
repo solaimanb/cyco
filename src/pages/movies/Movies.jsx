@@ -44,7 +44,7 @@ const Movies = () => {
       <div className="flex items-center gap-3 justify-center">
         <input
           type="search"
-          className="rounded-full px-3 py-2 w-[30%]"
+          className="rounded-full px-3 py-2 w-[80%] md:w-[50%] lg:w-[30%]"
           placeholder="Search movies"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}

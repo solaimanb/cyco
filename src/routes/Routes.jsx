@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import PlayerPage from '../components/TrailerCard/PlayerPage';
 import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
@@ -7,6 +8,11 @@ import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
+import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
+import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
+import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
+import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
+import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -36,12 +42,6 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
-import PlayerPage from '../components/TrailerCard/PlayerPage';
-import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
-import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
-import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
-import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
-import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 
 const router = createBrowserRouter([
   {
