@@ -44,7 +44,7 @@ const Home = () => {
           interactivity: {
             events: {
               onClick: {
-                enable: true,
+                enable: false,
                 mode: 'push',
               },
               onHover: {
@@ -101,7 +101,7 @@ const Home = () => {
               value: { min: 1, max: 2 },
             },
           },
-          detectRetina: true,
+          detectRetina: false,
         }}
       />
       <div className="min-h-screen">
@@ -121,14 +121,14 @@ const Home = () => {
         </div>
 
         {/* Popular TVs */}
-        <div>
+        <div className='mt-20'>
           <Title title={'Popular TVs'} />
           <PopularTvs />
         </div>
 
         {/* Movies/Categories */}
-        <div className="flex justify-between gap-5 mt-10">
-          <div className="w-[85%]">
+        <div className="flex justify-between gap-5 mt-20">
+          <div className="md:w-[85%]">
             <div className="mt-10">
               <Title title={'Most Recent'} />
               <MostRecent />
@@ -138,7 +138,7 @@ const Home = () => {
               <TopPicks />
             </div>
           </div>
-          <div className="mt-5 w-[15%] hidden md:block">
+          <div className="mt-5 md:w-[15%] hidden md:block">
             <Title title={'Categories'} />
             <Categories />
           </div>
