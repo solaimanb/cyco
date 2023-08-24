@@ -16,7 +16,7 @@ const Categories = () => {
     { to: 'classic-movies', name: 'Classic Movies' },
   ];
   return (
-    <div className="sticky top-24">
+    <div className="sticky top-24 mt-14">
       <ul className="space-y-3">
         {categoriesItem.map((category, index) => (
           <Link

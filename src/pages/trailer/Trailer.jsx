@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
 
 const Trailer = () => {
   const [movies] = useMovies();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -58,11 +60,15 @@ const Trailer = () => {
           <div>No results found.</div>
         ) : searchQuery && isSearchClicked ? (
           filteredMovies?.map((movie, index) => (
-            <TrailerCard key={index} movie={movie} />
+            <Link to={`/trailer/${index}`} key={index}>
+              <TrailerCard movie={movie} index={index} />
+            </Link>
           ))
         ) : (
           records?.map((movie, index) => (
-            <TrailerCard key={index} movie={movie} />
+            <Link to={`/trailer/${index}`} key={index}>
+              <TrailerCard movie={movie} index={index} />
+            </Link>
           ))
         )}
       </div>

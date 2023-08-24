@@ -1,44 +1,19 @@
-import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
-
-const TrailerCard = ({ movie }) => {
-  const [isMovieOpen, setIsMovieOpen] = useState(false);
-    console.log(movie);
-
-  const openMoviePlayer = () => {
-    setIsMovieOpen(true);
-  };
-
-  const closeMoviePlayer = () => {
-    setIsMovieOpen(false);
-  };
-
+import { Link } from 'react-router-dom';
+const TrailerCard = ({ movie, index }) => {
   return (
-    <div
-      onClick={openMoviePlayer}
-      className="card w-full mt-10 mb-20 h-[200px] md:h-[250px] lg:h-[350px]"
-    >
-      <img
-        className="w-full h-full object-cover rounded-sm hover:brightness-110"
-        src={movie?.Thumbnail}
-        alt=""
-      />
-      <div className="p-2 text-white">
-        <h2 className="text- font-semibold">{movie?.Title}</h2>
-        <p className="text-sm">Will Be Release: {movie?.Year}</p>
-      </div>
-      {isMovieOpen && (
-        <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
-          <ReactPlayer
-            url={movie?.Trailer?.Source}
-            width={'70%'}
-            height={'70%'}
-            controls
-          />
+    <div className="card w-full mt-10 mb-20 h-[200px] md:h-[250px] lg:h-[350px]">
+      <Link to={`/trailer/${index}`}>
+        <img
+          className="w-full h-full object-cover rounded-sm hover:brightness-110"
+          src={movie?.Thumbnail}
+          alt=""
+        />
+        <div className="p-2 text-white">
+          <h2 className="text- font-semibold">{movie?.Title}</h2>
+          <p className="text-sm">Will Be Release: {movie?.Year}</p>
         </div>
-      )}
+      </Link>
     </div>
   );
 };
-
 export default TrailerCard;

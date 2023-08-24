@@ -21,8 +21,8 @@ const FeaturedMovies = () => {
  
 
   return (
-    <div className="mx-5 py-5 z-10">
-      <div className="flex flex-row md:flex-row gap-4 md:gap-8">
+    <div className="py-5 z-10">
+      <div className="flex flex-row md:flex-row gap-3 md:gap-4">
         {
           FeatureMovies.map((movie,index)=> <FeatureCard  key={index} movie={movie} index={index}></FeatureCard>)
         }

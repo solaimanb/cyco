@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import PlayerPage from '../components/TrailerCard/PlayerPage';
 import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
@@ -7,6 +8,11 @@ import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
+import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
+import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
+import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
+import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
+import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -44,6 +50,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: 'trailer', element: <Trailer /> },
+      { path: 'trailer/:index', element: <PlayerPage /> },
       { path: 'movies', element: <Movies /> },
       { path: 'series', element: <Series /> },
       { path: 'series/seriesParts', element: <SeriesParts /> },
@@ -65,7 +72,7 @@ const router = createBrowserRouter([
       { path: 'tv-shows', element: <TvShows /> },
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
-      { path: 'movieDetails', element: <MovieInfo /> },
+      { path: 'movieInfo', element: <MovieInfo /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
@@ -82,6 +89,12 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
+      { path: 'watchlist', element: <Watchlist /> },
+      { path: 'try-premium', element: <TryPremium /> },
+      { path: 'my-package', element: <MyPackage /> },
+      { path: 'payment-history', element: <PaymentHistory /> },
+      { path: 'account-settings', element: <ProfileSettings /> },
+
       { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },
       // {

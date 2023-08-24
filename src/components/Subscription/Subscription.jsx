@@ -1,19 +1,20 @@
-import React from 'react';
-import { FaAlignJustify, FaCheckDouble } from 'react-icons/fa';
+import React from "react";
+import { FaAlignJustify, FaCheckDouble } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Subscription = () => {
   const SubscriptionBasicInfo = {
-    type: 'basic',
+    type: "basic",
     regularPrice: 29.99,
     discountPrice: 10.99,
   };
   const SubscriptionPremiumInfo = {
-    type: 'premium',
+    type: "premium",
     regularPrice: 59.99,
     discountPrice: 34.99,
   };
   const SubscriptionUltaPremiumInfo = {
-    type: 'Ultapremium',
+    type: "Ultapremium",
     regularPrice: 99.99,
     discountPrice: 54.99,
   };
@@ -22,7 +23,7 @@ const Subscription = () => {
     <div className="hero mt-20">
       <div className="hero-content text-center text-neutral-content">
         <div className="">
-          <div className="mb-20 text-white">
+          <div className="mb-10 text-white">
             <h1 className="text-4xl font-bold">Tier Plan</h1>
             <p>Join the whitelist your perfect option below</p>
           </div>
@@ -78,9 +79,12 @@ const Subscription = () => {
               </ul>
               <hr />
               <div className="group:mb-0">
-                <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-                  Choose Plan
-                </button>
+                <Link to="/payment">
+                  {" "}
+                  <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                    Choose Plan
+                  </button>{" "}
+                </Link>
               </div>
             </div>
 
@@ -133,9 +137,11 @@ const Subscription = () => {
                 </li>
               </ul>
               <hr />
-              <button className="block w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4 align-bottom">
-                Choose Plan
-              </button>
+              <Link to="/payment">
+                <button className="block w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4 align-bottom">
+                  Choose Plan
+                </button>{" "}
+              </Link>
             </div>
 
             {/* Premium Plan */}
@@ -196,9 +202,11 @@ const Subscription = () => {
                   </li>
                 </ul>
                 <hr />
-                <button className="w-full text-red-700 bg-white rounded opacity-75 hover:opacity-100 hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-                  Choose Plan
-                </button>
+                <Link to="/payment">
+                  <button className="w-full text-red-700 bg-white rounded opacity-75 hover:opacity-100 hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                    Choose Plan
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -253,9 +261,11 @@ const Subscription = () => {
                 </li>
               </ul>
               <hr />
-              <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
-                Choose Plan
-              </button>
+              <Link to="/payment">
+                <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                  Choose Plan
+                </button>
+              </Link>
             </div>
           </div>
         </div>
