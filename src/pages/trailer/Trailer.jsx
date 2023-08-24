@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
-import { Link } from 'react-router-dom';
 
 const Trailer = () => {
   const [movies] = useMovies();
@@ -56,22 +56,22 @@ const Trailer = () => {
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
-      {isSearchClicked && filteredMovies.length === 0 ? (
-        <div>No results found.</div>
-      ) : searchQuery && isSearchClicked ? (
-        filteredMovies?.map((movie, index) => (
-          <Link to={`/trailer/${index}`} key={index}>
-            <TrailerCard movie={movie} index={index} />
-          </Link>
-        ))
-      ) : (
-        records?.map((movie, index) => (
-          <Link to={`/trailer/${index}`} key={index}>
-            <TrailerCard movie={movie} index={index} />
-          </Link>
-        ))
-      )}
-    </div>
+        {isSearchClicked && filteredMovies.length === 0 ? (
+          <div>No results found.</div>
+        ) : searchQuery && isSearchClicked ? (
+          filteredMovies?.map((movie, index) => (
+            <Link to={`/trailer/${index}`} key={index}>
+              <TrailerCard movie={movie} index={index} />
+            </Link>
+          ))
+        ) : (
+          records?.map((movie, index) => (
+            <Link to={`/trailer/${index}`} key={index}>
+              <TrailerCard movie={movie} index={index} />
+            </Link>
+          ))
+        )}
+      </div>
 
       {/* Pagination */}
       <nav>

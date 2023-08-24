@@ -128,7 +128,7 @@ const Home = () => {
 
         {/* Movies/Categories */}
         <div className="flex justify-between gap-5 mt-10">
-          <div className="">
+          <div className="w-[85%]">
             <div className="mt-10">
               <Title title={'Most Recent'} />
               <MostRecent />
@@ -138,7 +138,7 @@ const Home = () => {
               <TopPicks />
             </div>
           </div>
-          <div className="mt-5 w-[30%] hidden md:block">
+          <div className="mt-5 w-[15%] hidden md:block">
             <Title title={'Categories'} />
             <Categories />
           </div>
