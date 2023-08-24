@@ -1,7 +1,7 @@
 /* CSS */
 .cyco-btn,
 .cyco-btn:after {
-  width: 150px;
+  width: 100%;
   height: 50px;
   font-size: 12px;
   background: linear-gradient(45deg, transparent 5%, #800000 5%);
@@ -98,7 +98,7 @@
 @media (min-width: 768px) {
   .cyco-btn,
   .cyco-btn:after {
-    width: 200px;
-    height: 60px;
+    width: 100%;
+    height: 50px;
   }
 }

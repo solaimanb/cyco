@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       onClick={openMovie}
-      className="card w-full mt-10 mb-20 h-80 md:w-[250px]"
+      className="card w-full mt-10 mb-14 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
     >
       <img
         className="w-full h-full object-cover rounded-sm hover:brightness-110"
@@ -21,8 +21,8 @@ const MovieCard = ({ movie }) => {
       />
       <div className="p-2 text-white">
         <h2 className="text- font-semibold">{movie?.Title}</h2>
-        <p className="mt-2 text-sm">{movie?.Runtime}</p>
-        <p className="text-sm">Released: {movie?.Released}</p>
+        <p className="mt-2 text-xs">{movie?.Runtime}</p>
+        <p className="text-xs">Released: {movie?.Released}</p>
       </div>
 
       {/* {isMovieOpen && (

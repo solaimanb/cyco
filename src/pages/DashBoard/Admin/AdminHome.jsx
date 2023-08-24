@@ -1,9 +1,9 @@
-import React from 'react'
-import Chart from '../../../components/chart/Chart'
+import React from 'react';
+import Chart from '../../../components/chart/Chart';
 
 const AdminHome = () => {
   return (
-    <div className=''>
+    <div className='flex flex-col'>
       <div className='bg-[#27215E] rounded-lg mx-2'>
         <div className='my-5 mx-3 grid grid-cols-1 md:grid-cols-3 '>
           <div className="card w-96 my-3 bg-[#130047] text-primary-content rounded-lg">
