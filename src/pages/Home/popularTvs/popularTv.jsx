@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useLocation } from "react-router-dom";
 
 const PopularTv = () => {
+  
   const location = useLocation();
   const { data } = location.state || {};
 
