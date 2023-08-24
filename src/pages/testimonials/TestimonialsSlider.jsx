@@ -3,7 +3,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // testimonial data
@@ -34,17 +34,22 @@ const testimonialData = [
 const TestimonialSlider = () => {
   return (
     <Swiper
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      slidesPerView={1}
       navigation={true}
       pagination={{
         clickable: true,
       }}
-      modules={[Navigation, Pagination]}
-      className="h-[440px] "
+      modules={[Autoplay, Navigation, Pagination]}
+      // className="h-[440px]"
     >
       {testimonialData.map((feedBack, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-16 ">
+            <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-10">
               {/* avater, name, position */}
               <div className="w-full max-w-[300px] flex flex-col xl:justify-center items-center relative mx-auto xl:mx-0">
                 <div className="flex flex-col justify-center text-center">
