@@ -16,7 +16,6 @@ const Navbar = () => {
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
-        
         {/* Responsive wide screen device */}
         <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
           <Link to="/">
@@ -265,25 +264,38 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                      <Link
-                        to="/login"
-                        aria-label="Login"
-                        title="Login"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
-                      >
-                        Login
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        to="/register"
-                        aria-label="Register"
-                        title="Register"
-                        className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
-                      >
-                        Register
-                      </Link>
+                      {user ? (
+                        <>
+                          <Link
+                            id="nav"
+                            to="/dashboard "
+                            aria-label="Dashboard "
+                            title="Dashboard "
+                            // className={({ isActive }) =>
+                            //   isActive ? 'active' : 'default'
+                            // }
+                            className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
+                          >
+                            Dashboard
+                          </Link>
+                          <button onClick={handleLogOut} id="nav" className="">
+                            Logout
+                          </button>
+                        </>
+                      ) : (
+                        <Link
+                          id="nav"
+                          to="/login"
+                          aria-label="login"
+                          title="Login"
+                          className="tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-cyred font-bold pr-[100%] py-2 pl-1"
+                          // className={({ isActive }) =>
+                          //   isActive ? 'bg-cyred' : 'default'
+                          // }
+                        >
+                          Login
+                        </Link>
+                      )}
                     </li>
                   </ul>
                 </nav>
