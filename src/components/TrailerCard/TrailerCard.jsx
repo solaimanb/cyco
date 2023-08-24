@@ -16,5 +16,4 @@ const TrailerCard = ({ movie, index }) => {
     </div>
   );
 };
-}
 export default TrailerCard;
