@@ -44,7 +44,7 @@ const Home = () => {
           interactivity: {
             events: {
               onClick: {
-                enable: true,
+                enable: false,
                 mode: 'push',
               },
               onHover: {
@@ -101,7 +101,7 @@ const Home = () => {
               value: { min: 1, max: 2 },
             },
           },
-          detectRetina: true,
+          detectRetina: false,
         }}
       />
       <div className="min-h-screen">
