@@ -1,18 +1,27 @@
-// VideoPlayer.js
-import React from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 
-const VideoPlayer = () => {
-  const movie = [];
-
+const VideoPlayer = ({ channel }) => {
   return (
-    <div className="bg-gray-800 h-full rounded-sm p-2">
-      <ReactPlayer
-        url={'https://www.youtube.com/watch?v=kW5fwGkQgxk'}
-        width={'100%'}
-        height={'100%'}
-        controls
-      />
+    <div className="bg-gray-800 h-full rounded-sm p-2 relative">
+      {channel ? (
+        <div className="relative" style={{ paddingBottom: '56.25%' }}>
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${channel.videoId}`} // Assuming each channel has a unique videoId
+            width="100%"
+            height="100%"
+            controls
+            playing // Auto-play the video
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          />
+        </div>
+      ) : (
+        <p>Select a channel to start playing.</p>
+      )}
+      {channel && (
+        <div className="absolute top-2 right-2 bg-red-500 text-white py-1 px-2 rounded">
+          Live
+        </div>
+      )}
     </div>
   );
 };

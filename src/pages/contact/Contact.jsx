@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import contactImg from '/contact-img.jpg';
+import { useState } from 'react';
+import './Contact.css';
 
 const Contacts = () => {
   const addresses = [
@@ -36,78 +36,68 @@ const Contacts = () => {
       country: 'China',
     },
   ];
-
+  const [isFormVisible, setIsFormVisible] = useState(false);
   return (
-    <>
-      <div className="flex relative rounded-lg  justify-center items-center h-56 bg-gray-100">
-        <img
-          src={contactImg}
-          alt="Contact Background"
-          className="object-cover h-full w-full rounded-lg "
-        />
-        <div className="absolute top-1/2 right-1/2 text-red-800">
-          <NavLink
-            id="nav"
-            to="/"
-            aria-label="Home"
-            title="Home"
-            className={({ isActive }) =>
-              isActive ? 'bg-[#800000]' : 'default'
-            }
-          >
-            Home
-          </NavLink>
+    <div className="flex flex-col w-[80%] mx-auto mt-20 lg:mt-40">
+      {/* Contact Form */}
+      <section id="contact" className="w-full md:[50%] xl:w-[40%]">
+        <div className="sectionheader">
+          <h1>CONTACT</h1>
         </div>
-      </div>
-      <div className="flex p-8">
-        {/* Left Side */}
-        <div className="w-1/2 pr-8">
-          <h1 className="text-2xl font-semibold mb-4 text-center">Contact Us</h1>
-          <div className="mb-4">
-            <label className="block font-medium mb-1">Your Name</label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-1">Your Email</label>
-            <input
-              type="email"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-1">Message</label>
-            <textarea
-              rows="4"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-            ></textarea>
-          </div>
-          <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
-            Submit
-          </button>
+        <article>
+          <p className="text-black text-sm text-center">
+            Have questions, suggestions, or feedback? We'd love to hear from
+            you! At Cyco TV, we're dedicated to providing you with the best
+            streaming experience and an extensive collection of movies and TV
+            shows.
+          </p>
+
+          <label htmlFor="checkcontact" className="contactbutton">
+            <div className="mail"></div>
+          </label>
+          <input id="checkcontact" type="checkbox" />
+
+          <form action="" method="post" className="contactform">
+            <p className="input_wrapper">
+              <input type="text" name="name" id="name" />
+              <label htmlFor="name">NAME</label>
+            </p>
+            <p className="input_wrapper">
+              <input type="text" name="email" d id="email" />
+              <label htmlFor="email">EMAIL</label>
+            </p>
+            <p className="input_wrapper">
+              <input type="text" name="contact" id="contact" />
+              <label htmlFor="contact">SUBJECT</label>
+            </p>
+            <p className="textarea_wrapper">
+              <textarea name="contact_message" id="contact_message"></textarea>
+            </p>
+            <p className="submit_wrapper">
+              <input type="submit" value="ENVOYER" />
+            </p>
+          </form>
+        </article>
+      </section>
+      {/* Address */}
+      {/* <div className="mt-10">
+        <h1 className="text-xl font-semibold mb-4 text-center">Our Office</h1>
+        <div className="grid gap-2 grid-cols-2">
+          {addresses?.map((address, index) => (
+            <div key={index} className="p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-3">{address.name}</h3>
+              <p>
+                {address.address}
+                <br />
+                {address.city}, {address.state} {address.postalCode}
+                <br />
+                {address.country}
+              </p>
+            </div>
+          ))}
         </div>
-        {/* Right Side */}
-        <div className="w-1/2 pl-8">
-          <h1 className="text-2xl font-semibold mb-4 text-center">Our Office</h1>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-            {addresses?.map((address, index) => (
-              <div key={index} className="p-6 rounded-lg shadow-md">
-                <h3 className="text-3xl font-semibold mb-3">{address.name}</h3>
-                <p>
-                  {address.address}
-                  <br />
-                  {address.city}, {address.state} {address.postalCode}
-                  <br />
-                  {address.country}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 

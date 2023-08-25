@@ -12,52 +12,52 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10">
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-lg font-semibold mb-2">Explore</h3>
+              <h4 className="md:text-lg font-semibold mb-2">Explore</h4>
               <Link
                 to='/'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Home
               </Link>
               <Link
                 to='/tvShow'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 TV Shows
               </Link>
               <Link
                 to='/movies'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Movies
               </Link>
             </div>
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-lg font-semibold mb-2">Help</h3>
+              <h4 className="md:text-lg font-semibold mb-2">Help</h4>
               <Link
                 to='/faq'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 FAQs
               </Link>
               <a
                 href="#"
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Contact Us
               </a>
             </div>
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-lg font-semibold mb-2">Legal</h3>
+              <h4 className="md:text-lg font-semibold mb-2">Legal</h4>
               <Link
                 to='/PrivacyPolicy'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
               <Link
                 to='TermsConditions'
-                className="hover:text-white transition-colors duration-300"
+                className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Terms of Use
               </Link>
