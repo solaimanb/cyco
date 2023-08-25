@@ -30,21 +30,21 @@ const Dashboard = () => {
   const [isAdmin, SetAdmin] = [false];
 
   return (
-    <div className="relative drawer flex flex-col lg:flex-row h-screen">
+    <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
       {/* Hamburger Menu */}
       <div
         className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${
-          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-700 border-r'
+          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
         }`}
       >
         {/* Toggle Bar */}
-        <div className="lg:hidden">
+        <div className="lg:hidden text-white mb-4">
           {isSidebarOpen ? (
-            <button onClick={toggleSidebar} className="z-50">
+            <button onClick={toggleSidebar} className="fixed z-50">
               <FaTimes size={24} />
             </button>
           ) : (
-            <button onClick={toggleSidebar} className="text-gray-700">
+            <button onClick={toggleSidebar} className="">
               <FaBars size={24} />
             </button>
           )}
@@ -100,7 +100,7 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <nav
-        className={`absolute z-40 lg:hidden h-screen bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+        className={`fixed h-full z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
@@ -256,7 +256,11 @@ const Dashboard = () => {
       </nav>
 
       {/* Display Page Content */}
-      <div className="drawer-content h-full w-full">
+      <div
+        className={`drawer-content ${
+          isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
+        } h-full w-full mt-5`}
+      >
         <Outlet />
       </div>
     </div>
