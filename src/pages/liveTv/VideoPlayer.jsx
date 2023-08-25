@@ -6,9 +6,9 @@ const VideoPlayer = () => {
   const movie = [];
 
   return (
-    <div className="bg-gray-800 h-full rounded-sm p-2">
+    <div className="h-full rounded-sm">
       <ReactPlayer
-        url={'https://www.youtube.com/watch?v=kW5fwGkQgxk'}
+        url={'https://www.youtube.com/watch?v=VNvU37jqiWM'}
         width={'100%'}
         height={'100%'}
         controls
