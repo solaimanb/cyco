@@ -208,7 +208,7 @@
   -webkit-box-shadow: 1px 1px 0 0 #832032, 2px 2px 0 0 #832032,
     3px 3px 0 0 #832032;
   box-shadow: 1px 1px 0 0 #832032, 2px 2px 0 0 #832032, 3px 3px 0 0 #832032;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   -webkit-transition: all 250ms ease;
   -moz-transition: all 250ms ease;
   -ms-transition: all 250ms ease;
