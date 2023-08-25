@@ -18,6 +18,7 @@ const FeaturedMovies = () => {
       .then(data => setFeatureMovies(data))
 
   },[]);
+ 
 
   return (
     <div className="py-5 z-10">
