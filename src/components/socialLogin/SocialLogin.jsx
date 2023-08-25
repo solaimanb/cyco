@@ -24,7 +24,7 @@ const SocialLogin = () => {
   return (
     <div>
       <div className="divider"></div>
-      <div className="w-full text-center my-4">
+      <div className="w-full text-center my-2">
         <button
           onClick={handleGoogleSignIn}
           className="btn btn-circle btn-outline border-[#800000] text-[#800000]"
