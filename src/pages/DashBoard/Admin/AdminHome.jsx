@@ -4,13 +4,13 @@ import Chart from '../../../components/chart/Chart';
 const AdminHome = () => {
   return (
     <div className="flex flex-col">
-      <div className="bg-zinc-800 rounded-lg mx-2">
-        <div className="my-5 mx-3 grid grid-cols-1 md:grid-cols-3 ">
+      <div className="bg-zinc-800 rounded-sm mx-3">
+        <div className="my-5 mx-3 grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="card w-full my-3 bg-[#222222] text-primary-content rounded-lg border border-zinc-700">
             <div className="card-body">
-              <p className="text-2xl">Our Total Package</p>
+              <p className="font-bold">Our Total Package</p>
               <div className="flex">
-                <p className="my-auto">Total Active Package</p>
+                <p className="my-auto text-sm">Total Active Package</p>
                 <div
                   className="radial-progress bg-[#171717] text-primary-content border-4 border-primary"
                   style={{ '--value': 80 }}
@@ -22,9 +22,9 @@ const AdminHome = () => {
           </div>
           <div className="card w-full my-3 bg-[#222222] text-primary-content rounded-lg border border-zinc-700">
             <div className="card-body">
-              <p className="text-2xl">Our Total Package</p>
+              <p className="font-bold">Our Total Package</p>
               <div className="flex">
-                <p className="my-auto">Total Active Package</p>
+                <p className="my-auto text-sm">Total Active Package</p>
                 <div
                   className="radial-progress bg-[#171717] text-primary-content border-4 border-primary"
                   style={{ '--value': 80 }}
@@ -36,9 +36,9 @@ const AdminHome = () => {
           </div>
           <div className="card w-full my-3 bg-[#222222] text-primary-content rounded-lg border border-zinc-700">
             <div className="card-body">
-              <p className="text-2xl">Our Total Package</p>
+              <p className="font-bold">Our Total Package</p>
               <div className="flex">
-                <p className="my-auto">Total Active Package</p>
+                <p className="my-auto text-sm">Total Active Package</p>
                 <div
                   className="radial-progress bg-[#171717] text-primary-content border-4 border-primary"
                   style={{ '--value': 80 }}
@@ -54,9 +54,9 @@ const AdminHome = () => {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="card mx-3 my-3 bg-[#222222] text-primary-content rounded-lg border border-zinc-700">
               <div className="card-body">
-                <p className="text-2xl">Total Active Users</p>
+                <p className="font-bold">Total Active Users</p>
                 <div className="flex">
-                  <p className="my-auto">Total Active Users</p>
+                  <p className="my-auto text-sm">Total Active Users</p>
                   <div
                     className="radial-progress bg-[#171717] text-primary-content border-4 border-primary"
                     style={{ '--value': 90 }}

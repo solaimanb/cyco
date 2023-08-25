@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import {
   FaBars,
-  FaHome,
-  FaInfo,
+  FaBell,
   FaRegChartBar,
   FaRegSun,
   FaSignInAlt,
   FaSignOutAlt,
   FaTimes,
 } from 'react-icons/fa';
+import { LuListVideo } from 'react-icons/lu';
+import { MdSpaceDashboard } from 'react-icons/md';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 // import AdminHome from '../pages/DashBoard/Admin/AdminHome';
@@ -51,28 +52,51 @@ const Dashboard = () => {
         </div>
 
         {/* Users State */}
-        <div className="flex lg:flex-col justify-between items-center h-full pb-5">
-          <img
-            className={`${
-              isSidebarOpen ? 'hidden' : 'block'
-            } w-6 h-6 rounded-full`}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-            alt=""
-          />
-          <ul className="menu hidden lg:flex items-center z-0">
+        <div className="flex lg:flex-col justify-between h-full pb-5 px-2">
+          <div className="w-full flex gap-3 justify-start py-3 px-">
+            <img
+              className={`${
+                isSidebarOpen ? 'hidden' : 'block'
+              } w-6 h-6 rounded-full`}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
+              alt=""
+            />
+            <h2>Antonio</h2>
+          </div>
+
+          <div className="divider"></div>
+
+          <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
-              <Link className="tooltip tooltip-right" data-tip="Home">
-                <FaHome size={22} />
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2"
+                data-tip="Stats"
+              >
+                <FaBell size={22} /> Notifications
               </Link>
             </li>
             <li>
-              <Link className="tooltip tooltip-right" data-tip="Details">
-                <FaRegChartBar size={22} />
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2"
+                data-tip="Home"
+              >
+                <MdSpaceDashboard size={22} /> Dashboard
               </Link>
             </li>
             <li>
-              <Link className="tooltip tooltip-right" data-tip="Stats">
-                <FaInfo size={22} />
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2"
+                data-tip="Home"
+              >
+                <LuListVideo size={22} /> Wishlist
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2"
+                data-tip="Details"
+              >
+                <FaRegChartBar size={22} /> Analytics
               </Link>
             </li>
           </ul>
@@ -80,18 +104,27 @@ const Dashboard = () => {
           <div
             className={`hidden lg:flex ${
               isSidebarOpen ? 'flex-row-reverse' : 'flex-col'
-            } items-center mt-auto gap-3`}
+            } mt-auto gap-2`}
           >
-            <Link className="tooltip tooltip-right" data-tip="settings">
-              <FaRegSun size={22} />
+            <Link
+              className="tooltip tooltip-right flex items-center gap-2 text-sm"
+              data-tip="settings"
+            >
+              <FaRegSun size={22} /> Settings
             </Link>
             {user ? (
-              <Link className="tooltip tooltip-right" data-tip="sign-out">
-                <FaSignOutAlt size={22} />
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 text-sm"
+                data-tip="sign-out"
+              >
+                <FaSignOutAlt size={22} /> Sign Out
               </Link>
             ) : (
-              <Link className="tooltip tooltip-right" data-tip="sign-out">
-                <FaSignInAlt size={22} />
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 text-sm"
+                data-tip="sign-out"
+              >
+                <FaSignInAlt size={22} /> Sign In
               </Link>
             )}
           </div>
@@ -214,44 +247,6 @@ const Dashboard = () => {
               </li>
             </ul>
           )}
-
-          <div>{/* <Divider /> */}</div>
-          {/* <div>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Home :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Movies :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  About Us :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Live Tv :
-                </Link>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </nav>
 
