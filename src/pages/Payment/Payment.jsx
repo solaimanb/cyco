@@ -12,7 +12,7 @@ const Payment = () => {
   const currentDate = formatDate(new Date());
 
   return (
-    <div className=" relative flex justify-center items-center min-h-screen backdrop-filter bg-zinc-950 opacity-80 ">
+    <div className=" relative flex justify-center items-center min-h-screen backdrop-filter backdrop-blur-sm opacity-90 ">
       <div className="absolute top-20 animate-pulse">
         <FaFulcrum className="text-4xl text-cyred" />
         <div>
@@ -66,7 +66,7 @@ const Payment = () => {
             </div>
             <button
               type="submit"
-              className="md:mt-6 rounded-lg w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
+              className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
             >
               Subscribe Now !!!
             </button>
