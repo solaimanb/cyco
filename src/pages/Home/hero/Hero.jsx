@@ -32,7 +32,7 @@ const Hero = () => {
             <img
               src={movie?.Thumbnail}
               alt={'snow-white-movies-banner'}
-              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen object-cover"
+              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen"
             />
           </SwiperSlide>
         ))}

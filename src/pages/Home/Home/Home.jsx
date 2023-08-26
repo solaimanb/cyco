@@ -65,14 +65,14 @@ const Home = () => {
           },
           particles: {
             color: {
-              value: '#ffffff',
+              value: '#800000',
             },
             links: {
-              color: '#ffffff',
+              color: '#800000',
               distance: 150,
               enable: true,
-              opacity: 0.2,
-              width: 1,
+              opacity: 0.6,
+              width: 2,
             },
             move: {
               direction: 'none',
