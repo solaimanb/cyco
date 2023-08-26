@@ -53,7 +53,7 @@ const Login = () => {
           <div className="absolute top-0 left-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold mt-10 mb-4 ">
+          <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">
             Login
           </h2>
           <form onSubmit={handleLogin}>
