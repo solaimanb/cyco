@@ -104,6 +104,7 @@ const Home = () => {
           detectRetina: false,
         }}
       />
+
       <div className="min-h-screen">
         {/* Hero */}
         <Hero />
