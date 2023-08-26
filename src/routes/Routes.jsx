@@ -32,7 +32,7 @@ import PopularTvs from '../pages/home/popularTvs/PopularTvs';
 import PopularTv from '../pages/home/popularTvs/popularTv';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
-import MovieInfo from '../pages/movie-info/MovieInfo';
+import MovieInfo from '../pages/movieInfo/MovieInfo';
 import Movies from '../pages/movies/Movies';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
