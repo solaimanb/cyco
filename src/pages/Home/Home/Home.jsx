@@ -110,13 +110,11 @@ const Home = () => {
         <Hero />
 
         {/* Featured Movies */}
-        <div className="z-10 py-6 md:py-8 mt-[70%]">
+        <div className="z-10 py-6 md:py-8 mt-[70%] md:mt-[60%] xl:mt-[55%]">
           <Title title={'Featured Movies'} />
-          <div className="px-5">
-            <Marquee speed={10}>
-              <FeaturedMovies />
-            </Marquee>
-          </div>
+          <Marquee speed={10}>
+            <FeaturedMovies />
+          </Marquee>
         </div>
 
         {/* Popular TVs */}

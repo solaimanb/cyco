@@ -38,7 +38,7 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <div className="z-10 absolute h-full inset-0 w-[100%] backdrop-brightness-50 top-0 left-0"></div>
+      <div className="z-10 absolute h-full inset-0 w-[100%] backdrop-brightness-75 top-0 left-0"></div>
     </section>
   );
 };
