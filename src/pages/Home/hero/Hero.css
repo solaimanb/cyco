@@ -1,0 +1,9 @@
+.swiper-pagination-progressbar-fill {
+  background-color: #800000 !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #800000 !important;
+  font-weight: 900;
+}
