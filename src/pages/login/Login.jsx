@@ -1,10 +1,10 @@
-import { getAuth } from "@firebase/auth";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from "../../components/socialLogin/SocialLogin";
-import useAuth from "../../hooks/useAuth";
-import "./Login.css"
-import { FaFulcrum } from "react-icons/fa";
+import { getAuth } from '@firebase/auth';
+import React from 'react';
+import { FaFulcrum } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import SocialLogin from '../../components/socialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
+import './Login.css';
 
 const auth = getAuth();
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("Invalid email or password");
+        setErrorMessage('Invalid email or password');
       });
   };
   // const handleResetPassword = (event) => {
@@ -48,18 +48,19 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      
       <div id="loginAnimation">
         <div className="z-20">
-        <div className="absolute top-0 left-0 animate-pulse">
-      <FaFulcrum className="text-4xl text-cyred" />
-      </div>
-          <h2 className="text-xl md:text-2xl font-semibold mt-10 mb-4 ">Login</h2>
+          <div className="absolute top-0 left-0 animate-pulse">
+            <FaFulcrum className="text-4xl text-cyred" />
+          </div>
+          <h2 className="text-xl md:text-2xl font-semibold mt-10 mb-4 ">
+            Login
+          </h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-xs md:text-sm font-medium text-gray-700"
+                className="block text-xs font-medium text-gray-700"
               >
                 Email
               </label>
@@ -68,14 +69,14 @@ const Login = () => {
                 id="email"
                 name="email"
                 // ref={emailRef}
-                className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
+                className="mt-1 p-2 w-full border rounded-sm"
                 required
               />
             </div>
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-xs md:text-sm font-medium text-gray-700"
+                className="block text-xs font-medium text-gray-700"
               >
                 Password
               </label>
@@ -83,7 +84,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 name="password"
-                className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
+                className="mt-1 p-2 w-full border rounded-sm"
                 required
               />
               {/* <label className="flex justify-end">
@@ -96,11 +97,10 @@ const Login = () => {
             <div className="mt-8">
               <button
                 type="submit"
-                className="w-full text-white p-2 rounded-md border bg-red-950 bg-opacity-20 border-red-800 hover:bg-gradient-to-r hover:from-pink-900 hover:to-red-900 focus:outline-none focus:ring focus:ring-indigo-200"
+                className="w-full text-white p-2 rounded-sm border bg-red-950 bg-opacity-20 border-red-800 hover:bg-gradient-to-r hover:from-cyred hover:to-red-900 focus:outline-none"
               >
                 Login
               </button>
-
             </div>
           </form>
           <div className="flex mx-auto gap-2 ">
@@ -108,19 +108,17 @@ const Login = () => {
               <SocialLogin />
             </div>
           </div>
-          <p className="text-xs md:text-sm text-gray-600 mt-5 mb-6">
+          <p className="text-xs text-gray-600 mt-5 mb-6">
             Don't have an account?{' '}
             <Link to="/register" className="text-indigo-500 hover:underline">
               Register
             </Link>
           </p>
           <div className="absolute bottom-0 right-0 animate-pulse">
-      <FaFulcrum className="text-4xl text-cyred" />
-      </div>
+            <FaFulcrum className="text-4xl text-cyred" />
+          </div>
         </div>
-        
       </div>
-      
     </div>
   );
 };
