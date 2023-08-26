@@ -14,12 +14,12 @@ const LiveTv = () => {
   };
 
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: 'Jcy8kYaQwkA' },
+    { name: 'FOX', imageSrc: '/fox.png', videoId: '5Vw1mvV9WJc' },
   ];
 
   return (
     <div className="flex flex-col items-center lg:flex-row p-4 gap-10">
-      <div className="w-full md:w-3/4 mx-auto md:pr-4"> {/* Adjust width here */}
+      <div className="w-full md:w-3/4 mx-auto md:pr-4">
         <VideoPlayer channel={selectedChannel} />
       </div>
       <div className="mt-10">

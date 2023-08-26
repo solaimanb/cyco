@@ -6,7 +6,7 @@ const VideoPlayer = ({ channel }) => {
       {channel ? (
         <div className="relative" style={{ paddingBottom: '56.25%' }}>
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${channel.videoId}`} // Assuming each channel has a unique videoId
+            url={`https://www.youtube.com/watch?v=${channel?.videoId}`} // Assuming each channel has a unique videoId
             width="100%"
             height="100%"
             controls
@@ -18,7 +18,7 @@ const VideoPlayer = ({ channel }) => {
         <p>Select a channel to start playing.</p>
       )}
       {channel && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white py-1 px-2 rounded">
+        <div className="absolute top-2 right-2 bg-red-600 text-white py-1 px-2 rounded-sm text-sm">
           Live
         </div>
       )}
