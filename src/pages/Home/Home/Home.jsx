@@ -65,14 +65,14 @@ const Home = () => {
           },
           particles: {
             color: {
-              value: '#ffffff',
+              value: '#800000',
             },
             links: {
-              color: '#ffffff',
+              color: '#800000',
               distance: 150,
               enable: true,
-              opacity: 0.2,
-              width: 1,
+              opacity: 0.6,
+              width: 2,
             },
             move: {
               direction: 'none',
@@ -110,13 +110,11 @@ const Home = () => {
         <Hero />
 
         {/* Featured Movies */}
-        <div className="z-10 py-6 md:py-8 mt-[70%]">
+        <div className="z-10 py-6 md:py-8 mt-[70%] md:mt-[60%] xl:mt-[55%]">
           <Title title={'Featured Movies'} />
-          <div className="px-5">
-            <Marquee speed={10}>
-              <FeaturedMovies />
-            </Marquee>
-          </div>
+          <Marquee speed={10}>
+            <FeaturedMovies />
+          </Marquee>
         </div>
 
         {/* Popular TVs */}

@@ -32,13 +32,13 @@ const Hero = () => {
             <img
               src={movie?.Thumbnail}
               alt={'snow-white-movies-banner'}
-              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen object-cover"
+              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen"
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="z-10 absolute h-full inset-0 w-[100%] backdrop-brightness-50 top-0 left-0"></div>
+      <div className="z-10 absolute h-full inset-0 w-[100%] backdrop-brightness-75 top-0 left-0"></div>
     </section>
   );
 };
