@@ -14,7 +14,7 @@ const LiveTv = () => {
   };
 
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: 'Jcy8kYaQwkA' },
+    { name: 'FOX', imageSrc: '/fox.png', videoId: '5Vw1mvV9WJc' },
   ];
 
   return (
