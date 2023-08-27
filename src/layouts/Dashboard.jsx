@@ -67,8 +67,8 @@ const Dashboard = () => {
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
               <Link
+              to='users-home'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Profile"
               >
                 Profile
@@ -76,8 +76,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+                to='watchList'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Watchlist"
               >
                 Watchlist
@@ -85,8 +85,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+              to='downloads'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Downloads"
               >
                 Downloads
@@ -94,8 +94,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+              to='subscriptions'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Subscriptions"
               >
                 Subscriptions
@@ -104,8 +104,8 @@ const Dashboard = () => {
             <div className='divider my-8'></div>
             <li>
               <Link
+              to='forum'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Forum"
               >
                 Forum
@@ -113,8 +113,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+              to='watch-party'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Watch Party"
               >
                 Watch Party
@@ -122,8 +122,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+              to='recommendation'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Recommendation"
               >
                 Recommendation
@@ -131,8 +131,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+              to='update-payment-info'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
-
                 data-tip="Updated Payment Info"
               >
                 Update Info
@@ -140,6 +140,7 @@ const Dashboard = () => {
             </li>
             <div className='divider my-2'></div>
             <Link
+              to='account-settings'
               className="tooltip tooltip-right flex items-center gap-2 text-xl"
               data-tip="settings"
             >
