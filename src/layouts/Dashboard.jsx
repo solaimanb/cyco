@@ -87,6 +87,7 @@ const Dashboard = () => {
               <Link
                 className="tooltip tooltip-right flex items-center gap-2"
                 data-tip="Home"
+                to='/dashboard/watchList'
               >
                 <LuListVideo size={22} /> Wishlist
               </Link>
