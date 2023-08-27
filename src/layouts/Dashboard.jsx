@@ -66,7 +66,7 @@ const Dashboard = () => {
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
               <Link
-              to='users-home'
+                to='users-home'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Profile"
               >
@@ -84,7 +84,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-              to='downloads'
+                to='downloads'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Downloads"
               >
@@ -93,7 +93,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-              to='subscriptions'
+                to='subscriptions'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Subscriptions"
               >
@@ -103,7 +103,7 @@ const Dashboard = () => {
             <div className='divider my-8'></div>
             <li>
               <Link
-              to='forum'
+                to='forum'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Forum"
               >
@@ -112,7 +112,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-              to='watch-party'
+                to='watch-party'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Watch Party"
               >
@@ -121,7 +121,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-              to='recommendation'
+                to='recommendation'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Recommendation"
               >
@@ -130,7 +130,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-              to='update-payment-info'
+                to='update-payment-info'
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Updated Payment Info"
               >
@@ -152,11 +152,158 @@ const Dashboard = () => {
             </Link>
           </ul>
 
-          
+
         </div>
       </div>
 
-    
+      {/* Dashboard Sidebar */}
+      <nav
+        className={`fixed h-full z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${isSidebarOpen ? 'block' : 'hidden lg:block'
+          }`}
+      >
+        <div className="py-5 mt-5">
+          <div className="text-white bg-zinc-800 rounded-sm mx-2 text-xl font-semibold ml-4 mb-6 flex justify-end">
+            {/* <Link onClick={handleLinkFalse} to="/dashboard">
+              <img
+                src={logo}
+                alt="Website Logo"
+                className="rounded-lg -px-2 w-24 h-24"
+              />
+            </Link> */}
+          </div>
+
+          {isAdmin ? (
+            <ul className="space-y-3 z-10">
+              <li>
+                <Link
+                  onClick={handleLinkClick}
+                  to="/dashboard"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Admin Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={handleLinkClick}
+                  to="/dashboard/manage-users"
+                  className="block px-4 py-2  text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Manage Users
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  onClick={handleLinkClick}
+                  to="/dashboard/add-new-media"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Add New Media
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={handleLinkClick}
+                  to="/dashboard/payments"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Users Payments
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="space-y-2 text-sm md:text-base">
+              <li>
+                <Link
+                  to='users-home'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Profile"
+                >
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='watchList'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Watchlist"
+                >
+                  Watchlist
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='downloads'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Downloads"
+                >
+                  Downloads
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='subscriptions'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Subscriptions"
+                >
+                  Subscriptions
+                </Link>
+              </li>
+              <div className='divider my-8'></div>
+              <li>
+                <Link
+                  to='forum'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Forum"
+                >
+                  Forum
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='watch-party'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Watch Party"
+                >
+                  Watch Party
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='recommendation'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Recommendation"
+                >
+                  Recommendation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='update-payment-info'
+                  className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                  data-tip="Updated Payment Info"
+                >
+                  Update Info
+                </Link>
+              </li>
+              <div className='divider my-2'></div>
+              <Link
+                to='account-settings'
+                className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                data-tip="settings"
+              >
+                Settings
+              </Link>
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 text-xl"
+                data-tip="logout"
+              >Logout
+              </Link>
+            </ul>
+          )}
+        </div>
+      </nav>
 
       {/* Display Page Content */}
       <div
