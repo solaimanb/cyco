@@ -9,7 +9,7 @@ import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
-import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
+import Watchlist from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
@@ -42,6 +42,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
 
 const router = createBrowserRouter([
   {
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'watchlist', element: <Watchlist /> },
+      { path: 'watchList', element: <WatchList /> },
       { path: 'try-premium', element: <TryPremium /> },
       { path: 'my-package', element: <MyPackage /> },
       { path: 'payment-history', element: <PaymentHistory /> },
