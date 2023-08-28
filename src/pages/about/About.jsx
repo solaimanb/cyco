@@ -20,7 +20,7 @@ const About = () => {
       </p>
       <div className="py-4">
         <h2 className="text-center xl:text-xl mt-4 bg-base-100 opacity-60 py-4 rounded-3xl hover:text-white">
-          Meet Our Development Team{' '}
+          Meet Cyco Team{' '}
         </h2>
 
         {/* CYCO TEAM */}
