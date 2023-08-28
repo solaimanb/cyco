@@ -32,3 +32,6 @@ body {
 .border-animation {
   @apply rounded-lg
 }
+.dashBoard-link {
+  @apply w-64 bg-cyred mb-2
+}
