@@ -1,18 +1,51 @@
-import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import './Hero.css';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import useMovies from '../../../hooks/useMovies';
 
 const Hero = () => {
+  const [movies] = useMovies();
+  console.log(movies);
+
   return (
-    <section className="w-[100vw]">
-      <img
-        className="absolute top-16 md:top-0 w-[100vw] opacity-90 left-0"
-        src="/snow-white-movies-banner-cyco.webp"
-        // src="/oblivion-cyco.jpg"
-        alt="snow-white-movies-banner"
-      />
+    <section className="w-[100%] absolute top-10 md:top-0 left-0">
+      <Swiper
+        pagination={{
+          type: 'progressbar',
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+      >
+        {movies?.map((movie, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={movie?.Thumbnail}
+              alt={'snow-white-movies-banner'}
+              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <div className="absolute bg-black bg-opacity-50 w-full hero-content top-0 left-0"></div>
+      <div className="z-10 absolute h-full inset-0 w-[100%] backdrop-brightness-75 top-0 left-0"></div>
+    </section>
+  );
+};
 
-      {/* <div className="absolute -mt-[50%] w-[40%] text-white">
+export default Hero;
+{
+  /* <div className="absolute -mt-[50%] w-[40%] text-white">
         <h2 className="text-4xl font-bold ">Snow White & The Hunstman</h2>
 
         <p className="text-sm font-thin">
@@ -29,9 +62,5 @@ const Hero = () => {
             Add to Watchlist
           </button>
         </div>
-      </div> */}
-    </section>
-  );
-};
-
-export default Hero;
+      </div> */
+}

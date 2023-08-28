@@ -1,50 +1,48 @@
-#loginAnimation{
-    position: relative;
-    overflow: hidden;
-    width: 370px;
-    height: 450px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+#loginAnimation {
+  position: relative;
+  overflow: hidden;
+  width: 370px;
+  height: 450px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-#loginAnimation::before{
-    content: '';
-    background-image: conic-gradient(#ff0052 20deg, transparent 120deg);
-    width: 350%;
-    height: 350%;
-    position: absolute;
-    animation: rotate 2s linear infinite;
+#loginAnimation::before {
+  content: '';
+  background-image: conic-gradient(#ff0000 20deg, transparent 120deg);
+  width: 350%;
+  height: 350%;
+  position: absolute;
+  animation: rotate 10s linear infinite;
 }
 
-#loginAnimation::after{
-    content: '';
-    width: 368px;
-    height: 448px;
-    background: #111;
-    position: absolute;
-    border-radius: 10px;   
-    display: flex;
-    justify-content: center;
-    align-items: center;     
+#loginAnimation::after {
+  content: '';
+  width: 368px;
+  height: 448px;
+  background: #111;
+  position: absolute;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(-360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
-@media screen and (max-width:576px) {
-    #loginAnimation{
-        width: 303px;
-    }
-    #loginAnimation::after{
-        width: 300px;
-    }
+@media screen and (max-width: 576px) {
+  #loginAnimation {
+    width: 303px;
+  }
+  #loginAnimation::after {
+    width: 300px;
+  }
 }

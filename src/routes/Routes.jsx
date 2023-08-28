@@ -9,10 +9,9 @@ import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
-import Watchlist from '../pages/DashBoard/user/my-watchlist/Watchlist';
+import Watchlist from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
-import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -32,8 +31,8 @@ import PopularTvs from '../pages/home/popularTvs/PopularTvs';
 import PopularTv from '../pages/home/popularTvs/popularTv';
 import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
-import MovieInfo from '../pages/movie-info/MovieInfo';
 import Movies from '../pages/movies/Movies';
+import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -42,6 +41,13 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
+import Downloads from '../pages/DashBoard/user/downloads/Downloads';
+import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
+import Forum from '../pages/DashBoard/user/forum/Forum';
+import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
+import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
+import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
 
 const router = createBrowserRouter([
   {
@@ -89,9 +95,13 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'watchlist', element: <Watchlist /> },
-      { path: 'try-premium', element: <TryPremium /> },
-      { path: 'my-package', element: <MyPackage /> },
+      { path: 'watchList', element: <WatchList /> },
+      { path: 'downloads', element: <Downloads /> },
+      { path: 'subscriptions', element: <Subscriptions /> },
+      { path: 'forum', element: <Forum/> },
+      { path: 'watch-party', element: <WatchParty/> },
+      { path: 'recommendation', element: <Recommendation/> },
+      { path: 'update-payment-info', element: <UpdatePaymentInfo/> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
 
