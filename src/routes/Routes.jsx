@@ -48,6 +48,13 @@ import Forum from '../pages/DashBoard/user/forum/Forum';
 import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
 import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
+import UploadNewMovies from "../pages/DashBoard/Admin/upload-new-movie/UploadNewMovies";
+import RevenueTracking from "../pages/DashBoard/Admin/revenue-tracking/RevenueTracking";
+import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
+import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
+import Modernization from "../pages/DashBoard/Admin/modernization/Modernization";
+import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
+import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +111,18 @@ const router = createBrowserRouter([
       { path: 'update-payment-info', element: <UpdatePaymentInfo/> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
+
+
+       //
+       { path: "upload-new-movie", element: <UploadNewMovies /> },
+       { path: "revenue-tracking", element: <RevenueTracking /> },
+       { path: "system-logs", element: <SystemLogs /> },
+       //
+ 
+       { path: "manage-subscription", element: <ManageSubscription /> },
+       { path: "modernization", element: <Modernization /> },
+       { path: "user-pannel-list", element: <UserPannelList /> },
+       { path: "user-feedback", element: <UserFeedback /> },
 
       { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },
