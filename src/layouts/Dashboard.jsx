@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   FaBars,
   FaHome,
@@ -8,11 +8,10 @@ import {
   FaSignInAlt,
   FaSignOutAlt,
   FaTimes,
-} from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
-import Divider from '../components/divider/Divider';
-// import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+} from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Divider from "../components/divider/Divider";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -35,7 +34,7 @@ const Dashboard = () => {
       {/* Hamburger Menu */}
       <div
         className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${
-          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+          isSidebarOpen ? "bg-transparent" : "bg-zinc-800 border-r"
         }`}
       >
         {/* Toggle Bar */}
@@ -53,75 +52,107 @@ const Dashboard = () => {
 
         {/* Users State */}
         <div className="flex lg:flex-col justify-between items-center h-full pb-5 w-80">
-          <header className='flex justify-between items-center w-full p-2'>
+          <header className="flex justify-between items-center w-full p-2">
             <div>
-            <img
-            className={`${
-              isSidebarOpen ? 'hidden' : 'block'
-            } w-16 h-16 rounded-full`}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-            alt=""
-          />
+              <img
+                className={`${
+                  isSidebarOpen ? "hidden" : "block"
+                } w-16 h-16 rounded-full`}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
+                alt=""
+              />
             </div>
             <div>
-            <img
-            className={`${
-              isSidebarOpen ? 'hidden' : 'block'
-            } w-6 h-6`}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-            alt=""
-          />
+              <img
+                className={`${isSidebarOpen ? "hidden" : "block"} w-6 h-6`}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
+                alt=""
+              />
             </div>
           </header>
+         <div className="border  py-16 card bg-[#222222] rounded  border-zinc-700 px-4 mt-4">
+         <ul className="menu hidden lg:flex items-center z-0">
           <Divider />
-          <ul className="menu hidden lg:flex items-center z-0">
-            <li className='dashBoard-link border '>
+            <li className="dashBoard-link border ">
               <Link className="tooltip tooltip-right flex" data-tip="Home">
                 <FaHome size={22} /> DashBoard
               </Link>
-            </li >
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/upload-new-movie' className="tooltip tooltip-right flex " data-tip="Details">
-                <FaRegChartBar size={22} /> Upload New Movies 
+            </li>
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/upload-new-movie"
+                className="tooltip tooltip-right flex "
+                data-tip="Details"
+              >
+                <FaRegChartBar size={22} /> Upload New Movies
               </Link>
             </li>
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/revenue-tracking' className="tooltip tooltip-right flex" data-tip="Stats">
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/revenue-tracking"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
+              >
                 <FaInfo size={22} /> Revenue Tracking
               </Link>
             </li>
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/system-logs' className="tooltip tooltip-right flex" data-tip="Stats">
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/system-logs"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
+              >
                 <FaInfo size={22} /> System Logs
               </Link>
             </li>
 
-<Divider />
-<li className='dashBoard-link '>
-              <Link to='/dashboard/manage-subscription' className="tooltip tooltip-right flex" data-tip="Home">
+            <Divider />
+            <div className="-mt-14">
+            <Divider />
+            </div>
+            <li className="dashBoard-link ">
+              <Link
+                to="/dashboard/manage-subscription"
+                className="tooltip tooltip-right flex"
+                data-tip="Home"
+              >
                 <FaHome size={22} /> Manage Subscription
               </Link>
-            </li >
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/modernization' className="tooltip tooltip-right flex " data-tip="Details">
-                <FaRegChartBar size={22} /> Modrization  
+            </li>
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/modernization"
+                className="tooltip tooltip-right flex "
+                data-tip="Details"
+              >
+                <FaRegChartBar size={22} /> Modrization
               </Link>
             </li>
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/user-pannel-list' className="tooltip tooltip-right flex" data-tip="Stats">
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/user-pannel-list"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
+              >
                 <FaInfo size={22} /> User Panel Lists
               </Link>
             </li>
-            <li className='dashBoard-link'>
-              <Link to='/dashboard/user-feedback' className="tooltip tooltip-right flex" data-tip="Stats">
+            <li className="dashBoard-link">
+              <Link
+                to="/dashboard/user-feedback"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
+              >
                 <FaInfo size={22} /> Users FeedBack
               </Link>
             </li>
+            <Divider />
           </ul>
+         </div>
 
           <div
             className={`hidden lg:flex ${
-              isSidebarOpen ? 'flex-row-reverse' : 'flex-col'
+              isSidebarOpen ? "flex-row-reverse" : "flex-col"
             } items-center mt-auto gap-3`}
           >
             <Link className="tooltip tooltip-right" data-tip="settings">
@@ -141,12 +172,13 @@ const Dashboard = () => {
       </div>
 
       {/* Dashboard Sidebar */}
-      <nav
-        className={`fixed  h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
-          isSidebarOpen ? 'block' : 'hidden lg:block'
+     <div className="border-l-8 border-cyred">
+     <nav
+        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+          isSidebarOpen ? "block" : "hidden lg:block"
         }`}
       >
-        <div className="py-5 mt-5">
+        <div className="py-5 mt-5 ">
           <div className="text-white bg-zinc-800 rounded-sm mx-2 text-xl font-semibold ml-4 mb-6 flex justify-end">
             {/* <Link onClick={handleLinkFalse} to="/dashboard">
               <img
@@ -158,7 +190,7 @@ const Dashboard = () => {
           </div>
 
           {isAdmin ? (
-            <ul className="space-y-3 z-10">
+            <ul className="space-y-3 z-10 ">
               <li>
                 <Link
                   onClick={handleLinkClick}
@@ -257,7 +289,7 @@ const Dashboard = () => {
             </ul>
           )}
 
-          <div>{/* <Divider /> */}</div>
+         
           {/* <div>
             <ul className="space-y-2">
               <li>
@@ -296,11 +328,12 @@ const Dashboard = () => {
           </div> */}
         </div>
       </nav>
+     </div>
 
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
+          isSidebarOpen ? "brightness-0 -mt-16" : "blur-none"
         } h-full w-full mt-5`}
       >
         <Outlet />
