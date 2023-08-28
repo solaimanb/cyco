@@ -12,7 +12,6 @@ import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
 import Watchlist from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
-import TryPremium from '../pages/DashBoard/user/try-premium/TryPremium';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -43,6 +42,12 @@ import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
 import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
+import Downloads from '../pages/DashBoard/user/downloads/Downloads';
+import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
+import Forum from '../pages/DashBoard/user/forum/Forum';
+import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
+import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
+import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
 
 const router = createBrowserRouter([
   {
@@ -91,8 +96,12 @@ const router = createBrowserRouter([
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'watchList', element: <WatchList /> },
-      { path: 'try-premium', element: <TryPremium /> },
-      { path: 'my-package', element: <MyPackage /> },
+      { path: 'downloads', element: <Downloads /> },
+      { path: 'subscriptions', element: <Subscriptions /> },
+      { path: 'forum', element: <Forum/> },
+      { path: 'watch-party', element: <WatchParty/> },
+      { path: 'recommendation', element: <Recommendation/> },
+      { path: 'update-payment-info', element: <UpdatePaymentInfo/> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
 
