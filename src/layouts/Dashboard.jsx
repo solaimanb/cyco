@@ -29,8 +29,9 @@ const Dashboard = () => {
     <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
       {/* Hamburger Menu */}
       <div
-        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
-          }`}
+        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${
+          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+        }`}
       >
         {/* Toggle Bar */}
         <div className="lg:hidden text-white mb-4">
@@ -49,8 +50,9 @@ const Dashboard = () => {
         <div className="flex lg:flex-col justify-between h-full pb-5 px-2">
           <div className="w-full flex gap-3 justify-start py-3 px-">
             <img
-              className={`${isSidebarOpen ? 'hidden' : 'block'
-                } w-6 h-6 rounded-full`}
+              className={`${
+                isSidebarOpen ? 'hidden' : 'block'
+              } w-6 h-6 rounded-full`}
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
               alt=""
             />
@@ -62,7 +64,7 @@ const Dashboard = () => {
             <li>
               <Link
                 className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='users-home'
+                to="users-home"
                 data-tip="Profile"
               >
                 Profile
@@ -71,7 +73,7 @@ const Dashboard = () => {
             <li>
               <Link
                 className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='watchList'
+                to="watchList"
                 data-tip="Watchlist"
               >
                 Watchlist
@@ -80,7 +82,7 @@ const Dashboard = () => {
             <li>
               <Link
                 className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='downloads'
+                to="downloads"
                 data-tip="Downloads"
               >
                 Downloads
@@ -89,16 +91,16 @@ const Dashboard = () => {
             <li>
               <Link
                 className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='subscriptions'
+                to="subscriptions"
                 data-tip="Subscriptions"
               >
                 Subscriptions
               </Link>
             </li>
-            <div className='divider my-8'></div>
+            <div className="divider my-8"></div>
             <li>
               <Link
-                to='forum'
+                to="forum"
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Forum"
               >
@@ -107,7 +109,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to='watch-party'
+                to="watch-party"
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Watch Party"
               >
@@ -116,7 +118,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to='recommendation'
+                to="recommendation"
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Recommendation"
               >
@@ -125,17 +127,17 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to='update-payment-info'
+                to="update-payment-info"
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Updated Payment Info"
               >
                 Update Info
               </Link>
             </li>
-            <div className='divider my-2'></div>
+            <div className="divider my-2"></div>
             <Link
               className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
-              to='account-settings'
+              to="account-settings"
               data-tip="settings"
             >
               Settings
@@ -158,7 +160,8 @@ const Dashboard = () => {
             <Link
               className="tooltip tooltip-right flex items-center gap-2 text-xl"
               data-tip="logout"
-            >Logout
+            >
+              Logout
             </Link>
           </ul>
         </div>
@@ -166,8 +169,9 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <nav
-        className={`fixed h-full z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${isSidebarOpen ? 'block' : 'hidden lg:block'
-          }`}
+        className={`fixed h-full z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+          isSidebarOpen ? 'block' : 'hidden lg:block'
+        }`}
       >
         <div className="py-5 mt-5">
           <div className="text-white bg-zinc-800 rounded-sm mx-2 text-xl font-semibold ml-4 mb-6 flex justify-end">
@@ -224,7 +228,7 @@ const Dashboard = () => {
             <ul className="space-y-2 text-sm md:text-base">
               <li>
                 <Link
-                  to='users-home'
+                  to="users-home"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Profile"
                 >
@@ -233,7 +237,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='watchList'
+                  to="watchList"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Watchlist"
                 >
@@ -242,7 +246,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='downloads'
+                  to="downloads"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Downloads"
                 >
@@ -251,17 +255,17 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='subscriptions'
+                  to="subscriptions"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Subscriptions"
                 >
                   Subscriptions
                 </Link>
               </li>
-              <div className='divider my-8'></div>
+              <div className="divider my-8"></div>
               <li>
                 <Link
-                  to='forum'
+                  to="forum"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Forum"
                 >
@@ -270,7 +274,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='watch-party'
+                  to="watch-party"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Watch Party"
                 >
@@ -279,7 +283,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='recommendation'
+                  to="recommendation"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Recommendation"
                 >
@@ -288,16 +292,16 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link
-                  to='update-payment-info'
+                  to="update-payment-info"
                   className="tooltip tooltip-right flex items-center gap-2 text-xl"
                   data-tip="Updated Payment Info"
                 >
                   Update Info
                 </Link>
               </li>
-              <div className='divider my-2'></div>
+              <div className="divider my-2"></div>
               <Link
-                to='account-settings'
+                to="account-settings"
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="settings"
               >
@@ -306,7 +310,8 @@ const Dashboard = () => {
               <Link
                 className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="logout"
-              >Logout
+              >
+                Logout
               </Link>
             </ul>
           )}
@@ -315,8 +320,9 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
-          } h-full w-full mt-5`}
+        className={`drawer-content ${
+          isSidebarOpen ? 'brightness-0 absolute' : 'blur-none'
+        } h-full w-full`}
       >
         <Outlet />
       </div>
