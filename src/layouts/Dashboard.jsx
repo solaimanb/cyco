@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import {
   FaBars,
-  FaBell,
-  FaRegChartBar,
-  FaRegSun,
   FaSignInAlt,
   FaSignOutAlt,
-  FaTimes,
+  FaTimes
 } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { MdSpaceDashboard } from 'react-icons/md';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 // import AdminHome from '../pages/DashBoard/Admin/AdminHome';
@@ -66,8 +61,8 @@ const Dashboard = () => {
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
               <Link
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 to='users-home'
-                className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Profile"
               >
                 Profile
@@ -75,8 +70,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 to='watchList'
-                className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Watchlist"
               >
                 Watchlist
@@ -84,8 +79,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 to='downloads'
-                className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Downloads"
               >
                 Downloads
@@ -93,8 +88,8 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 to='subscriptions'
-                className="tooltip tooltip-right flex items-center gap-2 text-xl"
                 data-tip="Subscriptions"
               >
                 Subscriptions
@@ -139,20 +134,33 @@ const Dashboard = () => {
             </li>
             <div className='divider my-2'></div>
             <Link
+              className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
               to='account-settings'
-              className="tooltip tooltip-right flex items-center gap-2 text-xl"
               data-tip="settings"
             >
               Settings
             </Link>
+            {user ? (
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
+                data-tip="sign-out"
+              >
+                <FaSignOutAlt size={22} /> Sign Out
+              </Link>
+            ) : (
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
+                data-tip="sign-out"
+              >
+                <FaSignInAlt size={22} /> Sign In
+              </Link>
+            )}
             <Link
               className="tooltip tooltip-right flex items-center gap-2 text-xl"
               data-tip="logout"
             >Logout
             </Link>
           </ul>
-
-
         </div>
       </div>
 
