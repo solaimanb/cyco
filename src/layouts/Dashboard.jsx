@@ -35,7 +35,7 @@ const Dashboard = () => {
       {/* Hamburger Menu */}
       <div
         className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${
-          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+          isSidebarOpen ? 'bg-transparent' : 'bg-zinc-900'
         }`}
       >
         {/* Toggle Bar */}
@@ -69,7 +69,7 @@ const Dashboard = () => {
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
               <Link
-                className="tooltip tooltip-right flex items-center gap-2"
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="Stats"
               >
                 <FaBell size={22} /> Notifications
@@ -77,7 +77,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                className="tooltip tooltip-right flex items-center gap-2"
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="Home"
               >
                 <MdSpaceDashboard size={22} /> Dashboard
@@ -85,7 +85,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                className="tooltip tooltip-right flex items-center gap-2"
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="Home"
               >
                 <LuListVideo size={22} /> Wishlist
@@ -93,7 +93,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                className="tooltip tooltip-right flex items-center gap-2"
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="Details"
               >
                 <FaRegChartBar size={22} /> Analytics
@@ -107,21 +107,21 @@ const Dashboard = () => {
             } mt-auto gap-2`}
           >
             <Link
-              className="tooltip tooltip-right flex items-center gap-2 text-sm"
+              className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
               data-tip="settings"
             >
               <FaRegSun size={22} /> Settings
             </Link>
             {user ? (
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
+                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="sign-out"
               >
                 <FaSignOutAlt size={22} /> Sign Out
               </Link>
             ) : (
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
+                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
                 data-tip="sign-out"
               >
                 <FaSignInAlt size={22} /> Sign In

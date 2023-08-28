@@ -3,7 +3,7 @@ import React from 'react';
 
 const LiveVideoList = ({ onSelectChannel }) => {
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: '5Vw1mvV9WJc' },
+    { name: 'Al Jazeera', imageSrc: '/fox.png', videoId: 'gCNeDWCI0vo' },
     { name: 'ESPN', imageSrc: 'espn.webp', videoId: 'WrvTFuqpA5w' },
     { name: 'CNN', imageSrc: 'cnn.png', videoId: '2VysCIAIISg' },
     { name: 'HBO', imageSrc: 'hbo.png', videoId: 'aevincEID5Y' },
