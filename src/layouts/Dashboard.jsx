@@ -27,7 +27,7 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
 
   return (
     // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
@@ -68,104 +68,208 @@ const Dashboard = () => {
 
           <div className="divider"></div>
 
-          <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
-            <li>
-              <Link
-                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='users-home'
-                data-tip="Profile"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/upload-new-movie"
-                className="tooltip tooltip-right flex "
-                data-tip="Details"
-              >
-                <FaRegChartBar size={22} /> Upload New Movies
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/revenue-tracking"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> Revenue Tracking
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/system-logs"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> System Logs
-              </Link>
-            </li>
+          {
+            isAdmin ? (
+              <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
+                <li>
+                  <Link
+                    className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
+                    to='users-home'
+                    data-tip="Profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/upload-new-movie"
+                    className="tooltip tooltip-right flex "
+                    data-tip="Details"
+                  >
+                    <FaRegChartBar size={22} /> Upload New Movies
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/revenue-tracking"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> Revenue Tracking
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/system-logs"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> System Logs
+                  </Link>
+                </li>
 
-            <Divider />
-            <div className="-mt-14">
-              <Divider />
-            </div>
-            <li className="dashBoard-link ">
-              <Link
-                to="/dashboard/manage-subscription"
-                className="tooltip tooltip-right flex"
-                data-tip="Home"
-              >
-                <FaHome size={22} /> Manage Subscription
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/modernization"
-                className="tooltip tooltip-right flex "
-                data-tip="Details"
-              >
-                <FaRegChartBar size={22} /> Modrization
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/user-pannel-list"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> User Panel Lists
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/user-feedback"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> Users FeedBack
-              </Link>
-            </li>
-            <Divider />
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/user-feedback"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> Settings
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="/dashboard/user-feedback"
-                className="tooltip tooltip-right flex"
-                data-tip="Stats"
-              >
-                <FaInfo size={22} /> Logout
-              </Link>
-            </li>
-          </ul>
+                <Divider />
+                <div className="-mt-14">
+                  <Divider />
+                </div>
+                <li className="dashBoard-link ">
+                  <Link
+                    to="/dashboard/manage-subscription"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Home"
+                  >
+                    <FaHome size={22} /> Manage Subscription
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/modernization"
+                    className="tooltip tooltip-right flex "
+                    data-tip="Details"
+                  >
+                    <FaRegChartBar size={22} /> Modrization
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/user-pannel-list"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> User Panel Lists
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/user-feedback"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> Users FeedBack
+                  </Link>
+                </li>
+                <Divider />
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/user-feedback"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> Settings
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to="/dashboard/user-feedback"
+                    className="tooltip tooltip-right flex"
+                    data-tip="Stats"
+                  >
+                    <FaInfo size={22} /> Logout
+                  </Link>
+                </li>
+              </ul>
+              // users routes ,, for change be careful or notify leader. tnx
+            ) : (
+              <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
+                <li className="dashBoard-link">
+                  <Link
+                    to='users-home'
+                    className="tooltip tooltip-right flex"
+                    data-tip="Profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='watchList'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Watchlist"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='downloads'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Downloads"
+                  >
+                    Downloads
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='subscriptions'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Subscriptions"
+                  >
+                    Subscriptions
+                  </Link>
+                </li>
+                <div className='divider my-8'></div>
+                <li className="dashBoard-link">
+                  <Link
+                    to='forum'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Forum"
+                  >
+                    Forum
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='watch-party'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Watch Party"
+                  >
+                    Watch Party
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='recommendation'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Recommendation"
+                  >
+                    Recommendation
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='update-payment-info'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Updated Payment Info"
+                  >
+                    Update Info
+                  </Link>
+                </li>
+                <div className='divider mb-4'></div>
+                <div className="mb-5 space-y-2">
+                  <li className="dashBoard-link">
+                    <Link
+
+                      to='account-settings'
+                      className="tooltip tooltip-right flex "
+                      data-tip="settings"
+                    >
+                      Settings
+                    </Link>
+                  </li>
+                  <li className="dashBoard-link ">
+                    <Link
+
+                      to='account-settings'
+                      className="tooltip tooltip-right flex "
+                      data-tip="settings"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </div>
+              </ul>
+            )
+          }
         </div>
       </div>
 
@@ -278,62 +382,103 @@ const Dashboard = () => {
                 </li>
               </ul>
             ) : (
-              <ul className="space-y-2 text-sm md:text-base">
-                <li>
+              <ul className="space-y-3 z-10">
+                <li className="dashBoard-link">
                   <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/users-home"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                    to='users-home'
+                    className="tooltip tooltip-right flex"
+                    data-tip="Profile"
                   >
-                    User Profile
+                    Profile
                   </Link>
                 </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='watchList'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Watchlist"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='downloads'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Downloads"
+                  >
+                    Downloads
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='subscriptions'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Subscriptions"
+                  >
+                    Subscriptions
+                  </Link>
+                </li>
+                <div className='divider my-8'></div>
+                <li className="dashBoard-link">
+                  <Link
+                    to='forum'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Forum"
+                  >
+                    Forum
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='watch-party'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Watch Party"
+                  >
+                    Watch Party
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='recommendation'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Recommendation"
+                  >
+                    Recommendation
+                  </Link>
+                </li>
+                <li className="dashBoard-link">
+                  <Link
+                    to='update-payment-info'
+                    className="tooltip tooltip-right flex "
+                    data-tip="Updated Payment Info"
+                  >
+                    Update Info
+                  </Link>
+                </li>
+                <div className='divider mb-4'></div>
+                <div className="mb-5 space-y-2">
+                  <li className="dashBoard-link">
+                    <Link
 
-                <li>
-                  <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/watchlist"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                  >
-                    My WatchList
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/try-premium"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                  >
-                    Try Premium
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/my-package"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                  >
-                    My Packages
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/payment-history"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                  >
-                    Payment History
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    onClick={handleLinkClick}
-                    to="/dashboard/account-settings"
-                    className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                  >
-                    Account Settings
-                  </Link>
-                </li>
+                      to='account-settings'
+                      className="tooltip tooltip-right flex "
+                      data-tip="settings"
+                    >
+                      Settings
+                    </Link>
+                  </li>
+                  <li className="dashBoard-link ">
+                    <Link
+
+                      to='account-settings'
+                      className="tooltip tooltip-right flex "
+                      data-tip="settings"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </div>
               </ul>
             )}
 
