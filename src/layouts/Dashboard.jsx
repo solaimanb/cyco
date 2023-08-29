@@ -27,7 +27,7 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-  const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
@@ -68,9 +68,9 @@ const Dashboard = () => {
           {
             isAdmin ? (
               <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
-                <li>
+                <li className="dashBoard-link">
                   <Link
-                    className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
+                    className="tooltip tooltip-right flex"
                     to='users-home'
                     data-tip="Profile"
                   >
