@@ -145,6 +145,10 @@ const Home = () => {
         <FeaturedAds />
 
         {/* Subscription Plan/Tier */}
+        <div className="my-14  text-white text-center">
+            <h1 className="text-4xl font-bold">Tier Plan</h1>
+            <p>Join the whitelist your perfect option below</p>
+          </div>
         <Subscription />
 
         {/* testimonials */}
