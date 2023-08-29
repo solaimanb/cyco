@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   FaBars,
+  FaHome,
+  FaInfo,
+  FaRegChartBar,
+  FaRegSun,
   FaSignInAlt,
   FaSignOutAlt,
-  FaTimes
-} from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
-// import AdminHome from '../pages/DashBoard/Admin/AdminHome';
+  FaTimes,
+} from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Divider from "../components/divider/Divider";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -23,7 +27,7 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-  const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
@@ -74,91 +78,93 @@ const Dashboard = () => {
                 Profile
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='watchList'
-                data-tip="Watchlist"
+                to="/dashboard/upload-new-movie"
+                className="tooltip tooltip-right flex "
+                data-tip="Details"
               >
-                Watchlist
+                <FaRegChartBar size={22} /> Upload New Movies
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='downloads'
-                data-tip="Downloads"
+                to="/dashboard/revenue-tracking"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
               >
-                Downloads
+                <FaInfo size={22} /> Revenue Tracking
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
-                to='subscriptions'
-                data-tip="Subscriptions"
+                to="/dashboard/system-logs"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
               >
-                Subscriptions
+                <FaInfo size={22} /> System Logs
               </Link>
             </li>
-            <div className='divider my-8'></div>
-            <li>
+
+            <Divider />
+            <div className="-mt-14">
+            <Divider />
+            </div>
+            <li className="dashBoard-link ">
               <Link
-                to='forum'
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="Forum"
+                to="/dashboard/manage-subscription"
+                className="tooltip tooltip-right flex"
+                data-tip="Home"
               >
-                Forum
+                <FaHome size={22} /> Manage Subscription
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                to='watch-party'
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="Watch Party"
+                to="/dashboard/modernization"
+                className="tooltip tooltip-right flex "
+                data-tip="Details"
               >
-                Watch Party
+                <FaRegChartBar size={22} /> Modrization
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                to='recommendation'
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="Recommendation"
+                to="/dashboard/user-pannel-list"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
               >
-                Recommendation
+                <FaInfo size={22} /> User Panel Lists
               </Link>
             </li>
-            <li>
+            <li className="dashBoard-link">
               <Link
-                to='update-payment-info'
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="Updated Payment Info"
+                to="/dashboard/user-feedback"
+                className="tooltip tooltip-right flex"
+                data-tip="Stats"
               >
-                Update Info
+                <FaInfo size={22} /> Users FeedBack
               </Link>
             </li>
-            <div className='divider my-2'></div>
-            <Link
-              className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
-              to='account-settings'
-              data-tip="settings"
-            >
-              Settings
+            <Divider />
+          </ul>
+         </div>
+
+          <div
+            className={`hidden lg:flex ${
+              isSidebarOpen ? "flex-row-reverse" : "flex-col"
+            } items-center mt-auto gap-3`}
+          >
+            <Link className="tooltip tooltip-right" data-tip="settings">
+              <FaRegSun size={22} />
             </Link>
             {user ? (
-              <Link
-                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
-                data-tip="sign-out"
-              >
-                <FaSignOutAlt size={22} /> Sign Out
+              <Link className="tooltip tooltip-right" data-tip="sign-out">
+                <FaSignOutAlt size={22} />
               </Link>
             ) : (
-              <Link
-                className="tooltip tooltip-right flex items-center gap-2 text-sm bg-zinc-800 px-2 py-1 rounded-sm"
-                data-tip="sign-out"
-              >
-                <FaSignInAlt size={22} /> Sign In
+              <Link className="tooltip tooltip-right" data-tip="sign-out">
+                <FaSignInAlt size={22} />
               </Link>
             )}
             {/* <Link
@@ -167,15 +173,18 @@ const Dashboard = () => {
             >Logout
             </Link> */}
           </ul>
+          </div>
         </div>
       </div>
 
       {/* Dashboard Sidebar */}
-      <nav
-        className={`fixed h-full z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${isSidebarOpen ? 'block' : 'hidden lg:block'
-          }`}
+     <div className="border-l-8 border-cyred">
+     <nav
+        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+          isSidebarOpen ? "block" : "hidden lg:block"
+        }`}
       >
-        <div className="py-5 mt-5">
+        <div className="py-5 mt-5 ">
           <div className="text-white bg-zinc-800 rounded-sm mx-2 text-xl font-semibold ml-4 mb-6 flex justify-end">
             {/* <Link onClick={handleLinkFalse} to="/dashboard">
               <img
@@ -187,7 +196,7 @@ const Dashboard = () => {
           </div>
 
           {isAdmin ? (
-            <ul className="space-y-3 z-10">
+            <ul className="space-y-3 z-10 ">
               <li>
                 <Link
                   onClick={handleLinkClick}
@@ -230,103 +239,111 @@ const Dashboard = () => {
             <ul className="space-y-2 text-sm md:text-base">
               <li>
                 <Link
-                  to='users-home'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Profile"
+                  onClick={handleLinkClick}
+                  to="/dashboard/users-home"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
                 >
-                  Profile
+                  User Profile
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  onClick={handleLinkClick}
+                  to="/dashboard/watchlist"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  My WatchList
                 </Link>
               </li>
               <li>
                 <Link
-                  to='watchList'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Watchlist"
+                  onClick={handleLinkClick}
+                  to="/dashboard/try-premium"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
                 >
-                  Watchlist
+                  Try Premium
                 </Link>
               </li>
               <li>
                 <Link
-                  to='downloads'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Downloads"
+                  onClick={handleLinkClick}
+                  to="/dashboard/my-package"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
                 >
-                  Downloads
+                  My Packages
                 </Link>
               </li>
               <li>
                 <Link
-                  to='subscriptions'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Subscriptions"
+                  onClick={handleLinkClick}
+                  to="/dashboard/payment-history"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
                 >
-                  Subscriptions
-                </Link>
-              </li>
-              <div className='divider my-8'></div>
-              <li>
-                <Link
-                  to='forum'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Forum"
-                >
-                  Forum
+                  Payment History
                 </Link>
               </li>
               <li>
                 <Link
-                  to='watch-party'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Watch Party"
+                  onClick={handleLinkClick}
+                  to="/dashboard/account-settings"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
                 >
-                  Watch Party
+                  Account Settings
                 </Link>
               </li>
-              <li>
-                <Link
-                  to='recommendation'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Recommendation"
-                >
-                  Recommendation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='update-payment-info'
-                  className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                  data-tip="Updated Payment Info"
-                >
-                  Update Info
-                </Link>
-              </li>
-              <div className='divider my-2'></div>
-              <Link
-                to='account-settings'
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="settings"
-              >
-                Settings
-              </Link>
-              <Link
-                className="tooltip tooltip-right flex items-center gap-2 text-sm"
-                data-tip="logout"
-              >Logout
-              </Link>
             </ul>
           )}
+
+         
+          {/* <div>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Home :
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Movies :
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  About Us :
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
+                >
+                  Live Tv :
+                </Link>
+              </li>
+            </ul>
+          </div> */}
         </div>
       </nav>
+     </div>
 
       {/* Display Page Content */}
-      {/* <div
-        className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
-          } h-full w-full mt-5`}
-      > */}
       <div
         className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
           } h-full w-full lg:pl-44 my-5`}
+      <div
+        className={`drawer-content ${
+          isSidebarOpen ? "brightness-0 -mt-16" : "blur-none"
+        } h-full w-full mt-5`}
       >
         <Outlet />
       </div>
