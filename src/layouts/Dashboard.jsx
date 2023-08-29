@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import {
   FaBars,
+  FaDownload,
   FaHome,
   FaInfo,
+  FaMoneyBill,
+  FaPeopleArrows,
+  FaRandom,
   FaRegChartBar,
-  FaRegSun,
-  FaSignInAlt,
+  FaRegUserCircle,
   FaSignOutAlt,
+  FaSun,
   FaTimes,
+  FaTv,
+  FaVideoSlash,
 } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -28,6 +34,7 @@ const Dashboard = () => {
   };
 
   const [isAdmin, SetAdmin] = [false];
+  // const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-co gap-5 lg:flex-row h-full`}>
@@ -67,7 +74,7 @@ const Dashboard = () => {
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li>
               <Link
-                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
+                className="tooltip tooltip-right flex gap-2 items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
                 to="users-home"
                 data-tip="Profile"
               >
@@ -150,9 +157,10 @@ const Dashboard = () => {
             isSidebarOpen ? 'flex-row-reverse' : 'flex-col'
           } items-center mt-auto gap-3`}
         >
-          <Link className="tooltip tooltip-right" data-tip="settings">
+          {/* <Link className="tooltip tooltip-right" data-tip="settings">
             <FaRegSun size={22} />
           </Link>
+          
           {user ? (
             <Link className="tooltip tooltip-right" data-tip="sign-out">
               <FaSignOutAlt size={22} />
@@ -161,7 +169,8 @@ const Dashboard = () => {
             <Link className="tooltip tooltip-right" data-tip="sign-out">
               <FaSignInAlt size={22} />
             </Link>
-          )}
+          ) } */}
+
           {isAdmin ? (
             <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
               <li className="dashBoard-link">
@@ -201,10 +210,8 @@ const Dashboard = () => {
                 </Link>
               </li>
 
-              <Divider />
-              <div className="-mt-14">
-                <Divider />
-              </div>
+              <div className="divider"></div>
+
               <li className="dashBoard-link ">
                 <Link
                   to="/dashboard/manage-subscription"
@@ -241,7 +248,9 @@ const Dashboard = () => {
                   <FaInfo size={22} /> Users FeedBack
                 </Link>
               </li>
-              <Divider />
+
+              <div className="divider"></div>
+
               <li className="dashBoard-link">
                 <Link
                   to="/dashboard/user-feedback"
@@ -262,7 +271,6 @@ const Dashboard = () => {
               </li>
             </ul>
           ) : (
-            // users routes ,, for change be careful or notify leader. tnx
             <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
               <li className="dashBoard-link">
                 <Link
@@ -424,6 +432,8 @@ const Dashboard = () => {
                   </ul>)} */}
         </div>
       </div>
+
+      {/* Collapsed navigation bar */}
       <div className="border-l-9 border-cyred mx-11">
         <nav
           className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
@@ -433,19 +443,20 @@ const Dashboard = () => {
           <div className="py-5 mt-5 ">
             {isAdmin ? (
               <ul className="space-y-3 z-10">
-                <li>
+                <li className="dashBoard-link">
                   <Link
-                    className="tooltip tooltip-right flex items-center gap-2 bg-base-300 px-2 py-1 rounded-sm"
+                    className="tooltip tooltip-right flex items-center gap-2"
                     to="users-home"
                     data-tip="Profile"
                   >
+                    <FaRegUserCircle size={22} />
                     Profile
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/upload-new-movie"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Details"
                   >
                     <FaRegChartBar size={22} /> Upload New Movies
@@ -454,7 +465,7 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/revenue-tracking"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> Revenue Tracking
@@ -463,21 +474,19 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/system-logs"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> System Logs
                   </Link>
                 </li>
 
-                <Divider />
-                <div className="-mt-14">
-                  <Divider />
-                </div>
+                <div className="divider"></div>
+
                 <li className="dashBoard-link ">
                   <Link
                     to="/dashboard/manage-subscription"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Home"
                   >
                     <FaHome size={22} /> Manage Subscription
@@ -486,7 +495,7 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/modernization"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Details"
                   >
                     <FaRegChartBar size={22} /> Modrization
@@ -495,7 +504,7 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/user-pannel-list"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> User Panel Lists
@@ -504,17 +513,19 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/user-feedback"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> Users FeedBack
                   </Link>
                 </li>
-                <Divider />
+
+                <div className="divider"></div>
+
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/user-feedback"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> Settings
@@ -523,7 +534,7 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="/dashboard/user-feedback"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Stats"
                   >
                     <FaInfo size={22} /> Logout
@@ -535,36 +546,40 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="users-home"
-                    className="tooltip tooltip-right flex"
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Profile"
                   >
+                    <FaRegUserCircle size={22} />
                     Profile
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="watchList"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Watchlist"
                   >
+                    <FaVideoSlash />
                     Watchlist
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="downloads"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Downloads"
                   >
+                    <FaDownload />
                     Downloads
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="subscriptions"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Subscriptions"
                   >
+                    <FaMoneyBill />
                     Subscriptions
                   </Link>
                 </li>
@@ -572,36 +587,40 @@ const Dashboard = () => {
                 <li className="dashBoard-link">
                   <Link
                     to="forum"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Forum"
                   >
+                    <FaPeopleArrows />
                     Forum
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="watch-party"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Watch Party"
                   >
+                    <FaTv />
                     Watch Party
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="/recommendation"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Recommendation"
                   >
+                    <FaRandom />
                     Recommendation
                   </Link>
                 </li>
                 <li className="dashBoard-link">
                   <Link
                     to="update-payment-info"
-                    className="tooltip tooltip-right flex "
+                    className="tooltip tooltip-right flex gap-2 items-center"
                     data-tip="Updated Payment Info"
                   >
+                    <FaInfo />
                     Update Info
                   </Link>
                 </li>
@@ -610,18 +629,20 @@ const Dashboard = () => {
                   <li className="dashBoard-link">
                     <Link
                       to="account-settings"
-                      className="tooltip tooltip-right flex "
+                      className="tooltip tooltip-right flex gap-2 items-center"
                       data-tip="settings"
                     >
+                      <FaSun />
                       Settings
                     </Link>
                   </li>
                   <li className="dashBoard-link ">
                     <Link
                       to="account-settings"
-                      className="tooltip tooltip-right flex "
+                      className="tooltip tooltip-right flex gap-2 items-center"
                       data-tip="settings"
                     >
+                      <FaSignOutAlt />
                       Logout
                     </Link>
                   </li>
