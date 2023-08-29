@@ -37,5 +37,5 @@ svg.recharts-surface tspan {
 }
 
 .dashBoard-link {
-  @apply w-64 bg-cyred mb-2;
+  @apply w-64 bg-cyred  p-2 rounded-lg;
 }
