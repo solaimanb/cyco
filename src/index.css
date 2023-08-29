@@ -32,6 +32,9 @@ body {
 .border-animation {
   @apply rounded-lg
 }
+.dashBoard-link {
+  @apply w-64 bg-cyred mb-2
+}
 
 svg.recharts-surface tspan {
 	font-size: 0.8rem !important;
