@@ -46,7 +46,7 @@ const TestimonialSlider = () => {
       modules={[Autoplay, Navigation, Pagination]}
       // className="h-[440px]"
     >
-      {testimonialData.map((feedBack, index) => {
+      {testimonialData?.map((feedBack, index) => {
         return (
           <SwiperSlide key={index}>
             <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-10">

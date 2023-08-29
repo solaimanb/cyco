@@ -3,22 +3,20 @@ import React from 'react';
 
 const LiveVideoList = ({ onSelectChannel }) => {
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: 'Jcy8kYaQwkA' },
+    { name: 'Al Jazeera', imageSrc: '/fox.png', videoId: 'gCNeDWCI0vo' },
     { name: 'ESPN', imageSrc: 'espn.webp', videoId: 'WrvTFuqpA5w' },
     { name: 'CNN', imageSrc: 'cnn.png', videoId: '2VysCIAIISg' },
-    { name: 'HBO', imageSrc: 'hbo.png', videoId: 'WrvTFuqpA5w' },
-    { name: 'EA', imageSrc: 'ea.webp', videoId: 'uhtxFc-cpWw' },
+    { name: 'HBO', imageSrc: 'hbo.png', videoId: 'aevincEID5Y' },
+    { name: 'EA', imageSrc: 'ea.webp', videoId: 'OWgqLFLPzCI' },
     { name: 'BBC', imageSrc: 'bbc-news.png', videoId: 'xR7qcezLcXI' },
     { name: 'FOX', imageSrc: '/fox.png', videoId: 'WrvTFuqpA5w' },
     { name: 'ESPN', imageSrc: 'espn.webp', videoId: 'WrvTFuqpA5w' },
     { name: 'CNN', imageSrc: 'cnn.png', videoId: '2VysCIAIISg' },
     { name: 'HBO', imageSrc: 'hbo.png', videoId: 'WrvTFuqpA5w' },
-    { name: 'EA', imageSrc: 'ea.webp', videoId: 'uhtxFc-cpWw' },
-    { name: 'BBC', imageSrc: 'bbc-news.png', videoId: 'xR7qcezLcXI' },
   ];
 
   return (
-    <div className="space-y-7 md:space-y-0 grid md:grid-cols-5 lg:grid-cols-5 gap-3">
+    <div className="space-y-7 md:space-y-0 grid md:grid-cols-5 lg:grid-cols-5 gap-10">
     {channels?.map((channel, index) => (
       <div
         key={index}

@@ -3,7 +3,7 @@
     "id": 1,
     "name": "CNN",
     "image": "/cnn.png",
-    "tvUrl": "https://www.youtube.com/embed/VNvU37jqiWM?si=c4Z2vlqYU90nRHHN" ,
+    "tvUrl": "https://www.youtube.com/embed/VNvU37jqiWM?si=c4Z2vlqYU90nRHHN",
     "tv": "Live"
   },
   {
@@ -17,7 +17,7 @@
     "id": 3,
     "name": "ESPN",
     "image": "/espn.webp",
-    "tvUrl": "https://www.youtube.com/embed/FeeaPUqNww4?si=zOfYLijucuR7-KbY" ,
+    "tvUrl": "https://www.youtube.com/embed/FeeaPUqNww4?si=zOfYLijucuR7-KbY",
     "tv": "Live"
   },
   {
