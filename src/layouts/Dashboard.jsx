@@ -332,9 +332,9 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content ${
+        className={`border-8 border-slate-700 drawer-content ${
           isSidebarOpen ? "brightness-0 -mt-16" : "blur-none"
-        } h-full w-full mt-5`}
+        } h-full w-full `}
       >
         <Outlet />
       </div>
