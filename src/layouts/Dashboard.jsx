@@ -33,13 +33,10 @@ const Dashboard = () => {
     // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
     <div className={`relative drawer flex flex-col lg:flex-row h-full`}>
       {/* Hamburger Menu */}
-      {/* <div
-        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
-          }`}
-      > */}
+      
       <div
-        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 fixed ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
-          }`}
+       className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+      }`}
       >
         {/* Toggle Bar */}
         <div className="lg:hidden text-white mb-4">
@@ -440,7 +437,7 @@ const Dashboard = () => {
                 </li>
                 <li className="dashBoard-link">
                   <Link
-                    to='recommendation'
+                    to='/recommendation'
                     className="tooltip tooltip-right flex "
                     data-tip="Recommendation"
                   >
@@ -482,43 +479,6 @@ const Dashboard = () => {
               </ul>
             )}
 
-
-            {/* <div>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Home :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Movies :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  About Us :
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="block px-4 py-2 text-white bg-zinc-800 rounded-sm mx-2 hover:bg-gray-800 border-b border-cyred"
-                >
-                  Live Tv :
-                </Link>
-              </li>
-            </ul>
-          </div> */}
           </div>
         </nav>
       </div>
