@@ -40,7 +40,7 @@ const Dashboard = () => {
     <div className={`relative drawer flex flex-co gap-5 lg:flex-row h-full`}>
       {/* Hamburger Menu */}
       <div
-        className={`flex flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 fixed ${
+        className={`flex flex-col items-center gap-5 z-50 px-4 pt-5 absolute h-full ${
           isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800'
         }`}
       >
@@ -57,6 +57,7 @@ const Dashboard = () => {
           )}
         </div>
 
+        
         {/* -------User routes------- */}
         {/* <div className="flex lg:flex-col h-screen px-2">
           <div className="w-full flex gap-3 justify-start py-3 px-">
@@ -580,7 +581,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? '-mt-16' : 'blur-none'
+          isSidebarOpen ? '' : 'blur-none'
         } h-full w-full`}
       >
         <Outlet />
