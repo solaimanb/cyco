@@ -30,12 +30,16 @@ const Dashboard = () => {
   const [isAdmin, SetAdmin] = [true];
 
   return (
-    <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
+    // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
+    <div className={`relative drawer flex flex-col lg:flex-row h-full`}>
       {/* Hamburger Menu */}
+      {/* <div
+        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+          }`}
+      > */}
       <div
-        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${
-          isSidebarOpen ? "bg-transparent" : "bg-zinc-800 border-r"
-        }`}
+        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 fixed ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+          }`}
       >
         {/* Toggle Bar */}
         <div className="lg:hidden text-white mb-4">
@@ -51,31 +55,27 @@ const Dashboard = () => {
         </div>
 
         {/* Users State */}
-        <div className="flex lg:flex-col justify-between items-center h-full pb-5 w-80">
-          <header className="flex justify-between items-center w-full p-2">
-            <div>
-              <img
-                className={`${
-                  isSidebarOpen ? "hidden" : "block"
-                } w-16 h-16 rounded-full`}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className={`${isSidebarOpen ? "hidden" : "block"} w-6 h-6`}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-                alt=""
-              />
-            </div>
-          </header>
-         <div className="border  py-16 card bg-[#222222] rounded  border-zinc-700 px-4 mt-4">
-         <ul className="menu hidden lg:flex items-center z-0">
-          <Divider />
-            <li className="dashBoard-link border ">
-              <Link className="tooltip tooltip-right flex" data-tip="Home">
-                <FaHome size={22} /> DashBoard
+        {/* <div className="flex lg:flex-col justify-between h-full pb-5 px-2"> */}
+        <div className="flex lg:flex-col justify-between h-screen pb-5 px-2">
+          <div className="w-full flex gap-3 justify-start py-3 px-">
+            <img
+              className={`${isSidebarOpen ? 'hidden' : 'block'
+                } w-6 h-6 rounded-full`}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
+              alt=""
+            />
+          </div>
+
+          <div className="divider"></div>
+
+          <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
+            <li>
+              <Link
+                className="tooltip tooltip-right flex items-center gap-2 bg-zinc-800 px-2 py-1 rounded-sm"
+                to='users-home'
+                data-tip="Profile"
+              >
+                Profile
               </Link>
             </li>
             <li className="dashBoard-link">
@@ -167,6 +167,12 @@ const Dashboard = () => {
                 <FaSignInAlt size={22} />
               </Link>
             )}
+            {/* <Link
+              className="tooltip tooltip-right flex items-center gap-2 text-sm"
+              data-tip="logout"
+            >Logout
+            </Link> */}
+          </ul>
           </div>
         </div>
       </div>
@@ -331,6 +337,9 @@ const Dashboard = () => {
      </div>
 
       {/* Display Page Content */}
+      <div
+        className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
+          } h-full w-full lg:pl-44 my-5`}
       <div
         className={`drawer-content ${
           isSidebarOpen ? "brightness-0 -mt-16" : "blur-none"
