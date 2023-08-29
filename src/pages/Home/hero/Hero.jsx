@@ -1,14 +1,14 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "./Hero.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import './Hero.css';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // import required modules
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import useMovies from "../../../hooks/useMovies";
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import useMovies from '../../../hooks/useMovies';
 
 const Hero = () => {
   const [movies] = useMovies();
@@ -18,7 +18,7 @@ const Hero = () => {
     <section className="w-[100%] absolute top-10 md:top-0 left-0">
       <Swiper
         pagination={{
-          type: "progressbar",
+          type: 'progressbar',
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
@@ -30,21 +30,22 @@ const Hero = () => {
         {movies?.map((movie, index) => (
           <SwiperSlide key={index}>
             <div
-              className="hero min-h-screen"
+              className="hero h-[300px] md:h-[500px] lg:h-[600px] xl:h-screen"
               style={{ backgroundImage: `url(${movie?.Thumbnail})` }}
             >
-              <div className="hero-overlay bg-opacity-60"></div>
-              <div className=" text-center text-neutral-content relative w-full">
-                <div className="lg:left-5 lg:top-5 absolute bottom-0 right-0 max-w-lg font-mono">
-                  <h1 className="mb-5 text-5xl font-bold w-full">
+              <div className="hero-overlay bg-opacity-80 flex pl-20 text-start items-center w-full">
+                <div className="max-w-lg justify-center">
+                  <h1 className="mb-5 text-xl md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
                     {movie?.Title}
                   </h1>
-                  <p className="mb-5 ">{movie?.Plot}</p>
-                  <div className="flex gap-5 justify-center">
-                    <button className="btn bg-gradient-to-r from-sky-500 to-indigo-500">
+                  <p className="mb-5 text-sm lg:text-base xl:text-lg text-justify">
+                    {movie?.Plot}
+                  </p>
+                  <div className="flex gap-5">
+                    <button className="btn bg-cyred rounded-sm border-none">
                       Watch movie
                     </button>
-                    <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500">
+                    <button className="btn border-cyred border-2 rounded-sm bg-transparent text-white backdrop-blur-sm">
                       Add WatchList
                     </button>
                   </div>
@@ -81,4 +82,5 @@ export default Hero;
         </div>
       </div> */
 
-import React from "react";
+import React from 'react';
+
