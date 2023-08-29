@@ -26,10 +26,15 @@ const Dashboard = () => {
   const [isAdmin, SetAdmin] = [false];
 
   return (
-    <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
+    // <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>
+    <div className={`relative drawer flex flex-col lg:flex-row h-full`}>
       {/* Hamburger Menu */}
-      <div
+      {/* <div
         className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
+          }`}
+      > */}
+      <div
+        className={`flex lg:flex-col justify-between items-center gap-6 z-50 px-4 lg:px-1 pt-5 fixed ${isSidebarOpen ? 'bg-transparent' : 'bg-zinc-800 border-r'
           }`}
       >
         {/* Toggle Bar */}
@@ -46,7 +51,8 @@ const Dashboard = () => {
         </div>
 
         {/* Users State */}
-        <div className="flex lg:flex-col justify-between h-full pb-5 px-2">
+        {/* <div className="flex lg:flex-col justify-between h-full pb-5 px-2"> */}
+        <div className="flex lg:flex-col justify-between h-screen pb-5 px-2">
           <div className="w-full flex gap-3 justify-start py-3 px-">
             <img
               className={`${isSidebarOpen ? 'hidden' : 'block'
@@ -155,11 +161,11 @@ const Dashboard = () => {
                 <FaSignInAlt size={22} /> Sign In
               </Link>
             )}
-            <Link
+            {/* <Link
               className="tooltip tooltip-right flex items-center gap-2 text-sm"
               data-tip="logout"
             >Logout
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </div>
@@ -314,9 +320,13 @@ const Dashboard = () => {
       </nav>
 
       {/* Display Page Content */}
-      <div
+      {/* <div
         className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
           } h-full w-full mt-5`}
+      > */}
+      <div
+        className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
+          } h-full w-full lg:pl-44 my-5`}
       >
         <Outlet />
       </div>
