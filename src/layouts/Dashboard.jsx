@@ -10,8 +10,8 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import Divider from "../components/divider/Divider";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -172,8 +172,8 @@ const Dashboard = () => {
               data-tip="logout"
             >Logout
             </Link> */}
-          </ul>
-          </div>
+          {/* </ul> */}
+          {/* </div> */}
         </div>
       </div>
 
@@ -337,9 +337,6 @@ const Dashboard = () => {
      </div>
 
       {/* Display Page Content */}
-      <div
-        className={`drawer-content ${isSidebarOpen ? 'brightness-0 -mt-16' : 'blur-none'
-          } h-full w-full lg:pl-44 my-5`}
       <div
         className={`drawer-content ${
           isSidebarOpen ? "brightness-0 -mt-16" : "blur-none"
