@@ -88,7 +88,7 @@ const UsersHome = () => {
             margin={{
               top: 10,
               right: 30,
-              left: 0,
+              left: 10,
               bottom: 0,
             }}
           >
