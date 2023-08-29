@@ -14,6 +14,10 @@ const Hero = () => {
   const [movies] = useMovies();
   console.log(movies);
 
+  const handleWatchMovie = () => {
+    console.log('watch movie');
+  }
+
   return (
     <section className="w-[100%] absolute top-10 md:top-0 left-0">
       <Swiper
@@ -33,21 +37,21 @@ const Hero = () => {
               className="hero h-[300px] md:h-[500px] lg:h-[600px] xl:h-screen"
               style={{ backgroundImage: `url(${movie?.Thumbnail})` }}
             >
-              <div className="hero-overlay bg-opacity-80 flex pl-20 text-start items-center w-full">
-                <div className="max-w-lg justify-center">
+              <div className="backdrop-blur-sm backdrop-opacity-60 h-full py-5 flex justify-center md:justify-normal md:pl-40 text-start items-center w-full">
+                <div className="max-w-xs md:max-w-lg justify-center">
                   <h1 className="mb-5 text-xl md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
                     {movie?.Title}
                   </h1>
-                  <p className="mb-5 text-sm lg:text-base xl:text-lg text-justify">
+                  <p className="mb-5 text-xs md:text-sm lg:text-base xl:text-lg text-justify">
                     {movie?.Plot}
                   </p>
                   <div className="flex gap-5">
-                    <button className="btn bg-cyred rounded-sm border-none">
+                    {/* <button className="btn btn-sm md:btn-md bg-cyred rounded-sm border-none">
                       Watch movie
                     </button>
-                    <button className="btn border-cyred border-2 rounded-sm bg-transparent text-white backdrop-blur-sm">
+                    <button className="btn btn-sm md:btn-md bg-cyred rounded-sm border-none">
                       Add WatchList
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
