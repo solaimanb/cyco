@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate } from 'react-router-dom';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();

@@ -4,8 +4,8 @@ import Chart from '../../../components/chart/Chart';
 const AdminHome = () => {
   return (
     <div className="flex flex-col">
-      <div className="bg-zinc-800 rounded-lg mx-2">
-        <div className="my-5 mx-3 grid grid-cols-1 md:grid-cols-3 ">
+      <div className="bg-zinc-800 rounded-sm">
+        <div className="mx-3 grid grid-cols-1 md:grid-cols-3 gap-2">
           <div className="card w-full my-3 bg-[#222222] text-primary-content rounded-lg border border-zinc-700">
             <div className="card-body">
               <p className="text-2xl">Our Total Package</p>
