@@ -7,11 +7,23 @@ import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
+import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
+import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
+import RevenueTracking from '../pages/DashBoard/Admin/revenue-tracking/RevenueTracking';
+import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
+import UploadNewMovies from '../pages/DashBoard/Admin/upload-new-movie/UploadNewMovies';
+import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
+import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
-import MyPackage from '../pages/DashBoard/user/my-package/MyPackage';
-import Watchlist from '../pages/DashBoard/user/my-watchlist/WatchList';
+import Downloads from '../pages/DashBoard/user/downloads/Downloads';
+import Forum from '../pages/DashBoard/user/forum/Forum';
+import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
+import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
+import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
+import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
+import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -41,20 +53,6 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
-import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
-import Downloads from '../pages/DashBoard/user/downloads/Downloads';
-import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
-import Forum from '../pages/DashBoard/user/forum/Forum';
-import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
-import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
-import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
-import UploadNewMovies from "../pages/DashBoard/Admin/upload-new-movie/UploadNewMovies";
-import RevenueTracking from "../pages/DashBoard/Admin/revenue-tracking/RevenueTracking";
-import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
-import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
-import Modernization from "../pages/DashBoard/Admin/modernization/Modernization";
-import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
-import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
 
 const router = createBrowserRouter([
   {
@@ -100,29 +98,26 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: '', element: <AdminHome /> },
+      { path: 'admin-home', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'watchList', element: <WatchList /> },
       { path: 'downloads', element: <Downloads /> },
       { path: 'subscriptions', element: <Subscriptions /> },
-      { path: 'forum', element: <Forum/> },
-      { path: 'watch-party', element: <WatchParty/> },
-      { path: 'recommendation', element: <Recommendation/> },
-      { path: 'update-payment-info', element: <UpdatePaymentInfo/> },
+      { path: 'forum', element: <Forum /> },
+      { path: 'watch-party', element: <WatchParty /> },
+      { path: 'recommendation', element: <Recommendation /> },
+      { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
 
+      { path: 'upload-new-movie', element: <UploadNewMovies /> },
+      { path: 'revenue-tracking', element: <RevenueTracking /> },
+      { path: 'system-logs', element: <SystemLogs /> },
 
-       //
-       { path: "upload-new-movie", element: <UploadNewMovies /> },
-       { path: "revenue-tracking", element: <RevenueTracking /> },
-       { path: "system-logs", element: <SystemLogs /> },
-       //
- 
-       { path: "manage-subscription", element: <ManageSubscription /> },
-       { path: "modernization", element: <Modernization /> },
-       { path: "user-pannel-list", element: <UserPannelList /> },
-       { path: "user-feedback", element: <UserFeedback /> },
+      { path: 'manage-subscription', element: <ManageSubscription /> },
+      { path: 'modernization', element: <Modernization /> },
+      { path: 'user-pannel-list', element: <UserPannelList /> },
+      { path: 'user-feedback', element: <UserFeedback /> },
 
       { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },

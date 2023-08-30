@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import AddNewMediaForm from './AddNewMedia';
 
-const AddRoom = () => {
+const UploadNewMovie = () => {
   const {user} = useContext(AuthContext)
     const [loading,setLoading] = useState(false)
     const [uploadButtonText , setUploadButtonText] = useState('Upload image')
@@ -75,4 +75,4 @@ const AddRoom = () => {
     );
 };
 
-export default AddRoom;
+export default UploadNewMovie;
