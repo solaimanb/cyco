@@ -53,6 +53,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import History from '../pages/DashBoard/user/history/History';
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,7 @@ const router = createBrowserRouter([
       { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
+      { path: 'move-history', element: <History /> },
 
       { path: 'upload-new-movie', element: <UploadNewMovies /> },
       { path: 'revenue-tracking', element: <RevenueTracking /> },
