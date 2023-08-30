@@ -12,7 +12,7 @@ import useMovies from '../../../hooks/useMovies';
 
 const Hero = () => {
   const [movies] = useMovies();
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <section className="w-[100%] absolute top-10 md:top-0 left-0">

@@ -27,7 +27,7 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
 
   return (
     <div className={`relative drawer flex flex-col lg:flex-row h-screen`}>

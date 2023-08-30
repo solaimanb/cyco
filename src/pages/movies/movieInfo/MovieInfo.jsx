@@ -5,6 +5,11 @@ import { LuListVideo } from 'react-icons/lu';
 import { useLocation } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 
+
+
+import { useDispatch } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
+
 const MovieInfo = () => {
   // const navigate = useNavigate();
 
@@ -29,6 +34,18 @@ const MovieInfo = () => {
   //   navigate('/video-player');
   // };
 
+
+  const dispatch = useDispatch();
+
+    const handleAddToWishlist = () => {
+        dispatch(addToWishlist(movie));
+        console.log('Dispatched addToWishlist action with movie:', movie);
+    };
+
+
+
+
+  
   return (
     <div
       className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
@@ -73,7 +90,9 @@ const MovieInfo = () => {
 
               {/* Download Buttons */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
-                <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                <button 
+                onClick={handleAddToWishlist}
+                className="btn capitalize bg-cyred font-bold border-none rounded-sm">
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}
