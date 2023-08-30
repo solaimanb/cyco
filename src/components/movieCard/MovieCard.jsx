@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate } from 'react-router-dom';
+
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const isMovieOpen = false;
@@ -15,10 +16,11 @@ const MovieCard = ({ movie }) => {
       className="card w-full my-2 md:mt-10 md:mb-14 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
     >
       <LazyLoadImage
-      className="w-full h-full object-cover rounded-sm hover:brightness-110"
-      height={movie.height}
-      src={movie?.Poster} // use normal <img> attributes as props
-      width={movie.width} />
+        className="w-full h-full object-cover rounded-sm hover:brightness-110"
+        height={movie.height}
+        src={movie?.Poster} // use normal <img> attributes as props
+        width={movie.width}
+      />
       <div className="p-2 text-white">
         <h2 className="text- font-semibold">{movie?.Title}</h2>
         <p className="mt-2 text-xs">{movie?.Runtime}</p>

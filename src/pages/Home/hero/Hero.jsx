@@ -37,7 +37,7 @@ const Hero = () => {
               className="hero h-[300px] md:h-[500px] lg:h-[600px] xl:h-screen"
               style={{ backgroundImage: `url(${movie?.Thumbnail})` }}
             >
-              <div className="backdrop-blur-sm backdrop-opacity-60 h-full py-5 flex justify-center md:justify-normal md:pl-40 text-start items-center w-full">
+              <div className="backdrop-blur-sm backdrop-opacity-60 h-full py-5 flex justify-center md:justify-normal md:pl-40 text-start items-center w-full text-white">
                 <div className="max-w-xs md:max-w-lg justify-center">
                   <h1 className="mb-5 text-xl md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
                     {movie?.Title}
