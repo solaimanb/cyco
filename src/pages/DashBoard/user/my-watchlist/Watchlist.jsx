@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import WatchListCard from './WatchListCard';
+import { AuthContext } from '../../../../providers/AuthProvider'
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const WatchList = () => {
-  const categories = [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' },
-    { id: '6' },
-    { id: '7' },
-    { id: '8' },
-    { id: '9' },
-  ];
+  const { user } = useContext(AuthContext);
+
+  const [watchlists,setWatchlist] = useState([]);
+
+  useEffect(() => {
+    if (user && user.email) {
+      fetch(`http://localhost:8080/user/${user.email}`)
+        .then(res => res.json())
+        .then(data => {
+          setWatchlist(data.watchlist);
+          console.log(data.watchlist);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+    }
+  }, [user]);
+
+
   return (
     <>
       <div className="navbar bg-base-100">
@@ -24,8 +35,8 @@ const WatchList = () => {
         </div>
       </div>
       <div>
-        {categories.map((cate) => (
-          <WatchListCard cate={cate.id} />
+        {watchlists.map((movie,index) => (
+          <WatchListCard key={index} movie={movie} />
         ))}
       </div>
     </>
