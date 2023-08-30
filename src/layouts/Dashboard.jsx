@@ -277,11 +277,7 @@ const Dashboard = () => {
       </nav>
 
       {/* Dashboard Sidebar */}
-      <div
-        className={`hidden lg:flex w-full bg-zinc-800 ${
-          isSidebarOpen ? 'flex-row-rever' : 'flex-co'
-        }`}
-      >
+      <div className={`hidden lg:flex bg-zinc-800`}>
         {isAdmin ? (
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li className="dashBoard-link">
