@@ -3,8 +3,12 @@ import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaFolderPlus, FaPlayCircle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FeaturedMovies from '../home/featuredMovies/FeaturedMovies';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+
 
 const MovieInfo = () => {
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -13,6 +17,29 @@ const MovieInfo = () => {
     const PlayButton = () => {
         navigate('/video-player');
     };
+    const AddToWatchlist = async () => {
+        console.log('clciked',user);
+        try {
+            const response = await fetch('YOUR_BACKEND_API_URL/addToWatchlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(movie), // You might need to adjust the payload
+            });
+
+            if (response.ok) {
+                // Handle success, e.g., show a notification
+                console.log('Movie added to watchlist');
+            } else {
+                // Handle error, e.g., show an error message
+                console.error('Error adding movie to watchlist');
+            }
+        } catch (error) {
+            console.error('Error adding movie to watchlist', error);
+        }
+    };
+
 
     return (
         <div>
@@ -40,6 +67,7 @@ const MovieInfo = () => {
                             <FaPlayCircle /> Play Now
                         </button>
                         <button
+                            onClick={AddToWatchlist}
                             title="Add to Watchlist"
                             className="btn btn-primary text-base md:text-xl rounded-lg"
                         >
