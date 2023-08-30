@@ -37,7 +37,7 @@ const Dashboard = () => {
   const [isAdmin, SetAdmin] = [true];
 
   return (
-    <div className={`drawer flex flex-col gap-5 lg:flex-row h-full`}>
+    <div className={`drawer flex flex-col gap- lg:flex-row h-full`}>
       {/* Hamburger Menu */}
       <div
         className={`sticky top-0 left-0 p-2 bg-zinc-800 z-20 ${
@@ -60,7 +60,7 @@ const Dashboard = () => {
 
       {/* Collapsed navigation bar */}
       <nav
-        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 border-r border-cyred backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
           isSidebarOpen ? 'block mt-12 px-3' : 'hidden lg:block'
         }`}
       >
@@ -479,7 +479,7 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content w-full h-full px-2 ${
+        className={`drawer-content w-full h-screen pt-5 lg:pt-0 lg:pl-5 bg-zinc-900 ${
           isSidebarOpen ? '' : ''
         }`}
       >
