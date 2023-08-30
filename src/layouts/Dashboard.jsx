@@ -34,7 +34,7 @@ const Dashboard = () => {
   };
 
   // const [isAdmin, SetAdmin] = [false];
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
 
   return (
     <div className={`drawer flex flex-col gap- lg:flex-row h-full`}>
