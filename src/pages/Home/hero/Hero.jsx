@@ -39,10 +39,10 @@ const Hero = () => {
             >
               <div className="backdrop-blur-sm backdrop-opacity-60 h-full py-5 flex justify-center md:justify-normal md:pl-40 text-start items-center w-full text-white">
                 <div className="max-w-xs md:max-w-lg justify-center">
-                  <h1 className="mb-5 text-xl md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
+                  <h1 className="mb-5 text-xl text-white md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
                     {movie?.Title}
                   </h1>
-                  <p className="mb-5 text-xs md:text-sm lg:text-base xl:text-lg text-justify">
+                  <p className="mb-5 text-white text-xs md:text-sm lg:text-base xl:text-lg text-justify">
                     {movie?.Plot}
                   </p>
                   <div className="flex gap-5">
