@@ -14,6 +14,10 @@ const Hero = () => {
   const [movies] = useMovies();
   // console.log(movies);
 
+  const handleWatchMovie = () => {
+    console.log('watch movie');
+  }
+
   return (
     <section className="w-[100%] absolute top-10 md:top-0 left-0">
       <Swiper
@@ -29,11 +33,29 @@ const Hero = () => {
       >
         {movies?.map((movie, index) => (
           <SwiperSlide key={index}>
-            <img
-              src={movie?.Thumbnail}
-              alt={'snow-white-movies-banner'}
-              className="w-full h-[300px] md:h-[500px] lg:h-[700px] xl:h-[800px] 2xl:h-screen"
-            />
+            <div
+              className="hero h-[300px] md:h-[500px] lg:h-[600px] xl:h-screen"
+              style={{ backgroundImage: `url(${movie?.Thumbnail})` }}
+            >
+              <div className="backdrop-blur-sm backdrop-opacity-60 h-full py-5 flex justify-center md:justify-normal md:pl-40 text-start items-center w-full text-white">
+                <div className="max-w-xs md:max-w-lg justify-center">
+                  <h1 className="mb-5 text-xl text-white md:text-3xl xl:text-5xl 2xl:text-6xl font-bold w-full">
+                    {movie?.Title}
+                  </h1>
+                  <p className="mb-5 text-white text-xs md:text-sm lg:text-base xl:text-lg text-justify">
+                    {movie?.Plot}
+                  </p>
+                  <div className="flex gap-5">
+                    {/* <button className="btn btn-sm md:btn-md bg-cyred rounded-sm border-none">
+                      Watch movie
+                    </button>
+                    <button className="btn btn-sm md:btn-md bg-cyred rounded-sm border-none">
+                      Add WatchList
+                    </button> */}
+                  </div>
+                </div>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -44,8 +66,8 @@ const Hero = () => {
 };
 
 export default Hero;
-{
-  /* <div className="absolute -mt-[50%] w-[40%] text-white">
+
+/* <div className="absolute -mt-[50%] w-[40%] text-white">
         <h2 className="text-4xl font-bold ">Snow White & The Hunstman</h2>
 
         <p className="text-sm font-thin">
@@ -63,4 +85,6 @@ export default Hero;
           </button>
         </div>
       </div> */
-}
+
+import React from 'react';
+

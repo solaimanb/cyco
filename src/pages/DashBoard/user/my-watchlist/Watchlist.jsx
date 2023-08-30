@@ -6,6 +6,7 @@ import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlic
 
 const WatchList = () => {
   const wishlist = useSelector((state) => state.wishlist);
+  console.log(wishlist);
   const dispatch = useDispatch();
 
   const handleRemoveFromWishlist = (movie) => {
@@ -17,7 +18,7 @@ const WatchList = () => {
       <div>
         <h2>Wishlist</h2>
         <ul>
-          {wishlist ? (
+          {Array.isArray(wishlist) && wishlist.length > 0 ? (
             wishlist.map((movie) => (
               <WatchListCard key={movie.id}>
                 {movie.title}{" "}

@@ -8,7 +8,7 @@ import Title from '../../../components/title/Title';
 import useMovies from '../../../hooks/useMovies';
 import Testimonials from '../../testimonials/Testimonials';
 import Categories from '../categories/Categories';
-import FeaturedAds from '../featuredAds/FeaturedAds';
+import FeaturedAd from '../featuredAd/FeaturedAd';
 import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
@@ -142,9 +142,13 @@ const Home = () => {
         </div>
 
         {/* Ads */}
-        <FeaturedAds />
+        <FeaturedAd />
 
         {/* Subscription Plan/Tier */}
+        <div className="my-14  text-white text-center">
+          <h1 className="text-4xl font-bold">Tier Plan</h1>
+          <p>Join the whitelist your perfect option below</p>
+        </div>
         <Subscription />
 
         {/* testimonials */}
