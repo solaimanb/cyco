@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import PlayerPage from '../components/TrailerCard/PlayerPage';
+import Play from '../components/play/Play';
 import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
@@ -29,16 +30,6 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
 import FaqPage from '../pages/faq/FaqPage';
-import Action from '../pages/home/categories/action/Action';
-import Animation from '../pages/home/categories/animation/Animation';
-import Classic from '../pages/home/categories/classic/Classic';
-import Comedy from '../pages/home/categories/comedy/Comedy';
-import Documentary from '../pages/home/categories/documentary/Documentary';
-import Drama from '../pages/home/categories/drama/Drama';
-import Horror from '../pages/home/categories/horror/Horror';
-import Romantic from '../pages/home/categories/romantic/Romantic';
-import Science from '../pages/home/categories/science/Science';
-import TvShows from '../pages/home/categories/tvShows/TvShows';
 import Home from '../pages/home/home/Home';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
 import PopularTv from '../pages/home/popularTvs/popularTv';
@@ -54,7 +45,6 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
-import Play from '../components/play/Play';
 
 const router = createBrowserRouter([
   {
@@ -74,19 +64,9 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
       { path: 'checkout', element: <Payment /> },
-      { path: 'action-movies', element: <Action /> },
-      { path: 'comedy-movies', element: <Comedy /> },
-      { path: 'drama-movies', element: <Drama /> },
-      { path: 'science-movies', element: <Science /> },
-      { path: 'horror-movies', element: <Horror /> },
-      { path: 'animated-movies', element: <Animation /> },
-      { path: 'romantic-movies', element: <Romantic /> },
-      { path: 'documentary-movies', element: <Documentary /> },
-      { path: 'tv-shows', element: <TvShows /> },
-      { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieinfo', element: <MovieInfo /> },
-      { path: 'movieinfo/:index', element: <Play/> },
+      { path: 'movieinfo/:index', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
