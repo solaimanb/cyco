@@ -4,8 +4,8 @@ import Subscription from '../../../../components/subscription/Subscription'
 const ManageSubscription = () => {
   return (
     <div>
-      <h3 className='md:ml-72 md:pl-5 lg:ml-72'>Choose a subscription</h3>
-      <div className='md:ml-72 lg:ml-72'>
+      <h3 className='md:pl-5 lg:pl-5'>Choose a subscription</h3>
+      <div className=''>
         <Subscription/>
       </div>
     </div>
