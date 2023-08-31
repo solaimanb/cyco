@@ -2,7 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
@@ -11,7 +11,9 @@ import Swal from 'sweetalert2';
 
 const MovieInfo = () => {
   const location = useLocation();
+  const { index } = useParams();
   const { movie } = location?.state;
+  console.log(movie);
   //   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
 
   // const PlayButton = () => {
@@ -155,12 +157,19 @@ const MovieInfo = () => {
                   </span>{' '}
                   Add to Watchlist
                 </button>
-                <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                {/* <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                  
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-                  Download
-                </button>
+                  Watch
+                </button> */}
+                <Link to={`/movieinfo/${index}`} key={index} className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+  <span>
+    <FaCloudDownloadAlt size={20} />
+  </span>{' '}
+  Watch
+</Link>
               </div>
             </div>
           </div>
