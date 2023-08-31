@@ -21,7 +21,10 @@ const wishlistSlice = createSlice({
     },
     removeFromWishlist: (state, action) => {
       // Remove the movie from the wishlist by filtering based on Title
-      state.movies = state.movies.filter(
+      // state.movies = state.movies.filter(
+      //   (movie) => movie.Title !== action.payload.Title
+      // );
+      state.wishlist = state.wishlist.filter(
         (movie) => movie.Title !== action.payload.Title
       );
     },
