@@ -1,27 +1,53 @@
 import React from "react";
 
-const WatchListCard = (movie) => {
-  console.log(movie);
-  const {Poster,Title,PlotSummary} = movie.movie;
-  console.log(Poster);
+const WatchListCard = ({ movie, onRemove }) => {
+  const {
+    Title,
+    Year,
+    Poster,
+    imdbRating,
+    Genre,
+    Runtime,
+  } = movie || {};
+
   return (
-    <div className="hero  bg-base-200">
-      <div className="hero-content flex-col lg:flex-row">
+    <div className="bg-white rounded-lg shadow-md p-4">
+      <div className="flex">
         <img
-          src={Poster}
-          className="h-[300px]  rounded-lg shadow-2xl"
+
+          src={Poster} // Use the actual movie poster URL
+          alt={Title}
+          className="w-[150px] h-[225px] rounded-md mr-4"
         />
-        <div className="w-full">
-          <h1 className="text-xl font-bold">{Title}</h1>
-          <p className="py-6">
-            {PlotSummary.Summary}
+        <div>
+          <h3 className="text-lg font-semibold mb-2">{Title}</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Year:</span> {Year}
           </p>
-          <button className="btn btn-primary">Watch Now</button>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">IMDb Rating:</span> {imdbRating}
+          </p>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Genre:</span> {Genre}
+          </p>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Runtime:</span> {Runtime}
+          </p>
+         
         </div>
-        <div className="flex justify-end">
-            <button className="btn">Click Me</button>
-        </div>
+        
       </div>
+      <div className="flex justify-between mt-4">
+            <button
+              onClick={onRemove}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Remove
+            </button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 rounded">
+              Watch Now
+            </button>
+          </div>
     </div>
   );
 };

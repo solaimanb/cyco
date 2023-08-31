@@ -7,12 +7,15 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
 
+import { useDispatch } from 'react-redux';
+import { addToWishlist } from '../../store/wishListSlice/wishListSlice';
+
 const MovieInfo = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
     const location = useLocation();
     const { movie } = location.state;
+    console.log(movie)
     const { Title, Released, Director, Actors, Poster, Runtime, Language, Plot } = movie || {};
     const PlayButton = () => {
         navigate('/video-player');
@@ -41,6 +44,13 @@ const MovieInfo = () => {
     };
 
 
+    const dispatch = useDispatch();
+
+    const handleAddToWishlist = () => {
+        dispatch(addToWishlist(movie));
+        console.log('Dispatched addToWishlist action with movie:', movie);
+    };
+
     return (
         <div>
             <div className="hero min-h-screen rounded-lg " style={{ backgroundImage: `url(${Poster})` }}>
@@ -67,7 +77,8 @@ const MovieInfo = () => {
                             <FaPlayCircle /> Play Now
                         </button>
                         <button
-                            onClick={AddToWatchlist}
+
+                            onClick={handleAddToWishlist}
                             title="Add to Watchlist"
                             className="btn btn-primary text-base md:text-xl rounded-lg"
                         >

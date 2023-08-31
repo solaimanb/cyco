@@ -4,59 +4,110 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { useLocation } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
-import { useContext } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const MovieInfo = () => {
   // const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+//   const { user } = useContext(AuthContext);
 
+
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
+
+const MovieInfo = () => {
   const location = useLocation();
   const { movie } = location?.state;
-  const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
+//   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
 
   // const PlayButton = () => {
   //   navigate('/video-player');
   // };
   
-  const AddToWatchList = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/addToWatchlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userEmail: user?.email,
-          movie: movie, 
-        }),
-      });
+//   const AddToWatchList = async () => {
+//     try {
+//       const response = await fetch('http://localhost:8080/addToWatchlist', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           userEmail: user?.email,
+//           movie: movie, 
+//         }),
+//       });
 
-      if (response.ok) {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Movie added to watchlist',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        console.log('Movie added to watchlist');
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Please Try Again Movie Not  added to watchlist',
-          footer: '<a href="">Why do I have this issue?</a>'
-        })
-      }
-    } catch (error) {
-      console.error('Error adding movie to watchlist', error);
+//       if (response.ok) {
+//         Swal.fire({
+//           position: 'top-end',
+//           icon: 'success',
+//           title: 'Movie added to watchlist',
+//           showConfirmButton: false,
+//           timer: 1500
+//         })
+//         console.log('Movie added to watchlist');
+//       } else {
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Oops...',
+//           text: 'Please Try Again Movie Not  added to watchlist',
+//           footer: '<a href="">Why do I have this issue?</a>'
+//         })
+//       }
+//     } catch (error) {
+//       console.error('Error adding movie to watchlist', error);
+//     }
+//   };
+
+  // console.log(movie);
+
+  const {
+    imdbID, // Make sure 'imdbID' is in your movie object
+    Title,
+    Year,
+    Plot,
+    Released,
+    Director,
+    Actors,
+    Poster,
+    Runtime,
+    Language,
+    Thumbnail,
+    imdbRating,
+    Genre,
+  } = movie || {};
+
+  const dispatch = useDispatch();
+
+  // Get the wishlist from the Redux store
+    // Get the current wishlist from local storage
+    const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  
+    // Check if a movie with the same Title is already in the wishlist
+    const isAlreadyInWishlist = currentWishlist.some((wishlistMovie) => wishlistMovie.Title === Title);
+  
+    if (isAlreadyInWishlist) {
+      Swal.fire({
+        title: 'Movie Already Added!',
+        text: 'This movie is already in your wishlist.',
+        icon: 'warning',
+      });
+    } else {
+      // If the movie is not in the wishlist, add it and update local storage
+      currentWishlist.push(movie);
+      localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
+  
+      Swal.fire({
+        title: 'Added to Wishlist!',
+        text: 'The movie has been added to your wishlist.',
+        icon: 'success',
+      });
     }
   };
-
-
-  return (
+  
+  
+return (
     <div
       className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
@@ -100,9 +151,10 @@ const MovieInfo = () => {
 
               {/* Download Buttons */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
-                <button
-                  onClick={AddToWatchList}
-                  className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+
+                <button 
+                onClick={handleAddToWishlist}
+                className="btn capitalize bg-cyred font-bold border-none rounded-sm">
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}
