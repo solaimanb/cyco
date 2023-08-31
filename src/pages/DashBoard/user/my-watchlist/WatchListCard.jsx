@@ -11,15 +11,22 @@ const WatchListCard = ({ movie, onRemove }) => {
   } = movie || {};
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 card card-body">
-      <div className="flex">
-        <img
-          src={Poster} // Use the actual movie poster URL
+    <>
+      
+
+    <div className="bg-white rounded-lg shadow-md p-4 card card-body bg-{Poster}">
+    <h3 className="text-lg font-semibold mb-2">{Title}</h3>
+      <div className="flex justify-between gap-7">
+      <div>
+      <img
+          src={Poster} 
           alt={Title}
-          className="w-[250px] h-[325px] rounded-md mr-4"
+          className="w-[210px] h-[290px] rounded-md mr-4"
         />
-        <div >
-          <h3 className="text-lg font-semibold mb-2">{Title}</h3>
+      </div>
+       
+        <div className="pt-16">
+          
           <p className="text-gray-600 text-sm mb-2">
             <span className="font-semibold">Year:</span> {Year}
           </p>
@@ -48,6 +55,7 @@ const WatchListCard = ({ movie, onRemove }) => {
             </button>
           </div>
     </div>
+    </>
   );
 };
 
