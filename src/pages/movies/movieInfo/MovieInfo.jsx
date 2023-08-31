@@ -106,10 +106,10 @@ const MovieInfo = () => {
 
   return (
     <div
-      className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
+      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh] mt-2 md:mt-5 lg:mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
-      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-5">
+      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
         {/* Movie Poster */}
         <div className="md:w-2/5">
           <img
@@ -127,7 +127,7 @@ const MovieInfo = () => {
             <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
               {Title} [{Year}]
             </h2>
-            <p className="mt-5 text-sm">{Plot}</p>
+            <p className="mt-5 text-xs md:text-sm">{Plot}</p>
 
             <div className="mt-10 flex flex-col w-[60%] text-sm md:text-base gap-2">
               <div className="flex flex-col gap-2">
@@ -164,12 +164,16 @@ const MovieInfo = () => {
                   </span>{' '}
                   Watch
                 </button> */}
-                <Link to={`/movieinfo/${index}`} key={index} className="btn capitalize bg-cyred font-bold border-none rounded-sm">
-  <span>
-    <FaCloudDownloadAlt size={20} />
-  </span>{' '}
-  Watch
-</Link>
+                <Link
+                  to={`/movieinfo/${index}`}
+                  key={index}
+                  className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                >
+                  <span>
+                    <FaCloudDownloadAlt size={20} />
+                  </span>{' '}
+                  Watch
+                </Link>
               </div>
             </div>
           </div>
