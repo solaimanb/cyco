@@ -32,8 +32,6 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-
-  // const [isAdmin, SetAdmin] = [false];
   const [isAdmin, SetAdmin] = [false];
 
   return (
