@@ -20,6 +20,7 @@ const WatchListCard = ({ movie, onRemove }) => {
       <div>
       <img
           src={Poster} 
+
           alt={Title}
           className="w-[210px] h-[290px] rounded-md mr-4"
         />
