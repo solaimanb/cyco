@@ -4,7 +4,13 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { useLocation } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+
+const MovieInfo = () => {
+  // const navigate = useNavigate();
+//   const { user } = useContext(AuthContext);
 
 
 import { useDispatch, useSelector  } from 'react-redux';
@@ -13,6 +19,47 @@ import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 const MovieInfo = () => {
   const location = useLocation();
   const { movie } = location?.state;
+//   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
+
+  // const PlayButton = () => {
+  //   navigate('/video-player');
+  // };
+  
+//   const AddToWatchList = async () => {
+//     try {
+//       const response = await fetch('http://localhost:8080/addToWatchlist', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           userEmail: user?.email,
+//           movie: movie, 
+//         }),
+//       });
+
+//       if (response.ok) {
+//         Swal.fire({
+//           position: 'top-end',
+//           icon: 'success',
+//           title: 'Movie added to watchlist',
+//           showConfirmButton: false,
+//           timer: 1500
+//         })
+//         console.log('Movie added to watchlist');
+//       } else {
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Oops...',
+//           text: 'Please Try Again Movie Not  added to watchlist',
+//           footer: '<a href="">Why do I have this issue?</a>'
+//         })
+//       }
+//     } catch (error) {
+//       console.error('Error adding movie to watchlist', error);
+//     }
+//   };
+
   // console.log(movie);
 
   const {
@@ -34,9 +81,6 @@ const MovieInfo = () => {
   const dispatch = useDispatch();
 
   // Get the wishlist from the Redux store
-  
-
-  const handleAddToWishlist = () => {
     // Get the current wishlist from local storage
     const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   
@@ -66,7 +110,7 @@ const MovieInfo = () => {
 return (
     <div
       className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
-      
+      style={{ backgroundImage: `url(${Thumbnail})` }}
     >
       <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-5">
         {/* Movie Poster */}
@@ -75,7 +119,7 @@ return (
             src={Poster}
             alt={`movie-poster of ${Title}`}
             className="w-full h-full object-cover"
-            // onClick={()=>PlayButton()}
+          // onClick={()=>PlayButton()}
           />
         </div>
 
@@ -107,6 +151,7 @@ return (
 
               {/* Download Buttons */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
+
                 <button 
                 onClick={handleAddToWishlist}
                 className="btn capitalize bg-cyred font-bold border-none rounded-sm">
