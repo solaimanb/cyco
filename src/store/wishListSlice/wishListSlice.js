@@ -9,16 +9,17 @@ const wishlistSlice = createSlice({
   initialState,
   reducers: {
     addToWishlist: (state, action) => {
-      state.wishlist.push(action.payload);
+      // Check if the movie with the same Title is already in the wishlist
+      const existingMovie = state.movies.find((movie) => movie.Title === action.payload.Title);
 
-      // Update LocalStorage to store the updated wishlist
-      localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+      if (!existingMovie) {
+        // If it's not in the wishlist, add it
+        state.movies.push(action.payload);
+      }
     },
     removeFromWishlist: (state, action) => {
-      state.wishlist = state.wishlist.filter((movie) => movie.id !== action.payload.id);
-
-      // Update LocalStorage to store the updated wishlist
-      localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+      // Remove the movie from the wishlist by filtering based on Title
+      state.movies = state.movies.filter((movie) => movie.Title !== action.payload.Title);
     },
   },
 });
@@ -26,3 +27,5 @@ const wishlistSlice = createSlice({
 export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;
+
+

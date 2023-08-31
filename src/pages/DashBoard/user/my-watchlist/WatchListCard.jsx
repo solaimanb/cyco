@@ -32,19 +32,21 @@ const WatchListCard = ({ movie, onRemove }) => {
           <p className="text-gray-600 text-sm mb-2">
             <span className="font-semibold">Runtime:</span> {Runtime}
           </p>
-          <div className="flex justify-between mt-4">
+         
+        </div>
+        
+      </div>
+      <div className="flex justify-between mt-4">
             <button
               onClick={onRemove}
               className="text-red-500 hover:text-red-700 font-medium"
             >
               Remove
             </button>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 rounded">
               Watch Now
             </button>
           </div>
-        </div>
-      </div>
     </div>
   );
 };

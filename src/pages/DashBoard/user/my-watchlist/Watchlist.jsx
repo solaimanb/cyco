@@ -12,7 +12,7 @@ const WatchList = () => {
     dispatch(removeFromWishlist(movie));
   };
 
-  const itemsPerPage = 2; // Number of items to display per page
+  const itemsPerPage = 3; // Number of items to display per page
   const totalPages = Math.ceil(wishlist.length / itemsPerPage);
 
   // Use state to track the current page
