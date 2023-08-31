@@ -20,10 +20,15 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
- 
 
   // const [isAdmin, SetAdmin] = [false];
   const [isAdmin, SetAdmin] = [true];
+//   const handleLinkClick = () => {
+//     setLinkClicked(true);
+//   };
+//   const handleLinkFalse = () => {
+//     setLinkClicked(false);
+//   };
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
