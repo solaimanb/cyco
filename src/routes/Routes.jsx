@@ -54,6 +54,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import Play from '../components/play/Play';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,7 @@ const router = createBrowserRouter([
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieinfo', element: <MovieInfo /> },
+      { path: 'movieinfo/:index', element: <Play/> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
