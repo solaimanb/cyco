@@ -14,7 +14,7 @@ const WatchListCard = ({ movie, onRemove }) => {
     <>
       
 
-    <div className="bg-white rounded-lg shadow-md p-4 card card-body bg-{Poster}">
+    <div className="bg-cyred/60 hover:bg-cyred/70  rounded-lg shadow-md p-4 card card-body ">
     <h3 className="text-lg font-semibold mb-2">{Title}</h3>
       <div className="flex justify-between gap-7">
       <div>
@@ -25,18 +25,18 @@ const WatchListCard = ({ movie, onRemove }) => {
         />
       </div>
        
-        <div className="pt-16">
+        <div className="py-16 text-left">
           
-          <p className="text-gray-600 text-sm mb-2">
+          <p className="text-white/70 text-sm mb-2">
             <span className="font-semibold">Year:</span> {Year}
           </p>
-          <p className="text-gray-600 text-sm mb-2">
+          <p className="text-white/70 text-sm mb-2">
             <span className="font-semibold">IMDb Rating:</span> {imdbRating}
           </p>
-          <p className="text-gray-600 text-sm mb-2">
+          <p className="text-white/70 text-sm mb-2">
             <span className="font-semibold">Genre:</span> {Genre}
           </p>
-          <p className="text-gray-600 text-sm mb-2">
+          <p className="text-white/70 text-sm mb-2">
             <span className="font-semibold">Runtime:</span> {Runtime}
           </p>
          
@@ -46,11 +46,11 @@ const WatchListCard = ({ movie, onRemove }) => {
       <div className="flex justify-between mt-4">
             <button
               onClick={onRemove}
-              className="text-red-500 hover:text-red-700 font-medium"
+              className="text-red-100 hover:text-red-700 text-sm"
             >
               Remove
             </button>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 rounded">
+            <button className="bg-cyred hover:bg-cyred/80 text-white/60 font-medium px-4 rounded">
               Watch Now
             </button>
           </div>
