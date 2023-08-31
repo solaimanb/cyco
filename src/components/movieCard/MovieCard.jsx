@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
       className="card w-full my-2 md:mt-10 md:mb-12 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
     >
       <LazyLoadImage
-        className="w-full h-full object-cover rounded-sm hover:brightness-110"
+        className="w-full h-60 md:h-80 lg:h-96 object-cover rounded-sm hover:brightness-110"
         alt={movie.alt}
         effect="blur"
         height={movie?.height}
