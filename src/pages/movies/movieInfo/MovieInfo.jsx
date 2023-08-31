@@ -4,13 +4,19 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { useLocation } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+import Swal from 'sweetalert2';
+
+
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
-  // const navigate = useNavigate();
-
   const location = useLocation();
   const { movie } = location?.state;
+  // console.log(movie);
+
   const {
+    imdbID, // Make sure 'imdbID' is in your movie object
     Title,
     Year,
     Plot,
@@ -25,14 +31,42 @@ const MovieInfo = () => {
     Genre,
   } = movie || {};
 
-  // const PlayButton = () => {
-  //   navigate('/video-player');
-  // };
+  const dispatch = useDispatch();
 
-  return (
+  // Get the wishlist from the Redux store
+  
+
+  const handleAddToWishlist = () => {
+    // Get the current wishlist from local storage
+    const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  
+    // Check if a movie with the same Title is already in the wishlist
+    const isAlreadyInWishlist = currentWishlist.some((wishlistMovie) => wishlistMovie.Title === Title);
+  
+    if (isAlreadyInWishlist) {
+      Swal.fire({
+        title: 'Movie Already Added!',
+        text: 'This movie is already in your wishlist.',
+        icon: 'warning',
+      });
+    } else {
+      // If the movie is not in the wishlist, add it and update local storage
+      currentWishlist.push(movie);
+      localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
+  
+      Swal.fire({
+        title: 'Added to Wishlist!',
+        text: 'The movie has been added to your wishlist.',
+        icon: 'success',
+      });
+    }
+  };
+  
+  
+return (
     <div
       className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
-      style={{ backgroundImage: `url(${Thumbnail})`}}
+      
     >
       <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-5">
         {/* Movie Poster */}
@@ -73,7 +107,9 @@ const MovieInfo = () => {
 
               {/* Download Buttons */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
-                <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                <button 
+                onClick={handleAddToWishlist}
+                className="btn capitalize bg-cyred font-bold border-none rounded-sm">
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}

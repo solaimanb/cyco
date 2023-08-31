@@ -1,24 +1,52 @@
 import React from "react";
 
-const WatchListCard = () => {
+const WatchListCard = ({ movie, onRemove }) => {
+  const {
+    Title,
+    Year,
+    Poster,
+    imdbRating,
+    Genre,
+    Runtime,
+  } = movie || {};
+
   return (
-    <div className="hero  bg-base-200">
-      <div className="hero-content flex-col lg:flex-row">
+    <div className="bg-white rounded-lg shadow-md p-4">
+      <div className="flex">
         <img
-          src="https://th.bing.com/th?id=ORMS.9a323f8a24bdcd2733f72779c5406938&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.25&p=0"
-          className="lg:w-1/4 xl:w-1/4 rounded-lg shadow-2xl"
+          src={Poster} // Use the actual movie poster URL
+          alt={Title}
+          className="w-[150px] h-[225px] rounded-md mr-4"
         />
-        <div className="w-full">
-          <h1 className="text-xl font-bold">Box Office Movies!</h1>
-          <p className="py-6">
-            Provident In deleniti eaque aut repudiandae et a id nisi.
+        <div>
+          <h3 className="text-lg font-semibold mb-2">{Title}</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Year:</span> {Year}
           </p>
-          <button className="btn btn-primary">Watch Now</button>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">IMDb Rating:</span> {imdbRating}
+          </p>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Genre:</span> {Genre}
+          </p>
+          <p className="text-gray-600 text-sm mb-2">
+            <span className="font-semibold">Runtime:</span> {Runtime}
+          </p>
+         
         </div>
-        <div className="flex justify-end">
-            <button className="btn">Click Me</button>
-        </div>
+        
       </div>
+      <div className="flex justify-between mt-4">
+            <button
+              onClick={onRemove}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Remove
+            </button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 rounded">
+              Watch Now
+            </button>
+          </div>
     </div>
   );
 };

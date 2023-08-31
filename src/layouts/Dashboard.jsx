@@ -32,12 +32,10 @@ const Dashboard = () => {
   const handleLinkFalse = () => {
     setLinkClicked(false);
   };
-
-  // const [isAdmin, SetAdmin] = [false];
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
 
   return (
-    <div className={`drawer flex flex-col gap-5 lg:flex-row h-full`}>
+    <div className={`drawer flex flex-col gap- lg:flex-row h-full`}>
       {/* Hamburger Menu */}
       <div
         className={`sticky top-0 left-0 p-2 bg-zinc-800 z-20 ${
@@ -60,7 +58,7 @@ const Dashboard = () => {
 
       {/* Collapsed navigation bar */}
       <nav
-        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
+        className={`fixed card h-screen overflow-hidden z-40 lg:hidden inset-0 bg-zinc-900 border-r border-cyred backdrop-blur-2xl text-left w-[70%] md:w-[40%] transition-all duration-300 ${
           isSidebarOpen ? 'block mt-12 px-3' : 'hidden lg:block'
         }`}
       >
@@ -380,98 +378,108 @@ const Dashboard = () => {
         ) : (
           <ul className="hidden lg:flex gap-3 text-sm flex-col justify-start pl-0">
             <li className="dashBoard-link">
-              <Link
-                to="users-home"
-                className="tooltip tooltip-right flex"
-                data-tip="Profile"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="watchList"
-                className="tooltip tooltip-right flex "
-                data-tip="Watchlist"
-              >
-                Watchlist
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="downloads"
-                className="tooltip tooltip-right flex "
-                data-tip="Downloads"
-              >
-                Downloads
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="subscriptions"
-                className="tooltip tooltip-right flex "
-                data-tip="Subscriptions"
-              >
-                Subscriptions
-              </Link>
-            </li>
-            <div className="divider my-8"></div>
-            <li className="dashBoard-link">
-              <Link
-                to="forum"
-                className="tooltip tooltip-right flex "
-                data-tip="Forum"
-              >
-                Forum
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="watch-party"
-                className="tooltip tooltip-right flex "
-                data-tip="Watch Party"
-              >
-                Watch Party
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="recommendation"
-                className="tooltip tooltip-right flex "
-                data-tip="Recommendation"
-              >
-                Recommendation
-              </Link>
-            </li>
-            <li className="dashBoard-link">
-              <Link
-                to="update-payment-info"
-                className="tooltip tooltip-right flex "
-                data-tip="Updated Payment Info"
-              >
-                Update Info
-              </Link>
-            </li>
-            <div className="divider mb-4"></div>
-            <div className="mb-5 space-y-2">
+                <Link
+                  to="users-home"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Profile"
+                >
+                  <FaRegUserCircle size={22} />
+                  Profile
+                </Link>
+              </li>
               <li className="dashBoard-link">
                 <Link
-                  to="account-settings"
-                  className="tooltip tooltip-right flex "
-                  data-tip="settings"
+                  to="watchList"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Watchlist"
                 >
-                  Settings
+                  <FaVideoSlash />
+                  Watchlist
                 </Link>
               </li>
-              <li className="dashBoard-link ">
+              <li className="dashBoard-link">
                 <Link
-                  to="account-settings"
-                  className="tooltip tooltip-right flex "
-                  data-tip="settings"
+                  to="downloads"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Downloads"
                 >
-                  Logout
+                  <FaDownload />
+                  Downloads
                 </Link>
               </li>
+              <li className="dashBoard-link">
+                <Link
+                  to="subscriptions"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Subscriptions"
+                >
+                  <FaMoneyBill />
+                  Subscriptions
+                </Link>
+              </li>
+              <div className="divider my-8"></div>
+              <li className="dashBoard-link">
+                <Link
+                  to="forum"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Forum"
+                >
+                  <FaPeopleArrows />
+                  Forum
+                </Link>
+              </li>
+              <li className="dashBoard-link">
+                <Link
+                  to="watch-party"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Watch Party"
+                >
+                  <FaTv />
+                  Watch Party
+                </Link>
+              </li>
+              <li className="dashBoard-link">
+                <Link
+                  to="/recommendation"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Recommendation"
+                >
+                  <FaRandom />
+                  Recommendation
+                </Link>
+              </li>
+              <li className="dashBoard-link">
+                <Link
+                  to="update-payment-info"
+                  className="tooltip tooltip-right flex gap-2 items-center"
+                  data-tip="Updated Payment Info"
+                >
+                  <FaInfo />
+                  Update Info
+                </Link>
+              </li>
+            <div className="divider mb-4"></div>
+            <div className="mb-5 space-y-2">
+            <li className="dashBoard-link">
+                  <Link
+                    to="account-settings"
+                    className="tooltip tooltip-right flex gap-2 items-center"
+                    data-tip="settings"
+                  >
+                    <FaSun />
+                    Settings
+                  </Link>
+                </li>
+                <li className="dashBoard-link ">
+                  <Link
+                    to="account-settings"
+                    className="tooltip tooltip-right flex gap-2 items-center"
+                    data-tip="settings"
+                  >
+                    <FaSignOutAlt />
+                    Logout
+                  </Link>
+                </li>
             </div>
           </ul>
         )}
@@ -479,7 +487,7 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content w-full h-full px-2 ${
+        className={`drawer-content w-full h-screen pt-5 lg:pt-0 lg:pl-5 bg-zinc-900 ${
           isSidebarOpen ? '' : ''
         }`}
       >

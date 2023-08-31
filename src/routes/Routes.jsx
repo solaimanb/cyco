@@ -17,6 +17,7 @@ import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannel
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import Forum from '../pages/DashBoard/user/forum/Forum';
+import History from '../pages/DashBoard/user/history/History';
 import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
@@ -53,7 +54,6 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
-import History from '../pages/DashBoard/user/history/History';
 
 const router = createBrowserRouter([
   {
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
       { path: 'tv-shows', element: <TvShows /> },
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
-      { path: 'movieInfo', element: <MovieInfo /> },
+      { path: 'movieinfo', element: <MovieInfo /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
@@ -110,7 +110,7 @@ const router = createBrowserRouter([
       { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
-      { path: 'move-history', element: <History /> },
+      { path: 'history', element: <History /> },
 
       { path: 'upload-new-movie', element: <UploadNewMovies /> },
       { path: 'revenue-tracking', element: <RevenueTracking /> },

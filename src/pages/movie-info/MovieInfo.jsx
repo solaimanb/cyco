@@ -4,14 +4,24 @@ import { FaCloudDownloadAlt, FaFolderPlus, FaPlayCircle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FeaturedMovies from '../home/featuredMovies/FeaturedMovies';
 
+import { useDispatch } from 'react-redux';
+import { addToWishlist } from '../../store/wishListSlice/wishListSlice';
+
 const MovieInfo = () => {
     const navigate = useNavigate();
-
     const location = useLocation();
     const { movie } = location.state;
+    console.log(movie)
     const { Title, Released, Director, Actors, Poster, Runtime, Language, Plot } = movie || {};
     const PlayButton = () => {
         navigate('/video-player');
+    };
+
+    const dispatch = useDispatch();
+
+    const handleAddToWishlist = () => {
+        dispatch(addToWishlist(movie));
+        console.log('Dispatched addToWishlist action with movie:', movie);
     };
 
     return (
@@ -40,6 +50,7 @@ const MovieInfo = () => {
                             <FaPlayCircle /> Play Now
                         </button>
                         <button
+                            onClick={handleAddToWishlist}
                             title="Add to Watchlist"
                             className="btn btn-primary text-base md:text-xl rounded-lg"
                         >
