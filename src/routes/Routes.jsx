@@ -17,6 +17,7 @@ import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannel
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import Forum from '../pages/DashBoard/user/forum/Forum';
+import History from '../pages/DashBoard/user/history/History';
 import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
 import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
@@ -109,6 +110,7 @@ const router = createBrowserRouter([
       { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
+      { path: 'history', element: <History /> },
 
       { path: 'upload-new-movie', element: <UploadNewMovies /> },
       { path: 'revenue-tracking', element: <RevenueTracking /> },

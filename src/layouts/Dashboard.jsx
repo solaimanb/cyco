@@ -2,21 +2,9 @@ import React, { useState } from 'react';
 
 import {
   FaBars,
-  FaDownload,
-  FaHome,
-  FaInfo,
-  FaMoneyBill,
-  FaPeopleArrows,
-  FaRandom,
-  FaRegChartBar,
-  FaRegUserCircle,
-  FaSignOutAlt,
-  FaSun,
   FaTimes,
-  FaTv,
-  FaVideoSlash,
 } from 'react-icons/fa';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
@@ -34,8 +22,8 @@ const Dashboard = () => {
   };
  
 
-  const [isAdmin, SetAdmin] = [false];
-  // const [isAdmin, SetAdmin] = [true];
+  // const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -48,7 +36,7 @@ const Dashboard = () => {
               <FaTimes size={24} />
             </button>
           ) : (
-            <button onClick={toggleSidebar} className="">
+            <button onClick={toggleSidebar} className="z-20">
               <FaBars size={24} />
             </button>
           )}
@@ -187,7 +175,7 @@ const Dashboard = () => {
             <li>
               <NavLink className={({ isActive }) =>
                 isActive ? 'btn-active' : 'sidebar-btn'
-              } to='user-feedback' >History</NavLink>
+              } to='history' >History</NavLink>
             </li>
           </ul>
           <div className='group:mb-0'>
@@ -207,7 +195,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${isSidebarOpen ? '' : 'blur-none'
-          } h-full w-full pt-6 lg:py-2 lg:ml-72`}
+          } h-full w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
       </div>
