@@ -12,7 +12,7 @@ const WatchList = () => {
     dispatch(removeFromWishlist(movie));
   };
 
-  const itemsPerPage = 3; // Number of items to display per page
+  const itemsPerPage = 8; // Number of items to display per page
   const totalPages = Math.ceil(wishlist.length / itemsPerPage);
 
   // Use state to track the current page
@@ -48,8 +48,8 @@ const WatchList = () => {
             onClick={() => goToPage(index + 1)}
             className={`mx-2 px-2 py-1 rounded ${
               currentPage === index + 1
-                ? "bg-blue-500 text-white"
-                : "bg-white text-blue-500 hover:bg-gray-200"
+                ? "bg-cyred text-white"
+                : "bg-white text-cyred hover:bg-gray-200"
             }`}
           >
             {index + 1}
