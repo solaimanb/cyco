@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaFolderPlus, FaPlayCircle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
-import FeaturedMovies from '../home/featuredMovies/FeaturedMovies';
-import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import FeaturedMovies from '../home/featuredMovies/FeaturedMovies';
 
 
 import { useDispatch } from 'react-redux';
@@ -20,6 +19,7 @@ const MovieInfo = () => {
     const PlayButton = () => {
         navigate('/video-player');
     };
+    
     const AddToWatchlist = async () => {
         console.log('clciked',user);
         try {
