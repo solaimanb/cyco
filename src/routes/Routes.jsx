@@ -84,7 +84,7 @@ const router = createBrowserRouter([
       { path: 'tv-shows', element: <TvShows /> },
       { path: 'classic-movies', element: <Classic /> },
       { path: 'video-player', element: <VideoPlayer /> },
-      { path: 'movieInfo', element: <MovieInfo /> },
+      { path: 'movieinfo', element: <MovieInfo /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },

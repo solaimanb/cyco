@@ -12,7 +12,7 @@ import useMovies from '../../../hooks/useMovies';
 
 const Hero = () => {
   const [movies] = useMovies();
-  console.log(movies);
+  // console.log(movies);
 
   const handleWatchMovie = () => {
     console.log('watch movie');
