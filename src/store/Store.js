@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     home: homeSlice,
     users: userReducer,
-    wishlist: wishlistReducer, // Updated the reducer key name to 'wishlist'
+    wishlist: wishlistReducer,
   },
 });
 
