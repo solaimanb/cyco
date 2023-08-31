@@ -14,6 +14,7 @@ const WatchListCard = ({ movie, onRemove }) => {
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex">
         <img
+
           src={Poster} // Use the actual movie poster URL
           alt={Title}
           className="w-[150px] h-[225px] rounded-md mr-4"
