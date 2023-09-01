@@ -1,8 +1,8 @@
-import React from "react";
-import WatchListCard from "./WatchListCard";
+import React from 'react';
+import WatchListCard from './WishListCard';
 
-import { useDispatch, useSelector } from "react-redux";
-import { removeFromWishlist } from "../../../../store/slices/wishListSlice/wishListSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromWishlist } from '../../../../store/slices/wishListSlice/wishListSlice';
 // import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlice";
 
 const WatchList = () => {
@@ -50,8 +50,8 @@ const WatchList = () => {
             onClick={() => goToPage(index + 1)}
             className={`mx-2 px-2 py-1 rounded ${
               currentPage === index + 1
-                ? "bg-cyred text-white"
-                : "bg-white text-cyred hover:bg-gray-200"
+                ? 'bg-cyred text-white'
+                : 'bg-white text-cyred hover:bg-gray-200'
             }`}
           >
             {index + 1}
