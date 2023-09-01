@@ -2,8 +2,8 @@ import React from 'react';
 
 const Forum = () => {
     return (
-        <div>
-            <p className="text-center text-3x">This is Forum Page</p>
+        <div className='min-h-screen'>
+            <p className="border-l-4 border-white mt-5 ml-5 inline-block px-5">Cyco Forum</p>
         </div>
     );
 };

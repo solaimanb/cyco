@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const SocialLogin = () => {
   const { googleSignIn } = useContext(AuthContext);
@@ -71,7 +71,7 @@ const SocialLogin = () => {
           disabled={isLoading}
         >
           <FaGoogle size={25} />
-          Google
+          oogle
         </button>
         {isLoading && <p>Loading...</p>}
       </div>
