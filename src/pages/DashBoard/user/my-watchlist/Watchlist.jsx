@@ -1,8 +1,9 @@
 import React from "react";
 import WatchListCard from "./WatchListCard";
 
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromWishlist } from "../../../../store/slices/wishListSlice/wishListSlice";
+// import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlice";
 
 const WatchList = () => {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -12,7 +13,7 @@ const WatchList = () => {
     dispatch(removeFromWishlist(movie));
   };
 
-  const itemsPerPage = 3; // Number of items to display per page
+  const itemsPerPage = 8; // Number of items to display per page
   const totalPages = Math.ceil(wishlist.length / itemsPerPage);
 
   // Use state to track the current page
@@ -49,8 +50,8 @@ const WatchList = () => {
             onClick={() => goToPage(index + 1)}
             className={`mx-2 px-2 py-1 rounded ${
               currentPage === index + 1
-                ? "bg-blue-500 text-white"
-                : "bg-white text-blue-500 hover:bg-gray-200"
+                ? "bg-cyred text-white"
+                : "bg-white text-cyred hover:bg-gray-200"
             }`}
           >
             {index + 1}

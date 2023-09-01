@@ -116,36 +116,28 @@ const UsersHome = () => {
           </button>
         </div>
       </div>
-      <div className="bg-zinc-700 bg-opacity-50 w-full p-6 mt-4 border-2 rounded-md">
-        <div className="">
-          <h2 className="pb-6">
-            Your last week spent time on{' '}
-            <span className="text-cyred font-bold">Cyco</span>
-          </h2>
-          <div style={{ width: '95%', height: 240 }}>
-            <ResponsiveContainer>
-              <AreaChart
-                data={data}
-                margin={{
-                  top: 10,
-                  right: 30,
-                  left: 0,
-                  bottom: 0,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip formatter={(value) => `${value} min`} />
-                <Area
-                  type="monotone"
-                  dataKey="timeSpent"
-                  stroke="#800"
-                  fill="#800"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
+      <div className='bg-zinc-700 bg-opacity-50 w-full p-6 mt-4 border-2 rounded-md'>
+        <div className=''>
+          <h2 className='pb-6'>Your last week spent time on <span className='text-cyred font-bold'>Cyco</span></h2>
+        <div style={{ width: '95%', height: 240 }}>
+        <ResponsiveContainer>
+          <AreaChart
+            data={data}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 10,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip  formatter={(value) => `${value} min`} />
+            <Area type="monotone" dataKey="timeSpent" stroke="#800" fill="#800" />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
         </div>
         <div></div>
       </div>

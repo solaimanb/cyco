@@ -2,68 +2,68 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
   // const navigate = useNavigate();
 //   const { user } = useContext(AuthContext);
 
-
-import { useDispatch, useSelector  } from 'react-redux';
-import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
-
-const MovieInfo = () => {
   const location = useLocation();
+  const { index } = useParams();
   const { movie } = location?.state;
-//   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
+  console.log(movie);
+  //   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
 
   // const PlayButton = () => {
   //   navigate('/video-player');
   // };
-  
-//   const AddToWatchList = async () => {
-//     try {
-//       const response = await fetch('http://localhost:8080/addToWatchlist', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           userEmail: user?.email,
-//           movie: movie, 
-//         }),
-//       });
 
-//       if (response.ok) {
-//         Swal.fire({
-//           position: 'top-end',
-//           icon: 'success',
-//           title: 'Movie added to watchlist',
-//           showConfirmButton: false,
-//           timer: 1500
-//         })
-//         console.log('Movie added to watchlist');
-//       } else {
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Oops...',
-//           text: 'Please Try Again Movie Not  added to watchlist',
-//           footer: '<a href="">Why do I have this issue?</a>'
-//         })
-//       }
-//     } catch (error) {
-//       console.error('Error adding movie to watchlist', error);
-//     }
-//   };
+  //   const AddToWatchList = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8080/addToWatchlist', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({
+  //           userEmail: user?.email,
+  //           movie: movie,
+  //         }),
+  //       });
+
+  //       if (response.ok) {
+  //         Swal.fire({
+  //           position: 'top-end',
+  //           icon: 'success',
+  //           title: 'Movie added to watchlist',
+  //           showConfirmButton: false,
+  //           timer: 1500
+  //         })
+  //         console.log('Movie added to watchlist');
+  //       } else {
+  //         Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Please Try Again Movie Not  added to watchlist',
+  //           footer: '<a href="">Why do I have this issue?</a>'
+  //         })
+  //       }
+  //     } catch (error) {
+  //       console.error('Error adding movie to watchlist', error);
+  //     }
+  //   };
 
   // console.log(movie);
 
   const {
-    imdbID, // Make sure 'imdbID' is in your movie object
+    imdbID,
     Title,
     Year,
     Plot,
@@ -81,12 +81,15 @@ const MovieInfo = () => {
   const dispatch = useDispatch();
 
   // Get the wishlist from the Redux store
-    // Get the current wishlist from local storage
-    const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  
-    // Check if a movie with the same Title is already in the wishlist
-    const isAlreadyInWishlist = currentWishlist.some((wishlistMovie) => wishlistMovie.Title === Title);
-  
+  // Get the current wishlist from local storage
+  const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  // Check if a movie with the same Title is already in the wishlist
+  const isAlreadyInWishlist = currentWishlist.some(
+    (wishlistMovie) => wishlistMovie.Title === Title
+  );
+
+  const handleAddToWishlist = () => {
     if (isAlreadyInWishlist) {
       Swal.fire({
         title: 'Movie Already Added!',
@@ -97,7 +100,7 @@ const MovieInfo = () => {
       // If the movie is not in the wishlist, add it and update local storage
       currentWishlist.push(movie);
       localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
-  
+
       Swal.fire({
         title: 'Added to Wishlist!',
         text: 'The movie has been added to your wishlist.',
@@ -105,21 +108,20 @@ const MovieInfo = () => {
       });
     }
   };
-  
-  
-return (
+
+  return (
     <div
-      className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
+      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh] mt-2 md:mt-5 lg:mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
-      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-5">
+      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
         {/* Movie Poster */}
         <div className="md:w-2/5">
           <img
             src={Poster}
             alt={`movie-poster of ${Title}`}
             className="w-full h-full object-cover"
-          // onClick={()=>PlayButton()}
+            // onClick={()=>PlayButton()}
           />
         </div>
 
@@ -130,7 +132,7 @@ return (
             <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
               {Title} [{Year}]
             </h2>
-            <p className="mt-5 text-sm">{Plot}</p>
+            <p className="mt-5 text-xs md:text-sm">{Plot}</p>
 
             <div className="mt-10 flex flex-col w-[60%] text-sm md:text-base gap-2">
               <div className="flex flex-col gap-2">
@@ -151,21 +153,32 @@ return (
 
               {/* Download Buttons */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
-
-                <button 
-                onClick={handleAddToWishlist}
-                className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                <button
+                  onClick={handleAddToWishlist}
+                  className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                >
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}
                   Add to Watchlist
                 </button>
-                <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                {/* <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                  
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-                  Download
-                </button>
+                  Watch
+                </button> */}
+                <Link
+                  to={`/movieinfo/${index}`}
+                  key={index}
+                  className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                >
+                  <span>
+                    <FaCloudDownloadAlt size={20} />
+                  </span>{' '}
+                  Watch
+                </Link>
               </div>
             </div>
           </div>
