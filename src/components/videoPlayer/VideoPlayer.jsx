@@ -5,7 +5,7 @@ const VideoPlayer = ( { channel} ) => {
   return (
     <div className="h-full rounded-sm relative">
       {channel ? (
-        <div className="relative" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative" style={{ paddingBottom: '66.25%' }}>
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${channel?.videoId}`}
             width="100%"

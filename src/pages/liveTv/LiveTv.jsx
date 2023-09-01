@@ -19,7 +19,7 @@ const LiveTv = () => {
 
   return (
     <div className="flex flex-col items-center lg:flex-row p-4 gap-10">
-      <div className="w-full md:w-3/4 mx-auto md:pr-4">
+      <div className="w-full h-full md:w-3/4 mx-auto md:pr-4">
         <VideoPlayer channel={selectedChannel} />
       </div>
       <div className="mt-10">
