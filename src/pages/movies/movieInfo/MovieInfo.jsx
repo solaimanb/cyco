@@ -6,10 +6,9 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
-import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector  } from 'react-redux';
-import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
+// import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
 
