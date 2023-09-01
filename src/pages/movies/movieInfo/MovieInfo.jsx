@@ -7,14 +7,15 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
   // const navigate = useNavigate();
 //   const { user } = useContext(AuthContext);
 
 
-import { useDispatch, useSelector  } from 'react-redux';
-import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
+
 
 const MovieInfo = () => {
   const location = useLocation();
@@ -63,7 +64,6 @@ const MovieInfo = () => {
   // console.log(movie);
 
   const {
-    imdbID, // Make sure 'imdbID' is in your movie object
     Title,
     Year,
     Plot,
