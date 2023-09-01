@@ -14,6 +14,8 @@ const Categories = () => {
     { to: 'documentary-movies', name: 'Documentary Films' },
     { to: 'tv-shows', name: 'TV Shows' },
     { to: 'classic-movies', name: 'Classic Movies' },
+    { to: 'classic-movies', name: 'Classic Movies' },
+    { to: 'classic-movies', name: 'Classic Movies' },
   ];
   return (
     <div className="sticky top-24 mt-14">

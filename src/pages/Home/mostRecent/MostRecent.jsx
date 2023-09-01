@@ -12,7 +12,7 @@ const MostRecent = () => {
 
   return (
     <div className="w-full gap-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-      {movies?.slice(0, 10).map((movie, index) => (
+      {movies?.slice().map((movie, index) => (
         <MovieCard key={index} movie={movie}></MovieCard>
       ))}
     </div>

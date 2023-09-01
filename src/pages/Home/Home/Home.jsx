@@ -13,7 +13,6 @@ import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MostRecent from '../mostRecent/MostRecent';
 import PopularTvs from '../popularTvs/PopularTvs';
-import TopPicks from '../topPicks/TopPicks';
 
 const Home = () => {
   const [loading] = useMovies();
@@ -130,10 +129,10 @@ const Home = () => {
               <Title title={'Most Recent'} />
               <MostRecent />
             </div>
-            <div className="mt-10">
+            {/* <div className="mt-10">
               <Title title={'Top Picks'} />
               <TopPicks />
-            </div>
+            </div> */}
           </div>
           <div className="mt-5 md:w-[15%] hidden md:block">
             <Title title={'Categories'} />

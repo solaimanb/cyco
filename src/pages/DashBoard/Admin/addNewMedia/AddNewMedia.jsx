@@ -300,7 +300,7 @@ const AddNewMediaForm = ({
           </div>
         </div>
 
-        {/* <div className='w-full'>
+        <div className='w-full'>
             <button
             type="submit"
             className="w-1/2 p-3  text-center font-medium text-white transition duration-200 rounded-sm-md bg-white/60"
@@ -311,7 +311,7 @@ const AddNewMediaForm = ({
               'Save & Continue'
             )}
           </button>
-          </div> */}
+          </div>
       </form>
     </div>
   );

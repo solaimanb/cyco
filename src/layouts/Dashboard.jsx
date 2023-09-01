@@ -20,7 +20,7 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
- 
+
 
   // const [isAdmin, SetAdmin] = [false];
   const [isAdmin, SetAdmin] = [true];
@@ -44,9 +44,8 @@ const Dashboard = () => {
       </div>
 
       {/* Dashboard Sidebar */}
-      <div className={`bg-zinc-700 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-            isSidebarOpen ? 'block' : 'hidden lg:block'
-          }`}>
+      <div className={`bg-zinc-700 px-4 w-72 h-screen fixed pt-6 lg:pt-0 z-20 ${isSidebarOpen ? 'block' : 'hidden lg:block'
+        }`}>
         {isAdmin ? (
           <div className='h-full w-full flex flex-col'>
             <div className="w-full flex  justify-between items-center py-6">
@@ -63,7 +62,7 @@ const Dashboard = () => {
               <li>
                 <NavLink className={({ isActive }) =>
                   isActive ? 'btn-active' : 'sidebar-btn'
-                } to='admin-home' >Dashboard </NavLink>
+                } to='' >Dashboard </NavLink>
               </li>
 
               <li>
@@ -117,77 +116,77 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className='h-full w-full flex flex-col'>
-          <div className="w-full flex  justify-between items-center py-6">
-            <img
-              className={`w-10 h-10 rounded-full`}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-              alt=""
-            />
-            <div className='bg-white w-4 h-4'></div>
-          </div>
-          <hr className='pb-8' />
-          <ul className='flex-1'>
-
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='users-home' >Profile </NavLink>
-            </li>
-
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='watchList' >Wishlist</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='downloads' >Downloads</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='subscriptions' >Subscriptions</NavLink>
-            </li>
-
-            <hr className='my-8' />
-
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='forum' >Forum</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='watch-party' >Watch Party</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='recommendation' >Recommendation</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='update-payment-info' >Update Payment Info</NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) =>
-                isActive ? 'btn-active' : 'sidebar-btn'
-              } to='history' >History</NavLink>
-            </li>
-          </ul>
-          <div className='group:mb-0'>
-            <div className='sidebar-btn'>
-              <button >Help</button>
+            <div className="w-full flex  justify-between items-center py-6">
+              <img
+                className={`w-10 h-10 rounded-full`}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
+                alt=""
+              />
+              <div className='bg-white w-4 h-4'></div>
             </div>
-            <div className='sidebar-btn'>
-              <button onClick={handleLogOut}>Sign Out</button>
-            </div>
-          </div>
+            <hr className='pb-8' />
+            <ul className='flex-1'>
 
-        </div>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='users-home' >Profile </NavLink>
+              </li>
+
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='watchList' >Wishlist</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='downloads' >Downloads</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='subscriptions' >Subscriptions</NavLink>
+              </li>
+
+              <hr className='my-8' />
+
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='forum' >Forum</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='watch-party' >Watch Party</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='recommendation' >Recommendation</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='update-payment-info' >Update Payment Info</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) =>
+                  isActive ? 'btn-active' : 'sidebar-btn'
+                } to='history' >History</NavLink>
+              </li>
+            </ul>
+            <div className='group:mb-0'>
+              <div className='sidebar-btn'>
+                <button >Help</button>
+              </div>
+              <div className='sidebar-btn'>
+                <button onClick={handleLogOut}>Sign Out</button>
+              </div>
+            </div>
+
+          </div>
         )}
       </div>
 
