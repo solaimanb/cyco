@@ -8,8 +8,13 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { AuthContext } from '../../../providers/AuthProvider';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
+  // const navigate = useNavigate();
+//   const { user } = useContext(AuthContext);
+
   const location = useLocation();
   const { index } = useParams();
   const { movie } = location?.state;
