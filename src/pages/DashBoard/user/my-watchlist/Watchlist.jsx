@@ -1,8 +1,9 @@
 import React from "react";
 import WatchListCard from "./WatchListCard";
 
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromWishlist } from "../../../../store/slices/wishListSlice/wishListSlice";
+// import { removeFromWishlist } from "../../../../store/wishListSlice/wishListSlice";
 
 const WatchList = () => {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
