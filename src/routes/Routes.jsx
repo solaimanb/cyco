@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       { path: 'checkout', element: <Payment /> },
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieinfo', element: <MovieInfo /> },
-      { path: 'movieinfo/:index', element: <Play /> },
+      { path: 'movie-play', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: 'admin-home', element: <AdminHome /> },
+      { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'watchList', element: <WatchList /> },
       { path: 'downloads', element: <Downloads /> },
