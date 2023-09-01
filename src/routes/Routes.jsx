@@ -24,11 +24,11 @@ import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHisto
 import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
 import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
-import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
 import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
+import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
 import FaqPage from '../pages/faq/FaqPage';
 import Home from '../pages/home/home/Home';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       { path: 'forum', element: <Forum /> },
       { path: 'watch-party', element: <WatchParty /> },
       { path: 'recommendation', element: <Recommendation /> },
-      { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
+      { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
       { path: 'history', element: <History /> },
