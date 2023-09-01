@@ -18,8 +18,6 @@ import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannel
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import History from '../pages/DashBoard/user/history/History';
-import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
-import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
 import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
 import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
@@ -27,7 +25,9 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
 import Forum from '../pages/dashBoard/user/forum/Forum';
+import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
+import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
 import WatchList from '../pages/dashBoard/user/wishlist/WishList';
 import FaqPage from '../pages/faq/FaqPage';
 import Home from '../pages/home/home/Home';
