@@ -8,6 +8,7 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector  } from 'react-redux';
+
 import { addToWishlist } from '../../../store/slices/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
