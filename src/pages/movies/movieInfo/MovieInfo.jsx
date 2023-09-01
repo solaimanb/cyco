@@ -2,7 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
@@ -11,9 +11,11 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { addToWishlist } from '../../../store/slices/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
+  const navigate = useNavigate();
+  //   const { user } = useContext(AuthContext);
 
   const location = useLocation();
-  const { index } = useParams();
+  // const { index } = useParams();
   const { movie } = location?.state;
   console.log(movie);
 
@@ -30,7 +32,13 @@ const MovieInfo = () => {
     Thumbnail,
     imdbRating,
     Genre,
+    Trailer,
   } = movie || {};
+
+  const movieSource = Trailer?.Source;
+  const source = movieSource.split('=');
+  const sourceId = source[1];
+  console.log(sourceId);
 
   const dispatch = useDispatch();
 
@@ -81,7 +89,6 @@ const MovieInfo = () => {
 
         {/* Movie Info */}
         <div className="md:w-3/5 flex flex-col justify-between">
-          {/* Movies Details */}
           <div>
             <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
               {Title} [{Year}]
@@ -105,7 +112,7 @@ const MovieInfo = () => {
                 </div>
               </div>
 
-              {/* Download Buttons */}
+              {/* Watch Func */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
                 <button
                   onClick={handleAddToWishlist}
@@ -116,13 +123,8 @@ const MovieInfo = () => {
                   </span>{' '}
                   Add to Watchlist
                 </button>
-                {/* <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
-                  
-                  <span>
-                    <FaCloudDownloadAlt size={20} />
-                  </span>{' '}
-                  Watch
-                </button> */}
+
+                {/* Watch-now */}
                 <Link
                   to='/watch-video'
                   state={{ movie }}
@@ -131,8 +133,10 @@ const MovieInfo = () => {
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-                  Watch
+                  Watch now
                 </Link>
+
+                
               </div>
             </div>
           </div>
