@@ -4,9 +4,11 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
-
-import { useDispatch } from 'react-redux';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector  } from 'react-redux';
+import { addToWishlist } from '../../../store/slices/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
   const navigate = useNavigate();
@@ -59,7 +61,6 @@ const MovieInfo = () => {
   // console.log(movie);
 
   const {
-    imdbID,
     Title,
     Year,
     Plot,
