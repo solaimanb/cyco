@@ -57,7 +57,7 @@ const Contacts = () => {
           </label>
           <input id="checkcontact" type="checkbox" />
 
-          <form action="" method="post" className="contactform">
+          <form action="" method="post" className="contactform" netlify>
             <p className="input_wrapper">
               <input type="text" name="name" id="name" />
               <label htmlFor="name">NAME</label>

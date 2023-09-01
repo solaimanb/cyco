@@ -21,8 +21,8 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // const [isAdmin, SetAdmin] = [false];
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
+  // const [isAdmin, SetAdmin] = [true];
 //   const handleLinkClick = () => {
 //     setLinkClicked(true);
 //   };
