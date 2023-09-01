@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CardElement,
   Elements,
@@ -11,6 +11,8 @@ import {
 export const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+
+  const [cardError, setCardError] = useState('')
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -39,22 +41,25 @@ export const CheckoutForm = () => {
 
     if (error) {
       console.log("[error]", error);
+      setCardError(error.message);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
+      setCardError('');
     }
   };
 
   return (
-    <form  onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <CardElement
-      
         options={{
           style: {
             base: {
               fontSize: "16px",
-              color: "#424770",
+              color: "#aab7c4",
+              border: '2px solid #aab7c4',
+
               "::placeholder": {
-                color: "#aab7c4",
+                color: "#424770",
               },
             },
             invalid: {
@@ -63,7 +68,7 @@ export const CheckoutForm = () => {
           },
         }}
       />
-
+{cardError && <h5 className="pt-4 text-red-700 text-sm">{cardError}</h5>}
       <button
         type="submit"
         disabled={!stripe}

@@ -7,7 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./Checkout";
 // import { CheckoutForm } from "./Checkout";
 
-const stripePromise = loadStripe("import.meta.env.VITE_PAYMENT_GATEWAY_PK");
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
   // Function to format the date as "MMM DD, YYYY"
