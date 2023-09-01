@@ -9,11 +9,9 @@ const History = () => {
   return (
     <div className="min-h-screen">
       <div className="navbar bg-base-100">
-        <div className="">
-          <p className="border-l-4 border-white mt-5 ml-5 inline-block px-5">
-            Subscription Plans
-          </p>
-        </div>
+        <p className="border-l-4 border-white mt-5 ml-5 inline-block px-5">
+          Subscription Plans
+        </p>
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 xl:grid-cols-5">
