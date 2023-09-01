@@ -12,8 +12,6 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
-  // const navigate = useNavigate();
-//   const { user } = useContext(AuthContext);
 
   const location = useLocation();
   const { index } = useParams();
@@ -63,7 +61,6 @@ const MovieInfo = () => {
   // console.log(movie);
 
   const {
-    imdbID,
     Title,
     Year,
     Plot,
