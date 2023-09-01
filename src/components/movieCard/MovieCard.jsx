@@ -1,6 +1,7 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useNavigate } from 'react-router-dom';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useNavigate } from 'react-router-dom';
+
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const isMovieOpen = false;
@@ -13,16 +14,17 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       onClick={openMovie}
-      className="card w-full my-2 md:mt-10 md:mb-14 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
+      className="card w-full my-2 md:mt-10 md:mb-12 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
     >
       <LazyLoadImage
-      className="w-full h-full object-cover rounded-sm hover:brightness-110"
-      alt={movie.alt}
-      effect="blur"
-      height={movie.height}
-      src={movie?.Poster}
-      threshold={100}
-      width={movie.width} />
+        className="w-full h-60 md:h-80 lg:h-96 object-cover rounded-sm hover:brightness-110"
+        alt={movie.alt}
+        effect="blur"
+        height={movie?.height}
+        src={movie?.Poster}
+        threshold={100}
+        width={movie?.width}
+      />
       <div className="p-2 text-white">
         <h2 className="text- font-semibold">{movie?.Title}</h2>
         <p className="mt-2 text-xs">{movie?.Runtime}</p>

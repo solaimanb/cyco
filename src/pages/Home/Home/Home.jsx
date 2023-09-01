@@ -128,11 +128,8 @@ const Home = () => {
             <div className="mt-10">
               <Title title={'Most Recent'} />
               <MostRecent />
+              {/* Category wise movies will show hereby */}
             </div>
-            {/* <div className="mt-10">
-              <Title title={'Top Picks'} />
-              <TopPicks />
-            </div> */}
           </div>
           <div className="mt-5 md:w-[15%] hidden md:block">
             <Title title={'Categories'} />

@@ -2,16 +2,21 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
-import { useDispatch } from 'react-redux';
+
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector  } from 'react-redux';
+// import { addToWishlist } from '../../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
+
   const location = useLocation();
+  const { index } = useParams();
   const { movie } = location?.state;
+  console.log(movie);
   //   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
 
   // const PlayButton = () => {
@@ -56,7 +61,6 @@ const MovieInfo = () => {
   // console.log(movie);
 
   const {
-    imdbID,
     Title,
     Year,
     Plot,
@@ -104,10 +108,10 @@ const MovieInfo = () => {
 
   return (
     <div
-      className="hero flex flex-row lg:w-[80vw] mx-auto lg:h-[80vh] mt-10 rounded-sm"
+      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh] mt-2 md:mt-5 lg:mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
-      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-5">
+      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
         {/* Movie Poster */}
         <div className="md:w-2/5">
           <img
@@ -125,7 +129,7 @@ const MovieInfo = () => {
             <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
               {Title} [{Year}]
             </h2>
-            <p className="mt-5 text-sm">{Plot}</p>
+            <p className="mt-5 text-xs md:text-sm">{Plot}</p>
 
             <div className="mt-10 flex flex-col w-[60%] text-sm md:text-base gap-2">
               <div className="flex flex-col gap-2">
@@ -155,12 +159,23 @@ const MovieInfo = () => {
                   </span>{' '}
                   Add to Watchlist
                 </button>
-                <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                {/* <button className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                  
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-                  Download
-                </button>
+                  Watch
+                </button> */}
+                <Link
+                  to={`/movieinfo/${index}`}
+                  key={index}
+                  className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                >
+                  <span>
+                    <FaCloudDownloadAlt size={20} />
+                  </span>{' '}
+                  Watch
+                </Link>
               </div>
             </div>
           </div>

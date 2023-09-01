@@ -25,6 +25,8 @@ const AddNewMediaForm = ({
   handleImageChange,
   uploadButtonText,
 }) => {
+
+
   return (
     <div className=" w-full flex flex-col bg-zinc-800 p-3 rounded-sm h-full">
       <div className="w-full">
@@ -33,8 +35,9 @@ const AddNewMediaForm = ({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-row gap-5 w-full pt-10">
-        <div className="h-full">
+      <form onSubmit={handleSubmit} className=" w-full pt-10">
+        <div className='flex flex-row gap-5 pb-6'>
+          <div className="h-full">
           <div className="space-y-2">
             <div className="space-y-1 text-sm">
               <label htmlFor="title" className="block text-gray-600">
@@ -81,7 +84,7 @@ const AddNewMediaForm = ({
                   className="w-full px-4 py-3 bg-white/60 text-gray-800 border border-cyred/60 focus:outline-rose-500 rounded-sm "
                   name="released"
                   id="released"
-                  type="number"
+                  type="text"
                   placeholder="Released"
                   required
                 />
@@ -111,7 +114,7 @@ const AddNewMediaForm = ({
                   className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
                   name="bedrooms"
                   id="bedrooms"
-                  type="number"
+                  type="text"
                   placeholder="Runtime"
                   required
                 />
@@ -300,13 +303,15 @@ const AddNewMediaForm = ({
           </div>
         </div>
 
-        <div className='w-full'>
+        </div>
+        <div className='w-2/3 mx-auto'>
             <button
             type="submit"
-            className="w-1/2 p-3  text-center font-medium text-white transition duration-200 rounded-sm-md bg-white/60"
+            className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-white/60 hover:bg-cyred"
           >
             {loading ? (
-              <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+              // <TbFidgetSpinner className="m-auto animate-spin" size={24} />
+              <h2>Loading...</h2>
             ) : (
               'Save & Continue'
             )}
