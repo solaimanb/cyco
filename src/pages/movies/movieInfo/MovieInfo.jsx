@@ -16,48 +16,6 @@ const MovieInfo = () => {
   const { index } = useParams();
   const { movie } = location?.state;
   console.log(movie);
-  //   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
-
-  // const PlayButton = () => {
-  //   navigate('/video-player');
-  // };
-
-  //   const AddToWatchList = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:8080/addToWatchlist', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify({
-  //           userEmail: user?.email,
-  //           movie: movie,
-  //         }),
-  //       });
-
-  //       if (response.ok) {
-  //         Swal.fire({
-  //           position: 'top-end',
-  //           icon: 'success',
-  //           title: 'Movie added to watchlist',
-  //           showConfirmButton: false,
-  //           timer: 1500
-  //         })
-  //         console.log('Movie added to watchlist');
-  //       } else {
-  //         Swal.fire({
-  //           icon: 'error',
-  //           title: 'Oops...',
-  //           text: 'Please Try Again Movie Not  added to watchlist',
-  //           footer: '<a href="">Why do I have this issue?</a>'
-  //         })
-  //       }
-  //     } catch (error) {
-  //       console.error('Error adding movie to watchlist', error);
-  //     }
-  //   };
-
-  // console.log(movie);
 
   const {
     Title,
@@ -166,8 +124,8 @@ const MovieInfo = () => {
                   Watch
                 </button> */}
                 <Link
-                  to={`/movieinfo/${index}`}
-                  key={index}
+                  to='/watch-video'
+                  state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
                   <span>
