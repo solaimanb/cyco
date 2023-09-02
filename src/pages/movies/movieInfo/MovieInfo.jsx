@@ -8,6 +8,8 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { AuthContext } from '../../../providers/AuthProvider';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
+import { postTodo } from '../../../store/wishListSlice/wishListSlice';
+import { addToWatchList } from '../../../api/getLiveData';
 
 const MovieInfo = () => {
   const location = useLocation();
@@ -83,23 +85,15 @@ const MovieInfo = () => {
   );
 
   const handleAddToWishlist = () => {
-    if (isAlreadyInWishlist) {
-      Swal.fire({
-        title: 'Movie Already Added!',
-        text: 'This movie is already in your wishlist.',
-        icon: 'warning',
-      });
-    } else {
-      // If the movie is not in the wishlist, add it and update local storage
-      currentWishlist.push(movie);
-      localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
-
-      Swal.fire({
-        title: 'Added to Wishlist!',
-        text: 'The movie has been added to your wishlist.',
-        icon: 'success',
-      });
-    }
+    addToWatchList(movie)
+    .then((result) => {
+      // Handle the result from the API
+      console.log('Data added successfully:', result);
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the POST request
+      console.error('Error adding data:', error);
+    });
   };
 
   return (
