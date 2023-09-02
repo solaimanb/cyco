@@ -9,9 +9,9 @@ const store = configureStore({
   reducer: {
     home: homeSlice,
     users: userReducer,
-    wishlist: wishlistReducer,
     category: categoryReducer,
     payment: paymentReducer,
+    wishlist: wishlistReducer,
     // wishlist: todosSlice,
   },
 });

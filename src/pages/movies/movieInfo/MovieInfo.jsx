@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
-// import { useContext } from 'react';
-// import { AuthContext } from '../../../providers/AuthProvider';
 
 const MovieInfo = () => {
   const navigate = useNavigate();
-  //   const { user } = useContext(AuthContext);
-
   const location = useLocation();
-  // const { index } = useParams();
   const { movie } = location?.state;
-  console.log(movie);
 
   const {
     Title,
@@ -41,7 +37,9 @@ const MovieInfo = () => {
 
   // Get the wishlist from the Redux store
   // Get the current wishlist from local storage
-  const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+   const [currentWishlist, setCurrentWishlist] = useState(
+    JSON.parse(localStorage.getItem('wishlist')) || []
+  );
 
   // Check if a movie with the same Title is already in the wishlist
   const isAlreadyInWishlist = currentWishlist.some(
@@ -49,15 +47,24 @@ const MovieInfo = () => {
   );
 
   const handleAddToWishlist = () => {
-    addToWatchList(movie)
-    .then((result) => {
-      // Handle the result from the API
-      console.log('Data added successfully:', result);
+    // wishList(movie)
+    // .then((result) => {
+    //   // Handle the result from the API
+    //   console.log( 'Data added successfully:', result );
+      
+    //   const updateWishlist = [ ...currentWishlist, movie ];
+    //   localStorage.setItem('wishlist', JSON.stringify( updateWishlist))
+    // })
+    // .catch((error) => {
+    //   // Handle any errors that occur during the POST request
+    //   console.error('Error adding data:', error);
+    // });
+
+    useAxiosSecure.post( '/wishlist', movie ).then( ( response ) => {
+      console.log( 'Movie added successfully to wishlist:', response );
+    } ).catch( ( error ) => {
+      console.log('Error while adding movie:', error );
     })
-    .catch((error) => {
-      // Handle any errors that occur during the POST request
-      console.error('Error adding data:', error);
-    });
   };
 
   return (

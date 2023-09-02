@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
-  movies: [], // RESOLVED: This name was 'data'.
+  movies: [],
   status: 'idle',
   error: null,
 };
@@ -29,45 +30,43 @@ const wishlistSlice = createSlice({
   },
 });
 
-// Create an async thunk for the POST request
-// export const postTodo = createAsyncThunk(
-//   'addToWishList/postTodo',
-//   async (newTodo) => {
-//     try {
-//       const response = await axios.post(
-//         'http://localhost:8080/wishList',
-//         newTodo
-//       ); // Change the endpoint to match your Express.js backend
-//       return response.data;
-//     } catch (error) {
-//       throw error;
-//     }
-//   }
-// );
+export const postWishList = createAsyncThunk('wishList', async (newWish) => {
+  try {
+    const response = await axios.post(
+      'http://localhost:8080/wishList',
+      newWish
+    ); // Change the endpoint to match your Express.js backend
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+});
 
-// const todosSlice = createSlice({
-//   name: 'todos',
-//   initialState,
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(postTodo.pending, (state) => {
-//         state.status = 'loading';
-//       })
-//       .addCase(postTodo.fulfilled, (state, action) => {
-//         state.status = 'succeeded';
-//         state.data.push(action.payload); // Add the new todo to the state
-//       })
-//       .addCase(postTodo.rejected, (state, action) => {
-//         state.status = 'failed';
-//         state.error = action.error.message;
-//       });
-//   },
-// });
+const todosSlice = createSlice({
+  name: 'todos',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(postTodo.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(postTodo.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.data.push(action.payload); // Add the new todo to the state
+      })
+      .addCase(postTodo.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  },
+});
 
 export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 
-export default {
-  // todos: todosSlice.reducer,
-  wishlist: wishlistSlice.reducer,
-};
+// export default {
+//   todos: todosSlice.reducer,
+//   wishlist: wishlistSlice.reducer,
+// };
+
+export default wishlistSlice.reducer;
