@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/categorySlice/categorySlice';
 import homeSlice from './slices/homeSlice/homeSlice';
+import paymentReducer from './slices/paymentSlice/paymentSlice';
 import userReducer from './slices/userSlice/userSlice';
 import wishlistReducer from './slices/wishListSlice/wishListSlice';
-import paymentReducer from './slices/paymentSlice/paymentSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +12,7 @@ const store = configureStore({
     wishlist: wishlistReducer,
     category: categoryReducer,
     payment: paymentReducer,
+    // wishlist: todosSlice,
   },
 });
 

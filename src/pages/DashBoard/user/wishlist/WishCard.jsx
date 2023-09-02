@@ -1,6 +1,6 @@
 import React from "react";
 
-const WatchListCard = ({ movie, onRemove }) => {
+const WishCard = ({ movie, onRemove }) => {
   const {
     Title,
     Year,
@@ -60,4 +60,4 @@ const WatchListCard = ({ movie, onRemove }) => {
   );
 };
 
-export default WatchListCard;
+export default WishCard;
