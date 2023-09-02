@@ -5,14 +5,26 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
+import { useEffect } from "react";
 
 // import '../styles/common.css';
 
-export const CheckoutForm = () => {
+export const CheckoutForm = ({ price }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const { user } = useAuth();
+  const [cardError, setCardError] = useState("");
+  const [axiosSecure] = useAxiosSecure();
+  const [clientSecret, setClientSecret] = useState("");
 
-  const [cardError, setCardError] = useState('')
+  useEffect(() => {
+    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+      console.log(res.data.clientSecret);
+      setClientSecret(res.data.clientSecret);
+    });
+  }, [price]);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -44,9 +56,26 @@ export const CheckoutForm = () => {
       setCardError(error.message);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
-      setCardError('');
+      setCardError("");
     }
+    stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: user?.displayName || 'Hi Buddy',
+            email: user?.email || 'with no email',
+          },
+        },
+      })
+      .then(function (result) {
+        // Handle result.error or result.paymentIntent
+        console.log(result.error, result.paymentIntent)
+      
+      });
   };
+
+  console.log(user);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -56,7 +85,7 @@ export const CheckoutForm = () => {
             base: {
               fontSize: "16px",
               color: "#aab7c4",
-              border: '2px solid #aab7c4',
+              border: "2px solid #aab7c4",
 
               "::placeholder": {
                 color: "#424770",
@@ -68,10 +97,10 @@ export const CheckoutForm = () => {
           },
         }}
       />
-{cardError && <h5 className="pt-4 text-red-700 text-sm">{cardError}</h5>}
+      {cardError && <h5 className="pt-4 text-red-700 text-sm">{cardError}</h5>}
       <button
         type="submit"
-        disabled={!stripe}
+        disabled={!stripe || !clientSecret}
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >
         Subscribe Now !!!

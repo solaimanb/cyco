@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFulcrum } from "react-icons/fa";
 import { loadStripe } from "@stripe/stripe-js";
-
+import { useSelector } from 'react-redux';
 import "./payment.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./Checkout";
@@ -10,6 +10,11 @@ import { CheckoutForm } from "./Checkout";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
+
+  const { selectedPlan, amount } = useSelector((state) => state.payment);
+  // const price = parseFloat(amount.tofixed(2))
+  const price = amount
+
   // Function to format the date as "MMM DD, YYYY"
   const formatDate = (date) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -42,15 +47,21 @@ const Payment = () => {
             </h3>
           </div>
           <div className="flex justify-end ">
-            <div></div>
+            <div>
+          
+            </div>
             <FaFulcrum className="text-4xl text-cyred " />
           </div>
         </div>
         <div id="borderAnimation">
           <div className="z-20">
-            <h2 className="text-2xl font-semibold text-cyred mb-6 md:mb-12 -rotate-1">
+           <div>
+           <p className="-mt-16 mb-16">Pay Amount {price}</p>
+           <h2 className="text-2xl font-semibold text-cyred mb-6 md:mb-12 -rotate-1">
               Payment Essentials
             </h2>
+           
+           </div>
 
             {/* <form className=""> */}
               {/* <div className="mb-4">
@@ -84,7 +95,7 @@ const Payment = () => {
             </div> */}
 
               <Elements stripe={stripePromise}>
-                <CheckoutForm />
+                <CheckoutForm price={price} />
               </Elements>
 
               
