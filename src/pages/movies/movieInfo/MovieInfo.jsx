@@ -6,10 +6,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../../providers/AuthProvider';
-import Swal from 'sweetalert2';
-import { useDispatch, useSelector  } from 'react-redux';
-
-import { addToWishlist } from '../../../store/slices/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {
   const navigate = useNavigate();
@@ -53,23 +49,15 @@ const MovieInfo = () => {
   );
 
   const handleAddToWishlist = () => {
-    if (isAlreadyInWishlist) {
-      Swal.fire({
-        title: 'Movie Already Added!',
-        text: 'This movie is already in your wishlist.',
-        icon: 'warning',
-      });
-    } else {
-      // If the movie is not in the wishlist, add it and update local storage
-      currentWishlist.push(movie);
-      localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
-
-      Swal.fire({
-        title: 'Added to Wishlist!',
-        text: 'The movie has been added to your wishlist.',
-        icon: 'success',
-      });
-    }
+    addToWatchList(movie)
+    .then((result) => {
+      // Handle the result from the API
+      console.log('Data added successfully:', result);
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the POST request
+      console.error('Error adding data:', error);
+    });
   };
 
   return (
