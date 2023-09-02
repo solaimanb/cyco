@@ -4,10 +4,11 @@ import { removeFromWishlist } from '../../../../store/slices/wishListSlice/wishL
 import WatchListCard from './WishCard';
 
 const WishList = () => {
-  const wishlist = useSelector((state) => state.wishlist.wishlist);
+  const wishlist = useSelector( ( state ) => state );
+  console.log(wishlist);
   const dispatch = useDispatch();
-  // const [currentPage, setCurrentPage] = React.useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   const handleRemoveFromWishlist = (movie) => {
     dispatch(removeFromWishlist(movie));
