@@ -4,6 +4,8 @@ import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 
@@ -11,6 +13,9 @@ const MovieInfo = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { movie } = location?.state;
+  const { axiosSecure } = useAxiosSecure();
+  const { user } = useAuth();
+  console.log(user);
 
   const {
     Title,
@@ -35,36 +40,27 @@ const MovieInfo = () => {
 
   const dispatch = useDispatch();
 
-  // Get the wishlist from the Redux store
-  // Get the current wishlist from local storage
-   const [currentWishlist, setCurrentWishlist] = useState(
+  const [currentWishlist, setCurrentWishlist] = useState(
     JSON.parse(localStorage.getItem('wishlist')) || []
   );
 
-  // Check if a movie with the same Title is already in the wishlist
   const isAlreadyInWishlist = currentWishlist.some(
     (wishlistMovie) => wishlistMovie.Title === Title
   );
 
   const handleAddToWishlist = () => {
-    // wishList(movie)
-    // .then((result) => {
-    //   // Handle the result from the API
-    //   console.log( 'Data added successfully:', result );
-      
-    //   const updateWishlist = [ ...currentWishlist, movie ];
-    //   localStorage.setItem('wishlist', JSON.stringify( updateWishlist))
-    // })
-    // .catch((error) => {
-    //   // Handle any errors that occur during the POST request
-    //   console.error('Error adding data:', error);
-    // });
 
-    useAxiosSecure.post( '/wishlist', movie ).then( ( response ) => {
-      console.log( 'Movie added successfully to wishlist:', response );
-    } ).catch( ( error ) => {
-      console.log('Error while adding movie:', error );
-    })
+    const wishlistItem = {
+      user: user?.email,
+      movie: movie,
+    }
+
+    axiosSecure.post('/wishlist', wishlistItem).then((data) => {
+      console.log('Movie added to wishlist', data);
+      if (data.status === 200) {
+        Swal.fire('Added successfully!', "You'vé a new vehicle!", 'success');
+      }
+    });
   };
 
   return (
@@ -108,21 +104,24 @@ const MovieInfo = () => {
                 </div>
               </div>
 
-              {/* Watch Func */}
               <div className="mt-5 flex flex-col md:flex-row gap-5">
+                {/* WISHLIST BTN*/}
                 <button
                   onClick={handleAddToWishlist}
+                  disabled={isAlreadyInWishlist}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}
-                  Add to Watchlist
+                  {isAlreadyInWishlist
+                    ? 'Added to Wishlist'
+                    : 'Add to Wishlist'}
                 </button>
 
-                {/* Watch-now */}
+                {/* WATCH-NOW FUNC */}
                 <Link
-                  to='/watch-video'
+                  to="/watch-video"
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
@@ -131,8 +130,6 @@ const MovieInfo = () => {
                   </span>{' '}
                   Watch now
                 </Link>
-
-                
               </div>
             </div>
           </div>
@@ -153,3 +150,16 @@ const MovieInfo = () => {
 };
 
 export default MovieInfo;
+
+// wishList(movie)
+// .then((result) => {
+//   // Handle the result from the API
+//   console.log( 'Data added successfully:', result );
+
+//   const updateWishlist = [ ...currentWishlist, movie ];
+//   localStorage.setItem('wishlist', JSON.stringify( updateWishlist))
+// })
+// .catch((error) => {
+//   // Handle any errors that occur during the POST request
+//   console.error('Error adding data:', error);
+// })
