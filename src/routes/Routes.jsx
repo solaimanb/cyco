@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       { path: 'checkout', element: <Payment /> },
       { path: 'video-player', element: <VideoPlayer /> },
       { path: 'movieinfo', element: <MovieInfo /> },
-      { path: 'movieinfo/:index', element: <Play /> },
+      { path: 'watch-video', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
       { path: 'popular-tv', element: <PopularTv /> },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },

@@ -27,7 +27,7 @@ const Hero = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{
-          delay: 50000,
+          delay: 3500,
           disableOnInteraction: false,
         }}
       >

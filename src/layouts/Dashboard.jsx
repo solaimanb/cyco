@@ -22,8 +22,8 @@ const Dashboard = () => {
   };
 
 
-  // const [isAdmin, SetAdmin] = [false];
-  const [isAdmin, SetAdmin] = [true];
+  const [isAdmin, SetAdmin] = [false];
+  // const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
