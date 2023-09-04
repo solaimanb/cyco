@@ -58,7 +58,7 @@ const MovieInfo = () => {
 
       if (response.status === 200) {
         console.log('Movie added to wishlist', response.data);
-        Swal.fire('Added to wishlist!', 'success');
+        Swal.fire('Added to wishlist!', '', 'success');
       } else {
         console.error('Failed to add movie to wishlist:', response.statusText);
         Swal.fire('Error', 'Failed to add movie to wishlist', 'error');
