@@ -17,18 +17,19 @@ import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
 import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
-import Forum from '../pages/DashBoard/user/forum/Forum';
 import History from '../pages/DashBoard/user/history/History';
-import WatchList from '../pages/DashBoard/user/my-watchlist/WatchList';
-import PaymentHistory from '../pages/DashBoard/user/payment-history/PaymentHistory';
-import ProfileSettings from '../pages/DashBoard/user/profile-settings/ProfileSettings';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
 import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
-import UpdatePaymentInfo from '../pages/DashBoard/user/update-Payment-info/UpdatePaymentInfo';
 import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
+import Forum from '../pages/dashBoard/user/forum/Forum';
+import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
+import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
+import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
+// import WatchList from '../pages/dashBoard/user/wishlist/WishList';
+import Wishlist from '../pages/dashBoard/user/wishlist/WishList';
 import FaqPage from '../pages/faq/FaqPage';
 import Home from '../pages/home/home/Home';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
@@ -37,7 +38,7 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
-import Payment from '../pages/payment/Payment';
+// import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
 import Register from '../pages/register/Register';
@@ -45,6 +46,8 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import Payment from '../pages/payment/Payment';
+// import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
 
 const router = createBrowserRouter([
   {
@@ -83,13 +86,13 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'watchList', element: <WatchList /> },
+      { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },
       { path: 'subscriptions', element: <Subscriptions /> },
       { path: 'forum', element: <Forum /> },
       { path: 'watch-party', element: <WatchParty /> },
       { path: 'recommendation', element: <Recommendation /> },
-      { path: 'update-payment-info', element: <UpdatePaymentInfo /> },
+      { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'account-settings', element: <ProfileSettings /> },
       { path: 'history', element: <History /> },

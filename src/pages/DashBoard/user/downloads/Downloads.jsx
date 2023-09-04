@@ -2,8 +2,8 @@ import React from 'react';
 
 const Downloads = () => {
     return (
-        <div>
-            <p className="text-3xl text-center">This is Download Page</p>
+        <div className='min-h-screen'>
+            <p className="border-l-4 border-white mt-5 ml-5 inline-block px-5">Your Downloads</p>
         </div>
     );
 };
