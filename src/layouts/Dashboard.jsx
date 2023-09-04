@@ -7,15 +7,25 @@ import useAuth from '../hooks/useAuth';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
+  console.log(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     console.log('Logging out...');
     try {
-      await logOut();
-      navigate('/login');
-      Swal.fire(' ', 'Logged out', 'success');
-      console.log('Logged out');
+      const response = await Swal.fire({
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true
+      } )
+      if ( response.isConfirmed ) {
+          await logOut()
+          navigate('/login');	
+      }
+      
+      return;
     } catch (error) {
       console.log('Logout failed', error);
     }
@@ -27,10 +37,6 @@ const Dashboard = () => {
 
   // const [isAdmin, SetAdmin] = useState(false);
   const [isAdmin, SetAdmin] = useState(true);
-
-
-  // const [isAdmin, SetAdmin] = [false];
-  const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -88,9 +94,9 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="upload-new-movie"
+                  to="upload-movie"
                 >
-                  Upload new movie
+                  Upload Movie
                 </NavLink>
               </li>
               <li>
@@ -98,7 +104,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="revenue-tracking"
+                  to="revenue"
                 >
                   Ad Revenue Tracking
                 </NavLink>
@@ -108,7 +114,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="system-logs"
+                  to="logs"
                 >
                   System Logs
                 </NavLink>
