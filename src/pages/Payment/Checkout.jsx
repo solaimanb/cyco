@@ -91,8 +91,8 @@ export const CheckoutForm = ({ price }) => {
       {cardError && <h5 className="pt-4 text-red-700 text-sm">{cardError}</h5>}
       <button
         type="submit"
-        // disabled={!stripe || !clientSecret}
-        disabled={!stripe}
+        disabled={!stripe || !clientSecret}
+        // disabled={!stripe}
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >
         Subscribe Now !!!
