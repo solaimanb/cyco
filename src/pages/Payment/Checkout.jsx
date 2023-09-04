@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-export const CheckoutForm = ({ price }) => {
+export const CheckoutForm = ({ price, selectedPlan }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -19,7 +19,7 @@ export const CheckoutForm = ({ price }) => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       setClientSecret(res.data.clientSecret);
     });
-  }, []);
+  }, [price, axiosSecure]);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -72,7 +72,24 @@ setProcessing(true)
         if(paymentIntent.status === "succeeded"){
           setTransectionId(paymentIntent.id)
           // const transectionId = paymentIntent.id
-          console.log(transectionId);
+
+          // *******save payment info to the server *********
+
+          const payment = {
+            email: user?.email, 
+            transectionId: paymentIntent.id,
+            price,
+            membership: selectedPlan,
+
+          }
+          axiosSecure.post('/payments', payment)
+          .then(res => {
+            console.log(res.data);
+            if(res.data.insertedId){
+              // TODO: display confirm 
+              
+            }
+          })
         }
       });
   };
