@@ -10,14 +10,16 @@ export const CheckoutForm = ({ price }) => {
   const [cardError, setCardError] = useState("");
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
-  console.log(clientSecret);
+  // console.log(clientSecret);
+
+  const [processing, setProcessing] = useState(false);
+  const [transectionId, setTransectionId] = useState('');
 
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       setClientSecret(res.data.clientSecret);
-      console.log(res.data.clientSecret);
     });
-  }, [price]);
+  }, []);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -48,11 +50,11 @@ export const CheckoutForm = ({ price }) => {
       console.log("[error]", error);
       setCardError(error.message);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
-    stripe
-      .confirmCardPayment(clientSecret, {
+setProcessing(true)
+  stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
           billing_details: {
@@ -64,10 +66,18 @@ export const CheckoutForm = ({ price }) => {
       .then(function (result) {
         // Handle result.error or result.paymentIntent
         console.log(result.error, result.paymentIntent);
+
+        setProcessing(true)
+        const paymentIntent = result.paymentIntent
+        if(paymentIntent.status === "succeeded"){
+          setTransectionId(paymentIntent.id)
+          // const transectionId = paymentIntent.id
+          console.log(transectionId);
+        }
       });
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -89,9 +99,10 @@ export const CheckoutForm = ({ price }) => {
         }}
       />
       {cardError && <h5 className="pt-4 text-red-700 text-sm">{cardError}</h5>}
+      {transectionId && <h5 className="pt-4 text-green-700 text-sm">Transection Seccessfull</h5>}
       <button
         type="submit"
-        disabled={!stripe || !clientSecret}
+        disabled={!stripe || !clientSecret || processing}
         // disabled={!stripe}
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >
