@@ -14,6 +14,8 @@ const store = configureStore({
     // wishlist: wishlistReducer,
     // wishlist: todosSlice,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+
 });
 
 export default store;

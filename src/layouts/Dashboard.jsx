@@ -28,12 +28,9 @@ const Dashboard = () => {
   // const [isAdmin, SetAdmin] = useState(false);
   const [isAdmin, SetAdmin] = useState(true);
 
-  //   const handleLinkClick = () => {
-  //     setLinkClicked(true);
-  //   };
-  //   const handleLinkFalse = () => {
-  //     setLinkClicked(false);
-  //   };
+
+  // const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -80,7 +77,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="admin-home"
+                  to=""
                 >
                   Analytics
                 </NavLink>
