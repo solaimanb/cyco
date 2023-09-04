@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
-import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
@@ -15,7 +14,7 @@ const MovieInfo = () => {
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
   const { user } = useAuth();
-  console.log(user);
+  // console.log(axiosSecure);c
 
   const {
     Title,
@@ -33,34 +32,49 @@ const MovieInfo = () => {
     Trailer,
   } = movie || {};
 
-  const movieSource = Trailer?.Source;
-  const source = movieSource.split('=');
-  const sourceId = source[1];
-  console.log(sourceId);
+  // const movieSource = Trailer?.Source;
+  // const source = movieSource.split('=');
+  // const sourceId = source[1];
+  // console.log(sourceId);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [currentWishlist, setCurrentWishlist] = useState(
-    JSON.parse(localStorage.getItem('wishlist')) || []
-  );
+  // const [currentWishlist, setCurrentWishlist] = useState(
+  //   JSON.parse(localStorage.getItem('wishlist')) || []
+  // );
 
-  const isAlreadyInWishlist = currentWishlist.some(
-    (wishlistMovie) => wishlistMovie.Title === Title
-  );
+  // const isAlreadyInWishlist = currentWishlist.some(
+  //   (wishlistMovie) => wishlistMovie.Title === Title
+  // );
 
-  const handleAddToWishlist = () => {
+  const handleAddToWishlist = async () => {
+    try {
+      const wishlistItem = {
+        user: user,
+        movie,
+      };
 
-    const wishlistItem = {
-      user: user?.email,
-      movie: movie,
-    }
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
 
-    axiosSecure.post('/wishlist', wishlistItem).then((data) => {
-      console.log('Movie added to wishlist', data);
-      if (data.status === 200) {
-        Swal.fire('Added successfully!', "You'vé a new vehicle!", 'success');
+      if (response.status === 200) {
+        console.log('Movie added to wishlist', response.data);
+        Swal.fire('Added to wishlist!', 'success');
+      } else {
+        console.error('Failed to add movie to wishlist:', response.statusText);
+        Swal.fire('Error', 'Failed to add movie to wishlist', 'error');
       }
-    });
+    } catch (error) {
+      console.error('An error occurred while adding to wishlist:', error);
+      if (error.response) {
+        console.error(
+          'Server responded with:',
+          error.response.status,
+          error.response.data
+        );
+      }
+      Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
+      console.log(error);
+    }
   };
 
   return (
@@ -108,15 +122,16 @@ const MovieInfo = () => {
                 {/* WISHLIST BTN*/}
                 <button
                   onClick={handleAddToWishlist}
-                  disabled={isAlreadyInWishlist}
+                  // disabled={isAlreadyInWishlist}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
                   <span className="">
                     <LuListVideo size={20} />
                   </span>{' '}
-                  {isAlreadyInWishlist
+                  {/* {isAlreadyInWishlist
                     ? 'Added to Wishlist'
-                    : 'Add to Wishlist'}
+                    : 'Add to Wishlist'} */}
+                  Add to wishlist
                 </button>
 
                 {/* WATCH-NOW FUNC */}
