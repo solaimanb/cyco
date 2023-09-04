@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  movies: [],
-  status: 'idle',
-  error: null,
-};
+// const initialState = {
+//   movies: [],
+//   status: 'idle',
+//   error: null,
+// };
 
 const wishlistSlice = createSlice({
   name: 'wishlist',
-  initialState,
+  initialState: [],
   reducers: {
     addToWishlist: (state, action) => {
       // Check if the movie with the same Title is already in the wishlist
@@ -42,25 +42,25 @@ export const postWishList = createAsyncThunk('wishList', async (newWish) => {
   }
 });
 
-const todosSlice = createSlice({
-  name: 'todos',
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(postTodo.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(postTodo.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data.push(action.payload); // Add the new todo to the state
-      })
-      .addCase(postTodo.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-  },
-});
+// const todosSlice = createSlice({
+//   name: 'todos',
+//   initialState,
+//   reducers: {},
+//   extraReducers: (builder) => {
+//     builder
+//       .addCase(postTodo.pending, (state) => {
+//         state.status = 'loading';
+//       })
+//       .addCase(postTodo.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+//         state.data.push(action.payload); // Add the new todo to the state
+//       })
+//       .addCase(postTodo.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message;
+//       });
+//   },
+// });
 
 export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 

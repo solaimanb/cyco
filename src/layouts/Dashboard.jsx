@@ -17,8 +17,8 @@ const Dashboard = () => {
   };
 
 
-  const [isAdmin, SetAdmin] = [false];
-  // const [isAdmin, SetAdmin] = [true];
+  // const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -73,7 +73,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="admin-home"
+                  to=""
                 >
                   Dashboard{' '}
                 </NavLink>
@@ -200,7 +200,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="watchList"
+                  to="wishlist"
                 >
                   Wishlist
                 </NavLink>

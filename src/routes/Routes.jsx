@@ -28,7 +28,8 @@ import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
 import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
-import WatchList from '../pages/dashBoard/user/wishlist/WishList';
+// import WatchList from '../pages/dashBoard/user/wishlist/WishList';
+import Wishlist from '../pages/dashBoard/user/wishlist/WishList';
 import FaqPage from '../pages/faq/FaqPage';
 import Home from '../pages/home/home/Home';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
-      { path: 'watchList', element: <WatchList /> },
+      { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },
       { path: 'subscriptions', element: <Subscriptions /> },
       { path: 'forum', element: <Forum /> },
