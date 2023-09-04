@@ -66,8 +66,7 @@ const MovieInfo = () => {
         return;
       }
 
-      const response = await axiosSecure.post( '/wishlist', wishlistItem );
-      console.log(response);
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
 
       if (response.status === 200) {
         console.log('Movie added to wishlist', response.data);

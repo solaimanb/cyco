@@ -1,19 +1,19 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export const CheckoutForm = ({ price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
-  const [cardError, setCardError] = useState('');
-  const { axiosSecure } = useAxiosSecure();
-  const [clientSecret, setClientSecret] = useState('');
+  const [cardError, setCardError] = useState("");
+  const [axiosSecure] = useAxiosSecure();
+  const [clientSecret, setClientSecret] = useState("");
   console.log(clientSecret);
 
   useEffect(() => {
-    axiosSecure.post('/create-payment-intent', { price }).then((res) => {
+    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       setClientSecret(res.data.clientSecret);
       console.log(res.data.clientSecret);
     });
@@ -40,24 +40,24 @@ export const CheckoutForm = ({ price }) => {
 
     // Use your card Element with other Stripe.js APIs
     const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
+      type: "card",
       card,
     });
 
     if (error) {
-      console.log('[error]', error);
+      console.log("[error]", error);
       setCardError(error.message);
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
-      setCardError('');
+      console.log("[PaymentMethod]", paymentMethod);
+      setCardError("");
     }
     stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.displayName || 'Hi Buddy',
-            email: user?.email || 'with no email',
+            name: user?.displayName || "Hi Buddy",
+            email: user?.email || "with no email",
           },
         },
       })
@@ -75,15 +75,15 @@ export const CheckoutForm = ({ price }) => {
         options={{
           style: {
             base: {
-              fontSize: '16px',
-              color: '#aab7c4',
+              fontSize: "16px",
+              color: "#aab7c4",
 
-              '::placeholder': {
-                color: '#424770',
+              "::placeholder": {
+                color: "#424770",
               },
             },
             invalid: {
-              color: '#9e2146',
+              color: "#9e2146",
             },
           },
         }}
