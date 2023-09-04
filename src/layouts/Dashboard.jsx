@@ -206,7 +206,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="watchList"
+                  to="wishlist"
                 >
                   Wishlist
                 </NavLink>

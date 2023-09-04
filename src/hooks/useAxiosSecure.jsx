@@ -5,6 +5,7 @@ import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
   baseURL: 'http://localhost:8080',
+  // baseURL: 'https://cyco-server.vercel.app',
 });
 
 const useAxiosSecure = () => {
@@ -35,7 +36,7 @@ const useAxiosSecure = () => {
     );
   }, [logOut, navigate]);
 
-  return {axiosSecure};
+  return { axiosSecure };
 };
 
 export default useAxiosSecure;
