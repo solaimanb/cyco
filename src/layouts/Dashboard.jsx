@@ -7,15 +7,25 @@ import useAuth from '../hooks/useAuth';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
+  console.log(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     console.log('Logging out...');
     try {
-      await logOut();
-      navigate('/login');
-      Swal.fire(' ', 'Logged out', 'success');
-      console.log('Logged out');
+      const response = await Swal.fire({
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true
+      } )
+      if ( response.isConfirmed ) {
+          await logOut()
+          navigate('/login');	
+      }
+      
+      return;
     } catch (error) {
       console.log('Logout failed', error);
     }

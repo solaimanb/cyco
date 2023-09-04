@@ -50,9 +50,21 @@ const MovieInfo = () => {
   const handleAddToWishlist = async () => {
     try {
       const wishlistItem = {
-        user: user,
+        user,
         movie,
       };
+
+      if (!user) {
+        await Swal.fire({
+          title: '',
+          text: 'Please login to add to wishlist',
+          type: 'error',
+          confirmButtonText: 'login',
+        }).then(() => {
+          navigate('/login');
+        });
+        return;
+      }
 
       const response = await axiosSecure.post('/wishlist', wishlistItem);
 
@@ -60,8 +72,9 @@ const MovieInfo = () => {
         console.log('Movie added to wishlist', response.data);
         Swal.fire('Added to wishlist!', '', 'success');
       } else {
-        console.error('Failed to add movie to wishlist:', response.statusText);
-        Swal.fire('Error', 'Failed to add movie to wishlist', 'error');
+        // throw new Error(
+        //   `Failed to add movie to wishlist: ${response.statusText}`
+        // );
       }
     } catch (error) {
       console.error('An error occurred while adding to wishlist:', error);
@@ -72,7 +85,7 @@ const MovieInfo = () => {
           error.response.data
         );
       }
-      Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
+      // Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
       console.log(error);
     }
   };
