@@ -5,7 +5,6 @@ import { FaFulcrum } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { CheckoutForm } from './Checkout';
 import './payment.css';
-// import { CheckoutForm } from "./Checkout";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 

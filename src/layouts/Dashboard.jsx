@@ -94,9 +94,9 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="upload-new-movie"
+                  to="upload-movie"
                 >
-                  Upload new movie
+                  Upload Movie
                 </NavLink>
               </li>
               <li>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="revenue-tracking"
+                  to="revenue"
                 >
                   Ad Revenue Tracking
                 </NavLink>
@@ -114,7 +114,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="system-logs"
+                  to="logs"
                 >
                   System Logs
                 </NavLink>
