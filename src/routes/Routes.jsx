@@ -38,7 +38,7 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
-import Payment from '../pages/payment/Payment';
+// import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
 import Register from '../pages/register/Register';
@@ -46,6 +46,8 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import Payment from '../pages/payment/Payment';
+// import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
 
 const router = createBrowserRouter([
   {
@@ -82,7 +84,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: 'admin-home', element: <AdminHome /> },
+      { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },

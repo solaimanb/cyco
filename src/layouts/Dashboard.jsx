@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
 import { FaBars, FaBell, FaTimes } from 'react-icons/fa';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
-  const handleLogOut = () => {
-    logOut()
-      .then()
-      .catch((error) => console.log(error));
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    console.log('Logging out...');
+    try {
+      await logOut();
+      navigate('/login');
+      Swal.fire(' ', 'Logged out', 'success');
+      console.log('Logged out');
+    } catch (error) {
+      console.log('Logout failed', error);
+    }
   };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const [isAdmin, SetAdmin] = useState(false);
-  //  const [isAdmin, SetAdmin] = useState(true);
+  // const [isAdmin, SetAdmin] = useState(false);
+  const [isAdmin, SetAdmin] = useState(true);
 
-  //   const handleLinkClick = () => {
-  //     setLinkClicked(true);
-  //   };
-  //   const handleLinkFalse = () => {
-  //     setLinkClicked(false);
-  //   };
+
+  // const [isAdmin, SetAdmin] = [false];
+  const [isAdmin, SetAdmin] = [true];
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -53,19 +59,11 @@ const Dashboard = () => {
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
-              {isAdmin ? (
-                <img
-                  className={`w-10 h-10 rounded-full`}
-                  src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
-                  alt=""
-                />
-              ) : (
-                <img
-                  className={`w-10 h-10 rounded-full`}
-                  src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
-                  alt=""
-                />
-              )}
+              <img
+                className={`w-10 h-10 rounded-full`}
+                src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
+                alt="admin-profile"
+              />
               <div className="">
                 <FaBell size={22} />
               </div>
@@ -79,9 +77,9 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="admin-home"
+                  to=""
                 >
-                  Dashboard{' '}
+                  Analytics
                 </NavLink>
               </li>
 
@@ -163,27 +161,22 @@ const Dashboard = () => {
               <div className="sidebar-btn">
                 <button>Settings</button>
               </div>
-              <div className="sidebar-btn">
-                <button onClick={handleLogOut}>Sign Out</button>
-              </div>
+              <button
+                onClick={() => handleLogOut()}
+                className="sidebar-btn w-full text-start"
+              >
+                <span>Sign Out</span>
+              </button>
             </div>
           </div>
         ) : (
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
-              {isAdmin ? (
-                <img
-                  className={`w-10 h-10 rounded-full object-cover`}
-                  src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
-                  alt="admin-profile"
-                />
-              ) : (
-                <img
-                  className={`w-10 h-10 rounded-full object-cover`}
-                  src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
-                  alt="user-profile"
-                />
-              )}
+              <img
+                className={`w-10 h-10 rounded-full object-cover`}
+                src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
+                alt="user-profile"
+              />
               <div className="">
                 <FaBell size={22} />
               </div>
@@ -299,12 +292,15 @@ const Dashboard = () => {
               </li>
             </ul>
             <div className="group:mb-0">
-              <div className="sidebar-btn">
+              <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
-              </div>
-              <div className="sidebar-btn">
-                <button onClick={handleLogOut}>Sign Out</button>
-              </div>
+              </NavLink>
+              <button
+                onClick={() => handleLogOut()}
+                className="sidebar-btn w-full text-start"
+              >
+                <span>Sign Out</span>
+              </button>
             </div>
           </div>
         )}
@@ -314,7 +310,7 @@ const Dashboard = () => {
       <div
         className={`drawer-content ${
           isSidebarOpen ? '' : 'blur-none'
-        } h-full w-full pt-6 lg:pt-0 lg:ml-72`}
+        } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
       </div>
