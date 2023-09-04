@@ -16,9 +16,11 @@ export const CheckoutForm = ({ price, selectedPlan }) => {
   const [transectionId, setTransectionId] = useState('');
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      setClientSecret(res.data.clientSecret);
-    });
+    if(price > 0){
+      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+    }
   }, [price, axiosSecure]);
 
   const handleSubmit = async (event) => {
@@ -80,6 +82,9 @@ setProcessing(true)
             transectionId: paymentIntent.id,
             price,
             membership: selectedPlan,
+            date: new Date(),
+            status: 'pending',
+            
 
           }
           axiosSecure.post('/payments', payment)
@@ -87,7 +92,7 @@ setProcessing(true)
             console.log(res.data);
             if(res.data.insertedId){
               // TODO: display confirm 
-              
+
             }
           })
         }
