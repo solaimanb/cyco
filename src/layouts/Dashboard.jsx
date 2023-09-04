@@ -35,8 +35,8 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const [isAdmin, SetAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+  // const [isAdmin, SetAdmin] = useState(false);
+  const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -137,12 +137,12 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to="modernization"
+                  to="moderate-panel"
                 >
-                  Moderation
+                  Moderate Panel
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
@@ -151,7 +151,7 @@ const Dashboard = () => {
                 >
                   User Panel Lists
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   className={({ isActive }) =>

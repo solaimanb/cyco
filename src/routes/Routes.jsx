@@ -8,10 +8,8 @@ import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
-import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
 import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
-import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import History from '../pages/DashBoard/user/history/History';
@@ -36,6 +34,7 @@ import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
 // import Payment from '../pages/payment/Payment';
+import ModeratePanel from '../pages/dashBoard/admin/moderatePanel/ModeratePanel';
 import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
 import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Payment from '../pages/payment/Payment';
@@ -99,8 +98,7 @@ const router = createBrowserRouter([
       { path: 'revenue', element: <Revenue /> },
       { path: 'logs', element: <SystemLogs /> },
       { path: 'subscription', element: <ManageSubscription /> },
-      { path: 'modernization', element: <Modernization /> },
-      { path: 'user-pannel-list', element: <UserPannelList /> },
+      { path: 'moderate-panel', element: <ModeratePanel /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },
       // {
