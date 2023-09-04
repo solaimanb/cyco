@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 const MovieInfo = () => {
   const location = useLocation();
   const { index } = useParams();
+
   const { movie } = location?.state;
   console.log(movie);
   //   const { Title, Year, Plot, Released, Director, Actors, Poster, Runtime, Language, Thumbnail, imdbRating, Genre, } = movie || {};
@@ -164,12 +165,13 @@ const MovieInfo = () => {
                   </span>{' '}
                   Watch
                 </button> */}
-                <Link to={`/movieinfo/${index}`} key={index} className="btn capitalize bg-cyred font-bold border-none rounded-sm">
+                <Link to={`/movieinfo/${index}`} className="btn capitalize bg-cyred font-bold border-none rounded-sm">
   <span>
     <FaCloudDownloadAlt size={20} />
   </span>{' '}
   Watch
 </Link>
+
               </div>
             </div>
           </div>
