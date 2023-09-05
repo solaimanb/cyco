@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { FaBars, FaBell, FaTimes } from 'react-icons/fa';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -18,13 +18,13 @@ const Dashboard = () => {
         text: 'Ary you sure you want to log out?',
         confirmButtonText: 'Logout',
         cancelButtonText: 'Cancel',
-        showCancelButton: true
-      } )
-      if ( response.isConfirmed ) {
-          await logOut()
-          navigate('/login');	
+        showCancelButton: true,
+      });
+      if (response.isConfirmed) {
+        await logOut();
+        navigate('/login');
       }
-      
+
       return;
     } catch (error) {
       console.log('Logout failed', error);
@@ -41,9 +41,9 @@ const Dashboard = () => {
   //   const handleLinkFalse = () => {
   //     setLinkClicked(false);
   //   };
-  
-  const [isAdmin, SetAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+
+  // const [isAdmin, SetAdmin] = useState(false);
+  const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -66,7 +66,7 @@ const Dashboard = () => {
       {/* Dashboard Sidebar */}
       <div
         className={`bg-zinc-700 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-          isSidebarOpen ? "block" : "hidden lg:block"
+          isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
         {isAdmin ? (
@@ -77,12 +77,9 @@ const Dashboard = () => {
                 src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
                 alt="admin-profile"
               />
-              <div className="bg-white w-4 h-4"></div>
+                <div className="">
+              <FaBell size={22} />
             </div>
-            <hr className="pb-8" />
-              <div className="">
-                <FaBell size={22} />
-              </div>
             </div>
 
             <hr className="pb-8" />
@@ -91,7 +88,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="admin-home"
                 >
@@ -102,7 +99,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="upload-movie"
                 >
@@ -112,7 +109,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="revenue"
                 >
@@ -122,7 +119,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="logs"
                 >
@@ -135,7 +132,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="manage-subscription"
                 >
@@ -145,7 +142,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="modernization"
                 >
@@ -155,7 +152,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="user-pannel-list"
                 >
@@ -165,7 +162,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="user-feedback"
                 >
@@ -176,9 +173,6 @@ const Dashboard = () => {
             <div className="group:mb-0">
               <div className="sidebar-btn">
                 <button>Settings</button>
-              </div>
-              <div className="sidebar-btn">
-                <button onClick={handleLogOut}>Sign Out</button>
               </div>
               <button
                 onClick={() => handleLogOut()}
@@ -192,7 +186,6 @@ const Dashboard = () => {
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
               <img
-
                 className={`w-10 h-10 rounded-full object-cover`}
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
@@ -206,7 +199,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="users-home"
                 >
@@ -217,7 +210,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="wishlist"
                 >
@@ -227,7 +220,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="downloads"
                 >
@@ -237,7 +230,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="subscriptions"
                 >
@@ -250,7 +243,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="forum"
                 >
@@ -260,7 +253,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="watch-party"
                 >
@@ -270,7 +263,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="recommendation"
                 >
@@ -280,7 +273,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="payment-info"
                 >
@@ -290,14 +283,13 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
+                    isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="history"
                 >
                   History
                 </NavLink>
               </li>
-            </ul>
-
 
               <hr className="my-8" />
 
@@ -312,6 +304,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </ul>
+
             <div className="group:mb-0">
               <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
