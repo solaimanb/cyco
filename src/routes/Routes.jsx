@@ -7,12 +7,9 @@ import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
-import AddMedia from '../pages/DashBoard/Admin/addNewMedia/AddMedia';
 import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
 import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
-import RevenueTracking from '../pages/DashBoard/Admin/revenue-tracking/RevenueTracking';
 import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
-import UploadNewMovies from '../pages/DashBoard/Admin/upload-new-movie/UploadNewMovies';
 import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
 import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
 import UsersHome from '../pages/DashBoard/user/UsersHome';
@@ -38,6 +35,9 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
+// import Payment from '../pages/payment/Payment';
+import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
+import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -46,6 +46,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+// import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'checkout', element: <Payment /> },
       { path: 'video-player', element: <VideoPlayer /> },
+
       { path: 'movieinfo', element: <MovieInfo /> },
       { path: 'watch-video', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
@@ -82,7 +84,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: 'admin-home', element: <AdminHome /> },
+      { path: '', element: <AdminHome /> },
       { path: 'users-home', element: <UsersHome /> },
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },
@@ -92,19 +94,15 @@ const router = createBrowserRouter([
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
-      { path: 'account-settings', element: <ProfileSettings /> },
+      { path: 'settings', element: <ProfileSettings /> },
       { path: 'history', element: <History /> },
-
-      { path: 'upload-new-movie', element: <UploadNewMovies /> },
-      { path: 'revenue-tracking', element: <RevenueTracking /> },
-      { path: 'system-logs', element: <SystemLogs /> },
-
-      { path: 'manage-subscription', element: <ManageSubscription /> },
+      { path: 'upload-movie', element: <UploadMovie /> },
+      { path: 'revenue', element: <Revenue /> },
+      { path: 'logs', element: <SystemLogs /> },
+      { path: 'subscription', element: <ManageSubscription /> },
       { path: 'modernization', element: <Modernization /> },
       { path: 'user-pannel-list', element: <UserPannelList /> },
       { path: 'user-feedback', element: <UserFeedback /> },
-
-      { path: 'add-new-media', element: <AddMedia /> },
       { path: 'payment', element: <Payments /> },
       // {
       //   path: 'live-tv/live/:id',
