@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
 import LiveVideoList from './LiveVideoList';
-import VideoPlayer from './VideoPlayer';
 
 const LiveTv = () => {
   const [selectedChannel, setSelectedChannel] = useState(null);
@@ -14,12 +14,12 @@ const LiveTv = () => {
   };
 
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: '5Vw1mvV9WJc' },
+    { name: 'FOX', imageSrc: '/fox.png', videoId: 'gCNeDWCI0vo' },
   ];
 
   return (
     <div className="flex flex-col items-center lg:flex-row p-4 gap-10">
-      <div className="w-full md:w-3/4 mx-auto md:pr-4">
+      <div className="w-full h-full md:w-3/4 mx-auto md:pr-4">
         <VideoPlayer channel={selectedChannel} />
       </div>
       <div className="mt-10">

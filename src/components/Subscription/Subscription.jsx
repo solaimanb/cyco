@@ -2,7 +2,15 @@ import React from "react";
 import { FaAlignJustify, FaCheckDouble } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { useDispatch } from 'react-redux';
+import { updateSelectedPlan } from '../../store/slices/paymentSlice/paymentSlice';
+
 const Subscription = () => {
+
+
+  const dispatch = useDispatch();
+
+
   const SubscriptionBasicInfo = {
     type: "basic",
     regularPrice: 29.99,
@@ -17,6 +25,11 @@ const Subscription = () => {
     type: "Ultapremium",
     regularPrice: 99.99,
     discountPrice: 54.99,
+  };
+
+
+  const handlePlanSelection = (selectedPlan, amount) => {
+    dispatch(updateSelectedPlan({ selectedPlan, amount }));
   };
 
   return (
@@ -78,7 +91,9 @@ const Subscription = () => {
               <div className="group:mb-0">
                 <Link to="/payment">
                   {" "}
-                  <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                  <button
+                  onClick={() => handlePlanSelection('basic', 12.99)} 
+                  className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
                     Choose Plan
                   </button>{" "}
                 </Link>
@@ -135,7 +150,10 @@ const Subscription = () => {
               </ul>
               <hr />
               <Link to="/payment">
-                <button className="block w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4 align-bottom">
+                <button 
+                  onClick={() => handlePlanSelection('Standard', 24.99)} 
+                
+                className="block w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4 align-bottom">
                   Choose Plan
                 </button>{" "}
               </Link>
@@ -200,7 +218,10 @@ const Subscription = () => {
                 </ul>
                 <hr />
                 <Link to="/payment">
-                  <button className="w-full text-red-700 bg-white rounded opacity-75 hover:opacity-100 hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                  <button 
+                  onClick={() => handlePlanSelection('premium', 49.99)} 
+                  
+                  className="w-full text-red-700 bg-white rounded opacity-75 hover:opacity-100 hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
                     Choose Plan
                   </button>
                 </Link>
@@ -259,7 +280,9 @@ const Subscription = () => {
               </ul>
               <hr />
               <Link to="/payment">
-                <button className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
+                <button 
+                onClick={() => handlePlanSelection('ultraPremium', 99.99)} 
+                className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4">
                   Choose Plan
                 </button>
               </Link>

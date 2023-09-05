@@ -1,14 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
-import homeSlice from './homeSlice/homeSlice';
-import userReducer from './userSlice/userSlice';
-import wishlistReducer from './wishListSlice/wishListSlice'; // Renamed the reducer
+import categoryReducer from './slices/categorySlice/categorySlice';
+import homeSlice from './slices/homeSlice/homeSlice';
+import paymentReducer from './slices/paymentSlice/paymentSlice';
+import userReducer from './slices/userSlice/userSlice';
+// import wishlistReducer from './slices/wishlistSlice/wishlistSlice';
 
 const store = configureStore({
   reducer: {
     home: homeSlice,
     users: userReducer,
-    wishlist: wishlistReducer, // Updated the reducer key name to 'wishlist'
+    category: categoryReducer,
+    payment: paymentReducer,
+    // wishlist: wishlistReducer,
+    // wishlist: todosSlice,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+
 });
 
 export default store;

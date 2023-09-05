@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
 
-import { useDispatch } from 'react-redux';
+
 import { addToWishlist } from '../../store/wishListSlice/wishListSlice';
 
 const MovieInfo = () => {

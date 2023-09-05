@@ -196,7 +196,7 @@ const UsersHome = () => {
   ];
 
   return (
-    <div className="px-2 sm:px-4 md:px-6 lg:px-8">
+    <div className="px-2 min-h-screen">
       <div className="bg-zinc-700 bg-opacity-50 w-full p-6 border rounded-md">
         <div>
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl">
@@ -331,7 +331,7 @@ const UsersHome = () => {
             Your last week spent time on{" "}
             <span className="text-cyred font-bold">Cyco</span>
           </h2>
-          <div style={{ width: "95%", height: 240 }}>
+          <div style={{ width: '95%', height: 240 }}>
             <ResponsiveContainer>
               <AreaChart
                 data={data}

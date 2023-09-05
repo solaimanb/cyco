@@ -1,30 +1,49 @@
 import React, { useState } from "react";
-
-import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { FaBars, FaBell, FaTimes } from 'react-icons/fa';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../hooks/useAuth';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
-  const handleLogOut = () => {
-    logOut()
-      .then()
-      .catch((error) => console.log(error));
+  console.log(user);
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    console.log('Logging out...');
+    try {
+      const response = await Swal.fire({
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true
+      } )
+      if ( response.isConfirmed ) {
+          await logOut()
+          navigate('/login');	
+      }
+      
+      return;
+    } catch (error) {
+      console.log('Logout failed', error);
+    }
   };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const [isAdmin, SetAdmin] = [false];
-  // const [isAdmin, SetAdmin] = [true];
   //   const handleLinkClick = () => {
   //     setLinkClicked(true);
   //   };
   //   const handleLinkFalse = () => {
   //     setLinkClicked(false);
   //   };
+  
+  const [isAdmin, SetAdmin] = useState(false);
+  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -55,12 +74,19 @@ const Dashboard = () => {
             <div className="w-full flex  justify-between items-center py-6">
               <img
                 className={`w-10 h-10 rounded-full`}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-                alt=""
+                src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
+                alt="admin-profile"
               />
               <div className="bg-white w-4 h-4"></div>
             </div>
             <hr className="pb-8" />
+              <div className="">
+                <FaBell size={22} />
+              </div>
+            </div>
+
+            <hr className="pb-8" />
+
             <ul className="flex-1">
               <li>
                 <NavLink
@@ -69,7 +95,7 @@ const Dashboard = () => {
                   }
                   to="admin-home"
                 >
-                  Dashboard{" "}
+                  Analytics
                 </NavLink>
               </li>
 
@@ -78,9 +104,9 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to="upload-new-movie"
+                  to="upload-movie"
                 >
-                  Upload new movie
+                  Upload Movie
                 </NavLink>
               </li>
               <li>
@@ -88,7 +114,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to="revenue-tracking"
+                  to="revenue"
                 >
                   Ad Revenue Tracking
                 </NavLink>
@@ -98,7 +124,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to="system-logs"
+                  to="logs"
                 >
                   System Logs
                 </NavLink>
@@ -154,17 +180,26 @@ const Dashboard = () => {
               <div className="sidebar-btn">
                 <button onClick={handleLogOut}>Sign Out</button>
               </div>
+              <button
+                onClick={() => handleLogOut()}
+                className="sidebar-btn w-full text-start"
+              >
+                <span>Sign Out</span>
+              </button>
             </div>
           </div>
         ) : (
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
               <img
-                className={`w-10 h-10 rounded-full`}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7dCWaK60Ug98OktQFyui1Hj0EPGcWc6AvNqIx6pi&s"
-                alt=""
+
+                className={`w-10 h-10 rounded-full object-cover`}
+                src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
+                alt="user-profile"
               />
-              <div className="bg-white w-4 h-4"></div>
+              <div className="">
+                <FaBell size={22} />
+              </div>
             </div>
             <hr className="pb-8" />
             <ul className="flex-1">
@@ -175,7 +210,7 @@ const Dashboard = () => {
                   }
                   to="users-home"
                 >
-                  Profile{" "}
+                  Profile{' '}
                 </NavLink>
               </li>
 
@@ -184,7 +219,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to="watchList"
+                  to="wishlist"
                 >
                   Wishlist
                 </NavLink>
@@ -247,15 +282,14 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to="update-payment-info"
+                  to="payment-info"
                 >
-                  Update Payment Info
+                  Payment Info
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="history"
                 >
@@ -263,13 +297,31 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </ul>
+
+
+              <hr className="my-8" />
+
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'btn-active' : 'sidebar-btn'
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
+              </li>
+            </ul>
             <div className="group:mb-0">
-              <div className="sidebar-btn">
+              <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
-              </div>
-              <div className="sidebar-btn">
-                <button onClick={handleLogOut}>Sign Out</button>
-              </div>
+              </NavLink>
+              <button
+                onClick={() => handleLogOut()}
+                className="sidebar-btn w-full text-start"
+              >
+                <span>Sign Out</span>
+              </button>
             </div>
           </div>
         )}
@@ -278,8 +330,8 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? "" : "blur-none"
-        } h-full w-full pt-6 lg:pt-0 lg:ml-72`}
+          isSidebarOpen ? '' : 'blur-none'
+        } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
       </div>
