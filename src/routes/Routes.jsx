@@ -67,6 +67,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'checkout', element: <Payment /> },
       { path: 'video-player', element: <VideoPlayer /> },
+
       { path: 'movieinfo', element: <MovieInfo /> },
       { path: 'watch-video', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },

@@ -18,13 +18,13 @@ const Dashboard = () => {
         text: 'Ary you sure you want to log out?',
         confirmButtonText: 'Logout',
         cancelButtonText: 'Cancel',
-        showCancelButton: true
-      } )
-      if ( response.isConfirmed ) {
-          await logOut()
-          navigate('/login');	
+        showCancelButton: true,
+      });
+      if (response.isConfirmed) {
+        await logOut();
+        navigate('/login');
       }
-      
+
       return;
     } catch (error) {
       console.log('Logout failed', error);
@@ -35,8 +35,16 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  //   const handleLinkClick = () => {
+  //     setLinkClicked(true);
+  //   };
+  //   const handleLinkFalse = () => {
+  //     setLinkClicked(false);
+  //   };
+
   // const [isAdmin, SetAdmin] = useState(false);
   const [isAdmin, SetAdmin] = useState(true);
+  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -70,9 +78,9 @@ const Dashboard = () => {
                 src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
                 alt="admin-profile"
               />
-              <div className="">
-                <FaBell size={22} />
-              </div>
+                <div className="">
+              <FaBell size={22} />
+            </div>
             </div>
 
             <hr className="pb-8" />
@@ -83,7 +91,7 @@ const Dashboard = () => {
                   className={({ isActive }) =>
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
-                  to=""
+                  to="admin-home"
                 >
                   Analytics
                 </NavLink>
@@ -166,6 +174,9 @@ const Dashboard = () => {
             <div className="group:mb-0">
               <div className="sidebar-btn">
                 <button>Settings</button>
+              </div>
+              <div className="sidebar-btn">
+                <button onClick={handleLogOut}>Sign Out</button>
               </div>
               <button
                 onClick={() => handleLogOut()}
@@ -297,6 +308,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </ul>
+
             <div className="group:mb-0">
               <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>

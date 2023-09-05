@@ -11,6 +11,8 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 const MovieInfo = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { index } = useParams();
+
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
   const { user } = useAuth();
@@ -156,6 +158,9 @@ const MovieInfo = () => {
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
+  <span>
+    <FaCloudDownloadAlt size={20} />
+  </span>{' '}
                   Watch now
                 </Link>
               </div>
