@@ -35,8 +35,8 @@ const Forum = () => {
             <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
 
+          {/* Query Content */}
           <div className="flex flex-col gap-1 md:p-2">
-            {/* Query Content */}
             <QueryContent />
             <QueryContent />
             <QueryContent />
