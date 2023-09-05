@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import useForumQueries from '../../../../hooks/useForumQueries';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
 import TopicAside from './TopicAside';
@@ -7,6 +8,12 @@ import AskQueryModal from './askQuery/AskQueryModal';
 
 const Forum = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [queries, loading] = useForumQueries();
+  console.log(queries);
+
+  if (loading) {
+    <div>Loading...</div>;
+  }
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -37,15 +44,9 @@ const Forum = () => {
 
           {/* Query Content */}
           <div className="flex flex-col gap-1 md:p-2">
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
-            <QueryContent />
+            { queries.map( ( query, index ) => (
+              <QueryContent query={query} key={index} />
+            ))}
           </div>
         </div>
 

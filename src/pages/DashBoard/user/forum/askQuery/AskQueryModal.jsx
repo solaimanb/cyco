@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
+import useAuth from '../../../../../hooks/useAuth';
+import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import Modal from './Modal';
 
 const AskQueryModal = ({ isOpen, setIsOpen }) => {
   const [showWarning, setShowWarning] = useState(false);
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
 
   const {
     register,
@@ -15,18 +19,36 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
-    setIsOpen(false);
+  // Query submission:
+  const onSubmit = async (query) => {
+    const querySlot = {
+      user,
+      query,
+    };
+    console.log(querySlot);
+
+    try {
+      const forumResponseSlot = await axiosSecure.post( '/forumQueries', query );
+      const userResponseSlot = await axiosSecure.post('/query', querySlot);
+      
+
+      console.log(userResponseSlot, forumResponseSlot);
+
+      reset();
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Error while submitting query', error);
+    }
   };
 
+  // Modal dialog cancel:
   const onCancel = (data) => {
     console.log(data);
     reset();
     setIsOpen(false);
   };
 
+  // Modal warning tips:
   const handleWarning = () => {
     setShowWarning(!showWarning);
   };
@@ -80,7 +102,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           <div className="flex flex-row items-center text-cyred">
             {showWarning && !isValid && (
               <p className="text-red-600 text-xs">
-                Please fill the form to submit.
+                Please fill the form to submit your query!
               </p>
             )}
             {!isValid && (
