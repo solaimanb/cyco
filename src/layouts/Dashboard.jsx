@@ -44,7 +44,6 @@ const Dashboard = () => {
 
   // const [isAdmin, SetAdmin] = useState(false);
   const [isAdmin, SetAdmin] = useState(true);
-  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -174,9 +173,6 @@ const Dashboard = () => {
             <div className="group:mb-0">
               <div className="sidebar-btn">
                 <button>Settings</button>
-              </div>
-              <div className="sidebar-btn">
-                <button onClick={handleLogOut}>Sign Out</button>
               </div>
               <button
                 onClick={() => handleLogOut()}
