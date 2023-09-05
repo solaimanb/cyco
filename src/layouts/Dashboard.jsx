@@ -42,8 +42,8 @@ const Dashboard = () => {
   //     setLinkClicked(false);
   //   };
 
-  // const [isAdmin, SetAdmin] = useState(false);
-  const [isAdmin, SetAdmin] = useState(true);
+  const [isAdmin, SetAdmin] = useState(false);
+  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
