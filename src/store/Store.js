@@ -3,6 +3,7 @@ import categoryReducer from './slices/categorySlice/categorySlice';
 import homeSlice from './slices/homeSlice/homeSlice';
 import paymentReducer from './slices/paymentSlice/paymentSlice';
 import userReducer from './slices/userSlice/userSlice';
+import historyReducer from './slices/historySlice/historySlice';
 // import wishlistReducer from './slices/wishlistSlice/wishlistSlice';
 
 const store = configureStore({
@@ -11,11 +12,9 @@ const store = configureStore({
     users: userReducer,
     category: categoryReducer,
     payment: paymentReducer,
-    // wishlist: wishlistReducer,
-    // wishlist: todosSlice,
+    history: historyReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
-
 });
 
 export default store;

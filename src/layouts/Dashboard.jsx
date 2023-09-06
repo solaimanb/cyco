@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -42,13 +42,13 @@ const Dashboard = () => {
   //     setLinkClicked(false);
   //   };
 
-  // const [isAdmin, SetAdmin] = useState(false);
-  const [isAdmin, SetAdmin] = useState(true);
+  const [isAdmin, SetAdmin] = useState(false);
+  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
-    <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
+    <div className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
       {/* Hamburger Menu */}
-      <div className="fixed z-50 px-4 py-1 lg:hidden w-full bg-zinc-800">
+      <div className="container fixed z-50 px-4 py-2 lg:hidden w-full bg-zinc-800">
         {/* Toggle Bar */}
         <div className="lg:hidden text-white">
           {isSidebarOpen ? (
@@ -77,9 +77,9 @@ const Dashboard = () => {
                 src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
                 alt="admin-profile"
               />
-                <div className="">
-              <FaBell size={22} />
-            </div>
+              <div className="">
+                <FaBell size={22} />
+              </div>
             </div>
 
             <hr className="pb-8" />

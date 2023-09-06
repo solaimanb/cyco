@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile
+  updateProfile,
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             setLoading(false);
           });
       } else {
