@@ -43,8 +43,8 @@ const Dashboard = () => {
   //     setLinkClicked(false);
   //   };
 
-  const [isAdmin, SetAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+  // const [isAdmin, SetAdmin] = useState(false);
+  const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div
