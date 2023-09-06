@@ -46,6 +46,8 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import Notify from '../pages/notify/Notify';
+import ReceiveNotification from '../pages/notify/ReceiveNotification';
 // import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
 
 const router = createBrowserRouter([
@@ -77,6 +79,8 @@ const router = createBrowserRouter([
       { path: 'testimonials', element: <Testimonials /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'payment', element: <Payment /> },
+      { path: 'notify', element: <Notify /> },
+      { path: 'receive-notification', element: <ReceiveNotification /> },
     ],
   },
   {

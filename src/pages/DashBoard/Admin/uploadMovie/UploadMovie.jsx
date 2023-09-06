@@ -1,10 +1,34 @@
 import React, { useContext, useState } from 'react';
+
+
+import io from 'socket.io-client'
+const socket = io.connect('http://localhost:8080')
+
+
+
 import Swal from 'sweetalert2';
 import { addNewMovie } from '../../../../api/addNewMovie';
 import { imageUpload } from '../../../../api/imgUpload';
 import { AuthContext } from '../../../../providers/AuthProvider';
 
+
+// const socket = io('http://localhost:8080');
+
+
+
 const UploadMovie = () => {
+
+
+  const [notification, setNotification] = useState('');
+  
+  const sendNotification = () => {
+      socket.emit('send_notification', {notification: notification})
+      // console.log(notification);
+  }
+
+
+
+  
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState('Upload image');
@@ -378,8 +402,21 @@ const UploadMovie = () => {
               'Save & Continue'
             )}
           </button>
+          
         </div>
       </form>
+
+      <div>
+            <h3>Send Notification</h3>
+            <div>
+              <input
+              onChange={(event) => {
+                setNotification(event.target.value);
+              }}
+              type="text" name='notification' id='notification' placeholder='Type Notification' />
+              <button onClick={sendNotification}>Faka Button</button>
+            </div>
+          </div>
     </div>
   );
 };
