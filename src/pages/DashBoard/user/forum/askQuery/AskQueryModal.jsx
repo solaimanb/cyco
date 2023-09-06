@@ -57,11 +57,11 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={'Ask your query'}>
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
         <div className="flex flex-col gap-2">
-          <label className="text-sm" htmlFor="title">
+          <label className="text-xs text-white" htmlFor="title">
             Title:
           </label>
           <input
-            className="text-sm p-1 rounded-sm bg-zinc-700"
+            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
             type="text"
             id="title"
             {...register('title', { required: true })}
@@ -69,11 +69,11 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           {errors?.title && <span>Title is required</span>}
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-sm" htmlFor="description">
+          <label className="text-xs text-white" htmlFor="description">
             Description:
           </label>
           <textarea
-            className="text-sm p-1 rounded-sm bg-zinc-700"
+            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
             id="description"
             {...register('description', { required: true })}
           />

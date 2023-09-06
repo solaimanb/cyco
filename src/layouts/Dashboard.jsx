@@ -35,18 +35,26 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  //   const handleLinkClick = () => {
-  //     setLinkClicked(true);
-  //   };
-  //   const handleLinkFalse = () => {
-  //     setLinkClicked(false);
-  //   };
+  const navLinks = [
+    { to: 'users-home', text: 'Profile' },
+    { to: 'wishlist', text: 'Wishlist' },
+    { to: 'downloads', text: 'Downloads' },
+    { to: 'subscriptions', text: 'Subscriptions' },
+    { to: 'forum', text: 'Forum' },
+    { to: 'watch-party', text: 'Watch Party' },
+    { to: 'recommendation', text: 'Recommendation' },
+    { to: 'payment-info', text: 'Payment Info' },
+    { to: 'history', text: 'History' },
+    { to: '/', text: 'Home' },
+  ];
 
   const [isAdmin, SetAdmin] = useState(false);
   // const [isAdmin, SetAdmin] = useState(true);
 
   return (
-    <div className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
+    <div
+      className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
+    >
       {/* Hamburger Menu */}
       <div className="container fixed z-50 px-4 py-2 lg:hidden w-full bg-zinc-800">
         {/* Toggle Bar */}
@@ -65,7 +73,7 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <div
-        className={`bg-zinc-700 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
+        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
@@ -194,118 +202,30 @@ const Dashboard = () => {
                 <FaBell size={22} />
               </div>
             </div>
+
             <hr className="pb-8" />
-            <ul className="flex-1">
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="users-home"
-                >
-                  Profile{' '}
-                </NavLink>
-              </li>
 
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="wishlist"
-                >
-                  Wishlist
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="downloads"
-                >
-                  Downloads
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="subscriptions"
-                >
-                  Subscriptions
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="forum"
-                >
-                  Forum
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="watch-party"
-                >
-                  Watch Party
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="recommendation"
-                >
-                  Recommendation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="payment-info"
-                >
-                  Payment Info
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="history"
-                >
-                  History
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
+            {/* Users Navigation */}
+            <ul className="flex flex-col gap-2">
+              {navLinks.map((navLink, index) => (
+                <li className="w-full">
+                  {navLink.to === 'forum' && index < navLinks.length - 1 && (
+                    <hr className="mt-5" />
+                  )}
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? 'btn-active' : 'sidebar-btn'
+                    }
+                    to={navLink?.to}
+                    style={navLink?.to === 'forum' ? { marginTop: '40px' } : {}}
+                  >
+                    {navLink?.text}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
 
-            <div className="group:mb-0">
+            <div className="group:mb-0 mt-auto">
               <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
