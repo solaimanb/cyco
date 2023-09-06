@@ -14,6 +14,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     register,
     handleSubmit,
     reset,
+    refetch,
     formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
@@ -28,13 +29,12 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     console.log(querySlot);
 
     try {
-      const forumResponseSlot = await axiosSecure.post( '/forumQueries', query );
+      const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
       const userResponseSlot = await axiosSecure.post('/query', querySlot);
-      
 
       console.log(userResponseSlot, forumResponseSlot);
-
       reset();
+
       setIsOpen(false);
     } catch (error) {
       console.error('Error while submitting query', error);
