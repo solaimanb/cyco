@@ -11,11 +11,8 @@ const store = configureStore({
     users: userReducer,
     category: categoryReducer,
     payment: paymentReducer,
-    // wishlist: wishlistReducer,
-    // wishlist: todosSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
-
 });
 
 export default store;

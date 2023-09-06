@@ -158,9 +158,9 @@ const MovieInfo = () => {
                   <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-  <span>
-    <FaCloudDownloadAlt size={20} />
-  </span>{' '}
+                  <span>
+                    <FaCloudDownloadAlt size={20} />
+                  </span>{' '}
                   Watch now
                 </Link>
               </div>
