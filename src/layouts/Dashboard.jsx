@@ -11,7 +11,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    console.log('Logging out...');
+    console.log("Logging out...");
     try {
       const response = await Swal.fire({
         title: '',
@@ -22,12 +22,13 @@ const Dashboard = () => {
       });
       if (response.isConfirmed) {
         await logOut();
+
         navigate('/login');
       }
 
       return;
     } catch (error) {
-      console.log('Logout failed', error);
+      console.log("Logout failed", error);
     }
   };
 
@@ -41,6 +42,7 @@ const Dashboard = () => {
   //   const handleLinkFalse = () => {
   //     setLinkClicked(false);
   //   };
+
 
   const [isAdmin, SetAdmin] = useState(false);
   // const [isAdmin, SetAdmin] = useState(true);
@@ -77,6 +79,10 @@ const Dashboard = () => {
                 src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
                 alt="admin-profile"
               />
+              <div className="bg-white w-4 h-4"></div>
+
+              <hr className="pb-8" />
+
               <div className="">
                 <FaBell size={22} />
               </div>
@@ -203,7 +209,7 @@ const Dashboard = () => {
                   }
                   to="users-home"
                 >
-                  Profile{' '}
+                  Profile{" "}
                 </NavLink>
               </li>
 
@@ -283,6 +289,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
+
                     isActive ? 'btn-active' : 'sidebar-btn'
                   }
                   to="history"
@@ -296,7 +303,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="/"
                 >
@@ -306,7 +313,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0">
-              <NavLink to={'/help'} className="sidebar-btn">
+              <NavLink to={"/help"} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -323,7 +330,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? '' : 'blur-none'
+          isSidebarOpen ? "" : "blur-none"
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
