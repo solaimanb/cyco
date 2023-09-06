@@ -12,7 +12,6 @@ const TopicAside = () => {
     'Upcoming Releases',
     'Movie Reviews',
     'Classic Films',
-    'Actor and Actress Appreciation',
     'Recommendations',
     'Film Trivia',
     'Cinematic Trends',
@@ -26,9 +25,7 @@ const TopicAside = () => {
     'Film Festivals',
     'Cinematic Technology',
     'Challenges and Games',
-    'Theories and Speculation',
     'Remakes vs. Originals',
-    'Diverse Representation',
   ];
 
   return (
@@ -52,7 +49,7 @@ const TopicAside = () => {
         {isTopicVisible && (
           <div className="flex flex-col gap-1 border rounded-sm border-zinc-800 p-2 mt-2">
             {forumTopics.map((topic) => (
-              <div className="flex items-center justify-between border rounded-sm bg-zinc-800 p-2 border-zinc-700">
+              <div className="flex items-center justify-between border rounded-sm bg-zinc-800 p-3 border-zinc-700">
                 <h3 className="text-xs font-semibold">{topic}</h3>
                 <div className='font-light text-zinc-600'>
                   <FaAngleRight />

@@ -11,10 +11,6 @@ const Forum = () => {
   const [queries, loading] = useForumQueries();
   console.log(queries);
 
-  if (loading) {
-    <div>Loading...</div>;
-  }
-
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* Forum Header */}
@@ -29,7 +25,7 @@ const Forum = () => {
 
       <div className="pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
         {/* Forum Posts */}
-        <div className="bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col gap-2 rounded-sm">
+        <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col gap-2 rounded-sm">
           {/* Ask Query Slot */}
           <div className="flex justify-end pr-2 pb-2 border-b border-zinc-800">
             <button
@@ -43,11 +39,19 @@ const Forum = () => {
           </div>
 
           {/* Query Content */}
-          <div className="flex flex-col-reverse gap-1 md:p-2">
-            { queries.map( ( query, index ) => (
-              <QueryContent query={query} key={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="inset-0 items-center justify-center flex">
+              {/* <Loading /> */}
+              Fetching Queries...
+            </div>
+          ) : (
+            /* Render query content when queries are available */
+            <div className="flex flex-col-reverse gap-1 md:p-2">
+              {queries.map((query, index) => (
+                <QueryContent query={query} key={index} />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Topic Aside */}

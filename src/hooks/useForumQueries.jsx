@@ -9,7 +9,7 @@ const useForumQueries = () => {
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ['queries'],
+    queryKey: ['forumQueries'],
     queryFn: async () => {
       try {
         const res = await axiosSecure.get('/forumQueries');

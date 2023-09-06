@@ -59,24 +59,24 @@ svg.recharts-surface tspan {
 @media (min-width: 577px) and (max-width: 768px) {
   /* Tablets go here */
   .container {
-    width: 90%;
+    width: 95%;
   }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   /* Small desktops and laptops go here */
   .container {
-    width: 85%;
+    width: 95%;
   }
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   /* Desktops and larger laptops go here */
   .container {
-    width: 80%;
+    width: 95%;
   }
 }
 @media (min-width: 1201px) {
   /* Large desktops and widescreen displays go here */
   .container {
-    width: 80%;
+    width: 85%;
   }
 }
