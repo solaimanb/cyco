@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { FaBars, FaBell, FaTimes } from 'react-icons/fa';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import useAuth from '../hooks/useAuth';
+import { FaBars, FaBell, FaTimes } from "react-icons/fa";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,23 +11,23 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    console.log('Logging out...');
+    console.log("Logging out...");
     try {
       const response = await Swal.fire({
-        title: '',
-        text: 'Ary you sure you want to log out?',
-        confirmButtonText: 'Logout',
-        cancelButtonText: 'Cancel',
-        showCancelButton: true
-      } )
-      if ( response.isConfirmed ) {
-          await logOut()
-          navigate('/login');	
+        title: "",
+        text: "Ary you sure you want to log out?",
+        confirmButtonText: "Logout",
+        cancelButtonText: "Cancel",
+        showCancelButton: true,
+      });
+      if (response.isConfirmed) {
+        await logOut();
+        navigate("/login");
       }
-      
+
       return;
     } catch (error) {
-      console.log('Logout failed', error);
+      console.log("Logout failed", error);
     }
   };
 
@@ -41,9 +41,9 @@ const Dashboard = () => {
   //   const handleLinkFalse = () => {
   //     setLinkClicked(false);
   //   };
-  
-  const [isAdmin, SetAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+
+  // const [isAdmin, SetAdmin] = useState(false);
+  const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
@@ -78,8 +78,8 @@ const Dashboard = () => {
                 alt="admin-profile"
               />
               <div className="bg-white w-4 h-4"></div>
-            </div>
-            <hr className="pb-8" />
+
+              <hr className="pb-8" />
               <div className="">
                 <FaBell size={22} />
               </div>
@@ -192,7 +192,6 @@ const Dashboard = () => {
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
               <img
-
                 className={`w-10 h-10 rounded-full object-cover`}
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
@@ -210,7 +209,7 @@ const Dashboard = () => {
                   }
                   to="users-home"
                 >
-                  Profile{' '}
+                  Profile{" "}
                 </NavLink>
               </li>
 
@@ -290,21 +289,20 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="history"
                 >
                   History
                 </NavLink>
               </li>
-            </ul>
-
 
               <hr className="my-8" />
 
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="/"
                 >
@@ -313,7 +311,7 @@ const Dashboard = () => {
               </li>
             </ul>
             <div className="group:mb-0">
-              <NavLink to={'/help'} className="sidebar-btn">
+              <NavLink to={"/help"} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -330,7 +328,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? '' : 'blur-none'
+          isSidebarOpen ? "" : "blur-none"
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
