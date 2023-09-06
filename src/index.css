@@ -53,7 +53,7 @@ svg.recharts-surface tspan {
 @media (max-width: 576px) {
   /* Mobile phones go here */
   .container {
-    width: 95%;
+    width: 100%;
   }
 }
 @media (min-width: 577px) and (max-width: 768px) {
