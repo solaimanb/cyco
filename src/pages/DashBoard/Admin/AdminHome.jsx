@@ -7,8 +7,14 @@ import { CgPerformance }
   from 'react-icons/cg'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
   from 'recharts';
+import useMovies from '../../../hooks/useMovies';
 
 const AdminHome = () => {
+  const [movies, loading] = useMovies();
+  console.log(movies.length);
+  const currentDate = new Date();
+
+  console.log(currentDate);
   const data = [
     {
       name: 'Page A',
@@ -70,7 +76,7 @@ const AdminHome = () => {
           <h2 className='font-semibold mb-3'>Content Overview</h2>
 
           <div className='text-sm space-y-2'>
-            <p>Total Movies: <span className='font-bold text-white'>500</span></p>
+            <p>Total Movies: <span className='font-bold text-white'>{movies?.length}</span></p>
             <p>Total TV Shows: <span className='font-bold text-white'>300</span></p>
             <p>New Content (Last Week): <span className='font-bold text-white'> 57</span></p>
           </div>

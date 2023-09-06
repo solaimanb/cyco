@@ -7,10 +7,15 @@ import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+import { useDispatch, useSelector } from 'react-redux';
+import { pushToHistory } from '../../../store/slices/historySlice/historySlice';
+import { useState } from 'react';
 
 const MovieInfo = () => {
+
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
@@ -18,6 +23,7 @@ const MovieInfo = () => {
   // console.log(axiosSecure);c
 
   const {
+    _id,
     Title,
     Year,
     Plot,
@@ -47,12 +53,17 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
+  const handleHistory = (id) => {
+    dispatch(pushToHistory(id))
+  }
 
   const handleAddToWishlist = async () => {
     try {
       const wishlistItem = {
         user,
         movie,
+        isHistory:history
+        
       };
 
       if (!user) {
@@ -149,18 +160,21 @@ const MovieInfo = () => {
                 </button>
 
                 {/* WATCH-NOW FUNC */}
-                <Link
+                <Link 
+                
                   to="/watch-video"
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                  <span>
+                <button onClick={()=>handleHistory(_id)}
+                >
+                     <span>
                     <FaCloudDownloadAlt size={20} />
                   </span>{' '}
-                  <span>
-                    <FaCloudDownloadAlt size={20} />
-                  </span>{' '}
+            
                   Watch now
+                </button>
+               
                 </Link>
               </div>
             </div>

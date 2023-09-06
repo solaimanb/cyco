@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -8,15 +8,15 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-} from 'firebase/auth';
-import { createContext, useEffect, useState } from 'react';
-import app from '../firebase/firebase.config';
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(' ');
+  const [user, setUser] = useState(" ");
   const [loading, setLoading] = useState(true);
   // const {axiosSecure} = useAxiosSecure();
   // console.log(user);
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
             email: currentUser?.email,
           })
           .then((data) => {
-            localStorage.setItem('access_token', data.data);
+            localStorage.setItem("access_token", data.data);
             setLoading(false);
           })
           .catch((error) => {
@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           });
       } else {
-        localStorage.removeItem('access_token');
+        localStorage.removeItem("access_token");
         setLoading(false);
       }
     });
