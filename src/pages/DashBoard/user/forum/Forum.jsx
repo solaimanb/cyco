@@ -14,8 +14,8 @@ const Forum = () => {
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* Forum Header */}
-      <div className="flex flex-row items-center justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
-        <p className="text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 inline-block px-2 md:px-5">
+      <div className="lg:sticky justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
           Cyco Forum
         </p>
 
@@ -23,7 +23,7 @@ const Forum = () => {
         <SearchSlot />
       </div>
 
-      <div className="pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
+      <div className="sticky top-0 pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
         {/* Forum Posts */}
         <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col gap-2 rounded-sm">
           {/* Ask Query Slot */}
@@ -40,7 +40,7 @@ const Forum = () => {
 
           {/* Query Content */}
           {loading ? (
-            <div className="inset-0 items-center justify-center flex">
+            <div className="flex items-center justify-center">
               {/* <Loading /> */}
               Fetching Queries...
             </div>
@@ -55,6 +55,7 @@ const Forum = () => {
         </div>
 
         {/* Topic Aside */}
+
         <TopicAside />
       </div>
     </section>

@@ -29,9 +29,9 @@ const TopicAside = () => {
   ];
 
   return (
-    <aside className="bg-zinc-900 p-1 md:p-2 md:w-1/4 flex flex-col gap-5 rounded-sm">
+    <aside className="bg-zinc-900 p-1 md:p-2 md:w-1/4 flex flex-col gap-2 md:gap-5 rounded-sm">
       {/* Active Topics */}
-      <div className="flex flex-col items-cente justify-between border-b border-zinc-800 pb-6 py-2">
+      <div className="flex flex-col items-cente justify-between border-b border-zinc-800 pb-6 py-2 px-2 md:px-1">
         <div className="flex flex-row justify-between">
           <h2 className="text-start text-sm font-bold border-l-4 border-cyred inline-block pl-2">
             Active Topics
@@ -47,11 +47,11 @@ const TopicAside = () => {
 
         {/* Topic List */}
         {isTopicVisible && (
-          <div className="flex flex-col gap-1 border rounded-sm border-zinc-800 p-2 mt-2">
+          <div className="flex flex-col gap-1 border rounded-sm border-zinc-800 p-1 md:p-2 mt-2">
             {forumTopics.map((topic) => (
-              <div className="flex items-center justify-between border rounded-sm bg-zinc-800 p-3 border-zinc-700">
+              <div className="flex items-center justify-between border rounded-sm bg-zinc-800 p-2 md:p-3 border-zinc-700">
                 <h3 className="text-xs font-semibold">{topic}</h3>
-                <div className='font-light text-zinc-600'>
+                <div className="font-light text-zinc-600">
                   <FaAngleRight />
                 </div>
               </div>
@@ -61,7 +61,7 @@ const TopicAside = () => {
       </div>
 
       {/* Forum Stats */}
-      <div className="py-2">
+      <div className="py-2 px-2 md:px-1">
         <h2 className="text-start text-sm font-bold border-l-4 border-cyred inline-block pl-2">
           Stats
         </h2>
