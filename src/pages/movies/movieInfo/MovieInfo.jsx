@@ -11,7 +11,6 @@ import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 const MovieInfo = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { index } = useParams();
 
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
