@@ -15,8 +15,8 @@ const MovieInfo = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  // const { index } = useParams();
   const dispatch = useDispatch();
+
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
   const { user } = useAuth();
