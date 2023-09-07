@@ -1,13 +1,24 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 import { useLocation } from 'react-router-dom';
 
 const WatchLive = () => {
     const location = useLocation();
-    console.log(location);
+    console.log(location.state?.item);
+    const item = location.state?.item;
 
     return (
         <div>
-            <h1>hi</h1>
+            <div className="relative" style={{ paddingBottom: '66.25%' }}>
+                <ReactPlayer
+                    url={item?.source}
+                    width="100%"
+                    height="70%"
+                    controls
+                    playing // Auto-play the video
+                    style={{ position: 'absolute', top: 0, left: 0 }}
+                />
+            </div>
         </div>
     );
 };
