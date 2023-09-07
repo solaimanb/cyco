@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleRight, FaAngleUp } from 'react-icons/fa';
+import useForumQueries from '../../../../../hooks/useForumQueries';
 
 const TopicAside = () => {
   const [isTopicVisible, setIsTopicVisible] = useState(true);
+  const [queries] = useForumQueries();
 
   const toggleTopicList = () => {
     setIsTopicVisible(!isTopicVisible);
@@ -67,11 +69,11 @@ const TopicAside = () => {
         </h2>
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-1 mt-2">
           <div className="p-2 border rounded-sm border-zinc-800">
-            <h3 className="text-sm font-bold text-">84</h3>
+            <h3 className="text-sm font-bold text-">{forumTopics?.length}</h3>
             <p className="text-xs">Topics</p>
           </div>
           <div className="p-2 border rounded-sm border-zinc-800">
-            <h3 className="text-sm font-bold text-">340</h3>
+            <h3 className="text-sm font-bold text-">{queries?.length}</h3>
             <p className="text-xs">Posts</p>
           </div>
           <div className="p-2 border rounded-sm border-zinc-800">
