@@ -13,7 +13,7 @@ const useForumQueries = () => {
     queryFn: async () => {
       try {
         const res = await axiosSecure.get('/forumQueries');
-        console.log(res);
+        // console.log(res);
         if (res.status !== 200) {
           throw new Error('Failed to fetch data');
         }

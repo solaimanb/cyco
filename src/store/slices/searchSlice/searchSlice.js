@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   searchQuery: '',
+  queries: [],
   filteredQueries: [],
 };
 
@@ -11,15 +12,23 @@ const searchSlice = createSlice({
   reducers: {
     updateSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+      state.filteredQueries = [];
+    },
+    setQueries: (state, action) => {
+      state.queries = action.payload;
     },
     filterQueries: (state, action) => {
-      const filteredQueries = state.filteredQueries.filter((query) =>
+      console.log('Search query', state.searchQuery);
+      console.log('All queries', state.queries);
+      const filteredQueries = state.queries.filter((query) =>
         query.title.toLowerCase().includes(action.payload.toLowerCase())
       );
       state.filteredQueries = filteredQueries;
+      console.log(filteredQueries);
     },
   },
 });
 
-export const { updateSearchQuery, filterQueries } = searchSlice.actions;
+export const { updateSearchQuery, setQueries, filterQueries } =
+  searchSlice.actions;
 export default searchSlice.reducer;
