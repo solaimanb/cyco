@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
+import Swal from 'sweetalert2';
 import useAuth from '../../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import Modal from './Modal';
@@ -29,6 +30,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
   const [showWarning, setShowWarning] = useState(false);
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
+  console.log(user);
 
   const {
     register,
@@ -40,24 +42,39 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     mode: 'onChange',
   });
 
-  // Query submission:
+  // QUERY SUBMISSION:
   const onSubmit = async (query) => {
+    reset();
+    setIsOpen(false);
+
+    Swal.fire({
+      text: ` ${user?.displayName}, Your query launched to forum!`,
+      icon: 'success',
+      background: '#111',
+      reverseButtons: true,
+    });
+
     const querySlot = {
       user,
       query,
     };
-    console.log(querySlot);
 
     try {
       const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
       const userResponseSlot = await axiosSecure.post('/query', querySlot);
 
-      console.log(userResponseSlot, forumResponseSlot);
+      // console.log( userResponseSlot, forumResponseSlot );
       reset();
 
       setIsOpen(false);
+      Swal.fire('Success!', 'Query submitted successfully', 'success');
     } catch (error) {
       console.error('Error while submitting query', error);
+      Swal.fire(
+        'Error!',
+        'An error occurred while submitting the query',
+        'error'
+      );
     }
   };
 
@@ -73,7 +90,12 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={'Ask your query'}>
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      reset={reset}
+      title={'Ask your query'}
+    >
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
         <div className="flex flex-col gap-2">
           <label className="text-xs text-white" htmlFor="title">
@@ -128,6 +150,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
               type="submit"
               className="btn btn-sm rounded-sm border hover:border-green-900 hover:text-green-900 mt-2"
               disabled={!isValid}
+              // onClick={() => setIsOpen(false)}
             >
               Submit
             </button>
