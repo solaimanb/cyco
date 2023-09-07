@@ -4,10 +4,10 @@ import Comment from './Comment';
 
 const CommentSection = () => {
   const [comments, setComments] = useState([
-    { id: 1, author: 'User1', text: 'Great video!' },
-    { id: 2, author: 'User2', text: 'Thanks for sharing!' },
-    { id: 3, author: 'User2', text: 'CyCo Man Solaiman Badshah he is crazy Person!' },
-    { id: 4, author: 'User2', text: 'Solaiman Badsha bro, customize it as you wish!' },
+    { id: 1, author: 'Naim', text: 'Great video!' },
+    { id: 2, author: 'Kabir', text: 'Thanks for sharing!' },
+    { id: 3, author: 'Anisha', text: 'CyCo Man Solaiman Badshah he is crazy Person!' },
+    { id: 4, author: 'Raihan', text: 'Solaiman Badsha bro, customize it as you wish!' },
     // Add more comments here
   ]);
 
