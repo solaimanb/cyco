@@ -46,6 +46,7 @@ import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
 import Notify from '../pages/notify/Notify';
 import ReceiveNotification from '../pages/notify/ReceiveNotification';
+import WatchLive from '../pages/DashBoard/user/watch-party/Watch-live/WatchLive';
 // import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
 
 
@@ -94,6 +95,7 @@ const router = createBrowserRouter([
       { path: 'subscriptions', element: <Subscriptions /> },
       { path: 'forum', element: <Forum /> },
       { path: 'watch-party', element: <WatchParty /> },
+      {path: 'watch-party/watch-party-public', element: <WatchLive/>},
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },

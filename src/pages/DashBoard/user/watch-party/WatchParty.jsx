@@ -1,10 +1,12 @@
 import React from 'react';
 import useParty from '../../../../hooks/useParty';
 import PartyCard from './partyCard/PartyCard';
+import { Link } from 'react-router-dom';
 
 const WatchParty = () => {
     const [party, loading] = useParty();
     console.log(party);
+    const CurrentBannerParty = party[0];
 
     if (loading) {
         return <p>loadingg</p>
@@ -16,9 +18,9 @@ const WatchParty = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse mt-[-8px]">
                     <img src={party[0].banner} className="max-w-sm rounded-lg shadow-2xl" />
                     <div>
-                        <h1 className="text-5xl font-bold">CYCO BLACK OFFER PARTY</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="bg-red-400 Categorybtn">Watch Now</button>
+                        <h1 className="text-5xl font-bold">{party[0].title}</h1>
+                        
+                        <Link to='watch-party-public' state={{item:CurrentBannerParty}}><button className="bg-red-400 Categorybtn ">Join Now</button></Link>
                     </div>
                 </div>
 
