@@ -37,6 +37,7 @@
     "react-youtube": "^10.1.0",
     "react-youtube-playlist": "^2.2.8",
     "recharts": "^2.8.0",
+    "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "sort-by": "^1.2.0",
     "styled-components": "^6.0.7",

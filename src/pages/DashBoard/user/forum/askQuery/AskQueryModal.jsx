@@ -43,7 +43,6 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
 
   // Modal dialog cancel:
   const onCancel = (data) => {
-    console.log(data);
     reset();
     setIsOpen(false);
   };
