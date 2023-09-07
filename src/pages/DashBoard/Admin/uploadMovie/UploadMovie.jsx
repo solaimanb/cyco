@@ -49,6 +49,7 @@ const UploadMovie = () => {
       label: 'Sad',
     },
   ];
+  
   //handle from submit
   const handleSubmit = (event) => {
     event.preventDefault();

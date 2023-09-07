@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
-import { FaBars, FaBell, FaTimes } from 'react-icons/fa';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import useAuth from '../hooks/useAuth';
+import React, { useState } from "react";
+import { FaBars, FaBell, FaTimes } from "react-icons/fa";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    console.log('Logging out...');
+    console.log("Logging out...");
     try {
       const response = await Swal.fire({
-        title: '',
-        text: 'Ary you sure you want to log out?',
-        confirmButtonText: 'Logout',
-        cancelButtonText: 'Cancel',
-        showCancelButton: true
-      } )
-      if ( response.isConfirmed ) {
-          await logOut()
-          navigate('/login');	
+        title: "",
+        text: "Ary you sure you want to log out?",
+        confirmButtonText: "Logout",
+        cancelButtonText: "Cancel",
+        showCancelButton: true,
+      });
+      if (response.isConfirmed) {
+        await logOut();
+
+        navigate("/login");
       }
-      
+
       return;
     } catch (error) {
-      console.log('Logout failed', error);
+      console.log("Logout failed", error);
     }
   };
 
@@ -35,13 +36,28 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const navLinks = [
+    { to: 'users-home', text: 'Profile' },
+    { to: 'wishlist', text: 'Wishlist' },
+    { to: 'downloads', text: 'Downloads' },
+    { to: 'subscriptions', text: 'Subscriptions' },
+    { to: 'forum', text: 'Forum' },
+    { to: 'watch-party', text: 'Watch Party' },
+    { to: 'recommendation', text: 'Recommendation' },
+    { to: 'payment-info', text: 'Payment Info' },
+    { to: 'history', text: 'History' },
+    { to: '/', text: 'Home' },
+  ];
+
   // const [isAdmin, SetAdmin] = useState(false);
   const [isAdmin, SetAdmin] = useState(true);
 
   return (
-    <div className={`relative drawer flex flex-col gap-5 lg:flex-row h-full`}>
+    <div
+      className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
+    >
       {/* Hamburger Menu */}
-      <div className="fixed z-50 px-4 py-1 lg:hidden w-full bg-zinc-800">
+      <div className="container fixed z-50 px-4 py-2 lg:hidden w-full bg-zinc-800">
         {/* Toggle Bar */}
         <div className="lg:hidden text-white">
           {isSidebarOpen ? (
@@ -58,7 +74,7 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <div
-        className={`bg-zinc-700 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
+        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
@@ -70,6 +86,11 @@ const Dashboard = () => {
                 src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
                 alt="admin-profile"
               />
+
+              <div className="bg-white w-4 h-4"></div>
+
+              <hr className="pb-8" />
+
               <div className="">
                 <FaBell size={22} />
               </div>
@@ -81,9 +102,9 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
-                  to=""
+                  to="admin-home"
                 >
                   Analytics
                 </NavLink>
@@ -92,7 +113,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="upload-movie"
                 >
@@ -102,7 +123,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="revenue"
                 >
@@ -112,7 +133,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="logs"
                 >
@@ -125,7 +146,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="manage-subscription"
                 >
@@ -135,7 +156,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="modernization"
                 >
@@ -145,7 +166,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="user-pannel-list"
                 >
@@ -155,7 +176,7 @@ const Dashboard = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
+                    isActive ? "btn-active" : "sidebar-btn"
                   }
                   to="user-feedback"
                 >
@@ -187,117 +208,30 @@ const Dashboard = () => {
                 <FaBell size={22} />
               </div>
             </div>
+
             <hr className="pb-8" />
-            <ul className="flex-1">
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="users-home"
-                >
-                  Profile{' '}
-                </NavLink>
-              </li>
 
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="wishlist"
-                >
-                  Wishlist
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="downloads"
-                >
-                  Downloads
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="subscriptions"
-                >
-                  Subscriptions
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="forum"
-                >
-                  Forum
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="watch-party"
-                >
-                  Watch Party
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="recommendation"
-                >
-                  Recommendation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="payment-info"
-                >
-                  Payment Info
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="history"
-                >
-                  History
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? 'btn-active' : 'sidebar-btn'
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
+            {/* Users Navigation */}
+            <ul className="flex flex-col gap-2">
+              {navLinks.map((navLink, index) => (
+                <li className="w-full">
+                  {navLink.to === 'forum' && index < navLinks.length - 1 && (
+                    <hr className="mt-5" />
+                  )}
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? 'btn-active' : 'sidebar-btn'
+                    }
+                    to={navLink?.to}
+                    style={navLink?.to === 'forum' ? { marginTop: '40px' } : {}}
+                  >
+                    {navLink?.text}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
-            <div className="group:mb-0">
+
+            <div className="group:mb-0 mt-auto">
               <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
@@ -315,7 +249,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? '' : 'blur-none'
+          isSidebarOpen ? "" : "blur-none"
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />

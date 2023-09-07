@@ -21,11 +21,12 @@ import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
+import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
+import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
 import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
-// import WatchList from '../pages/dashBoard/user/wishlist/WishList';
 import Wishlist from '../pages/dashBoard/user/wishlist/WishList';
 import FaqPage from '../pages/faq/FaqPage';
 import Home from '../pages/home/home/Home';
@@ -35,9 +36,6 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
-// import Payment from '../pages/payment/Payment';
-import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
-import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -49,6 +47,7 @@ import Trailer from '../pages/trailer/Trailer';
 import Notify from '../pages/notify/Notify';
 import ReceiveNotification from '../pages/notify/ReceiveNotification';
 // import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
+
 
 const router = createBrowserRouter([
   {
@@ -69,6 +68,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <Register /> },
       { path: 'checkout', element: <Payment /> },
       { path: 'video-player', element: <VideoPlayer /> },
+
       { path: 'movieinfo', element: <MovieInfo /> },
       { path: 'watch-video', element: <Play /> },
       { path: 'popular-tvs', element: <PopularTvs /> },
