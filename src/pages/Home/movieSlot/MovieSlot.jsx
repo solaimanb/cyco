@@ -14,9 +14,9 @@ const MovieSlot = () => {
 
   const filteredMovies = movies.filter((movie) => {
     //check the input during add new movies: (warning!)
-    const movieGenres = movie?.Genre.split(',').map((genre) => genre.trim());
+    const movieGenres = movie?.Genre?.split(',').map((genre) => genre.trim());
 
-    return selectedGenres.some((genre) => movieGenres.includes(genre));
+    return selectedGenres.some((genre) => movieGenres?.includes(genre));
   });
 
   return (
