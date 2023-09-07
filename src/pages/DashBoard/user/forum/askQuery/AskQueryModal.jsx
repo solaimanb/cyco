@@ -27,11 +27,15 @@ const forumTopics = [
 ];
 
 const AskQueryModal = ({ isOpen, setIsOpen }) => {
+  // STATE:
   const [showWarning, setShowWarning] = useState(false);
+
+  // HOOKS:
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
+  // REACT HOOK FROM:
   const {
     register,
     handleSubmit,
@@ -44,30 +48,42 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
 
   // QUERY SUBMISSION:
   const onSubmit = async (query) => {
-    reset();
-    setIsOpen(false);
-
-    Swal.fire({
-      text: ` ${user?.displayName}, Your query launched to forum!`,
-      icon: 'success',
-      background: '#111',
-      reverseButtons: true,
-    });
-
-    const querySlot = {
-      user,
-      query,
-    };
-
     try {
+      if (query?.forumTopic === 'select a topic') {
+        Swal.fire({
+          text: 'Please select a topic!',
+          icon: 'warning',
+          background: '#222',
+          reverseButtons: true,
+        });
+        return;
+      }
+
+      // SAVE POSTING TIMESTAMP:
+      const timestamp = new Date().getTime();
+      query.timestamp = timestamp;
+      query.views = 0;
+
+      // QUERY SUBMISSION:
+      const querySlot = {
+        user,
+        query,
+      };
+
+      // CLOSE MODAL:
+      reset();
+      setIsOpen(false);
+      Swal.fire({
+        text: 'Query submitted successfully!',
+        icon: 'success',
+        background: '#222',
+        reverseButtons: true,
+      });
+
+      // SEND QUERY TO THE SERVER:
       const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
       const userResponseSlot = await axiosSecure.post('/query', querySlot);
-
-      // console.log( userResponseSlot, forumResponseSlot );
-      reset();
-
-      setIsOpen(false);
-      Swal.fire('Success!', 'Query submitted successfully', 'success');
+      console.log(forumResponseSlot, userResponseSlot);
     } catch (error) {
       console.error('Error while submitting query', error);
       Swal.fire(
@@ -78,13 +94,13 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     }
   };
 
-  // Modal dialog cancel:
+  // MODAL CANCEL:
   const onCancel = (data) => {
     reset();
     setIsOpen(false);
   };
 
-  // Modal warning tips:
+  // MODAL WARNING:
   const handleWarning = () => {
     setShowWarning(!showWarning);
   };
@@ -131,9 +147,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
             id="forumTopic"
             {...register('forumTopic', { required: true })}
           >
-            <option value="" disabled selected>
-              Select a topic
-            </option>
+            <option value="select a topic">Select a topic</option>
             {forumTopics.map((topic) => (
               <option key={topic} value={topic}>
                 {topic}
