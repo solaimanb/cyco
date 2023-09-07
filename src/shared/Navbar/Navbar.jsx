@@ -1,7 +1,11 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import './NavBar.css';
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import io from "socket.io-client";
+import useAuth from "../../hooks/useAuth";
+import "./NavBar.css";
+import NotificationsDropdown from "../../pages/notify/NotificationDropDown";
+
+const socket = io.connect("http://localhost:8080");
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -13,6 +17,30 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
 
+  const [notificationCount, setNotificationCount] = useState(0);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notificationHistory, setNotificationHistory] = useState([]);
+
+  useEffect(() => {
+    socket.on("receive_notification", (data) => {
+      setNotificationCount((prevCount) => prevCount + 1);
+      // Update notification history
+      setNotificationHistory((prevHistory) => [
+        data.notification,
+        ...prevHistory,
+      ]);
+    });
+  }, [socket]);
+
+  const handleShowNotificationsClick = () => {
+    setShowNotifications(true);
+    setNotificationCount(0); // Clear the notification count when notifications are shown
+  };
+
+  const handleCloseNotifications = () => {
+    setShowNotifications(false);
+  };
+
   return (
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
@@ -21,6 +49,8 @@ const Navbar = () => {
           <Link to="/">
             <h3 className="font-bold text-2xl">CYCO</h3>
           </Link>
+
+
 
           <ul className="nav-ul items-center hidden lg:flex font-bold md:mx-20 text-sm lg:text-base">
             <li>
@@ -115,42 +145,32 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          <li className="flex items-center">
-            {user ? (
-              <>
-                <NavLink
-                  id="nav"
-                  to="/dashboard "
-                  aria-label="Dashboard "
-                  title="Dashboard "
-                  className={({ isActive }) =>
-                    isActive ? 'active' : 'default'
-                  }
-                >
-                  Dashboard
-                </NavLink>
-                <button onClick={handleLogOut} id="nav" className="">
-                  Logout
-                </button>
-              </>
-            ) : (
-              <NavLink
-                id="nav"
-                to="/login"
-                aria-label="login"
-                title="Login"
-                className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
-                }
-              >
-                Login
-              </NavLink>
-            )}
-          </li>
-        </div>
 
-        {/* Responsive small device */}
-        <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">
+
+
+
+
+
+          <div className="relative">
+            <h3>Notify</h3>
+            <div className="notification-icon" onClick={handleShowNotificationsClick}>
+              {notificationCount > 0 && (
+                <div className="notification-badge">{notificationCount}</div>
+              )}
+            </div>
+
+            {showNotifications && (
+              <NotificationsDropdown
+                notificationCount={notificationCount}
+                notificationHistory={notificationHistory}
+                onClose={handleCloseNotifications}
+              />
+            )}
+          </div>
+
+
+ {/* Responsive small device */}
+ <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">
           <div>
             <button
               aria-label="Open Menu"
@@ -306,6 +326,45 @@ const Navbar = () => {
           <div>
             <h2 className="text-white font-bold text-lg">CYCO</h2>
           </div>
+        </div>
+
+
+
+
+
+
+          <li className="flex items-center">
+            {user ? (
+              <>
+                <NavLink
+                  id="nav"
+                  to="/dashboard "
+                  aria-label="Dashboard "
+                  title="Dashboard "
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  Dashboard
+                </NavLink>
+                <button onClick={handleLogOut} id="nav" className="">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <NavLink
+                id="nav"
+                to="/login"
+                aria-label="login"
+                title="Login"
+                className={({ isActive }) =>
+                  isActive ? "bg-cyred" : "default"
+                }
+              >
+                Login
+              </NavLink>
+            )}
+          </li>
         </div>
       </div>
     </div>
