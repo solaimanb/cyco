@@ -111,7 +111,7 @@ const Dashboard = () => {
             {/* ADMIN NAVIGATION */}
             <ul className="flex flex-col gap-2">
               {adminNavLinks.map((navLink, index) => (
-                <li className="w-full">
+                <li key={index} className="w-full">
                   {navLink.to === 'forum' &&
                     index < adminNavLinks.length - 1 && <hr className="mt-5" />}
                   <NavLink
@@ -126,6 +126,7 @@ const Dashboard = () => {
                 </li>
               ))}
             </ul>
+            
             <div className="group:mb-0">
               <div className="sidebar-btn">
                 <button>Settings</button>
@@ -157,7 +158,7 @@ const Dashboard = () => {
             {/* USER NAVIGATION */}
             <ul className="flex flex-col gap-2">
               {userNavLinks.map((navLink, index) => (
-                <li className="w-full">
+                <li key={index} className="w-full">
                   {navLink.to === 'forum' &&
                     index < userNavLinks.length - 1 && <hr className="mt-5" />}
                   <NavLink

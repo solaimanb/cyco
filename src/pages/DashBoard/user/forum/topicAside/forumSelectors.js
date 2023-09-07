@@ -1,15 +1,16 @@
 import { createSelector } from 'reselect';
 
-const selectForum = (state) => state.forumTopic;
+const selectForumTopic = (state) => state.forumTopic;
 const selectQueries = (state) => state.queries;
 
 export const selectFilteredQueries = createSelector(
-  [selectForum, selectQueries],
+  [selectForumTopic, selectQueries],
   (forumTopic, queries) => {
+    console.log(queries);
     if (!forumTopic || forumTopic === ' ') {
       return queries;
     } else {
-      return queries.filter((query) => query.forumTopic === forumTopic);
+      return queries?.filter((query) => query?.forumTopic === forumTopic);
     }
   }
 );

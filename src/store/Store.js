@@ -4,6 +4,7 @@ import forumTopicReducer from './slices/forumTopicSlice/forumTopicSlice';
 import historyReducer from './slices/historySlice/historySlice';
 import homeSlice from './slices/homeSlice/homeSlice';
 import paymentReducer from './slices/paymentSlice/paymentSlice';
+import queriesReducer from './slices/queriesSlice/queriesSlice';
 import searchReducer from './slices/searchSlice/searchSlice';
 import userReducer from './slices/userSlice/userSlice';
 
@@ -16,6 +17,7 @@ const store = configureStore({
     history: historyReducer,
     search: searchReducer,
     forumTopic: forumTopicReducer,
+    queries: queriesReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
