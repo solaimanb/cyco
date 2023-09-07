@@ -38,13 +38,45 @@ svg.recharts-surface tspan {
   font-size: 0.8rem !important;
 }
 
-.btn-active{
-  @apply bg-cyred block text-white mb-2 px-2 py-1 text-sm
+.btn-active {
+  @apply bg-cyred block text-white mb-2 px-2 py-1 text-sm;
 }
-.sidebar-btn{
-  @apply bg-zinc-300 block text-zinc-800 mb-2 px-2 py-1 text-sm
+.sidebar-btn {
+  @apply bg-zinc-300 block text-zinc-800 mb-2 px-2 py-1 text-sm;
 }
-.sidebar-btn:hover{
-  @apply bg-cyred text-white duration-200
+.sidebar-btn:hover {
+  @apply bg-cyred text-white duration-200;
 }
 
+/* CSS BREAKPOINTS */
+
+@media (max-width: 576px) {
+  /* Mobile phones go here */
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  /* Tablets go here */
+  .container {
+    width: 95%;
+  }
+}
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Small desktops and laptops go here */
+  .container {
+    width: 95%;
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  /* Desktops and larger laptops go here */
+  .container {
+    width: 95%;
+  }
+}
+@media (min-width: 1201px) {
+  /* Large desktops and widescreen displays go here */
+  .container {
+    width: 85%;
+  }
+}

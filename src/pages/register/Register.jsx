@@ -5,7 +5,13 @@ import { FaFulcrum } from 'react-icons/fa';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import './Register.css';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 const Register = () => {
+  
+   const history = useSelector((state) => state.history.history);
+  const [isHistory, setHistory] = useState(history)
+    console.log(isHistory);
   const { createUser } = useAuth();
   const navigate = useNavigate();
   // const [accepted, setAccepted] = useState(false);
@@ -13,13 +19,14 @@ const Register = () => {
   // const [error, setError] = useState('');
 
   const handleRegister = async (event) => {
+   
     event.preventDefault();
     const form = event.target;
     const username = form.username.value;
     const email = form.email.value;
     const password = form.password.value;
     const role = 'user';
-
+     
     try {
       // Create the user locally using the createUser function
       const result = await createUser(email, password);
@@ -36,6 +43,7 @@ const Register = () => {
           role,
           email,
           password,
+          isHistory:history
         }),
       });
 

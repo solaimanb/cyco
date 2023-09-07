@@ -1,43 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../../providers/AuthProvider';
+
 
 const Wishlist = () => {
-  const wishlist = useSelector( ( state ) => state.wishlist );
-  console.log(wishlist);
-  // const dispatch = useDispatch();
-  // const [currentPage, setCurrentPage] = React.useState(1);
-  // // const [currentPage, setCurrentPage] = useState(1);
 
-  // const handleRemoveFromWishlist = (movie) => {
-  //   dispatch(removeFromWishlist(movie));
-  // };
+  const { user, loading } = useContext(AuthContext)
+  const [wishlist, setWishlist] = useState([]) || [];
+  // console.log(wishlist);
+  // if(loading){
+  //   return <Loading/>
+  // }
 
-  // const itemsPerPage = 8;
-  // const totalPages = Math.ceil(wishlist.length / itemsPerPage);
-
-  // // Calculate the start and end indices for the current page
-  // const startIndex = (currentPage - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-
-  // // Slice the wishlist array to get the movies for the current page
-  // const moviesForCurrentPage = wishlist.slice(startIndex, endIndex);
-
-  // const goToPage = (page) => {
-  //   setCurrentPage(page);
-  // };
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:8080/user/${user.email}`)
+        .then(res => res.json())
+        .then(data => setWishlist(data.wishlist))
+    }
+  }, [user])
 
   return (
     <div className="container h-screen mx-auto mt-4">
       <h2 className="font-semibold mb-4">My Wishlist</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {/* {moviesForCurrentPage.map((movie) => (
-          <WatchListCard
-            key={movie.id}
-            movie={movie}
-            onRemove={() => handleRemoveFromWishlist(movie)}
-          />
-        ))} */}
-      </div>
+      {wishlist && wishlist.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {wishlist.map((movie) => (
+            <WatchListCard
+              key={movie.id}
+              movie={movie}
+              onRemove={() => handleRemoveFromWishlist(movie)}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className='text-2xl text-center'>No movies in your wishlist.</p>
+      )}
 
       {/* <div className="flex justify-center mt-4">
         {Array.from({ length: totalPages }, (_, index) => (
