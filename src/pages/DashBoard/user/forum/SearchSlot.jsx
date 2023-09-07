@@ -17,7 +17,7 @@ const SearchSlot = () => {
         onClick={handleSearch}
         className="flex items-center gap-1 text-sm px-1 rounded-sm bg-zinc-800 border-b-2 border-r-2 border-cyred focus:border-r hover:border-r"
       >
-        <FaSearch /> <span className='hidden md:flex'>Search</span>
+        <FaSearch /> <span className="hidden md:flex">Search</span>
       </button>
     </div>
   );

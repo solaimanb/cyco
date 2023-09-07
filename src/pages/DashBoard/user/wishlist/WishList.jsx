@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
-import { useContext } from 'react';
-import Loading from '../../../../components/loading/Loading';
 
 
 const Wishlist = () => {
