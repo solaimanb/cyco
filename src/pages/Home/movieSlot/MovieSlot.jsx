@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import MovieCard from '../../../components/movieCard/MovieCard';
 import useMovies from '../../../hooks/useMovies';
 
-const MostRecent = () => {
+const MovieSlot = () => {
   const [movies] = useMovies();
 
   const selectedCategory = useSelector((state) => state?.category);
@@ -28,4 +28,4 @@ const MostRecent = () => {
   );
 };
 
-export default MostRecent;
+export default MovieSlot;

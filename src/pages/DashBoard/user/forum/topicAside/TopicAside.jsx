@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleRight, FaAngleUp } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import useForumQueries from '../../../../../hooks/useForumQueries';
+import { setForumTopic } from '../../../../../store/slices/forumTopicSlice/forumTopicSlice';
 
 const TopicAside = () => {
   const [isTopicVisible, setIsTopicVisible] = useState(true);
@@ -11,24 +13,31 @@ const TopicAside = () => {
   };
 
   const forumTopics = [
-    'Upcoming Releases',
-    'Movie Reviews',
-    'Classic Films',
-    'Recommendations',
-    'Film Trivia',
-    'Cinematic Trends',
-    'Film Awards',
-    'Soundtracks',
-    'Movie Collectibles',
-    "Director's Corner",
-    'Behind-the-Scenes',
-    'Movie Quotes',
-    'Movie News',
-    'Film Festivals',
-    'Cinematic Technology',
-    'Challenges and Games',
-    'Remakes vs. Originals',
+    { title: 'Upcoming Releases' },
+    { title: 'Movie Reviews' },
+    { title: 'Classic Films' },
+    { title: 'Recommendations' },
+    { title: 'Film Trivia' },
+    { title: 'Cinematic Trends' },
+    { title: 'Film Awards' },
+    { title: 'Soundtracks' },
+    { title: 'Movie Collectibles' },
+    { title: "Director's Corner" },
+    { title: 'Behind-the-Scenes' },
+    { title: 'Movie Quotes' },
+    { title: 'Movie News' },
+    { title: 'Film Festivals' },
+    { title: 'Cinematic Technology' },
+    { title: 'Challenges and Games' },
+    { title: 'Remakes vs. Originals' },
   ];
+
+  const dispatch = useDispatch();
+
+  const handleTopicClick = (topic) => {
+    dispatch( setForumTopic( topic?.title ) );
+    console.log(topic.title);
+  };
 
   return (
     <aside className="bg-zinc-900 p-1 md:p-2 md:w-1/4 flex flex-col gap-2 md:gap-5 rounded-sm">
@@ -51,12 +60,15 @@ const TopicAside = () => {
         {isTopicVisible && (
           <div className="flex flex-col gap-1 border rounded-sm border-zinc-800 p-1 md:p-2 mt-2">
             {forumTopics.map((topic) => (
-              <div className="flex items-center justify-between border rounded-sm bg-zinc-800 p-2 md:p-3 border-zinc-700">
-                <h3 className="text-xs font-semibold">{topic}</h3>
+              <button
+                onClick={() => handleTopicClick(topic)}
+                className="flex items-center justify-between border rounded-sm bg-zinc-800 p-2 md:p-3 border-zinc-700"
+              >
+                <h3 className="text-xs font-semibold">{topic?.title}</h3>
                 <div className="font-light text-zinc-600">
                   <FaAngleRight />
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         )}

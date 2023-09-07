@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import useForumQueries from '../../../../hooks/useForumQueries';
+import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
@@ -38,6 +39,12 @@ const Forum = () => {
     (page - 1) * queriesPerPage,
     page * queriesPerPage
   );
+
+  // FORUM TOPIC HANDLER:
+  const handleTopicClick = (topic) => {
+    dispatch( setForumTopic( topic ) );
+    setPage(1)
+  }
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -106,7 +113,7 @@ const Forum = () => {
         </div>
 
         {/* Topic Aside */}
-        <TopicAside />
+        <TopicAside onTopicClic={handleTopicClick} />
       </div>
     </section>
   );
