@@ -16,7 +16,7 @@ const WatchParty = () => {
         <div>
             <div className=" min-h-[60%] bg-base-300">
                 <div className="hero-content flex-col lg:flex-row-reverse mt-[-8px]">
-                    <img src={party[0].banner} className="max-w-sm rounded-lg shadow-2xl" />
+                    <img src={party[0].banner} className="max-w-sm rounded-lg shadow-2xl w-[70%]" />
                     <div>
                         <h1 className="text-5xl font-bold">{party[0].title}</h1>
                         
