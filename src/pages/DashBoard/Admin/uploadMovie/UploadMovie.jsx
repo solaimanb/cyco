@@ -1,10 +1,34 @@
 import React, { useContext, useState } from 'react';
+
+
+import io from 'socket.io-client'
+const socket = io.connect('http://localhost:8080')
+
+
+
 import Swal from 'sweetalert2';
 import { addNewMovie } from '../../../../api/addNewMovie';
 import { imageUpload } from '../../../../api/imgUpload';
 import { AuthContext } from '../../../../providers/AuthProvider';
 
+
+// const socket = io('http://localhost:8080');
+
+
+
 const UploadMovie = () => {
+
+
+  const [notification, setNotification] = useState('');
+  
+  const sendNotification = () => {
+      socket.emit('send_notification', {notification: notification})
+      // console.log(notification);
+  }
+
+
+
+  
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState('Upload image');
@@ -379,8 +403,22 @@ const UploadMovie = () => {
               'Save & Continue'
             )}
           </button>
+          
         </div>
       </form>
+
+      <div className='flex flex-col gap-4 justify-center items-center mt-4 bg-sky-700/60 hover:bg-sky-700 w-1/2 mx-auto p-4 rounded-lg'>
+            <h3 className='rounded-md bg-sky-900 hover:bg-sky-800 px-4 py-1'>Send Notification</h3>
+            <div className=' flex flex-col gap-2 rounded-md bg-sky-900 hover:bg-sky-800'>
+              <input
+              className='bg-sky-900 hover:bg-sky-800 rounded-lg p-2'
+              onChange={(event) => {
+                setNotification(event.target.value);
+              }}
+              type="text" name='notification' id='notification' placeholder='Type Notification' />
+              <button className='px-4 py-1 bg-sky-900 hover:bg-sky-800 rounded-lg' onClick={sendNotification}>Lets Notify</button>
+            </div>
+          </div>
     </div>
   );
 };

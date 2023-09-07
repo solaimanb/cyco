@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/categorySlice/categorySlice';
+import forumTopicReducer from './slices/forumTopicSlice/forumTopicSlice';
+import historyReducer from './slices/historySlice/historySlice';
 import homeSlice from './slices/homeSlice/homeSlice';
 import paymentReducer from './slices/paymentSlice/paymentSlice';
+import searchReducer from './slices/searchSlice/searchSlice';
 import userReducer from './slices/userSlice/userSlice';
-import historyReducer from './slices/historySlice/historySlice';
-// import wishlistReducer from './slices/wishlistSlice/wishlistSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,8 @@ const store = configureStore({
     category: categoryReducer,
     payment: paymentReducer,
     history: historyReducer,
+    search: searchReducer,
+    forumTopic: forumTopicReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

@@ -9,11 +9,11 @@ const useForumQueries = () => {
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ['queries'],
+    queryKey: ['forumQueries'],
     queryFn: async () => {
       try {
         const res = await axiosSecure.get('/forumQueries');
-        console.log(res);
+        // console.log(res);
         if (res.status !== 200) {
           throw new Error('Failed to fetch data');
         }

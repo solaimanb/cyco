@@ -2,12 +2,14 @@ import { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const SocialLogin = () => {
   const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [axiosSecure] = useAxiosSecure();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,15 +29,9 @@ const SocialLogin = () => {
         photoUrl: loggedUser.photoURL,
       };
 
-      const response = await fetch('http://localhost:8080/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await axiosSecure.post('/register', userData);
 
-      if (response.ok) {
+      if (response.status === 200) {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -46,8 +42,7 @@ const SocialLogin = () => {
         navigate(from, { replace: true });
       } else {
         // Handle error response
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed.');
+        throw new Error(response.data.message || 'Registration failed.');
       }
     } catch (error) {
       console.error('Registration error:', error);

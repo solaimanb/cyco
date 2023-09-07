@@ -19,6 +19,9 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(" ");
   const [loading, setLoading] = useState(true);
   // const {axiosSecure} = useAxiosSecure();
+  // console.log(user);
+
+  // console.log(user);
 
   // PROVIDERS:
   const googleProvider = new GoogleAuthProvider();
@@ -63,7 +66,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           })
           .catch((error) => {
-            // console.log(error);
+            console.log(error);
             setLoading(false);
           });
       } else {

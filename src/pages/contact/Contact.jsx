@@ -2,6 +2,9 @@ import { useState } from 'react';
 import './Contact.css';
 
 const Contacts = () => {
+
+
+
   const addresses = [
     {
       name: 'Head Office',
