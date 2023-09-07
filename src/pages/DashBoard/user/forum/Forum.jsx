@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import Pagination from '../../../../components/paginaition/Pagination';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
 import QueryContent from './QueryContent';
@@ -12,14 +11,13 @@ import TopicAside from './topicAside/TopicAside';
 const Forum = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [queries, loading] = useForumQueries();
-  // console.log( queries );
-  const queriesPerPage = useSelector((state) => state.search.queriesPerPage);
+  const [page, setPage] = useState(1);
+  const queriesPerPage = 10;
+  const dispatch = useDispatch();
 
   const searchQuery = useSelector((state) => state.search.searchQuery);
   const filteredQueries = useSelector((state) => state.search.filteredQueries);
   console.log(filteredQueries);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!loading) {
@@ -27,8 +25,19 @@ const Forum = () => {
     }
   }, [loading, queries, dispatch]);
 
-  // PAGINATION:
-  // const startIndex = (currentPage -1) * queriesPerPage;
+  // PAGINATION FUNC:
+  const queriesToDisplay = searchQuery === ' ' ? queries : filteredQueries;
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
+  const initialDisplayedQueries = queries.slice(0, queriesPerPage);
+
+  const displayedQueries = queriesToDisplay.slice(
+    (page - 1) * queriesPerPage,
+    page * queriesPerPage
+  );
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -67,7 +76,15 @@ const Forum = () => {
             ) : (
               /* Render query content when queries are available */
               <div className="flex flex-col-reverse gap-1 md:p-2">
-                {searchQuery === ''
+                {/* {searchQuery === ''
+                  ? initialDisplayedQueries.map((query, index) => (
+                      <QueryContent query={query} key={index} />
+                    ))
+                  : displayedQueries.map((query, index) => (
+                      <QueryContent query={query} key={index} />
+                    ))} */}
+                  
+                  {searchQuery === ''
                   ? queries.map((query, index) => (
                       <QueryContent query={query} key={index} />
                     ))
@@ -77,9 +94,15 @@ const Forum = () => {
               </div>
             )}
           </div>
-          <div>
-            <Pagination />
-          </div>
+
+          {/* PAGINATION */}
+          {/* <div>
+            <Pagination
+              currentPage={page}
+              totalPages={Math.ceil(queriesToDisplay.length / queriesPerPage)}
+              onPageChange={handlePageChange}
+            />
+          </div> */}
         </div>
 
         {/* Topic Aside */}
