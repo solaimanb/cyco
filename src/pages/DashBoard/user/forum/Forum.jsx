@@ -42,9 +42,9 @@ const Forum = () => {
 
   // FORUM TOPIC HANDLER:
   const handleTopicClick = (topic) => {
-    dispatch( setForumTopic( topic ) );
-    setPage(1)
-  }
+    dispatch(setForumTopic(topic));
+    setPage(1);
+  };
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -90,8 +90,8 @@ const Forum = () => {
                   : displayedQueries.map((query, index) => (
                       <QueryContent query={query} key={index} />
                     ))} */}
-                  
-                  {searchQuery === ''
+
+                {searchQuery === ''
                   ? queries.map((query, index) => (
                       <QueryContent query={query} key={index} />
                     ))
