@@ -1,62 +1,59 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaFulcrum } from "react-icons/fa";
+import axios from "axios";
+import SocialLogin from "../../components/socialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import "./Register.css";
+import { useForm } from "react-hook-form";
 
-import { FaFulcrum } from 'react-icons/fa';
-import SocialLogin from '../../components/socialLogin/SocialLogin';
-import useAuth from '../../hooks/useAuth';
-import './Register.css';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
 const Register = () => {
-  
-   const history = useSelector((state) => state.history.history);
-  const [isHistory, setHistory] = useState(history)
-    console.log(isHistory);
   const { createUser } = useAuth();
   const navigate = useNavigate();
-  // const [accepted, setAccepted] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  // const [error, setError] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
 
-  const handleRegister = async (event) => {
-   
-    event.preventDefault();
-    const form = event.target;
-    const username = form.username.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const role = 'user';
-     
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const onSubmit = async (formData) => {
+    console.log(formData);
+    if (password !== confirmPassword) {
+      return;
+    }
+
+    const { username, email, password } = formData;
+    const role = "user";
+
     try {
-      // Create the user locally using the createUser function
       const result = await createUser(email, password);
       const createdUser = result.user;
 
-      // Now send the user registration data to your backend API
-      const response = await fetch('http://localhost:8080/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          role,
-          email,
-          password,
-          isHistory:history
-        }),
+      const response = await axios.post("http://localhost:8080/register", {
+        username,
+        role,
+        email,
+        password,
       });
 
-      if (response.ok) {
-        // Registration successful
-        console.log('User registered successfully');
-        navigate('/');
+      if (response.status === 200) {
+        console.log("User registered successfully");
+        navigate("/");
       } else {
-        // Handle registration error
-        console.error('Registration failed');
+        console.error("Registration failed");
       }
     } catch (error) {
-      console.error('Registration failed', error);
+      console.error("Registration failed", error);
     }
   };
 
@@ -70,7 +67,7 @@ const Register = () => {
           <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">
             Register
           </h2>
-          <form onSubmit={handleRegister}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
                 htmlFor="username"
@@ -82,9 +79,13 @@ const Register = () => {
                 type="text"
                 id="username"
                 name="username"
+                {...register("username", { required: true })}
                 className="mt-1 p-2 w-full border rounded-sm focus:ring"
                 required
               />
+              {errors.username && (
+                <p className="text-red-600">Username is required</p>
+              )}
             </div>
             <div className="mb-4">
               <label
@@ -97,9 +98,13 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
+                {...register("email", { required: true })}
                 className="mt-1 p-2 w-full border rounded-sm focus:ring text-white"
                 required
               />
+              {errors.email && (
+                <p className="text-red-600">Email is required</p>
+              )}
             </div>
             <div className="mb-4">
               <label
@@ -108,30 +113,66 @@ const Register = () => {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="mt-1 p-2 w-full border rounded-sm focus:ring"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                  })}
+                  className="mt-1 p-2 w-full border rounded-sm focus:ring pr-12"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              {errors.password && (
+                <p className="text-red-600">
+                  Password must have one uppercase letter, one lowercase letter,
+                  one number, and one special character.
+                </p>
+              )}
             </div>
-            {/* <div className="mb-4">
-             <label
-               htmlFor="profileImage"
-               className="block text-xs font-medium text-gray-700"
-             >
-               Profile Image
-             </label>
-             <input
-               type="file"
-               accept="image/*"
-               id="profileImage"
-               name="profileImage"
-             
-               className="mt-1 p-2 w-full border rounded-sm focus:ring"
-             />
-           </div> */}
+            <div className="mb-4">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-xs font-medium text-gray-300"
+              >
+                Confirm Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  {...register("confirmPassword", {
+                    required: true,
+                    validate: (value) => value === password,
+                  })}
+                  className="mt-1 p-2 w-full border rounded-sm focus:ring pr-12"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              {errors.confirmPassword && (
+                <p className="text-red-600">Passwords do not match</p>
+              )}
+            </div>
             <div className="mb-6">
               <button
                 type="submit"
@@ -149,7 +190,7 @@ const Register = () => {
           </div>
 
           <p className="text-xs text-gray-600 mt-2 pb-2">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to="/login" className="text-indigo-500 hover:underline">
               Login
             </Link>

@@ -86,13 +86,22 @@ const Modernization = () => {
                   )}
                 </td>
                 <td className="flex items-center gap-1">
-                  <button
-                    onClick={() => handlerMakeAdmin(user)}
-                    disabled={isButtonDisabled}
-                    className="bg-main_color bg-orange-500 text-white w-full py-2 rounded-lg shadow-xl"
-                  >
-                    Make Admin
-                  </button>
+                  {user.role === "user" ? (
+                    <button
+                      onClick={() => handlerMakeAdmin(user)}
+                      disabled={isButtonDisabled}
+                      className="bg-main_color bg-orange-500 text-white w-full py-2 rounded-lg shadow-xl"
+                    >
+                      Make Admin
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="bg-gray-300 text-gray-600 w-full py-2 rounded-lg shadow-xl cursor-not-allowed"
+                    >
+                      Make Admin
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
