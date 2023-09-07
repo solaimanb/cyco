@@ -11,7 +11,7 @@ import Categories from '../categories/Categories';
 import FeaturedAd from '../featuredAd/FeaturedAd';
 import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
-import MostRecent from '../mostRecent/MostRecent';
+import MovieSlot from '../movieSlot/MovieSlot';
 import PopularTvs from '../popularTvs/PopularTvs';
 
 const Home = () => {
@@ -127,7 +127,7 @@ const Home = () => {
           <div className="md:w-[85%]">
             <div className="mt-10">
               <Title title={'Most Recent'} />
-              <MostRecent />
+              <MovieSlot />
               {/* Category wise movies will show hereby */}
             </div>
           </div>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { FaBars, FaBell, FaTimes } from "react-icons/fa";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../hooks/useAuth";
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../hooks/useAuth';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,24 +11,24 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    console.log("Logging out...");
+    console.log('Logging out...');
     try {
       const response = await Swal.fire({
-        title: "",
-        text: "Ary you sure you want to log out?",
-        confirmButtonText: "Logout",
-        cancelButtonText: "Cancel",
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
         showCancelButton: true,
       });
       if (response.isConfirmed) {
         await logOut();
 
-        navigate("/login");
+        navigate('/login');
       }
 
       return;
     } catch (error) {
-      console.log("Logout failed", error);
+      console.log('Logout failed', error);
     }
   };
 
@@ -36,15 +36,32 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  //   const handleLinkClick = () => {
-  //     setLinkClicked(true);
-  //   };
-  //   const handleLinkFalse = () => {
-  //     setLinkClicked(false);
-  //   };
+  const userNavLinks = [
+    { to: 'users-home', text: 'Profile' },
+    { to: 'wishlist', text: 'Wishlist' },
+    { to: 'downloads', text: 'Downloads' },
+    { to: 'subscriptions', text: 'Subscriptions' },
+    { to: 'forum', text: 'Forum' },
+    { to: 'watch-party', text: 'Watch Party' },
+    { to: 'recommendation', text: 'Recommendation' },
+    { to: 'payment-info', text: 'Payment Info' },
+    { to: 'history', text: 'History' },
+    { to: '/', text: 'Home' },
+  ];
 
-  // const [isAdmin, SetAdmin] = useState(false);
-  const [isAdmin, SetAdmin] = useState(true);
+  const adminNavLinks = [
+    { to: 'admin-home', text: 'Analytics' },
+    { to: 'upload-movie', text: 'Upload Movie' },
+    { to: 'revenue', text: 'Ad Revenue Tracking' },
+    { to: 'logs', text: 'System Logs' },
+    { to: 'manage-subscription', text: 'Manage Subscriptions' },
+    { to: 'modernization', text: 'Moderation' },
+    { to: 'user-panel-list', text: 'User Panel Lists' },
+    { to: 'user-feedback', text: 'User Feedback' },
+  ];
+
+  const [isAdmin, setAdmin] = useState(false);
+  // const [isAdmin, SetAdmin] = useState(true);
 
   return (
     <div
@@ -68,8 +85,8 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <div
-        className={`bg-zinc-700 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-          isSidebarOpen ? "block" : "hidden lg:block"
+        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
+          isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
         {isAdmin ? (
@@ -81,102 +98,33 @@ const Dashboard = () => {
                 alt="admin-profile"
               />
 
-              <div className="bg-white w-4 h-4"></div>
-
               <hr className="pb-8" />
 
-              <div className="">
-                <FaBell size={22} />
+              <div onClick={() => setAdmin(!isAdmin)} className="">
+                {/* <FaBell size={22} /> */}
+                <button className="btn btn-sm" title="Click to Check User Dash (Test)">Check User</button>
               </div>
             </div>
 
             <hr className="pb-8" />
 
-            <ul className="flex-1">
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="admin-home"
-                >
-                  Analytics
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="upload-movie"
-                >
-                  Upload Movie
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="revenue"
-                >
-                  Ad Revenue Tracking
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="logs"
-                >
-                  System Logs
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="manage-subscription"
-                >
-                  Manage Subscriptions
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="modernization"
-                >
-                  Moderation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="user-pannel-list"
-                >
-                  User Panel Lists
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="user-feedback"
-                >
-                  User Feedback
-                </NavLink>
-              </li>
+            {/* ADMIN NAVIGATION */}
+            <ul className="flex flex-col gap-2">
+              {adminNavLinks.map((navLink, index) => (
+                <li className="w-full">
+                  {navLink.to === 'forum' &&
+                    index < adminNavLinks.length - 1 && <hr className="mt-5" />}
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? 'btn-active' : 'sidebar-btn'
+                    }
+                    to={navLink?.to}
+                    style={navLink?.to === 'forum' ? { marginTop: '40px' } : {}}
+                  >
+                    {navLink?.text}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
             <div className="group:mb-0">
               <div className="sidebar-btn">
@@ -198,123 +146,35 @@ const Dashboard = () => {
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
               />
-              <div className="">
-                <FaBell size={22} />
+              <div onClick={() => setAdmin(!isAdmin)} className="">
+                {/* <FaBell size={22} /> */}
+                <button className="btn btn-sm" title="Click to Check Admin Dash (Test)">Check Admin</button>
               </div>
             </div>
+
             <hr className="pb-8" />
-            <ul className="flex-1">
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="users-home"
-                >
-                  Profile{" "}
-                </NavLink>
-              </li>
 
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="wishlist"
-                >
-                  Wishlist
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="downloads"
-                >
-                  Downloads
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="subscriptions"
-                >
-                  Subscriptions
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="forum"
-                >
-                  Forum
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="watch-party"
-                >
-                  Watch Party
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="recommendation"
-                >
-                  Recommendation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="payment-info"
-                >
-                  Payment Info
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="history"
-                >
-                  History
-                </NavLink>
-              </li>
-
-              <hr className="my-8" />
-
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn-active" : "sidebar-btn"
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
+            {/* USER NAVIGATION */}
+            <ul className="flex flex-col gap-2">
+              {userNavLinks.map((navLink, index) => (
+                <li className="w-full">
+                  {navLink.to === 'forum' &&
+                    index < userNavLinks.length - 1 && <hr className="mt-5" />}
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? 'btn-active' : 'sidebar-btn'
+                    }
+                    to={navLink?.to}
+                    style={navLink?.to === 'forum' ? { marginTop: '40px' } : {}}
+                  >
+                    {navLink?.text}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
 
-            <div className="group:mb-0">
-              <NavLink to={"/help"} className="sidebar-btn">
+            <div className="group:mb-0 mt-auto">
+              <NavLink to={'/help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -331,7 +191,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? "" : "blur-none"
+          isSidebarOpen ? '' : 'blur-none'
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
