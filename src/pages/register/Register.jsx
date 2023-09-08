@@ -27,13 +27,12 @@ const Register = () => {
   };
 
   const onSubmit = async (formData) => {
+    const { username, email, password } = formData;
+    const role = "user";
     console.log(formData);
     if (password !== confirmPassword) {
       return;
     }
-
-    const { username, email, password } = formData;
-    const role = "user";
 
     try {
       const result = await createUser(email, password);
@@ -45,8 +44,8 @@ const Register = () => {
         email,
         password,
       });
-
-      if (response.status === 200) {
+      console.log(response);
+      if (response.status === 201) {
         console.log("User registered successfully");
         navigate("/");
       } else {

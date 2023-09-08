@@ -197,6 +197,7 @@ const Dashboard = () => {
             </div>
           </div>
         )}
+        ;
       </div>
 
       {/* Display Page Content */}
@@ -212,3 +213,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
