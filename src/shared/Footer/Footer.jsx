@@ -6,7 +6,9 @@ const Footer = () => {
       <footer className="bg-black bg-opacity-60 text-gray-300 py-12">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
-            <h2 className='z-10 font-bold text-2xl lg:text-3xl -rotate-3 text-[#800000]'>CYCO</h2>
+            <h2 className="z-10 font-bold text-2xl lg:text-3xl -rotate-3 text-[#800000]">
+              CYCO
+            </h2>
             {/* <img src="" alt="cyco Logo" className="w-40" /> */}
             <p className="mt-4 text-sm">CYCO BELONGS TO CYBERCORPS</p>
           </div>
@@ -14,19 +16,19 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-start">
               <h4 className="md:text-lg font-semibold mb-2">Explore</h4>
               <Link
-                to='/'
+                to="/"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Home
               </Link>
               <Link
-                to='/tvShow'
+                to="/live-tv"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 TV Shows
               </Link>
               <Link
-                to='/movies'
+                to="/movies"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Movies
@@ -35,13 +37,13 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-start">
               <h4 className="md:text-lg font-semibold mb-2">Help</h4>
               <Link
-                to='/faq'
+                to="help"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
-                FAQs
+                Help
               </Link>
               <a
-                href="#"
+                href="contact"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Contact Us
@@ -50,13 +52,13 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-start">
               <h4 className="md:text-lg font-semibold mb-2">Legal</h4>
               <Link
-                to='/PrivacyPolicy'
+                to="/PrivacyPolicy"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
               <Link
-                to='TermsConditions'
+                to="TermsConditions"
                 className="text-sm md:text-base hover:text-white transition-colors duration-300"
               >
                 Terms of Use

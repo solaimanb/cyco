@@ -1,10 +1,23 @@
 import React from 'react';
 import HistoryCard from './HistoryCard';
+import useMovies from '../../../../hooks/useMovies';
+import useHistory from '../../../../hooks/useHistory';
+import useAuth from '../../../../hooks/useAuth';
 
 const History = () => {
-  // const [movies] = useMovies();
-  // console.log(movies);
+    const user = useAuth()
+  const [movies,refetch] = useMovies();
+
+  console.log(movies);
+  const [history] = useHistory();
+  // const title = history.Title
+
+  console.log(history);
   const id = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
+// Check if localStorage is supported
+  
+    const filter = history.filter((h)=>h.email!== user.email)
+  console.log(filter);
 
   return (
     <div className="min-h-screen">
@@ -15,7 +28,7 @@ const History = () => {
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 xl:grid-cols-5">
-        {id && id.map((i) => <HistoryCard id={i.id} />)}
+        {filter && filter.map((data) => <HistoryCard refetch={refetch} data={data} />)}
       </div>
     </div>
   );
