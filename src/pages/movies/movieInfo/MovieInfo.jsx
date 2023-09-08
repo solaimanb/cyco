@@ -56,7 +56,7 @@ const MovieInfo = () => {
   const handleHistory = (id) => {
     dispatch(pushToHistory(id))
   }
-
+// this handle watch list
   const handleAddToWishlist = async () => {
     try {
       const wishlistItem = {
