@@ -1,26 +1,23 @@
-import React from 'react';
-import Marquee from 'react-fast-marquee';
-import { FaCloudDownloadAlt } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
-import { useDispatch, useSelector } from 'react-redux';
-import { pushToHistory } from '../../../store/slices/historySlice/historySlice';
-import { useState } from 'react';
+import React from "react";
+import Marquee from "react-fast-marquee";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { LuListVideo } from "react-icons/lu";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
+import { addHistory } from "../../../api/historyPostData";
 
 const MovieInfo = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
-
+ 
   const { movie } = location?.state;
   const { axiosSecure } = useAxiosSecure();
-  const { user } = useAuth();
-  // console.log(axiosSecure);c
+  const { user, setLoading } = useAuth();
+  const email = user?.email
+  console.log(email)
 
   const {
     _id,
@@ -53,46 +50,55 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
-  const handleHistory = (id) => {
-    dispatch(pushToHistory(id))
-  }
+
+  const handleHistory = (Title, email, Poster,) => {
+     addHistory({Title, email, Poster })
+     .then(data=>{
+     console.log(data);
+    })
+    .catch(err=>{
+      console.log(err.message)
+    })
+
+
+  
+  };
 
   const handleAddToWishlist = async () => {
     try {
       const wishlistItem = {
         user,
         movie,
-        isHistory:history
-        
+        isHistory: history,
       };
 
       if (!user) {
         await Swal.fire({
-          title: '',
-          text: 'Please login to add to wishlist',
-          type: 'error',
-          confirmButtonText: 'login',
+          title: "",
+          text: "Please login to add to wishlist",
+          type: "error",
+          confirmButtonText: "login",
         }).then(() => {
-          navigate('/login');
+          navigate("/login");
         });
         return;
       }
 
-      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      const response = await axiosSecure.post("/wishlist", wishlistItem);
 
       if (response.status === 200) {
-        console.log('Movie added to wishlist', response.data);
-        Swal.fire('Added to wishlist!', '', 'success');
+        console.log("Movie added to wishlist", response.data);
+        Swal.fire("Added to wishlist!", "", "success");
       } else {
         // throw new Error(
         //   `Failed to add movie to wishlist: ${response.statusText}`
         // );
       }
     } catch (error) {
-      console.error('An error occurred while adding to wishlist:', error);
+      console.error("An error occurred while adding to wishlist:", error);
       if (error.response) {
         console.error(
-          'Server responded with:',
+          "Server responded with:",
           error.response.status,
           error.response.data
         );
@@ -152,7 +158,7 @@ const MovieInfo = () => {
                 >
                   <span className="">
                     <LuListVideo size={20} />
-                  </span>{' '}
+                  </span>{" "}
                   {/* {isAlreadyInWishlist
                     ? 'Added to Wishlist'
                     : 'Add to Wishlist'} */}
@@ -160,21 +166,17 @@ const MovieInfo = () => {
                 </button>
 
                 {/* WATCH-NOW FUNC */}
-                <Link 
-                
+                <Link
                   to="/watch-video"
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                <button onClick={()=>handleHistory(_id)}
-                >
-                     <span>
-                    <FaCloudDownloadAlt size={20} />
-                  </span>{' '}
-            
-                  Watch now
-                </button>
-               
+                  <button onClick={() => handleHistory(Title, email, Poster,)}>
+                    <span>
+                      <FaCloudDownloadAlt size={20} />
+                    </span>{" "}
+                    Watch now
+                  </button>
                 </Link>
               </div>
             </div>

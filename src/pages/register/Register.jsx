@@ -9,9 +9,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 const Register = () => {
   
-   const history = useSelector((state) => state.history.history);
-  const [isHistory, setHistory] = useState(history)
-    console.log(isHistory);
+
   const { createUser } = useAuth();
   const navigate = useNavigate();
   // const [accepted, setAccepted] = useState(false);
