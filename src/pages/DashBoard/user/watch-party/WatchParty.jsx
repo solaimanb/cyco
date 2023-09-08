@@ -3,6 +3,7 @@ import useParty from '../../../../hooks/useParty';
 import PartyCard from './partyCard/PartyCard';
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
+import Loading from '../../../../components/loading/Loading';
 
 const WatchParty = () => {
     const [party, loading] = useParty();
@@ -10,7 +11,7 @@ const WatchParty = () => {
     const CurrentBannerParty = party[0];
 
     if (loading) {
-        return <p>loadingg</p>
+        return <Loading/>
     }
 
     return (
