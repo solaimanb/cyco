@@ -26,6 +26,7 @@ import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
 import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
+import WatchLive from '../pages/dashBoard/user/watch-party/Watch-live/WatchLive';
 import WatchParty from '../pages/dashBoard/user/watch-party/WatchParty';
 import Wishlist from '../pages/dashBoard/user/wishlist/WishList';
 import { default as Help } from '../pages/help/Help';
@@ -92,7 +93,7 @@ const router = createBrowserRouter([
       { path: 'subscriptions', element: <Subscriptions /> },
       { path: 'forum', element: <Forum /> },
       { path: 'watch-party', element: <WatchParty /> },
-      // { path: 'watch-party/watch-party-public', element: <WatchLive /> },
+      { path: 'watch-party/watch-party-public', element: <WatchLive /> },
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
