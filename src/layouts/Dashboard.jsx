@@ -62,7 +62,7 @@ const Dashboard = () => {
 
   const [isAdmin, setAdmin] = useState(false);
   // const [isAdmin, SetAdmin] = useState(true);
-
+  return(
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
     >
