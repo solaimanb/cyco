@@ -27,7 +27,7 @@ const Forum = () => {
 
   // FORUM FILTERED QUERIES:
   const forumTopicQueries = useSelector(selectFilteredQueries);
-  console.log(forumTopicQueries);
+  // console.log(forumTopicQueries);
 
   useEffect(() => {
     if (!loading) {
