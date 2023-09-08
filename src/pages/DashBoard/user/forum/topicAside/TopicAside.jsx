@@ -5,6 +5,7 @@ import useForumQueries from '../../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../../store/slices/forumTopicSlice/forumTopicSlice';
 
 const TopicAside = () => {
+  const dispatch = useDispatch();
   const [isTopicVisible, setIsTopicVisible] = useState(true);
   const [queries] = useForumQueries();
 
@@ -32,11 +33,10 @@ const TopicAside = () => {
     { title: 'Remakes vs. Originals' },
   ];
 
-  const dispatch = useDispatch();
-
+  // TOPIC HANDLER:
   const handleTopicClick = (topic) => {
-    dispatch( setForumTopic( topic?.title ) );
-    console.log(topic.title);
+    dispatch(setForumTopic(topic?.title));
+    console.log(topic?.title);
   };
 
   return (
@@ -59,8 +59,9 @@ const TopicAside = () => {
         {/* Topic List */}
         {isTopicVisible && (
           <div className="flex flex-col gap-1 border rounded-sm border-zinc-800 p-1 md:p-2 mt-2">
-            {forumTopics.map((topic) => (
+            {forumTopics.map((topic, index) => (
               <button
+                key={index}
                 onClick={() => handleTopicClick(topic)}
                 className="flex items-center justify-between border rounded-sm bg-zinc-800 p-2 md:p-3 border-zinc-700"
               >
