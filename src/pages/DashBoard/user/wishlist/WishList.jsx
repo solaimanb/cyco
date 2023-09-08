@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import WishCard from './WishCard';
 
 
 const Wishlist = () => {
@@ -25,7 +26,7 @@ const Wishlist = () => {
       {wishlist && wishlist.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {wishlist.map((movie) => (
-            <WatchListCard
+            <WishCard
               key={movie.id}
               movie={movie}
               onRemove={() => handleRemoveFromWishlist(movie)}

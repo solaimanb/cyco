@@ -63,6 +63,7 @@ const Dashboard = () => {
   const [isAdmin, setAdmin] = useState(false);
   // const [isAdmin, SetAdmin] = useState(true);
 
+  return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
     >
@@ -101,7 +102,12 @@ const Dashboard = () => {
 
               <div onClick={() => setAdmin(!isAdmin)} className="">
                 {/* <FaBell size={22} /> */}
-                <button className="btn btn-sm" title="Click to Check User Dash (Test)">Check User</button>
+                <button
+                  className="btn btn-sm"
+                  title="Click to Check User Dash (Test)"
+                >
+                  Check User
+                </button>
               </div>
             </div>
 
@@ -125,7 +131,7 @@ const Dashboard = () => {
                 </li>
               ))}
             </ul>
-            
+
             <div className="group:mb-0">
               <div className="sidebar-btn">
                 <button>Settings</button>
@@ -148,7 +154,12 @@ const Dashboard = () => {
               />
               <div onClick={() => setAdmin(!isAdmin)} className="">
                 {/* <FaBell size={22} /> */}
-                <button className="btn btn-sm" title="Click to Check Admin Dash (Test)">Check Admin</button>
+                <button
+                  className="btn btn-sm"
+                  title="Click to Check Admin Dash (Test)"
+                >
+                  Check Admin
+                </button>
               </div>
             </div>
 

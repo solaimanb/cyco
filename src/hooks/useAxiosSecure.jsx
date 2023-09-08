@@ -20,6 +20,12 @@ const useAxiosSecure = (useLocal = true) => {
     baseURL,
   });
 
+  //  const baseURL = 'https://cyco-server.vercel.app';
+
+  // const axiosSecure = axios.create({
+  //   baseURL,
+  // });
+
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem('access_token');
