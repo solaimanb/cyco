@@ -1,23 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import WishCard from './WishCard';
 
 
 const Wishlist = () => {
-
+  const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useContext(AuthContext)
   const [wishlist, setWishlist] = useState([]) || [];
-  // console.log(wishlist);
+  console.log(wishlist);
   // if(loading){
   //   return <Loading/>
   // }
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:8080/user/${user.email}`)
-        .then(res => res.json())
-        .then(data => setWishlist(data.wishlist))
+      axiosSecure
+        .get(`/user/${user.email}`) // Replace with your API endpoint URL.
+        .then((response) => {
+          setWishlist(response.data.wishlist);
+        })
+        .catch((error) => {
+          // Handle any errors here.
+          console.error('Error fetching wishlist:', error);
+        });
     }
-  }, [user])
+  }, [user, axiosSecure]);
+  
 
   return (
     <div className="container h-screen mx-auto mt-4">
@@ -25,7 +34,7 @@ const Wishlist = () => {
       {wishlist && wishlist.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {wishlist.map((movie) => (
-            <WatchListCard
+            <WishCard
               key={movie.id}
               movie={movie}
               onRemove={() => handleRemoveFromWishlist(movie)}

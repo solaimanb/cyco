@@ -3,12 +3,10 @@ import { FaUsersViewfinder } from 'react-icons/fa6';
 import { MdOutlineSignalCellularAlt } from 'react-icons/md';
 import { TiMessages } from 'react-icons/ti';
 import { useDispatch } from 'react-redux';
-import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { updateQueryViews } from '../../../../store/slices/queriesSlice/queriesSlice';
 
 const QueryPost = ({ query }) => {
-  const { user } = useAuth();
   const { _id, description, title, timestamp } = query;
   const date = new Date(timestamp);
   const [timeAgo, setTimeAgo] = useState('');
@@ -50,6 +48,7 @@ const QueryPost = ({ query }) => {
   const handleViewClick = async (query) => {
     const updatedViewCount = query.views + 1; // Increment the view count locally
     console.log(updatedViewCount);
+    // console.log(query);
 
     try {
       // Send the updated view count to the server
@@ -77,8 +76,8 @@ const QueryPost = ({ query }) => {
         <h3 className="text-sm font-semibold">{title}</h3>
         <p className="text-sm">{description}</p>
         <p className="text-xs text-zinc-500">
-          Posted <span> {timeAgo} </span> by{' '}
-          <span> {user?.displayName || 'anonymous'} </span>
+          Posted <span> {timeAgo} </span>
+          {/*  by{' '}<span> {user?.displayName || 'anonymous'} </span> */}
         </p>
       </div>
 

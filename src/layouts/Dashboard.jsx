@@ -60,8 +60,9 @@ const Dashboard = () => {
     { to: "user-feedback", text: "User Feedback" },
   ];
 
-  // const [isAdmin, setAdmin] = useState(false);
-  const [isAdmin, SetAdmin] = useState(true);
+  const [isAdmin, setAdmin] = useState(false);
+  // const [isAdmin, SetAdmin] = useState(true);
+
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -184,7 +185,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-              <NavLink to={"/help"} className="sidebar-btn">
+              <NavLink to={"help"} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button

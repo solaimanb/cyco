@@ -1,34 +1,40 @@
-import { getAuth } from '@firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaFulcrum } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import './Login.css';
 
-const auth = getAuth();
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    signIn(email, password)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        navigate('/', { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-        setErrorMessage('Invalid email or password');
-      });
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+
+    try {
+      const result = await signIn(email?.value, password?.value);
+      const loggedUser = result?.user;
+      console.log(loggedUser);
+
+      // LOGIN SUCCESS NOTIFICATION:
+      Swal.fire({
+        text: 'Login successful!',
+        icon: 'success',
+        background: '#222',
+      } );
+      
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error(error);
+      setErrorMessage('Invalid email or password');
+    }
   };
+
   // const handleResetPassword = (event) => {
   //         const email = (emailRef.current.value);
   //         if (!email){
@@ -68,7 +74,6 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
-                // ref={emailRef}
                 className="mt-1 p-2 w-full border rounded-sm"
                 required
               />
@@ -91,9 +96,9 @@ const Login = () => {
              <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
             </label> */}
             </div>
-            {/* {errorMessage && (
-            <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
-          )} */}
+            {errorMessage && (
+              <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
+            )}
             <div className="mt-8">
               <button
                 type="submit"
@@ -103,6 +108,7 @@ const Login = () => {
               </button>
             </div>
           </form>
+
           <div className="flex mx-auto gap-2 ">
             <div className="text-center mx-auto">
               <SocialLogin />
