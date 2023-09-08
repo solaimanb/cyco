@@ -1,13 +1,13 @@
-import React from 'react';
-import Marquee from 'react-fast-marquee';
-import { FaCloudDownloadAlt } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+import React from "react";
+import Marquee from "react-fast-marquee";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { LuListVideo } from "react-icons/lu";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 
 const MovieInfo = () => {
   const dispatch = useDispatch();
@@ -49,9 +49,9 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
-  const handleHistory = (id) => {
-    dispatch(pushToHistory(id))
-  }
+  // const handleHistory = (id) => {
+  //   dispatch(pushToHistory(id))
+  // }
 
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
@@ -61,14 +61,10 @@ const MovieInfo = () => {
       .catch((err) => {
         console.log(err.message);
       });
+  };
 
-    //   const handleHistory = (id) => {
-    //     dispatch(pushToHistory(id));
-    //   };
-    
-// this handle watch list
+  // this handle watch list
   const handleAddToWishlist = async () => {
-
     try {
       const wishlistItem = {
         user,
@@ -78,28 +74,28 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = Swal.fire({
-          text: 'Please login to add to your wishlist',
-          icon: 'warning',
-          background: '#222',
-          confirmButtonText: 'login',
+          text: "Please login to add to your wishlist",
+          icon: "warning",
+          background: "#222",
+          confirmButtonText: "login",
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate('/login');
+          navigate("/login");
         }
         return;
       }
 
-      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      const response = await axiosSecure.post("/wishlist", wishlistItem);
       console.log(response);
 
       if (response.status === 200) {
-        console.log('Movie added to wishlist', response.data);
+        console.log("Movie added to wishlist", response.data);
         Swal.fire({
-          text: 'Added to wishlist!',
-          icon: 'success',
-          background: '#222',
+          text: "Added to wishlist!",
+          icon: "success",
+          background: "#222",
           reverseButtons: true,
         });
       } else {
@@ -108,11 +104,11 @@ const MovieInfo = () => {
         // );
       }
     } catch (error) {
-      console.error('An error occurred while adding to wishlist:', error);
+      console.error("An error occurred while adding to wishlist:", error);
 
       if (error.response) {
         console.error(
-          'Server responded with:',
+          "Server responded with:",
           error.response.status,
           error.response.data
         );
@@ -172,7 +168,7 @@ const MovieInfo = () => {
                 >
                   <span className="">
                     <LuListVideo size={20} />
-                  </span>{' '}
+                  </span>{" "}
                   {/* {isAlreadyInWishlist
                     ? 'Added to Wishlist'
                     : 'Add to Wishlist'} */}
@@ -188,7 +184,7 @@ const MovieInfo = () => {
                   <button onClick={() => handleHistory(Title, email, Poster)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
-                    </span>{' '}
+                    </span>{" "}
                     {/*<button onClick={() => handleHistory(_id)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
@@ -216,16 +212,3 @@ const MovieInfo = () => {
 };
 
 export default MovieInfo;
-
-// wishList(movie)
-// .then((result) => {
-//   // Handle the result from the API
-//   console.log( 'Data added successfully:', result );
-
-//   const updateWishlist = [ ...currentWishlist, movie ];
-//   localStorage.setItem('wishlist', JSON.stringify( updateWishlist))
-// })
-// .catch((error) => {
-//   // Handle any errors that occur during the POST request
-//   console.error('Error adding data:', error);
-// })
