@@ -1,23 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+
 
 
 const Wishlist = () => {
-
+  const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useContext(AuthContext)
   const [wishlist, setWishlist] = useState([]) || [];
-  // console.log(wishlist);
+  console.log(wishlist);
   // if(loading){
   //   return <Loading/>
   // }
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:8080/user/${user.email}`)
-        .then(res => res.json())
-        .then(data => setWishlist(data.wishlist))
+      axiosSecure
+        .get(`/user/${user.email}`) // Replace with your API endpoint URL.
+        .then((response) => {
+          setWishlist(response.data.wishlist);
+        })
+        .catch((error) => {
+          // Handle any errors here.
+          console.error('Error fetching wishlist:', error);
+        });
     }
-  }, [user])
+  }, [user, axiosSecure]);
+  
 
   return (
     <div className="container h-screen mx-auto mt-4">
