@@ -78,6 +78,7 @@ const router = createBrowserRouter([
       { path: 'payment', element: <Payment /> },
       { path: 'notify', element: <Notify /> },
       { path: 'receive-notification', element: <ReceiveNotification /> },
+      { path: 'help', element: <Help /> },
     ],
   },
   {
