@@ -62,7 +62,6 @@ const Dashboard = () => {
 
   const [isAdmin, setAdmin] = useState(false);
   // const [isAdmin, SetAdmin] = useState(true);
-
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -85,9 +84,8 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <div
-        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-          isSidebarOpen ? "block" : "hidden lg:block"
-        }`}
+        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${isSidebarOpen ? "block" : "hidden lg:block"
+          }`}
       >
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
@@ -117,8 +115,10 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {adminNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" &&
-                    index < adminNavLinks.length - 1 && <hr className="mt-5" />}
+                  {navLink.to === "forum" && index < adminNavLinks.length - 1 && (
+                    <hr className="mt-5" />
+                  )}
+
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "btn-active" : "sidebar-btn"
@@ -169,8 +169,10 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {userNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" &&
-                    index < userNavLinks.length - 1 && <hr className="mt-5" />}
+                  {navLink.to === "forum" && index < userNavLinks.length - 1 && (
+                    <hr className="mt-5" />
+                  )}
+
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "btn-active" : "sidebar-btn"
@@ -201,14 +203,12 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content ${
-          isSidebarOpen ? "" : "blur-none"
-        } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
+        className={`drawer-content ${isSidebarOpen ? "" : "blur-none"
+          } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
       </div>
-    </div>
-  );
+    </div>)
 };
 
 export default Dashboard;

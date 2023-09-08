@@ -63,6 +63,9 @@ const MovieInfo = () => {
       });
   };
 
+//     };
+    
+
   // this handle watch list
   const handleAddToWishlist = async () => {
     try {
