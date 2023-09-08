@@ -4,7 +4,7 @@
 
 CYCO is a powerful and versatile streaming web application that allows users to stream their favorite movies, TV shows, and music effortlessly. With a user-friendly interface and a wide range of features, CYCO provides an enjoyable and convenient streaming experience for both content creators and viewers.
 
-![CYCO Preview](https://i.ibb.co/g9PmMyy/cyco-v7-0-min.png)
+#### [CYCO Preview](https://i.ibb.co/g9PmMyy/cyco-v7-0-min.png)
 
 #### Table of Contents
 

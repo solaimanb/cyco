@@ -185,7 +185,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-              <NavLink to={'/help'} className="sidebar-btn">
+              <NavLink to={'help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -197,7 +197,6 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-        ;
       </div>
 
       {/* Display Page Content */}
@@ -213,4 +212,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
