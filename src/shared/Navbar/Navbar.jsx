@@ -5,6 +5,10 @@ import useAuth from "../../hooks/useAuth";
 import NotificationsDropdown from "../../pages/notify/NotificationDropDown";
 import "./NavBar.css";
 
+import bellIcon from '/bell_icon.png'
+import heartIcon from '/icons8-heart.gif'
+
+
 const socket = io.connect("http://localhost:8080");
 
 const Navbar = () => {
@@ -22,8 +26,8 @@ const Navbar = () => {
         ...prevHistory,
       ]);
     });
-  }, []);
-  // }, [socket]);
+  }, [socket]);
+  
 
   const handleShowNotificationsClick = () => {
     setShowNotifications(true);
@@ -145,8 +149,11 @@ const Navbar = () => {
 
           <div className="relative">
             {/* <h3>Notify</h3> */}
+            <img className="w-8 h-8 text-white" src={bellIcon} alt="bellIcon" />
+            {/* <img className="w-8 h-8" src={heartIcon} alt="bellIcon" /> */}
+            
             <div
-              className="notification-icon"
+              className="notification-icon absolute -top-4 left-2"
               onClick={handleShowNotificationsClick}
             >
               {notificationCount > 0 && (

@@ -49,9 +49,9 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
-  const handleHistory = (id) => {
-    dispatch(pushToHistory(id))
-  }
+  // const handleHistory = (id) => {
+  //   dispatch(pushToHistory(id))
+  // }
 
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
@@ -62,9 +62,7 @@ const MovieInfo = () => {
         console.log(err.message);
       });
 
-    //   const handleHistory = (id) => {
-    //     dispatch(pushToHistory(id));
-    //   };
+    };
     
 // this handle watch list
   const handleAddToWishlist = async () => {
