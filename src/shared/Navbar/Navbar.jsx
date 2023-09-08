@@ -16,7 +16,7 @@ const Navbar = () => {
 
   useEffect(() => {
     socket.on('receive_notification', (data) => {
-      setNotificationCount((prevCount) => prevCount + 1);
+      setNotificationCount((prevCount) => prevCount + .5);
       setNotificationHistory((prevHistory) => [
         data.notification,
         ...prevHistory,

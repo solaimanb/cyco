@@ -407,15 +407,16 @@ const UploadMovie = () => {
         </div>
       </form>
 
-      <div>
-            <h3>Send Notification</h3>
-            <div>
+      <div className='flex flex-col gap-4 justify-center items-center mt-4 bg-sky-700/60 hover:bg-sky-700 w-1/2 mx-auto p-4 rounded-lg'>
+            <h3 className='rounded-md bg-sky-900 hover:bg-sky-800 px-4 py-1'>Send Notification</h3>
+            <div className=' flex flex-col gap-2 rounded-md bg-sky-900 hover:bg-sky-800'>
               <input
+              className='bg-sky-900 hover:bg-sky-800 rounded-lg p-2'
               onChange={(event) => {
                 setNotification(event.target.value);
               }}
               type="text" name='notification' id='notification' placeholder='Type Notification' />
-              <button onClick={sendNotification}>Faka Button</button>
+              <button className='px-4 py-1 bg-sky-900 hover:bg-sky-800 rounded-lg' onClick={sendNotification}>Lets Notify</button>
             </div>
           </div>
     </div>
