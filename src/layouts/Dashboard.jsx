@@ -118,6 +118,7 @@ const Dashboard = () => {
                   {navLink.to === "forum" && index < adminNavLinks.length - 1 && (
                     <hr className="mt-5" />
                   )}
+
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "btn-active" : "sidebar-btn"
@@ -171,6 +172,7 @@ const Dashboard = () => {
                   {navLink.to === "forum" && index < userNavLinks.length - 1 && (
                     <hr className="mt-5" />
                   )}
+
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "btn-active" : "sidebar-btn"
@@ -185,7 +187,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-              <NavLink to={"/help"} className="sidebar-btn">
+              <NavLink to={"help"} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
