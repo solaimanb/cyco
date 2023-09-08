@@ -1,17 +1,32 @@
 import React from 'react';
+import { deleteHistory } from '../../../../api/historyPostData';
 
-const HistoryCard = () => {
+const HistoryCard = (data) => {
+  const {
+    _id,
+   Title,
+   Poster,
+   Plot
+  } = data.data || []
+  const handleHistoryDelete = (id) => {
+    deleteHistory(id)
+    .then(data=>{
+      console.log(data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
     return (
         <div>
            <div className="hero ">
            
   <div className="hero-content flex-col">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP0ldG3h8JgP_XD3udun0oZa3jq-foq-Ce2w&usqp=CAU" className="w-full rounded-lg shadow-2xl" />
+    <img src={Poster} />
     
     <div className=''>
-      <h1 className="text-2xl font-bold">Box Office News!</h1>
-      <p className="py-2">Provident cupiditate voluptatem et in. Quaerat fugiat ut.</p>
-      <button className="btn btn-primary">Remove</button>
+      <h1 className="text-xl font-bold">{Title}</h1>
+      <button onClick={()=>{handleHistoryDelete(_id)}} className="btn btn-primary">Remove</button>
     </div>
   </div>
 </div>

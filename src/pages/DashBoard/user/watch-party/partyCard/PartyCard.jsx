@@ -13,7 +13,7 @@ const PartyCard = ({ event, index }) => {
                 <img
 
                     src={event?.banner}
-                    alt={`Kid ${index + 1}`}
+                    alt='Picture Of An Event'
                     className="w-full h-full object-cover rounded-sm hover:brightness-110"
                 />
             </Link>

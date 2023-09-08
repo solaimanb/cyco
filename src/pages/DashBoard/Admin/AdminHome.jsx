@@ -1,12 +1,19 @@
 import React from 'react';
-import { BsPeopleFill, BsBell, BsSearch }
-  from 'react-icons/bs'
-import { MdContentPasteSearch, MdSpatialTracking }
-  from 'react-icons/md'
-import { CgPerformance }
-  from 'react-icons/cg'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
-  from 'recharts';
+import { BsBell, BsPeopleFill, BsSearch } from 'react-icons/bs';
+import { CgPerformance } from 'react-icons/cg';
+import { MdContentPasteSearch, MdSpatialTracking } from 'react-icons/md';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import useMovies from '../../../hooks/useMovies';
 
 const AdminHome = () => {
@@ -59,67 +66,102 @@ const AdminHome = () => {
       amt: 2100,
     },
   ];
+
   return (
-    <div className="p-4 bg-zinc-900 overflow-y-auto">
-      <div className='flex justify-between items-center border rounded-lg bg-zinc-600 mb-4 p-2'>
-        <h1 className='text-xl font-semibold'>Admin Home Dashboard</h1>
-        <div className='text-2xl flex gap-4 cursor-pointer'>
+    <div className="min-h-screen p-4 bg-zinc-950 overflow-y-auto">
+      <div className="flex justify-between items-center border rounded-lg bg-zinc-600 mb-4 p-2">
+        {/* <h1 className='text-xl font-semibold'>Admin Home Dashboard</h1> */}
+        <div></div>
+        <div className="text-2xl flex gap-4 cursor-pointer">
           <BsSearch />
           <BsBell />
         </div>
       </div>
 
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Content Overview */}
-        <div className='bg-sky-600 hover:bg-sky-700 p-4 rounded'>
-          <MdContentPasteSearch className='text-3xl bg-zinc-300 text-sky-600 rounded-full p-2 w-12 h-12 mx-auto mb-2' />
-          <h2 className='font-semibold mb-3'>Content Overview</h2>
+        <div className="bg-sky-600 hover:bg-sky-700 p-4 rounded">
+          <MdContentPasteSearch className="text-3xl bg-zinc-300 text-sky-600 rounded-full p-2 w-12 h-12 mx-auto mb-2" />
+          <h2 className="font-semibold mb-3">Content Overview</h2>
 
-          <div className='text-sm space-y-2'>
-            <p>Total Movies: <span className='font-bold text-white'>{movies?.length}</span></p>
-            <p>Total TV Shows: <span className='font-bold text-white'>300</span></p>
-            <p>New Content (Last Week): <span className='font-bold text-white'> 57</span></p>
+          <div className="text-sm space-y-2">
+            <p>
+              Total Movies:{' '}
+              <span className="font-bold text-white">{movies?.length}</span>
+            </p>
+            <p>
+              Total TV Shows: <span className="font-bold text-white">300</span>
+            </p>
+            <p>
+              New Content (Last Week):{' '}
+              <span className="font-bold text-white"> 57</span>
+            </p>
           </div>
         </div>
 
         {/* User Analytics */}
-        <div className='bg-emerald-600 hover:bg-emerald-700 p-4 rounded'>
-          <BsPeopleFill className='text-3xl bg-zinc-300 text-emerald-600 rounded-full p-2 w-12 h-12 mx-auto mb-2' />
-          <h2 className='font-semibold mb-3'>User Analytics</h2>
-          <div className='text-sm space-y-2'>
-            <p>Total Users:  <span className='font-bold text-white'>1500</span></p>
-            <p>Daily Active Users:  <span className='font-bold text-white'>800</span></p>
-            <p>Monthly Active Users:  <span className='font-bold text-white'>1200</span></p>
+        <div className="bg-emerald-600 hover:bg-emerald-700 p-4 rounded">
+          <BsPeopleFill className="text-3xl bg-zinc-300 text-emerald-600 rounded-full p-2 w-12 h-12 mx-auto mb-2" />
+          <h2 className="font-semibold mb-3">User Analytics</h2>
+          <div className="text-sm space-y-2">
+            <p>
+              Total Users: <span className="font-bold text-white">1500</span>
+            </p>
+            <p>
+              Daily Active Users:{' '}
+              <span className="font-bold text-white">800</span>
+            </p>
+            <p>
+              Monthly Active Users:{' '}
+              <span className="font-bold text-white">1200</span>
+            </p>
           </div>
         </div>
 
         {/* Content Performance */}
-        <div className='bg-violet-800 hover:bg-violet-900 p-4 rounded'>
-          <CgPerformance className='text-3xl bg-zinc-300 text-violet-800 rounded-full p-2 w-12 h-12 mx-auto mb-2' />
-          <h2 className='font-semibold mb-3'>Content Performance</h2>
-          <div className='text-sm space-y-2'>
-            <p>Trending Movie:  <span className='font-bold text-white'>"Blockbuster"</span></p>
-            <p>Top-rated TV Show:  <span className='font-bold text-white'>"Fan Favorites"</span> </p>
-            <p>Avg. Watch Time:  <span className='font-bold text-white'>25 mins</span></p>
+        <div className="bg-violet-800 hover:bg-violet-900 p-4 rounded">
+          <CgPerformance className="text-3xl bg-zinc-300 text-violet-800 rounded-full p-2 w-12 h-12 mx-auto mb-2" />
+          <h2 className="font-semibold mb-3">Content Performance</h2>
+          <div className="text-sm space-y-2">
+            <p>
+              Trending Movie:{' '}
+              <span className="font-bold text-white">"Blockbuster"</span>
+            </p>
+            <p>
+              Top-rated TV Show:{' '}
+              <span className="font-bold text-white">"Fan Favorites"</span>{' '}
+            </p>
+            <p>
+              Avg. Watch Time:{' '}
+              <span className="font-bold text-white">25 mins</span>
+            </p>
           </div>
         </div>
 
         {/* Revenue Tracking */}
-        <div className='bg-rose-700 hover:bg-rose-800 p-4 rounded'>
-          <MdSpatialTracking className='text-3xl bg-zinc-300 text-rose-700 rounded-full p-2 w-12 h-12 mx-auto mb-2' />
-          <h2 className='font-semibold mb-3'>Revenue Tracking</h2>
-          <div className='text-sm space-y-2'>
-            <p>Total Revenue: <span className='font-bold text-white'>$25,000</span> </p>
-            <p>Revenue Growth (Last Month): <span className='font-bold text-white'> +15%</span></p>
-            <p>Subscription Revenue: <span className='font-bold text-white'>$18,000</span> </p>
+        <div className="bg-rose-700 hover:bg-rose-800 p-4 rounded">
+          <MdSpatialTracking className="text-3xl bg-zinc-300 text-rose-700 rounded-full p-2 w-12 h-12 mx-auto mb-2" />
+          <h2 className="font-semibold mb-3">Revenue Tracking</h2>
+          <div className="text-sm space-y-2">
+            <p>
+              Total Revenue:{' '}
+              <span className="font-bold text-white">$25,000</span>{' '}
+            </p>
+            <p>
+              Revenue Growth (Last Month):{' '}
+              <span className="font-bold text-white"> +15%</span>
+            </p>
+            <p>
+              Subscription Revenue:{' '}
+              <span className="font-bold text-white">$18,000</span>{' '}
+            </p>
           </div>
         </div>
       </div>
 
-      <div className='bg-zinc-950 p-4 mt-6'>
-        <h2 className=''>Charts:</h2>
-        <div className='grid lg:grid-cols-2 gap-4 mt-6 h-[300px]'>
-
+      <div className="bg-zinc-950 p-4 mt-6">
+        <h2 className="">Charts:</h2>
+        <div className="grid lg:grid-cols-2 gap-4 mt-6 h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               width={500}
@@ -159,24 +201,30 @@ const AdminHome = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line
+                type="monotone"
+                dataKey="pv"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
               <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
             </LineChart>
           </ResponsiveContainer>
-
         </div>
       </div>
 
-      <div className='bg-zinc-950 p-4 mt-6'>
+      <div className="bg-zinc-950 p-4 mt-6">
         <h2>Summary:</h2>
-        <div className='grid lg:grid-cols-3 gap-4 mt-6'>
+        <div className="grid lg:grid-cols-3 gap-4 mt-6">
           {/* Subscription Management */}
-          <div className='bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500'>
-            <h2 className='text-lg text-red-600 font-semibold mb-3'>Subscription Management</h2>
+          <div className="bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500">
+            <h2 className="text-lg text-red-600 font-semibold mb-3">
+              Subscription Management
+            </h2>
             <p>Active Subscribers: 1200</p>
             <p>Churn Rate: 8%</p>
             <p>Subscription Plans:</p>
-            <ul className='list-disc pl-6'>
+            <ul className="list-disc pl-6">
               <li>Basic Plan: $9.99/month</li>
               <li>Premium Plan: $14.99/month</li>
               <li>Family Plan: $19.99/month</li>
@@ -184,21 +232,25 @@ const AdminHome = () => {
           </div>
 
           {/* Reports and Analytics */}
-          <div className='bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500'>
-            <h2 className='text-lg text-red-600 font-semibold mb-3'>Reports and Analytics</h2>
+          <div className="bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500">
+            <h2 className="text-lg text-red-600 font-semibold mb-3">
+              Reports and Analytics
+            </h2>
             <p>User Engagement Report</p>
             <p>Content Performance Analysis</p>
             <p>Revenue Trends Report</p>
           </div>
 
           {/* User Management */}
-          <div className='bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500'>
-            <h2 className='text-lg text-red-600 font-semibold mb-3'>User Management</h2>
+          <div className="bg-zinc-800 p-4 rounded-ss-xl rounded-ee-xl w-2/3 lg:w-full mx-auto  shadow-inner shadow-slate-500">
+            <h2 className="text-lg text-red-600 font-semibold mb-3">
+              User Management
+            </h2>
             <p>Total Users: 1500</p>
             <p>Active Users: 1200</p>
             <p>Banned Users: 20</p>
             <p>Role Distribution:</p>
-            <ul className='list-disc pl-6'>
+            <ul className="list-disc pl-6">
               <li>Admins: 3</li>
               <li>Moderators: 8</li>
               <li>Users: 1487</li>
@@ -206,7 +258,6 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

@@ -2,25 +2,21 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
-import { useDispatch, useSelector } from 'react-redux';
-import { pushToHistory } from '../../../store/slices/historySlice/historySlice';
-import { useState } from 'react';
 
 const MovieInfo = () => {
-
-  const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
+  const location = useLocation();
   const { movie } = location?.state;
-  const { axiosSecure } = useAxiosSecure();
-  const { user } = useAuth();
-  // console.log(axiosSecure);c
+  const { user, setLoading } = useAuth();
+  const email = user?.email;
 
   const {
     _id,
@@ -57,32 +53,55 @@ const MovieInfo = () => {
     dispatch(pushToHistory(id))
   }
 
+  const handleHistory = async (Title, email, Poster) => {
+    addHistory({ Title, email, Poster })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    //   const handleHistory = (id) => {
+    //     dispatch(pushToHistory(id));
+    //   };
+    
+// this handle watch list
   const handleAddToWishlist = async () => {
+
     try {
       const wishlistItem = {
         user,
         movie,
-        isHistory:history
-        
+        isHistory: history,
       };
 
       if (!user) {
-        await Swal.fire({
-          title: '',
-          text: 'Please login to add to wishlist',
-          type: 'error',
+        const response = Swal.fire({
+          text: 'Please login to add to your wishlist',
+          icon: 'warning',
+          background: '#222',
           confirmButtonText: 'login',
-        }).then(() => {
-          navigate('/login');
+          showCancelButton: true,
         });
+
+        if (response?.isConfirmed) {
+          navigate('/login');
+        }
         return;
       }
 
       const response = await axiosSecure.post('/wishlist', wishlistItem);
+      console.log(response);
 
       if (response.status === 200) {
         console.log('Movie added to wishlist', response.data);
-        Swal.fire('Added to wishlist!', '', 'success');
+        Swal.fire({
+          text: 'Added to wishlist!',
+          icon: 'success',
+          background: '#222',
+          reverseButtons: true,
+        });
       } else {
         // throw new Error(
         //   `Failed to add movie to wishlist: ${response.statusText}`
@@ -90,6 +109,7 @@ const MovieInfo = () => {
       }
     } catch (error) {
       console.error('An error occurred while adding to wishlist:', error);
+
       if (error.response) {
         console.error(
           'Server responded with:',
@@ -98,7 +118,7 @@ const MovieInfo = () => {
         );
       }
       // Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -160,21 +180,21 @@ const MovieInfo = () => {
                 </button>
 
                 {/* WATCH-NOW FUNC */}
-                <Link 
-                
+                <Link
                   to="/watch-video"
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                <button onClick={()=>handleHistory(_id)}
-                >
-                     <span>
-                    <FaCloudDownloadAlt size={20} />
-                  </span>{' '}
-            
-                  Watch now
-                </button>
-               
+                  <button onClick={() => handleHistory(Title, email, Poster)}>
+                    <span>
+                      <FaCloudDownloadAlt size={20} />
+                    </span>{' '}
+                    {/*<button onClick={() => handleHistory(_id)}>
+                    <span>
+                      <FaCloudDownloadAlt size={20} />
+                    </span>*/}
+                    Watch now
+                  </button>
                 </Link>
               </div>
             </div>
