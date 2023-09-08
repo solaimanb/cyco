@@ -63,7 +63,7 @@ const UsersHome = () => {
           .then((result) => {
             updateUserProfile(data.name, imageAdders).then(() => {
               axios
-                .post("http://localhost:8080/register", {
+                .post("http://localhost:8080/users", {
                   name: data.name,
                   email: data.email,
                   image: imageAdders,
@@ -331,7 +331,7 @@ const UsersHome = () => {
             Your last week spent time on{" "}
             <span className="text-cyred font-bold">Cyco</span>
           </h2>
-          <div style={{ width: '95%', height: 240 }}>
+          <div style={{ width: "95%", height: 240 }}>
             <ResponsiveContainer>
               <AreaChart
                 data={data}

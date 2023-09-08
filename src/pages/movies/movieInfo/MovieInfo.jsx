@@ -1,23 +1,24 @@
-import React from "react";
-import Marquee from "react-fast-marquee";
-import { FaCloudDownloadAlt } from "react-icons/fa";
-import { LuListVideo } from "react-icons/lu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
-import { addHistory } from "../../../api/historyPostData";
+import React from 'react';
+import Marquee from 'react-fast-marquee';
+import { FaCloudDownloadAlt } from 'react-icons/fa';
+import { LuListVideo } from 'react-icons/lu';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { pushToHistory } from '../../../store/slices/historySlice/historySlice';
+import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 
 const MovieInfo = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
- 
-  const { movie } = location?.state;
-  const { axiosSecure } = useAxiosSecure();
   const { user, setLoading } = useAuth();
   const email = user?.email
-  console.log(email)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
+  const location = useLocation();
+  const { movie } = location?.state;
 
   const {
     _id,
@@ -60,11 +61,10 @@ const MovieInfo = () => {
       console.log(err.message)
     })
 
-
-  
-  };
-
-  const handleAddToWishlist = async () => {
+//   const handleHistory = (id) => {
+//     dispatch(pushToHistory(id));
+//   };
+    
     try {
       const wishlistItem = {
         user,
@@ -73,22 +73,31 @@ const MovieInfo = () => {
       };
 
       if (!user) {
-        await Swal.fire({
-          title: "",
-          text: "Please login to add to wishlist",
-          type: "error",
-          confirmButtonText: "login",
-        }).then(() => {
-          navigate("/login");
+        const response = await Swal.fire({
+          text: 'Please login to add to your wishlist',
+          icon: 'warning',
+          background: '#222',
+          confirmButtonText: 'login',
+          showCancelButton: true,
         });
+
+        if (response?.isConfirmed) {
+          navigate('/login');
+        }
         return;
       }
 
-      const response = await axiosSecure.post("/wishlist", wishlistItem);
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      console.log(response);
 
       if (response.status === 200) {
-        console.log("Movie added to wishlist", response.data);
-        Swal.fire("Added to wishlist!", "", "success");
+        console.log('Movie added to wishlist', response.data);
+        Swal.fire({
+          text: 'Added to wishlist!',
+          icon: 'success',
+          background: '#222',
+          reverseButtons: true,
+        });
       } else {
         // throw new Error(
         //   `Failed to add movie to wishlist: ${response.statusText}`
@@ -96,6 +105,7 @@ const MovieInfo = () => {
       }
     } catch (error) {
       console.error("An error occurred while adding to wishlist:", error);
+      
       if (error.response) {
         console.error(
           "Server responded with:",
@@ -104,7 +114,7 @@ const MovieInfo = () => {
         );
       }
       // Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -175,6 +185,12 @@ const MovieInfo = () => {
                     <span>
                       <FaCloudDownloadAlt size={20} />
                     </span>{" "}
+                    
+                  {/*<button onClick={() => handleHistory(_id)}>
+                    <span>
+                      <FaCloudDownloadAlt size={20} />
+                    </span>*/}
+                    
                     Watch now
                   </button>
                 </Link>

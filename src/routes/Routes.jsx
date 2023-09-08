@@ -17,7 +17,6 @@ import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import History from '../pages/DashBoard/user/history/History';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
 import Subscriptions from '../pages/DashBoard/user/subscriptions/Subscriptions';
-import WatchParty from '../pages/DashBoard/user/watch-party/WatchParty';
 import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
@@ -27,8 +26,10 @@ import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
 import ProfileSettings from '../pages/dashBoard/user/profileSettings/ProfileSettings';
+import WatchLive from '../pages/dashBoard/user/watch-party/Watch-live/WatchLive';
+import WatchParty from '../pages/dashBoard/user/watch-party/WatchParty';
 import Wishlist from '../pages/dashBoard/user/wishlist/WishList';
-import FaqPage from '../pages/faq/FaqPage';
+import { default as Help } from '../pages/help/Help';
 import Home from '../pages/home/home/Home';
 import PopularTvs from '../pages/home/popularTvs/PopularTvs';
 import PopularTv from '../pages/home/popularTvs/popularTv';
@@ -36,6 +37,8 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
+import Notify from '../pages/notify/Notify';
+import ReceiveNotification from '../pages/notify/ReceiveNotification';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -44,10 +47,6 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
-import Notify from '../pages/notify/Notify';
-import ReceiveNotification from '../pages/notify/ReceiveNotification';
-// import WatchList from '../pages/DashBoard/user/my-watchlist/Watchlist';
-
 
 const router = createBrowserRouter([
   {
@@ -77,10 +76,10 @@ const router = createBrowserRouter([
       { path: 'TermsConditions', element: <TermsConditions /> },
       { path: 'testpayments', element: <Payment /> },
       { path: 'testimonials', element: <Testimonials /> },
-      { path: 'faq', element: <FaqPage /> },
       { path: 'payment', element: <Payment /> },
       { path: 'notify', element: <Notify /> },
       { path: 'receive-notification', element: <ReceiveNotification /> },
+      { path: 'help', element: <Help /> },
     ],
   },
   {
@@ -94,6 +93,7 @@ const router = createBrowserRouter([
       { path: 'subscriptions', element: <Subscriptions /> },
       { path: 'forum', element: <Forum /> },
       { path: 'watch-party', element: <WatchParty /> },
+      { path: 'watch-party/watch-party-public', element: <WatchLive /> },
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
@@ -102,6 +102,7 @@ const router = createBrowserRouter([
       { path: 'upload-movie', element: <UploadMovie /> },
       { path: 'revenue', element: <Revenue /> },
       { path: 'logs', element: <SystemLogs /> },
+      { path: 'help', element: <Help /> },
       { path: 'subscription', element: <ManageSubscription /> },
       { path: 'modernization', element: <Modernization /> },
       { path: 'user-pannel-list', element: <UserPannelList /> },
