@@ -7,18 +7,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { pushToHistory } from '../../../store/slices/historySlice/historySlice';
 import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
 
 const MovieInfo = () => {
-  const { user, setLoading } = useAuth();
-  const email = user?.email
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
   const location = useLocation();
   const { movie } = location?.state;
+  const { user, setLoading } = useAuth();
+  const email = user?.email;
 
   const {
     _id,
@@ -52,19 +50,19 @@ const MovieInfo = () => {
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
 
-  const handleHistory = (Title, email, Poster,) => {
-     addHistory({Title, email, Poster })
-     .then(data=>{
-     console.log(data);
-    })
-    .catch(err=>{
-      console.log(err.message)
-    })
+  const handleHistory = async (Title, email, Poster) => {
+    addHistory({ Title, email, Poster })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
-//   const handleHistory = (id) => {
-//     dispatch(pushToHistory(id));
-//   };
-    
+    //   const handleHistory = (id) => {
+    //     dispatch(pushToHistory(id));
+    //   };
+
     try {
       const wishlistItem = {
         user,
@@ -73,7 +71,7 @@ const MovieInfo = () => {
       };
 
       if (!user) {
-        const response = await Swal.fire({
+        const response = Swal.fire({
           text: 'Please login to add to your wishlist',
           icon: 'warning',
           background: '#222',
@@ -104,11 +102,11 @@ const MovieInfo = () => {
         // );
       }
     } catch (error) {
-      console.error("An error occurred while adding to wishlist:", error);
-      
+      console.error('An error occurred while adding to wishlist:', error);
+
       if (error.response) {
         console.error(
-          "Server responded with:",
+          'Server responded with:',
           error.response.status,
           error.response.data
         );
@@ -168,7 +166,7 @@ const MovieInfo = () => {
                 >
                   <span className="">
                     <LuListVideo size={20} />
-                  </span>{" "}
+                  </span>{' '}
                   {/* {isAlreadyInWishlist
                     ? 'Added to Wishlist'
                     : 'Add to Wishlist'} */}
@@ -181,16 +179,14 @@ const MovieInfo = () => {
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                  <button onClick={() => handleHistory(Title, email, Poster,)}>
+                  <button onClick={() => handleHistory(Title, email, Poster)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
-                    </span>{" "}
-                    
-                  {/*<button onClick={() => handleHistory(_id)}>
+                    </span>{' '}
+                    {/*<button onClick={() => handleHistory(_id)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
                     </span>*/}
-                    
                     Watch now
                   </button>
                 </Link>
