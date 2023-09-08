@@ -8,7 +8,7 @@ import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
-import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
+// import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
 import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
 import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
       { path: 'logs', element: <SystemLogs /> },
       { path: 'help', element: <Help /> },
       { path: 'subscription', element: <ManageSubscription /> },
-      { path: 'modernization', element: <Modernization /> },
+      // { path: 'modernization', element: <Modernization /> },
       { path: 'user-pannel-list', element: <UserPannelList /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },
