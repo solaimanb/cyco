@@ -6,7 +6,7 @@ const MovieSlot = () => {
   const [movies] = useMovies();
 
   const selectedCategory = useSelector((state) => state?.category);
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   const selectedGenres = Array.isArray(selectedCategory)
     ? selectedCategory

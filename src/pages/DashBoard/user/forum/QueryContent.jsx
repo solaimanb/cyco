@@ -71,7 +71,7 @@ const QueryPost = ({ query }) => {
   return (
     <div
       onClick={() => handleViewClick(query)}
-      className="flex flex-col md:flex-row justify-between gap-2 p-2 border rounded-sm border-zinc-800"
+      className="cursor-pointer flex flex-col md:flex-row justify-between gap-2 p-2 border rounded-sm border-zinc-800"
     >
       <div className="p-2 mt-2">
         <h3 className="text-sm font-semibold">{title}</h3>
