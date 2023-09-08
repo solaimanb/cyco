@@ -14,7 +14,7 @@ const LiveTv = () => {
   };
 
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: 'gCNeDWCI0vo' },
+    { name: 'FOX', imageSrc: '/fox.png', videoId: 'Nv6b9JYiaBY&ab_channel=OuterSpace' },
   ];
 
   return (

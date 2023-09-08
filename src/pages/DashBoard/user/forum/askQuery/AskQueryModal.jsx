@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
+import Swal from 'sweetalert2';
 import useAuth from '../../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import Modal from './Modal';
+
+const forumTopics = [
+  'Upcoming Releases',
+  'Movie Reviews',
+  'Classic Films',
+  'Recommendations',
+  'Film Trivia',
+  'Cinematic Trends',
+  'Film Awards',
+  'Soundtracks',
+  'Movie Collectibles',
+  "Director's Corner",
+  'Behind-the-Scenes',
+  'Movie Quotes',
+  'Movie News',
+  'Film Festivals',
+  'Cinematic Technology',
+  'Challenges and Games',
+  'Remakes vs. Originals',
+];
 
 const AskQueryModal = ({ isOpen, setIsOpen }) => {
   const [showWarning, setShowWarning] = useState(false);
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
+  console.log(user);
 
   const {
     register,
@@ -20,30 +42,44 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
     mode: 'onChange',
   });
 
-  // Query submission:
+  // QUERY SUBMISSION:
   const onSubmit = async (query) => {
+    reset();
+    setIsOpen(false);
+
+    Swal.fire({
+      text: ` ${user?.displayName}, Your query launched to forum!`,
+      icon: 'success',
+      background: '#111',
+      reverseButtons: true,
+    });
+
     const querySlot = {
       user,
       query,
     };
-    console.log(querySlot);
 
     try {
       const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
       const userResponseSlot = await axiosSecure.post('/query', querySlot);
 
-      console.log(userResponseSlot, forumResponseSlot);
+      // console.log( userResponseSlot, forumResponseSlot );
       reset();
 
       setIsOpen(false);
+      Swal.fire('Success!', 'Query submitted successfully', 'success');
     } catch (error) {
       console.error('Error while submitting query', error);
+      Swal.fire(
+        'Error!',
+        'An error occurred while submitting the query',
+        'error'
+      );
     }
   };
 
   // Modal dialog cancel:
   const onCancel = (data) => {
-    console.log(data);
     reset();
     setIsOpen(false);
   };
@@ -54,14 +90,19 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={'Ask your query'}>
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      reset={reset}
+      title={'Ask your query'}
+    >
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
         <div className="flex flex-col gap-2">
-          <label className="text-sm" htmlFor="title">
+          <label className="text-xs text-white" htmlFor="title">
             Title:
           </label>
           <input
-            className="text-sm p-1 rounded-sm bg-zinc-700"
+            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
             type="text"
             id="title"
             {...register('title', { required: true })}
@@ -69,15 +110,37 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           {errors?.title && <span>Title is required</span>}
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-sm" htmlFor="description">
+          <label className="text-xs text-white" htmlFor="description">
             Description:
           </label>
           <textarea
-            className="text-sm p-1 rounded-sm bg-zinc-700"
+            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
             id="description"
             {...register('description', { required: true })}
           />
           {errors?.description && <span>Description is required</span>}
+        </div>
+
+        {/* Forum Topics Select */}
+        <div className="flex flex-col gap-2">
+          <label className="text-xs text-white" htmlFor="forumTopic">
+            Forum Topic:
+          </label>
+          <select
+            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
+            id="forumTopic"
+            {...register('forumTopic', { required: true })}
+          >
+            <option value="" disabled selected>
+              Select a topic
+            </option>
+            {forumTopics.map((topic) => (
+              <option key={topic} value={topic}>
+                {topic}
+              </option>
+            ))}
+          </select>
+          {errors?.forumTopic && <span>Forum Topic is required</span>}
         </div>
 
         {/* Submit Btn */}
@@ -87,6 +150,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
               type="submit"
               className="btn btn-sm rounded-sm border hover:border-green-900 hover:text-green-900 mt-2"
               disabled={!isValid}
+              // onClick={() => setIsOpen(false)}
             >
               Submit
             </button>
