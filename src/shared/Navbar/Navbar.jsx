@@ -144,7 +144,7 @@ const Navbar = () => {
           </ul>
 
           <div className="relative">
-            <h3>Notify</h3>
+            {/* <h3>Notify</h3> */}
             <div
               className="notification-icon"
               onClick={handleShowNotificationsClick}
