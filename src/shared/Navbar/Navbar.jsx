@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import io from 'socket.io-client';
-import useAuth from '../../hooks/useAuth';
-import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
-import './NavBar.css';
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import io from "socket.io-client";
+import useAuth from "../../hooks/useAuth";
+import NotificationsDropdown from "../../pages/notify/NotificationDropDown";
+import "./NavBar.css";
 
-const socket = io.connect('http://localhost:8080');
+const socket = io.connect("http://localhost:8080");
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -15,14 +15,15 @@ const Navbar = () => {
   const [notificationHistory, setNotificationHistory] = useState([]);
 
   useEffect(() => {
-    socket.on('receive_notification', (data) => {
-      setNotificationCount((prevCount) => prevCount + .5);
+    socket.on("receive_notification", (data) => {
+      setNotificationCount((prevCount) => prevCount + 0.5);
       setNotificationHistory((prevHistory) => [
         data.notification,
         ...prevHistory,
       ]);
     });
-  }, [socket]);
+  }, []);
+  // }, [socket]);
 
   const handleShowNotificationsClick = () => {
     setShowNotifications(true);
@@ -56,7 +57,7 @@ const Navbar = () => {
                 aria-label="home"
                 title="Home"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Home
@@ -69,7 +70,7 @@ const Navbar = () => {
                 aria-label="Trailer"
                 title="Trailer"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Trailer
@@ -82,7 +83,7 @@ const Navbar = () => {
                 aria-label="Movies"
                 title="Movies"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Movies
@@ -95,7 +96,7 @@ const Navbar = () => {
                 aria-label="Series"
                 title="Series"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Series
@@ -108,7 +109,7 @@ const Navbar = () => {
                 aria-label="Live TV"
                 title="Live TV"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 LiveTV
@@ -121,7 +122,7 @@ const Navbar = () => {
                 aria-label="about"
                 title="About Us"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 About
@@ -134,7 +135,7 @@ const Navbar = () => {
                 aria-label="contact"
                 title="About Us"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Contact US
@@ -334,7 +335,7 @@ const Navbar = () => {
                   aria-label="Dashboard "
                   title="Dashboard "
                   className={({ isActive }) =>
-                    isActive ? 'active' : 'default'
+                    isActive ? "active" : "default"
                   }
                 >
                   Dashboard
@@ -350,7 +351,7 @@ const Navbar = () => {
                 aria-label="login"
                 title="Login"
                 className={({ isActive }) =>
-                  isActive ? 'bg-cyred' : 'default'
+                  isActive ? "bg-cyred" : "default"
                 }
               >
                 Login

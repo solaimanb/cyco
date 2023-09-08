@@ -10,7 +10,7 @@ const forumTopicSlice = createSlice({
     },
   },
 });
-console.log(forumTopicSlice);
+// console.log(forumTopicSlice);
 
 export const { setForumTopic } = forumTopicSlice.actions;
 export default forumTopicSlice.reducer;
