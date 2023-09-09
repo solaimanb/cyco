@@ -49,10 +49,8 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
-  const handleHistory = (id) => {
-    dispatch(pushToHistory(id))
-  }
 
+  
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
       .then((data) => {
@@ -61,14 +59,11 @@ const MovieInfo = () => {
       .catch((err) => {
         console.log(err.message);
       });
+  };
 
-    //   const handleHistory = (id) => {
-    //     dispatch(pushToHistory(id));
-    //   };
-    
-// this handle watch list
+
+  // WATCH-LIST HANDLER:
   const handleAddToWishlist = async () => {
-
     try {
       const wishlistItem = {
         user,
@@ -216,16 +211,3 @@ const MovieInfo = () => {
 };
 
 export default MovieInfo;
-
-// wishList(movie)
-// .then((result) => {
-//   // Handle the result from the API
-//   console.log( 'Data added successfully:', result );
-
-//   const updateWishlist = [ ...currentWishlist, movie ];
-//   localStorage.setItem('wishlist', JSON.stringify( updateWishlist))
-// })
-// .catch((error) => {
-//   // Handle any errors that occur during the POST request
-//   console.error('Error adding data:', error);
-// })

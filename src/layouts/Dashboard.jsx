@@ -39,11 +39,11 @@ const Dashboard = () => {
   const userNavLinks = [
     { to: 'users-home', text: 'Profile' },
     { to: 'wishlist', text: 'Wishlist' },
-    { to: 'downloads', text: 'Downloads' },
+    // { to: 'downloads', text: 'Downloads' },
     { to: 'subscriptions', text: 'Subscriptions' },
     { to: 'forum', text: 'Forum' },
     { to: 'watch-party', text: 'Watch Party' },
-    { to: 'recommendation', text: 'Recommendation' },
+    // { to: 'recommendation', text: 'Recommendation' },
     { to: 'payment-info', text: 'Payment Info' },
     { to: 'history', text: 'History' },
     { to: '/', text: 'Home' },
