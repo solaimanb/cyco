@@ -1,22 +1,20 @@
-import React from 'react';
-import HistoryCard from './HistoryCard';
-import useMovies from '../../../../hooks/useMovies';
-import useHistory from '../../../../hooks/useHistory';
-import useAuth from '../../../../hooks/useAuth';
+import React from "react";
+import HistoryCard from "./HistoryCard";
+import useMovies from "../../../../hooks/useMovies";
+import useHistory from "../../../../hooks/useHistory";
+import useAuth from "../../../../hooks/useAuth";
 
 const History = () => {
-    const user = useAuth()
-  const [movies,refetch] = useMovies();
+  const user = useAuth();
+  const [movies, refetch] = useMovies();
 
-  console.log(movies);
   const [history] = useHistory();
-  // const title = history.Title
 
-  console.log(history);
-  const id = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
-// Check if localStorage is supported
-  
-    const filter = history.filter((h)=>h.email!== user.email)
+
+
+  // Check if localStorage is supported
+
+  const filter = history.filter((h) => h.email !== user.email);
   console.log(filter);
 
   return (
@@ -28,8 +26,10 @@ const History = () => {
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 xl:grid-cols-5">
-        {filter && filter.map((data) => <HistoryCard refetch={refetch} data={data} />)}
+        {filter &&
+          filter.map((data) => <HistoryCard refetch={refetch} data={data} />)}
       </div>
+      
     </div>
   );
 };
