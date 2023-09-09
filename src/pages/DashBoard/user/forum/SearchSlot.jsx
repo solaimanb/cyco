@@ -6,27 +6,26 @@ import {
   updateSearchQuery,
 } from '../../../../store/slices/searchSlice/searchSlice';
 
-
 const SearchSlot = () => {
   const dispatch = useDispatch();
   const searchQuery = useSelector((state) => state.search.searchQuery);
   // const [ queries ] = useForumQueries();
   // console.log(queries);
-  
+
   const handleSearchBtnClick = () => {
-    dispatch( filterQueries( searchQuery ) );
+    dispatch(filterQueries(searchQuery));
   };
 
-  const handleInputChange = ( event ) => { 
+  const handleInputChange = (event) => {
     const query = event.target.value;
     dispatch(updateSearchQuery(query));
-  }
+  };
 
-  const handleKeyPress = ( event ) => { 
-    if ( event.key === 'Enter' ) { 
-      dispatch( filterQueries( searchQuery ) );
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      dispatch(filterQueries(searchQuery));
     }
-  }
+  };
 
   return (
     <div className="flex flex-row gap-2">
@@ -34,7 +33,7 @@ const SearchSlot = () => {
         type="text"
         placeholder="Search here..."
         className="p-1 w-full text-sm rounded-sm bg-zinc-800"
-        onChange={ handleInputChange }
+        onChange={handleInputChange}
         onKeyUp={handleKeyPress}
         value={searchQuery}
       />
