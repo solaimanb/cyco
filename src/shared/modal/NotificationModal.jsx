@@ -9,7 +9,11 @@ import {
     Button,
     useDisclosure,
     Badge,
+    Table,
+     TableHeader, TableColumn, TableBody, TableRow, TableCell
   } from "@nextui-org/react";
+
+
   import {Card, CardBody} from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../store/slices/paymenthistorySlice/paymentHistorySlice";
@@ -42,23 +46,25 @@ const NotificationModal = ({isOpen, onOpenChange, filters}) => {
               <ModalBody>
               {
                 filters.map((filter)=>
-                           <div filter={filter} className="indicator">
+                           <div className=' indicator mx-auto' filter={filter}>
   <span className="indicator-item badge badge-secondary bg-red-500"><FaTimes/></span> 
-  
-  <Card>
-      <CardBody>
-      <div className="flex gap-10">
-      <h3 className=" text-xl ">Payments success</h3>
-      <p className="badge badge-secondary badge-outline">{filter?.date.slice(0, 7)}</p>
-      </div>
-         
-        <p className="text-base">Id: {filter?.transectionId}</p>
-      </CardBody>
-    </Card>
+
+  <Table removeWrapper aria-label="Example static collection table">
+      <TableHeader>
+        <TableColumn>payment success</TableColumn>
+        <TableColumn>{filter?.membership}</TableColumn>
+        <TableColumn>{filter?.date?.slice(0,7)}</TableColumn>
+      </TableHeader>
+      <TableBody>
+    
+      
+      </TableBody>
+    </Table>
 </div>
                 )
               }
    
+    
              
               </ModalBody>
               <ModalFooter>

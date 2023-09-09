@@ -26,14 +26,9 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.paymentHistory.data);
-  console.log(data);
   useEffect(() => {
       dispatch(fetchData());
     }, [dispatch]);
-     if(data?.email === user?.email){
-      return <p>Not Available Notification</p>
-     }
-
       const filters = data.filter((d)=>d.email === user?.email)
      
       console.log(filters);
