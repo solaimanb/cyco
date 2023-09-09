@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 // const axiosSecure = axios.create({
-//   // baseURL: 'http://localhost:8080',
+//   // baseURL: `${import.meta.env.VITE_SERVER_URL}`,
 //   baseURL: 'https://cyco-server.vercel.app',
 // });
 
@@ -13,7 +13,7 @@ const useAxiosSecure = (useLocal = true) => {
   const navigate = useNavigate();
 
   const baseURL = useLocal
-    ? 'http://localhost:8080'
+    ? `${import.meta.env.VITE_SERVER_URL}`
     : 'https://cyco-server.vercel.app';
 
   const axiosSecure = axios.create({

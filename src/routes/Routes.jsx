@@ -8,7 +8,7 @@ import Root from '../layouts/Root';
 import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
 import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
-import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
+// import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
 import UserFeedback from '../pages/DashBoard/Admin/user-feedback/UserFeedback';
 import UserPannelList from '../pages/DashBoard/Admin/user-panel-lists/UserPannelList';
@@ -21,7 +21,7 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
 import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
-import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
+// import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
@@ -47,6 +47,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import UploadMovie from '../pages/DashBoard/Admin/uploadMovie/UploadMovie';
 
 const router = createBrowserRouter([
   {
@@ -104,7 +105,7 @@ const router = createBrowserRouter([
       { path: 'logs', element: <SystemLogs /> },
       { path: 'help', element: <Help /> },
       { path: 'subscription', element: <ManageSubscription /> },
-      { path: 'modernization', element: <Modernization /> },
+      // { path: 'modernization', element: <Modernization /> },
       { path: 'user-pannel-list', element: <UserPannelList /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },

@@ -33,7 +33,7 @@ const wishlistSlice = createSlice({
 export const postWishList = createAsyncThunk('wishList', async (newWish) => {
   try {
     const response = await axios.post(
-      'http://localhost:8080/wishList',
+      `${import.meta.env.VITE_SERVER_URL}/wishList`,
       newWish
     ); // Change the endpoint to match your Express.js backend
     return response.data;

@@ -91,6 +91,7 @@ setProcessing(true)
           .then(res => {
             console.log(res.data);
             if(res.data.insertedId){
+              console.log(res);
               // TODO: display confirm 
 
             }
