@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
+import { MdAccountCircle } from 'react-icons/md';
+
+import {
+  Button,
+  useDisclosure,
+  Badge,
+} from "@nextui-org/react";
+import { MdOutlineNotificationsActive } from "react-icons/md";
+import NotificationModal from "../shared/modal/NotificationModal";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../store/slices/paymenthistorySlice/paymentHistorySlice";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { user, logOut } = useAuth();
   // console.log(user);
   const navigate = useNavigate();
+
+  //Notification user dashboard
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.paymentHistory.data);
+  console.log(data);
+  useEffect(() => {
+      dispatch(fetchData());
+    }, [dispatch]);
+     if(data?.email === user?.email){
+      return <p>Not Available Notification</p>
+     }
+
+      const filters = data.filter((d)=>d.email === user?.email)
+     
+      console.log(filters);
 
   const handleLogOut = async () => {
     console.log("Logging out...");
@@ -85,8 +113,9 @@ const Dashboard = () => {
 
       {/* Dashboard Sidebar */}
       <div
-        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${isSidebarOpen ? "block" : "hidden lg:block"
-          }`}
+        className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
+          isSidebarOpen ? "block" : "hidden lg:block"
+        }`}
       >
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
@@ -116,9 +145,8 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {adminNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" && index < adminNavLinks.length - 1 && (
-                    <hr className="mt-5" />
-                  )}
+                  {navLink.to === "forum" &&
+                    index < adminNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
@@ -153,6 +181,19 @@ const Dashboard = () => {
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
               />
+              <>
+                {" "}
+                <Button onPress={onOpen} color="secondary">
+                  <Badge color="danger" content={filters?.length} shape="circle">
+                    <MdOutlineNotificationsActive
+                      className="fill-current"
+                      size={30}
+                    />
+                  </Badge>
+                </Button>
+              <NotificationModal filters={filters} onOpenChange={onOpenChange} isOpen={isOpen}/>
+              </>
+
               <div onClick={() => setAdmin(!isAdmin)} className="">
                 {/* <FaBell size={22} /> */}
                 <button
@@ -170,9 +211,8 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {userNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" && index < userNavLinks.length - 1 && (
-                    <hr className="mt-5" />
-                  )}
+                  {navLink.to === "forum" &&
+                    index < userNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
@@ -204,12 +244,14 @@ const Dashboard = () => {
 
       {/* Display Page Content */}
       <div
-        className={`drawer-content ${isSidebarOpen ? "" : "blur-none"
-          } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
+        className={`drawer-content ${
+          isSidebarOpen ? "" : "blur-none"
+        } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />
       </div>
-    </div>)
+    </div>
+  );
 };
 
 export default Dashboard;
