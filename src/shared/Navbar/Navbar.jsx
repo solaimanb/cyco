@@ -9,7 +9,7 @@ import bellIcon from '/bell_icon.png'
 import heartIcon from '/icons8-heart.gif'
 
 
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const Navbar = () => {
   const { user, logOut } = useAuth();

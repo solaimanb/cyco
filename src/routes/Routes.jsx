@@ -21,7 +21,7 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
 import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
-import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
+// import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
 import UpdatePaymentInfo from '../pages/dashBoard/user/paymentInfo/PaymentInfo';
@@ -47,6 +47,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import UploadMovie from '../pages/DashBoard/Admin/uploadMovie/UploadMovie';
 
 const router = createBrowserRouter([
   {

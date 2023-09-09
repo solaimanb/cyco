@@ -38,7 +38,7 @@ const Register = () => {
       const result = await createUser(email, password);
       const createdUser = result.user;
 
-      const response = await axios.post("http://localhost:8080/register", {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/register`, {
         username,
         role,
         email,
