@@ -8,7 +8,7 @@ const useParty = () => {
     } = useQuery({
         queryKey: ['party'],
         queryFn: async () => {
-            const res = await fetch('/public/party.json');
+            const res = await fetch('party.json');
             const data = await res.json();
             return data;
         },
