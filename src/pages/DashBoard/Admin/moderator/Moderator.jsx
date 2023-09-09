@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
-const Modernization = () => {
+const Moderator = () => {
   const [isButtonDisabled, setButtonDisabled] = useState(false);
   const [axiosSecure] = useAxiosSecure();
 
@@ -112,4 +112,4 @@ const Modernization = () => {
   );
 };
 
-export default Modernization;
+export default Moderator;

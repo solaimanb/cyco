@@ -6,7 +6,11 @@ import useAuth from "../../hooks/useAuth";
 import NotificationsDropdown from "../../pages/notify/NotificationDropDown";
 import "./NavBar.css";
 
-const socket = io.connect("http://localhost:8080");
+import bellIcon from '/bell_icon.png'
+import heartIcon from '/icons8-heart.gif'
+
+
+const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -23,8 +27,8 @@ const Navbar = () => {
         ...prevHistory,
       ]);
     });
-  }, []);
-  // }, [socket]);
+  }, [socket]);
+  
 
   const handleShowNotificationsClick = () => {
     setShowNotifications(true);
@@ -144,7 +148,32 @@ const Navbar = () => {
             </li>
           </ul>
 
+<<<<<<< HEAD
          
+=======
+          <div className="relative">
+            {/* <h3>Notify</h3> */}
+            <img className="w-8 h-8 text-white" src={bellIcon} alt="bellIcon" />
+            {/* <img className="w-8 h-8" src={heartIcon} alt="bellIcon" /> */}
+            
+            <div
+              className="notification-icon absolute -top-4 left-2"
+              onClick={handleShowNotificationsClick}
+            >
+              {notificationCount > 0 && (
+                <div className="notification-badge">{notificationCount}</div>
+              )}
+            </div>
+
+            {showNotifications && (
+              <NotificationsDropdown
+                notificationCount={notificationCount}
+                notificationHistory={notificationHistory}
+                onClose={handleCloseNotifications}
+              />
+            )}
+          </div>
+>>>>>>> e1beeddda8320b8c05e8457cc6b13accf9ae9111
 
           {/* Responsive small device */}
           <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">

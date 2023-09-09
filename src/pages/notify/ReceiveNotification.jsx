@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-const socket = io.connect('http://localhost:8080');
+const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const ReceiveNotification = () => {
   const [nCount, setNCount] = useState(0);

@@ -63,7 +63,7 @@ const UsersHome = () => {
           .then((result) => {
             updateUserProfile(data.name, imageAdders).then(() => {
               axios
-                .post("http://localhost:8080/users", {
+                .post(`${import.meta.env.VITE_SERVER_URL}/users`, {
                   name: data.name,
                   email: data.email,
                   image: imageAdders,
