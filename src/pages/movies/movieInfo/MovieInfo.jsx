@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
+import { addHistory } from "../../../api/historyPostData";
 
 const MovieInfo = () => {
   const dispatch = useDispatch();
@@ -183,14 +184,11 @@ const MovieInfo = () => {
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                  <button onClick={() => handleHistory(Title, email, Poster)}>
+                  <button className="flex" onClick={() => handleHistory(Title, email, Poster)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
                     </span>{" "}
-                    {/*<button onClick={() => handleHistory(_id)}>
-                    <span>
-                      <FaCloudDownloadAlt size={20} />
-                    </span>*/}
+               
                     Watch now
                   </button>
                 </Link>

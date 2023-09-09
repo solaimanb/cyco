@@ -58,6 +58,7 @@ const Dashboard = () => {
     { to: "modernization", text: "Moderation" },
     { to: "user-panel-list", text: "User Panel Lists" },
     { to: "user-feedback", text: "User Feedback" },
+    { to: "admin/paymentHistory", text: "Payment History" },
   ];
 
   const [isAdmin, setAdmin] = useState(false);
