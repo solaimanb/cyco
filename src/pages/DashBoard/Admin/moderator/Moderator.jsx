@@ -32,12 +32,12 @@ const Moderator = () => {
       confirmButtonText: "Yes.!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user?._id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.modifiedCount) {
+            if (data?.modifiedCount) {
               setButtonDisabled(true);
               Swal.fire("Admin!", `${user.name} is an Admin Now!!`, "success");
             }
@@ -66,10 +66,10 @@ const Moderator = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id}>
+              <tr key={user?._id}>
                 <td>
                   <div className="mask mask-squircle w-12 h-12">
-                    <img src={user.photoUrl} alt="User Avatar" />
+                    <img src={user?.photoUrl} alt="User Avatar" />
                   </div>
                 </td>
                 <td>{user.username}</td>

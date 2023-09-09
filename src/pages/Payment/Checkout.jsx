@@ -5,28 +5,30 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export const CheckoutForm = ({ price, selectedPlan }) => {
   const stripe = useStripe();
+  console.log(stripe);
   const elements = useElements();
   const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
-  // console.log(clientSecret);
+  console.log(clientSecret);
 
   const [processing, setProcessing] = useState(false);
   const [transectionId, setTransectionId] = useState('');
 
   useEffect(() => {
     if(price > 0){
-      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+      axiosSecure.post("/create-payment-intent", { price })
+      .then((res) => {
         setClientSecret(res.data.clientSecret);
       });
     }
-  }, [price, axiosSecure]);
+  }, [price]);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
     event.preventDefault();
-
+    console.log(event);
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
       // form submission until Stripe.js has loaded.
@@ -92,6 +94,7 @@ setProcessing(true)
             console.log(res.data);
             if(res.data.insertedId){
               console.log(res);
+
               // TODO: display confirm 
 
             }
@@ -125,8 +128,8 @@ setProcessing(true)
       {transectionId && <h5 className="pt-4 text-green-700 text-sm">Transection Seccessfull</h5>}
       <button
         type="submit"
-        disabled={!stripe || !clientSecret || processing}
-        // disabled={!stripe}
+        disabled={!stripe || !clientSecret}
+      
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >
         Subscribe Now !!!
