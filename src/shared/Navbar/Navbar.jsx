@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaBell } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import io from "socket.io-client";
 import useAuth from "../../hooks/useAuth";
@@ -48,8 +49,8 @@ const Navbar = () => {
     <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       <div className="">
         {/* Responsive wide screen device */}
-        <div className="gray-800 hidden px-24 mx-auto text-white lg:flex items-center justify-between py-5">
-          <Link to="/">
+        <div className="gray-800 flex flex-row lg:px-24 mx-auto text-white items-center justify-between py-5">
+          <Link className="hidden lg:flex" to="/">
             <h3 className="font-bold text-2xl">CYCO</h3>
           </Link>
 
@@ -147,6 +148,9 @@ const Navbar = () => {
             </li>
           </ul>
 
+<<<<<<< HEAD
+         
+=======
           <div className="relative">
             {/* <h3>Notify</h3> */}
             <img className="w-8 h-8 text-white" src={bellIcon} alt="bellIcon" />
@@ -169,6 +173,7 @@ const Navbar = () => {
               />
             )}
           </div>
+>>>>>>> e1beeddda8320b8c05e8457cc6b13accf9ae9111
 
           {/* Responsive small device */}
           <div className="flex items-center justify-between lg:hidden py-3 lg:my-5 px-5">
@@ -327,10 +332,32 @@ const Navbar = () => {
                 </div>
               </div>
             )}
-
+{/* 
             <div>
               <h2 className="text-white font-bold text-lg">CYCO</h2>
+            </div> */}
+          </div>
+
+
+          <>
+          <div className="relative">
+            <FaBell/>
+            <div
+              className="notification-icon"
+              onClick={handleShowNotificationsClick}
+            >
+              {notificationCount > 0 && (
+                <div className="notification-badge">{notificationCount}</div>
+              )}
             </div>
+
+            {showNotifications && (
+              <NotificationsDropdown
+                notificationCount={notificationCount}
+                notificationHistory={notificationHistory}
+                onClose={handleCloseNotifications}
+              />
+            )}
           </div>
 
           <li className="flex items-center">
@@ -365,6 +392,7 @@ const Navbar = () => {
               </NavLink>
             )}
           </li>
+          </>
         </div>
       </div>
     </div>

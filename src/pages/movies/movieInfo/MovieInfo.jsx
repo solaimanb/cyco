@@ -49,10 +49,12 @@ const MovieInfo = () => {
   // const isAlreadyInWishlist = currentWishlist.some(
   //   (wishlistMovie) => wishlistMovie.Title === Title
   // );
+
   // const handleHistory = (id) => {
   //   dispatch(pushToHistory(id))
   // }
 
+  
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
       .then((data) => {
@@ -63,10 +65,7 @@ const MovieInfo = () => {
       });
   };
 
-//     };
-    
-
-  // this handle watch list
+  // WATCH-LIST HANDLER:
   const handleAddToWishlist = async () => {
     try {
       const wishlistItem = {
