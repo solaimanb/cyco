@@ -1,5 +1,5 @@
 export const addNewMovie = async movieData =>{
-    const response = await fetch(`http://localhost:8080/movies`,{
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/movies`,{
         method: 'POST',
         headers: {
             'content-type': 'application/json',

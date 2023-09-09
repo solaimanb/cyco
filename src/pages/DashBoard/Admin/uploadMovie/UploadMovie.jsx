@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:8080");
 
 import Swal from "sweetalert2";
 import { addNewMovie } from "../../../../api/addNewMovie";
@@ -9,11 +8,11 @@ import { imageUpload } from "../../../../api/imgUpload";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
 // const socket = io('http://localhost:8080');
-
+const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 const UploadMovie = () => {
   const [notification, setNotification] = useState("");
 
-console.log(notification);
+  console.log(notification);
   const sendNotification = () => {
     socket.emit("send_notification", { notification: notification });
     console.log(notification);
