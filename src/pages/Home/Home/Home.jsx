@@ -104,12 +104,13 @@ const Home = () => {
         }}
       />
 
-      <div className="min-h-screen">
+      <main className="min-h-screen">
         {/* Hero */}
         <Hero />
 
         {/* Featured Movies */}
-        <div className="z-10 py-6 md:py-8 mt-[70%] md:mt-[60%] xl:mt-[55%]">
+        <div className="z-10 py-6 md:py-8 mt-[70
+        %] md:mt-[65%] xl:mt-[70%]">
           <Title title={'Featured Movies'} />
           <Marquee speed={10}>
             <FeaturedMovies />
@@ -149,7 +150,7 @@ const Home = () => {
 
         {/* testimonials */}
         <Testimonials />
-      </div>
+      </main>
     </>
   );
 };

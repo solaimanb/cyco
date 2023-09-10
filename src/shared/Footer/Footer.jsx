@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <div className="mt-20">
-      <footer className="bg-black bg-opacity-60 text-gray-300 py-12">
+      <footer className="absolute left-0 bottom- w-full mt- bg-zinc-950 bg-opacity-60 text-zinc-400 py-12">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
             <h2 className="z-10 font-bold text-2xl lg:text-3xl -rotate-3 text-[#800000]">
@@ -70,7 +69,6 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} CYCO, Inc.</p>
         </div>
       </footer>
-    </div>
   );
 };
 
