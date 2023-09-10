@@ -19,18 +19,18 @@ const Login = () => {
     try {
       const result = await signIn(email?.value, password?.value);
       const loggedUser = result?.user;
-      console.log(loggedUser);
+      // console.log(loggedUser);
 
       // LOGIN SUCCESS NOTIFICATION:
       Swal.fire({
         text: 'Login successful!',
         icon: 'success',
         background: '#222',
-      } );
-      
-      navigate('/', { replace: true });
+      });
+
+      navigate('/');
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setErrorMessage('Invalid email or password');
     }
   };
@@ -55,13 +55,14 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div id="loginAnimation">
-        <div className="z-20">
+        <div className="z-40">
           <div className="absolute top-0 left-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
           <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">
             Login
           </h2>
+
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label
@@ -114,12 +115,14 @@ const Login = () => {
               <SocialLogin />
             </div>
           </div>
-          <p className="text-xs text-gray-600 mt-5 mb-6">
+
+          <p className="text-xs text-gray-600 mt-10 mb-6">
             Don't have an account?{' '}
             <Link to="/register" className="text-indigo-500 hover:underline">
               Register
             </Link>
           </p>
+
           <div className="absolute bottom-0 right-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
