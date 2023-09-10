@@ -8,7 +8,7 @@ import { updateQueryViews } from '../../../../store/slices/queriesSlice/queriesS
 
 const QueryPost = ({ query }) => {
   const { _id, description, title, timestamp } = query;
-  const date = new Date(timestamp);
+  // const date = new Date(timestamp);
   const [timeAgo, setTimeAgo] = useState('');
   const [axiosSecure] = useAxiosSecure();
   const dispatch = useDispatch();
