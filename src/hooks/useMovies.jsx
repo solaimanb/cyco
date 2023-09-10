@@ -5,16 +5,29 @@ const useMovies = () => {
     data: movies = [],
     isLoading: loading,
     refetch,
+    isError,
   } = useQuery({
     queryKey: ['movies'],
     queryFn: async () => {
-      // const res = await fetch('MoviesWithDetails.json');
-          const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/movies`);
-      const data = await res.json();
-      return data;
+      try {
+        const res = await fetch( `${ import.meta.env.VITE_SERVER_URL }/movies` );
+        if ( !res.ok ) {
+          throw new Error( 'Network response failed!' );
+        }
+        const data = await res.json();
+
+        if ( !data ) {
+          return [];
+        }
+
+        return data;
+      } catch (error) {
+        console.error('Error fetching movies', error);
+        throw error;
+      }
     },
   });
-  return [movies, loading, refetch];
+  return [movies, loading, refetch, isError];
 };
 
 export default useMovies;

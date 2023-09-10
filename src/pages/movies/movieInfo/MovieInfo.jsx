@@ -19,6 +19,8 @@ const MovieInfo = () => {
   const { user, setLoading } = useAuth();
   const email = user?.email;
 
+  console.log(location);
+
   const {
     _id,
     Title,
@@ -55,7 +57,6 @@ const MovieInfo = () => {
   //   dispatch(pushToHistory(id))
   // }
 
-  
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
       .then((data) => {
@@ -76,42 +77,48 @@ const MovieInfo = () => {
       };
 
       if (!user) {
-        const response = Swal.fire({
-          text: "Please login to add to your wishlist",
-          icon: "warning",
-          background: "#222",
-          confirmButtonText: "login",
+        const response = await Swal.fire({
+          text: 'Please login to add to your wishlist',
+          icon: 'warning',
+          background: '#222',
+          confirmButtonText: 'login',
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate("/login");
+          navigate('/login');
         }
         return;
       }
 
-      const response = await axiosSecure.post("/wishlist", wishlistItem);
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
       console.log(response);
 
-      if (response.status === 200) {
-        console.log("Movie added to wishlist", response.data);
-        Swal.fire({
-          text: "Added to wishlist!",
-          icon: "success",
-          background: "#222",
-          reverseButtons: true,
-        });
+      if (response?.status === 200) {
+        if (response?.data?.message === 'Already added to wishlist!') {
+          Swal.fire({
+            text: 'Movie is already in your wishlist',
+            icon: 'info',
+            background: '#222',
+          });
+        } else {
+          console.log('Movie added to wishlist', response?.data);
+          Swal.fire({
+            text: 'Added to wishlist!',
+            icon: 'success',
+            background: '#222',
+            reverseButtons: true,
+          });
+        }
       } else {
-        // throw new Error(
-        //   `Failed to add movie to wishlist: ${response.statusText}`
-        // );
+        //
       }
     } catch (error) {
-      console.error("An error occurred while adding to wishlist:", error);
+      console.log('An error occurred while adding to wishlist:', error);
 
       if (error.response) {
         console.error(
-          "Server responded with:",
+          'Server responded with:',
           error.response.status,
           error.response.data
         );
@@ -169,7 +176,7 @@ const MovieInfo = () => {
                 >
                   <span className="">
                     <LuListVideo size={20} />
-                  </span>{" "}
+                  </span>{' '}
                   {/* {isAlreadyInWishlist
                     ? 'Added to Wishlist'
                     : 'Add to Wishlist'} */}
@@ -185,8 +192,12 @@ const MovieInfo = () => {
                   <button className="flex" onClick={() => handleHistory(Title, email, Poster)}>
                     <span>
                       <FaCloudDownloadAlt size={20} />
-                    </span>{" "}
-               
+                    </span>{' '}
+                    {/*<button onClick={() => handleHistory(_id)}>
+                    <span>
+                      <FaCloudDownloadAlt size={20} />
+                    </span>*/}
+
                     Watch now
                   </button>
                 </Link>
