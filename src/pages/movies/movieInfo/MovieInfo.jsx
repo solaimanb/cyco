@@ -115,8 +115,6 @@ const MovieInfo = () => {
           error.response.data
         );
       }
-      // Swal.fire('Error', 'An error occurred while adding to wishlist', 'error');
-      // console.log(error);
     }
   };
 

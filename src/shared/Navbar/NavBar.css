@@ -5,9 +5,11 @@
   transform: translate(-50%, -50%);
   display: flex;
 } */
+
 .nav-ul {
   list-style: none;
 }
+
 #nav {
   position: relative;
   display: block;

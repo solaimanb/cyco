@@ -1,10 +1,12 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 // const initialState = {
 //   movies: [],
 //   status: 'idle',
 //   error: null,
 // };
+const [axiosSecure] = useAxiosSecure();
 
 const wishlistSlice = createSlice({
   name: 'wishlist',
@@ -30,10 +32,10 @@ const wishlistSlice = createSlice({
   },
 });
 
-export const postWishList = createAsyncThunk('wishList', async (newWish) => {
+export const postWishList = createAsyncThunk('wishlist', async (newWish) => {
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/wishList`,
+      `${import.meta.env.VITE_SERVER_URL}/wishlist`,
       newWish
     ); // Change the endpoint to match your Express.js backend
     return response.data;
@@ -41,6 +43,15 @@ export const postWishList = createAsyncThunk('wishList', async (newWish) => {
     throw error;
   }
 });
+
+// export const postWishList = createAsyncThunk('wishlist', async (newWish) => {
+//   try {
+//     const response = await axiosSecure.post('/wishlist', newWish);
+//     console.log('wishListSlice, line-50:', response);
+//   } catch (error) {
+//     throw error;
+//   }
+// });
 
 // const todosSlice = createSlice({
 //   name: 'todos',

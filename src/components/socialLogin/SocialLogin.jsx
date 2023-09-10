@@ -44,7 +44,7 @@ const SocialLogin = () => {
           className="text-cyred font-bold text- flex items-center"
         >
           <FaGoogle size={25} />
-          Google
+          oogle
         </button>
       </div>
     </>

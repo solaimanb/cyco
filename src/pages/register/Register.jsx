@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaFulcrum } from "react-icons/fa";
-import axios from "axios";
-import SocialLogin from "../../components/socialLogin/SocialLogin";
-import useAuth from "../../hooks/useAuth";
-import "./Register.css";
-import { useForm } from "react-hook-form";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash, FaFulcrum } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import SocialLogin from '../../components/socialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
+import './Register.css';
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -19,8 +19,8 @@ const Register = () => {
     watch,
   } = useForm();
 
-  const password = watch("password");
-  const confirmPassword = watch("confirmPassword");
+  const password = watch('password');
+  const confirmPassword = watch('confirmPassword');
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,7 +28,7 @@ const Register = () => {
 
   const onSubmit = async (formData) => {
     const { username, email, password } = formData;
-    const role = "user";
+    const role = 'user';
     console.log(formData);
     if (password !== confirmPassword) {
       return;
@@ -38,34 +38,38 @@ const Register = () => {
       const result = await createUser(email, password);
       const createdUser = result.user;
 
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/register`, {
-        username,
-        role,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/register`,
+        {
+          username,
+          role,
+          email,
+          password,
+        }
+      );
       console.log(response);
       if (response.status === 201) {
-        console.log("User registered successfully");
-        navigate("/");
+        console.log('User registered successfully');
+        navigate('/');
       } else {
-        console.error("Registration failed");
+        console.error('Registration failed');
       }
     } catch (error) {
-      console.error("Registration failed", error);
+      console.error('Registration failed', error);
     }
   };
 
   return (
-    <div className="hero min-h-screen mx-auto shadow-2xl">
+    <div className="hero min-h-screen mx-auto shadow-xl">
       <div id="regAnimation" className="">
-        <div className="w-ful z-20">
+        <div className="w-ful z-20 p-8">
           <div className="absolute top-0 left-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
           <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">
             Register
           </h2>
+
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
@@ -78,7 +82,7 @@ const Register = () => {
                 type="text"
                 id="username"
                 name="username"
-                {...register("username", { required: true })}
+                {...register('username', { required: true })}
                 className="mt-1 p-2 w-full border rounded-sm focus:ring"
                 required
               />
@@ -97,7 +101,7 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
-                {...register("email", { required: true })}
+                {...register('email', { required: true })}
                 className="mt-1 p-2 w-full border rounded-sm focus:ring text-white"
                 required
               />
@@ -114,10 +118,10 @@ const Register = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   id="password"
                   name="password"
-                  {...register("password", {
+                  {...register('password', {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
@@ -129,9 +133,9 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  className="absolute top-2 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
                 >
-                  {showPassword ? "Hide" : "Show"}
+                  <span>{showPassword ? <FaEye /> : <FaEyeSlash />}</span>
                 </button>
               </div>
               {errors.password && (
@@ -150,10 +154,10 @@ const Register = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   id="confirmPassword"
                   name="confirmPassword"
-                  {...register("confirmPassword", {
+                  {...register('confirmPassword', {
                     required: true,
                     validate: (value) => value === password,
                   })}
@@ -163,9 +167,9 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  className="absolute top-2 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none"
                 >
-                  {showPassword ? "Hide" : "Show"}
+                  <span>{showPassword ? <FaEye /> : <FaEyeSlash />}</span>
                 </button>
               </div>
               {errors.confirmPassword && (
@@ -189,7 +193,7 @@ const Register = () => {
           </div>
 
           <p className="text-xs text-gray-600 mt-2 pb-2">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <Link to="/login" className="text-indigo-500 hover:underline">
               Login
             </Link>
