@@ -7,21 +7,22 @@ import WishCard from './WishCard';
 const Wishlist = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useContext(AuthContext);
-  const [wishlist, setWishlist] = useState([]) || [];
-  console.log(wishlist);
-  // if(loading){
-  //   return <Loading/>
+  const [wishlist, setWishlist] = useState([]);
+  console.log( wishlist );
+
+  // if (loading) {
+  //   return <Loading />;
   // }
 
   useEffect(() => {
     if (user) {
       axiosSecure
-        .get(`/user/${user.email}`) // Replace with your API endpoint URL.
-        .then((response) => {
-          setWishlist(response.data.wishlist);
+        .get(`/user/${user?.email}`)
+        .then( ( response ) => {
+          console.log(response);
+          setWishlist(response?.data?.wishlist);
         })
         .catch((error) => {
-          // Handle any errors here.
           console.error('Error fetching wishlist:', error);
         });
     }
