@@ -7,8 +7,6 @@ import useAuth from '../../hooks/useAuth';
 import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
 import './NavBar.css';
 
-const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
-
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
@@ -16,7 +14,9 @@ const Navbar = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationHistory, setNotificationHistory] = useState([]);
+  const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
+  // NOTIFICATION HANDLERS:---------------------->>>>
   useEffect(() => {
     socket.on('receive_notification', (data) => {
       setNotificationCount((prevCount) => prevCount + 0.5);
@@ -96,9 +96,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="sticky z-50 top-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
+    <div className="stick absolute z-50 top-0 left-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       {/* NAVIGATION BAR */}
-      <div className="gray-800 flex flex-row lg:px-24 mx-auto text-white items-center justify-between py-5">
+      <div className="gray-800 flex flex-row lg:px-24 mx-auto text-white items-center justify-between py-2 lg:py-5">
         <Link className="hidden lg:flex" to="/">
           <h3 className="font-bold text-2xl">CYCO</h3>
         </Link>
