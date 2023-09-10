@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 import Loading from '../../../../components/loading/Loading';
 import SearchSlot from '../forum/SearchSlot';
+import Title from '../../../../components/title/Title';
 
 const WatchParty = () => {
 
@@ -19,14 +20,14 @@ const WatchParty = () => {
                 {/* Search Module Slot */}
                 <SearchSlot />
             </div>
-            {/* Details About Our Running Event / Party */}
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://engineersdiarybd.com/wp-content/uploads/2022/06/FB_IMG_1654366263114.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    <div>
-                        <h1 className="text-5xl font-bold font-mono">Meta Journey</h1>
-                        <p className="py-6">Iam Abdullah al Mamun From Meta ML Engineer.</p>
-                        <button className="btn btn-primary rounded-lg">Watch Party </button>
+            {/* event info  */}
+            <div className="hero min-h-screen rouned-lg" style={{ backgroundImage: 'url(https://engineersdiarybd.com/wp-content/uploads/2022/06/FB_IMG_1654366263114.jpg)' }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="max-w-md">
+                        <h1 className="mb-5 text-3xl font-sans font-bold">Abdullah Al Mamun Event</h1>
+                        <p className="mb-5">Joureny Of Abdullah AL Mamun </p>
+                        <button className="btn btn-primary rounded-lg">Watch Now</button>
                     </div>
                 </div>
             </div>
