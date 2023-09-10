@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { RiNotificationBadgeFill } from 'react-icons/ri';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
+import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
 import './NavBar.css';
@@ -9,6 +10,7 @@ import './NavBar.css';
 const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
@@ -35,13 +37,38 @@ const Navbar = () => {
     setShowNotifications(false);
   };
 
+  // LOGOUT-HANDLER:---------------------->>>>
   const handleLogOut = () => {
-    logOut()
-      .then()
-      .catch((error) => console.log(error));
+    Swal.fire({
+      text: 'Are you sure?',
+      icon: 'warning',
+      background: '#222',
+      // showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Logout',
+      cancelButtonText: 'Cancel',
+    })
+      .then((response) => {
+        if (response.isConfirmed) {
+          logOut()
+            .then()
+            .catch((error) => console.log(error));
+
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+
+        Swal.fire({
+          text: 'An error occurred while logging out. Please try again!',
+          icon: 'error',
+          background: '#222',
+        });
+      });
   };
 
-  // REGULAR DEVICE NAV-ITEMS:
+  // REGULAR DEVICE NAV-ITEMS:---------------------->>>>
   const regDeviceNavItems = [
     { to: '/', label: 'Home', ariaLabel: 'home' },
     { to: '/trailer', label: 'Trailer', ariaLabel: 'trailer' },
@@ -52,7 +79,7 @@ const Navbar = () => {
     { to: '/contact', label: 'Contact US', ariaLabel: 'contact' },
   ];
 
-  // SMALL DEVICE NAV-ITEMS:
+  // SMALL DEVICE NAV-ITEMS:---------------------->>>>
   const smallDeviceNavItems = [
     { to: '/', label: 'Home', ariaLabel: 'Home' },
     { to: '/trailer', label: 'Trailer', ariaLabel: 'Trailer' },
