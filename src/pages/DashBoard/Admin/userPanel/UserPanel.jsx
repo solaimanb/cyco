@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
-const Moderator = () => {
+const UserPanel = () => {
   const [isButtonDisabled, setButtonDisabled] = useState(false);
   const [axiosSecure] = useAxiosSecure();
 
@@ -11,35 +11,41 @@ const Moderator = () => {
     data: users = [],
     isLoading,
     isError,
-  } = useQuery(["users"], async () => {
-    try {
-      const res = await axiosSecure.get("/users");
-      return res.data;
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      throw error;
-    }
+  } = useQuery({
+    queryKey: ['users'],
+    queryFn: async () => {
+      try {
+        const res = await axiosSecure.get('/users');
+        return res.data;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+      }
+    },
   });
 
   const handlerMakeAdmin = (user) => {
+    console.log(user);
     Swal.fire({
-      title: "Are you sure?",
-      text: "Your web site New Admin selected",
-      icon: "warning",
+      text: `${user?.username} will be an admin! Are you sure?`,
+      icon: 'question',
+      background: '#222',
+      reverseButtons: true,
+      showConfirmButton: true,
       showCancelButton: true,
-      confirmButtonColor: "#173931",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes.!",
+      cancelButtonColor: '#800000',
+      confirmButtonColor: '#173931',
+      confirmButtonText: 'Confirm',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user?._id}`, {
-          method: "PATCH",
+        fetch(`${import.meta.env.VITE_SERVER_URL}/users/admin/${user?._id}`, {
+          method: 'PATCH',
         })
           .then((res) => res.json())
           .then((data) => {
             if (data?.modifiedCount) {
               setButtonDisabled(true);
-              Swal.fire("Admin!", `${user.name} is an Admin Now!!`, "success");
+              Swal.fire('Admin!', `${user?.name} is an Admin Now!!`, 'success');
             }
           });
       }
@@ -47,16 +53,23 @@ const Moderator = () => {
   };
 
   return (
-    <div>
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      {/* User Panel Header */}
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+          User Panel
+        </p>
+      </div>
+
       <div
         data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="1500"
-        className="overflow-x-auto"
+        className="overflow-x-auto mt-10"
       >
         <table className="table">
           <thead>
-            <tr className="text-lg">
+            <tr className="text-lg text-white">
               <th>Image</th>
               <th>Name</th>
               <th>Email</th>
@@ -64,6 +77,7 @@ const Moderator = () => {
               <th className="pl-14">Action</th>
             </tr>
           </thead>
+
           <tbody>
             {users.map((user) => (
               <tr key={user?._id}>
@@ -72,11 +86,11 @@ const Moderator = () => {
                     <img src={user?.photoUrl} alt="User Avatar" />
                   </div>
                 </td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
+                <td className="font-semibold">{user?.username}</td>
+                <td className="text-zinc-400">{user?.email}</td>
                 <td>
-                  {user.role === "admin" ? (
-                    <span className="text-lg font-semibold text-red-800">
+                  {user?.role === 'admin' ? (
+                    <span className="text-sm font-semibold text-green-600">
                       Admin
                     </span>
                   ) : (
@@ -86,11 +100,11 @@ const Moderator = () => {
                   )}
                 </td>
                 <td className="flex items-center gap-1">
-                  {user.role === "user" ? (
+                  {user.role === 'user' ? (
                     <button
                       onClick={() => handlerMakeAdmin(user)}
                       disabled={isButtonDisabled}
-                      className="bg-main_color bg-orange-500 text-white w-full py-2 rounded-lg shadow-xl"
+                      className="bg-main_color bg-zinc-600 text-white w-full py-2 rounded-sm text-sm shadow-xl"
                     >
                       Make Admin
                     </button>
@@ -108,8 +122,8 @@ const Moderator = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Moderator;
+export default UserPanel;
