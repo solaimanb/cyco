@@ -43,10 +43,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=AjLKTz81bj8",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=AjLKTz81bj8",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -106,10 +103,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=a6VVrAZUnsc",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=a6VVrAZUnsc",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -169,10 +163,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=VFsmuRPClr4",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=VFsmuRPClr4",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -232,10 +223,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=x7Krla_UxRg",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=x7Krla_UxRg",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -295,10 +283,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -358,10 +343,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=8hP9D6kZseM",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=8hP9D6kZseM",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -421,10 +403,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=kMA30rThECg",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=kMA30rThECg",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -484,10 +463,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=ZSI6GbbRc8Q",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=ZSI6GbbRc8Q",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -547,10 +523,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=olXYZOsXw_o",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=olXYZOsXw_o",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -610,10 +583,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=xjDjIWPwcPU",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=xjDjIWPwcPU",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -673,10 +643,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=IRsFc2gguEg",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=IRsFc2gguEg",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -736,10 +703,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=vS3_72Gb-bI",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=vS3_72Gb-bI",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -799,10 +763,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=_YUzQa_1RCE",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=_YUzQa_1RCE",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -862,10 +823,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=Fp9pNPdNwjI",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=Fp9pNPdNwjI",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -925,10 +883,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=BpdDN9d9Jio&t=37s",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=BpdDN9d9Jio&t=37s",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -988,10 +943,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=JuDLepNa7hw",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=JuDLepNa7hw",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -1051,10 +1003,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=smTK_AeAPHs",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=smTK_AeAPHs",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -1114,10 +1063,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=DuWEEKeJLMI",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=DuWEEKeJLMI",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -1177,10 +1123,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=cFqCmIU0-_M",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=cFqCmIU0-_M",
     "Reviews": [
       {
         "Author": "Raihan Sharif",
@@ -1240,10 +1183,7 @@
       "Summary": "A longer summary of the movie plot...",
       "Tagline": "Unforgettable Adventure Awaits."
     },
-    "Trailer": {
-      "Source": "https://www.youtube.com/watch?v=f_HvoipFcA8",
-      "Type": "Video"
-    },
+    "Trailer": "https://www.youtube.com/watch?v=f_HvoipFcA8",
     "Reviews": [
       {
         "Author": "Raihan Sharif",

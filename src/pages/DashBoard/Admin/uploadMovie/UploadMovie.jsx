@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import io from "socket.io-client";
 
 import Swal from "sweetalert2";
 import { addNewMovie } from "../../../../api/addNewMovie";
 import { imageUpload } from "../../../../api/imgUpload";
-import { AuthContext } from "../../../../providers/AuthProvider";
+import { useForm } from 'react-hook-form';
 
-// const socket = io('http://localhost:8080');
-const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
+const socket = io('http://localhost:8080');
+// const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 const UploadMovie = () => {
   const [notification, setNotification] = useState("");
 
@@ -18,131 +18,236 @@ const UploadMovie = () => {
     console.log(notification);
   };
 
-  const { user } = useContext(AuthContext);
+  const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload image");
-  const categories = [
-    {
-      label: "Action",
-    },
-    {
-      label: "Adventure",
-    },
-    {
-      label: "Sci-Fi",
-    },
-    {
-      label: "Emotional",
-    },
-    {
-      label: "Sad",
-    },
-  ];
-
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
+  
   //handle from submit
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     setLoading(true);
-    const Title = event?.target?.Title?.value;
-    const Actors = event?.target?.Actors?.value;
-    const Thumbnail = event?.target?.Thumbnail?.value;
-    const Website = event?.target?.Website?.value;
-    const Runtime = event?.target?.Runtime?.value;
-    const Language = event?.target?.Language?.value;
-    const Director = event?.target?.Director?.value;
-    const Genre = event?.target?.Genre?.value;
-    const Writer = event?.target?.Writer?.value;
-    const Country = event?.target?.Country?.value;
-    const BoxOffice = event?.target?.BoxOffice?.value;
-    const Awards = event?.target?.Awards?.value;
-    const Production = event?.target?.Production?.value;
-    const Poster = event?.target?.Poster?.files[0];
-    const Released = event?.target?.Released?.value;
-    const Year = event?.target?.Year?.value;
-    const Plot = event?.target?.Plot?.value;
+    const Poster = data.Poster[0]; // Access the uploaded file
+    const { Title, movieCode, Year, Genre, Rated, Released, Runtime,Trailer, Director, Writer, Actors, Plot, Language, Country, Awards, Thumbnail, imdbRating, imdbVotes,  } = data;
 
-    imageUpload(Poster)
-      .then((data) => {
-        const movieData = {
-          Poster: data.data.display_url,
-          Title,
-          Actors,
-          Thumbnail,
-          Website,
-          Runtime,
-          Language,
-          Director,
-          Genre,
-          Writer,
-          Country,
-          BoxOffice,
-          Awards,
-          Production,
-          Released,
-          Year,
-          Plot,
-        };
+    try {
+      const posterUploadResponse = await imageUpload(Poster);
+      const movieData = {
+        Poster: posterUploadResponse.data.display_url,
+        Title,
+        movieCode,
+        Year,
+        Genre,
+        Rated,
+        Released,
+        Runtime,
+        Trailer,
+        Director,
+        Writer,
+        Actors,
+        Plot,
+        Language,
+        Country,
+        Awards,
+        Thumbnail,
+        imdbRating,
+        imdbVotes
+      };
 
-        addNewMovie(movieData)
-          .then((data) => {
-            console.log(data);
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Movie uploaded successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          })
-          .catch((err) => console.log(err.message));
-      })
-      .catch((err) => console.log(err.message));
-    console.log("hello");
+      const movieUploadResponse = await addNewMovie(movieData);
+      console.log(movieUploadResponse);
 
-    setUploadButtonText("Uploading.....");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Movie uploaded successfully',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+
+    setLoading(false);
+    setUploadButtonText('Upload Poster');
   };
-  const handleImageChange = (image) => {
-    setUploadButtonText(image.name);
+  const handleImageChange = (event) => {
+    setUploadButtonText(event.target.files[0].name);
+    setValue('Poster', event.target.files);
   };
 
   return (
-    <div className=" w-full flex flex-col bg-zinc-800 p-3 rounded-sm h-full">
+    <div className=" w-full flex flex-col bg-zinc-900 p-3 rounded-sm h-full">
       <div className="w-full">
         <div className="bg-cyred/60 w-full py-10 flex justify-center items-center rounded-sm">
           <p>Upload New Movies</p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className=" w-full pt-10">
-        <div className="flex flex-row gap-5 pb-6">
-          <div className="h-full">
-            <div className="space-y-2">
+      <form onSubmit={handleSubmit(onSubmit)} className=" w-full pt-10">
+        <div className="md:flex justify-between items-start gap-4 pb-6">
+              <div className="w-full space-y-2">
               <div className="space-y-1 text-sm">
-                <label htmlFor="title" className="block text-gray-600">
+                <label htmlFor="Title" className="block text-gray-600">
                   Title
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 rounded-sm"
-                  name="Title"
-                  id="title"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
                   type="text"
                   placeholder="Title"
-                  required
+                  {...register('Title', { required: true })}
                 />
               </div>
 
-              <div className=" p-4 bg-white/60 w-full m-auto">
-                <div className="file_upload px-5 py-3 relative border-4 border-dotted">
+              <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="movieCode" className="block text-gray-600">
+                Movie Code
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="number"
+                  placeholder="Movie Code"
+                  {...register('movieCode', { required: true })}
+                />
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Year" className="block text-gray-600">
+                Year
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Year"
+                  {...register('Year', { required: true })}
+                />
+              </div>
+              </div>
+
+              <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Genre" className="block text-gray-600">
+                  Genre
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Genre"
+                  {...register('Genre', { required: true })}
+                />
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Rated" className="block text-gray-600">
+                Rated
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="PG-13"
+                  {...register('Rated', { required: true })}
+                />
+              </div>
+              </div>
+
+             <div className="flex space-x-4">
+             <div className="space-y-1 text-sm">
+                  <label htmlFor="Released" className="block text-gray-600">
+                    Released
+                  </label>
+                  <input
+                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                    type="text"
+                    placeholder="Released"
+                    {...register('Released', { required: true })}
+                  />
+                </div>
+
+                <div className="space-y-1 text-sm">
+                  <label htmlFor="Runtime" className="block text-gray-600">
+                    Runtime
+                  </label>
+                  <input
+                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                    type="text"
+                    placeholder="Runtime"
+                    {...register('Runtime', { required: true })}
+                  />
+                </div>
+             </div>
+
+                <div className="space-y-1 text-sm">
+                <label htmlFor="Trailer" className="block text-gray-600">
+                Trailer
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Provide the movie's trailer link"
+                  {...register('Trailer', { required: true })}
+                />
+              </div>
+
+              <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Director" className="block text-gray-600">
+                  Director
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Director"
+                  {...register('Director', { required: true })}
+                />
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Writer" className="block text-gray-600">
+                  Writer
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Writer"
+                  {...register('Writer', { required: true })}
+                />
+              </div>
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Actors" className="block text-gray-600">
+                  Actors
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Actors"
+                  {...register('Actors', { required: true })}
+                />
+              </div>
+              </div>
+
+              <div className="w-full space-y-2">
+              
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Plot" className="block text-gray-600">
+                  Plot
+                </label>
+                <textarea
+                  className="w-full h-24 px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm focus:outline-rose-500"
+                  placeholder="Plot"
+                  {...register('Plot', { required: true })}
+                ></textarea>
+              </div>
+
+              <div className=" p-3 bg-zinc-600 w-full m-auto border-2 border-cyred rounded-sm">
+                <div className="px-5 py-3 relative border-4 border-dotted">
                   <div className="flex flex-col w-max mx-auto text-center">
                     <label>
                       <input
-                        onChange={(event) => {
-                          handleImageChange(event.target.files[0]);
-                        }}
+                        onChange={handleImageChange}
                         className="text-sm cursor-pointer w-36 hidden text-gray-800 bg-white/60"
                         type="file"
                         name="Poster"
-                        id="poster"
                         accept="image/*"
                         hidden
                       />
@@ -153,244 +258,92 @@ const UploadMovie = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="released" className="block text-gray-600">
-                    Released
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 bg-white/60 text-gray-800 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Released"
-                    id="released"
-                    type="text"
-                    placeholder="Released"
-                    required
-                  />
-                </div>
 
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="year" className="block text-gray-600">
-                    Year
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Year"
-                    id="year"
-                    type="number"
-                    placeholder="Year"
-                    required
-                  />
-                </div>
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Thumbnail" className="block text-gray-600">
+                  Thumbnail
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Thumbnail"
+                  {...register('Thumbnail', { required: true })}
+                />
               </div>
 
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="runtime" className="block text-gray-600">
-                    Runtime
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Runtime"
-                    id="runtime"
-                    type="text"
-                    placeholder="Runtime"
-                    required
-                  />
-                </div>
+             <div className="flex space-x-4">
 
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="language" className="block text-gray-600">
+             <div className="space-y-1 text-sm">
+                  <label htmlFor="Language" className="block text-gray-600">
                     Language
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Language"
-                    id="language"
+                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
                     type="text"
                     placeholder="Language"
-                    required
+                    {...register('Language', { required: true })}
                   />
                 </div>
-              </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="plot" className="block text-gray-600">
-                  Plot
-                </label>
-
-                <textarea
-                  id="plot"
-                  className=" block rounded-sm focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 bg-white/60  border border-cyred/60 focus:outline-rose-500 "
-                  name="Plot"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div className="">
-            <div className="space-y-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="actors" className="block text-gray-600">
-                  Actors
+                <div className="space-y-1 text-sm">
+                <label htmlFor="Country" className="block text-gray-600">
+                  Country
                 </label>
                 <input
-                  className="w-full px-4 py-3 border text-white bg-white/60 border-cyred/60 focus:outline-rose-500 rounded-sm "
-                  name="Actors"
-                  id="actors"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
                   type="text"
-                  placeholder="Actors"
-                  required
+                  placeholder="Country"
+                  {...register('Country', { required: true })}
+                />
+              </div>
+             </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Awards" className="block text-gray-600">
+                  Awards
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="Awards"
+                  {...register('Awards', { required: true })}
                 />
               </div>
 
-              <div className="flex justify-between gap-2 ">
-                <div className="space-y-1 text-sm w-full">
-                  <label htmlFor="genre" className="block text-gray-600">
-                    Movies Type
-                  </label>
-                  <select
-                    required
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm"
-                    name="Genre"
-                  >
-                    {categories.map((category) => (
-                      <option value={category.label} key={category.label}>
-                        {category.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <div className="space-y-1 text-sm">
-                    <label htmlFor="thumbnail" className="block text-gray-600">
-                      Thumbnail
-                    </label>
-                    <input
-                      className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                      name="Thumbnail"
-                      id="thumbnail"
-                      type="text"
-                      placeholder="Thumbnail"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <label htmlFor="website" className="block text-gray-600">
-                  Website Link
+              <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="imdbRating" className="block text-gray-600">
+                IMDB Rating
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                  name="Website"
-                  id="website"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
                   type="text"
-                  placeholder="Website Link"
-                  required
+                  placeholder="imdbRating"
+                  {...register('IMDB Rating', { required: true })}
                 />
               </div>
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="director" className="block text-gray-600">
-                    Director
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Director"
-                    id="director"
-                    type="text"
-                    placeholder="Director"
-                    required
-                  />
-                </div>
 
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="writer" className="block text-gray-600">
-                    Writer
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Writer"
-                    id="writer"
-                    type="text"
-                    placeholder="Writer"
-                    required
-                  />
-                </div>
+              <div className="space-y-1 text-sm">
+                <label htmlFor="imdbVotes" className="block text-gray-600">
+                IMDB Votes
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  type="text"
+                  placeholder="imdbVotes"
+                  {...register('IMDB Votes', { required: true })}
+                />
               </div>
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="country" className="block text-gray-600">
-                    Country
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Country"
-                    id="country"
-                    type="text"
-                    placeholder="Country"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="boxOffice" className="block text-gray-600">
-                    BoxOffice
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="BoxOffice"
-                    id="boxOffice"
-                    type="text"
-                    placeholder="BoxOffice"
-                    required
-                  />
-                </div>
               </div>
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="awards" className="block text-gray-600">
-                    Awards
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Awards"
-                    id="awards"
-                    type="text"
-                    placeholder="Awards"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="production" className="block text-gray-600">
-                    Production
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-white/60 border border-cyred/60 focus:outline-rose-500 rounded-sm "
-                    name="Production"
-                    id="production"
-                    type="text"
-                    placeholder="Production"
-                    required
-                  />
-                </div>
               </div>
-            </div>
-          </div>
+            
         </div>
         <div className="w-2/3 mx-auto">
           <button
             type="submit"
-            className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-white/60 hover:bg-cyred"
+            className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
           >
-            {loading ? (
-              // <TbFidgetSpinner className="m-auto animate-spin" size={24} />
-              <h2>Loading...</h2>
-            ) : (
-              "Save & Continue"
-            )}
+            {loading ? <h2>Loading...</h2> : 'Save & Continue'}
           </button>
         </div>
       </form>
