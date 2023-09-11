@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 const ManageSubscription = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  
   return (
     <>
     <div className="min-h-screen items-center ">
@@ -23,15 +24,16 @@ const ManageSubscription = () => {
       <div className="modal-box max-w-md mx-auto bg-white p-4 rounded shadow-lg text-gray-700">
         <Button
           onPress={onOpen}
-          className="btn btn-sm absolute right-2 top-2"
+          className="btn btn-sm  absolute right-2 top-2"
           color="secondary"
         >
           Edit
         </Button>
         <div className="">
-          <h2 className="text-2xl font-semibold mb-4">Standard</h2>
+          <h2 className="text-2xl font-semibold mb-4">Basic</h2>
         </div>
       </div>
+     
       {/* 2nd number card */}
       <div className="modal-box max-w-md mx-auto bg-white p-4 rounded shadow-lg text-gray-700">
         <Button
@@ -62,13 +64,13 @@ const ManageSubscription = () => {
       <div className="modal-box max-w-md mx-auto bg-white p-4 rounded shadow-lg text-gray-700">
         <Button
           onPress={onOpen}
-          className="btn btn-sm  absolute right-2 top-2"
+          className="btn btn-sm absolute right-2 top-2"
           color="secondary"
         >
           Edit
         </Button>
         <div className="">
-          <h2 className="text-2xl font-semibold mb-4">Basic</h2>
+          <h2 className="text-2xl font-semibold mb-4">Standard</h2>
         </div>
       </div>
      
