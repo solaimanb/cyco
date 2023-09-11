@@ -5,12 +5,10 @@ import SeriesParts from '../components/series/SeriesParts';
 import VideoPlayer from '../components/videoPlayer/VideoPlayer';
 import Dashboard from '../layouts/Dashboard';
 import Root from '../layouts/Root';
-import AdminHome from '../pages/DashBoard/Admin/AdminHome';
 import Payments from '../pages/DashBoard/Admin/Payments/Payment';
-import ManageSubscription from '../pages/DashBoard/Admin/manage-subscription/ManageSubscription';
+import ManageSubscription from '../pages/dashBoard/admin/manageSubscription/ManageSubscription';
 // import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from '../pages/DashBoard/Admin/system-logs/SystemLogs';
-import UsersHome from '../pages/DashBoard/user/UsersHome';
 import Downloads from '../pages/DashBoard/user/downloads/Downloads';
 import History from '../pages/DashBoard/user/history/History';
 import Recommendation from '../pages/DashBoard/user/recommendation/Recommendation';
@@ -23,6 +21,8 @@ import UserFeedback from '../pages/dashBoard/admin/userFeedback/UserFeedback';
 // import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import AdminPaymentHistory from '../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory';
 import UploadMovie from '../pages/DashBoard/Admin/uploadMovie/UploadMovie';
+import UserDashboard from '../pages/DashBoard/user/UsersHome';
+import AdminDashboard from '../pages/dashBoard/admin/AdminDashboard';
 import UserPanel from '../pages/dashBoard/admin/userPanel/UserPanel';
 import Forum from '../pages/dashBoard/user/forum/Forum';
 import PaymentHistory from '../pages/dashBoard/user/paymentHistory/PaymentHistory';
@@ -88,8 +88,8 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: '', element: <AdminHome /> },
-      { path: 'users-home', element: <UsersHome /> },
+      { path: 'admin-dashboard', element: <AdminDashboard /> },
+      { path: 'user-dashboard', element: <UserDashboard /> },
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },
       { path: 'subscriptions', element: <Subscriptions /> },
