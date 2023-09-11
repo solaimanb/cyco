@@ -7,7 +7,6 @@ import {
   TableRow,
 } from '@nextui-org/react';
 import React, { useEffect } from 'react';
-import { TbFidgetSpinner } from 'react-icons/Tb';
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../../../../hooks/useAuth';
 import { fetchData } from '../../../../store/slices/paymenthistorySlice/paymentHistorySlice';
@@ -23,9 +22,9 @@ const AdminPaymentHistory = () => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  if (status === 'loading') {
-    return <TbFidgetSpinner className="m-auto animate-spin" size={24} />;
-  }
+  // if (status === 'loading') {
+  //   return <TbFidgetSpinner className="m-auto animate-spin" size={24} />;
+  // }
 
   if (status === 'failed') {
     return <div>Error: {error}</div>;

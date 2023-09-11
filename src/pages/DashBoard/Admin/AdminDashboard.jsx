@@ -16,7 +16,7 @@ import {
 } from 'recharts';
 import useMovies from '../../../hooks/useMovies';
 
-const AdminHome = () => {
+const AdminDashboard = () => {
   const [movies, loading] = useMovies();
   console.log(movies.length);
   const currentDate = new Date();
@@ -262,4 +262,4 @@ const AdminHome = () => {
   );
 };
 
-export default AdminHome;
+export default AdminDashboard;
