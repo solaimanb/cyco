@@ -25,14 +25,17 @@ const UserPanel = () => {
   });
 
   const handlerMakeAdmin = (user) => {
+    console.log(user);
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'Your web site New Admin selected',
-      icon: 'warning',
+      text: `${user?.username} will be an admin! Are you sure?`,
+      icon: 'question',
+      background: '#222',
+      reverseButtons: true,
+      showConfirmButton: true,
       showCancelButton: true,
+      cancelButtonColor: '#800000',
       confirmButtonColor: '#173931',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes.!',
+      confirmButtonText: 'Confirm',
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`${import.meta.env.VITE_SERVER_URL}/users/admin/${user?._id}`, {
@@ -42,7 +45,7 @@ const UserPanel = () => {
           .then((data) => {
             if (data?.modifiedCount) {
               setButtonDisabled(true);
-              Swal.fire('Admin!', `${user.name} is an Admin Now!!`, 'success');
+              Swal.fire('Admin!', `${user?.name} is an Admin Now!!`, 'success');
             }
           });
       }
