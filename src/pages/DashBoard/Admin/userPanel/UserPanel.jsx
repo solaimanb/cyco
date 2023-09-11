@@ -45,7 +45,11 @@ const UserPanel = () => {
           .then((data) => {
             if (data?.modifiedCount) {
               setButtonDisabled(true);
-              Swal.fire('Admin!', `${user?.name} is an Admin Now!!`, 'success');
+              Swal.fire({
+                text: `${user?.username} is an admin now!`,
+                icon: 'success',
+                background: '#222',
+              });
             }
           });
       }
