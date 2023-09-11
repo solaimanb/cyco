@@ -4,16 +4,15 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
-import { MdAccountCircle } from 'react-icons/md';
 
 import {
+  Badge,
   Button,
   useDisclosure,
-  Badge,
 } from "@nextui-org/react";
 import { MdOutlineNotificationsActive } from "react-icons/md";
-import NotificationModal from "../shared/modal/NotificationModal";
 import { useDispatch, useSelector } from "react-redux";
+import NotificationModal from "../shared/modal/NotificationModal";
 import { fetchData } from "../store/slices/paymenthistorySlice/paymentHistorySlice";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -79,7 +78,7 @@ const Dashboard = () => {
     { to: "logs", text: "System Logs" },
     { to: "admin/manage-subscription", text: "Manage Subscriptions" },
     { to: "modernization", text: "Moderation" },
-    { to: "user-panel-list", text: "User Panel Lists" },
+    { to: "user-panel", text: "User Panel" },
     { to: "user-feedback", text: "User Feedback" },
     { to: "admin/paymentHistory", text: "Payment History" },
   ];
