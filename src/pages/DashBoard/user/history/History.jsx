@@ -14,7 +14,7 @@ const History = () => {
 
   // Check if localStorage is supported
 
-  const filter = history.filter((h) => h.email !== user.email);
+  const filter = history.filter((h) => h.email === user.email);
   console.log(filter);
 
   return (

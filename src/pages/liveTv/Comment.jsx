@@ -12,7 +12,7 @@ const Comment = ({ author, text }) => {
         <div className="bg-gray-800 rounded-lg p-3">
           <div className="flex items-center space-x-2">
             <span className="font-semibold text-gray-300">{author}</span>
-            <span className="text-xs text-gray-500">2 hours ago</span>
+            <span className="text-xs text-gray-500"></span>
           </div>
           <p className="mt-2 text-white">{text}</p>
           <div className="flex items-center mt-2">
