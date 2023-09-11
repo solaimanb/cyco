@@ -66,3 +66,4 @@ const NotificationModal = ({ isOpen, onOpenChange, filters }) => {
 };
 
 export default NotificationModal;
+

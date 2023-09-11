@@ -77,7 +77,7 @@ const Dashboard = () => {
     { to: "upload-movie", text: "Upload Movie" },
     { to: "revenue", text: "Ad Revenue Tracking" },
     { to: "logs", text: "System Logs" },
-    { to: "manage-subscription", text: "Manage Subscriptions" },
+    { to: "admin/manage-subscription", text: "Manage Subscriptions" },
     { to: "modernization", text: "Moderation" },
     { to: "user-panel-list", text: "User Panel Lists" },
     { to: "user-feedback", text: "User Feedback" },

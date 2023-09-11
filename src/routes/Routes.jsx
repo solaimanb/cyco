@@ -106,7 +106,7 @@ const router = createBrowserRouter([
       { path: "revenue", element: <Revenue /> },
       { path: "logs", element: <SystemLogs /> },
       { path: "help", element: <Help /> },
-      { path: "subscription", element: <ManageSubscription /> },
+      { path: "admin/manage-subscription", element: <ManageSubscription /> },
       // { path: 'modernization', element: <Modernization /> },
       { path: "user-pannel-list", element: <UserPannelList /> },
       { path: "user-feedback", element: <UserFeedback /> },
