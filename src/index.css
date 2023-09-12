@@ -77,6 +77,6 @@ svg.recharts-surface tspan {
 @media (min-width: 1201px) {
   /* Large desktops and widescreen displays go here */
   .container {
-    width: 85%;
+    width: 95%;
   }
 }
