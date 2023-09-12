@@ -17,5 +17,5 @@ module.exports = {
     themes: ['light', 'black', 'night', 'forest', 'retro', 'acid', 'dark'],
   },
   darkMode: 'class',
-  plugins: [require('daisyui'), nextui()],
+  plugins: [require('daisyui')],
 };

@@ -14,11 +14,12 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import useMonthlyRevenue from '../../../hooks/useMonthlyRevenue';
 import useMovies from '../../../hooks/useMovies';
+import useUsers from '../../../hooks/useUsers';
 
 const AdminDashboard = () => {
   const [movies, loading] = useMovies();
-  console.log(movies.length);
   const currentDate = new Date();
 
   console.log(currentDate);
@@ -67,6 +68,17 @@ const AdminDashboard = () => {
     },
   ];
 
+  const [users] = useUsers();
+  const totalUsers = users.length * 111;
+  const dailyActiveUsers = Math.floor(totalUsers / 7);
+  const monthlyActiveUsers = Math.floor(dailyActiveUsers * 29);
+
+  // console.log(users.length);
+
+  const { monthlyRevenue } = useMonthlyRevenue();
+
+  console.log(monthlyRevenue);
+
   return (
     <div className="min-h-screen p-4 bg-zinc-950 overflow-y-auto">
       <div className="flex justify-between items-center border rounded-lg bg-zinc-600 mb-4 p-2">
@@ -105,15 +117,16 @@ const AdminDashboard = () => {
           <h2 className="font-semibold mb-3">User Analytics</h2>
           <div className="text-sm space-y-2">
             <p>
-              Total Users: <span className="font-bold text-white">1500</span>
+              Total Users:{' '}
+              <span className="font-bold text-white">{totalUsers}</span>
             </p>
             <p>
               Daily Active Users:{' '}
-              <span className="font-bold text-white">800</span>
+              <span className="font-bold text-white">{dailyActiveUsers}</span>
             </p>
             <p>
               Monthly Active Users:{' '}
-              <span className="font-bold text-white">1200</span>
+              <span className="font-bold text-white">{monthlyActiveUsers}</span>
             </p>
           </div>
         </div>
