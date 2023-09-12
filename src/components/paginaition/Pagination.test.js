@@ -1,55 +1,50 @@
-// Pagination.test.js
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Pagination from "./Pagination";
 
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import Pagination from './Pagination';
+describe("Pagination Component", () => {
+  test("handles the 'Previous' button correctly", () => {
+    // Create a mock function for onPageChange
+    const onPageChangeMock = jest.fn();
 
-// Mock the onPageChange and onNumberClick functions
-const mockOnPageChange = jest.fn();
-const mockOnNumberClick = jest.fn();
+    render(
+      <Pagination
+        currentPage={2}
+        totalPages={12}
+        onPageChange={onPageChangeMock}
+        onNumberClick={() => {}}
+      />
+    );
 
-test('renders Pagination component correctly', () => {
-  // Render the Pagination component
-  render(
-    <Pagination
-      currentPage={1}
-      totalPages={5}
-      onPageChange={mockOnPageChange}
-      onNumberClick={mockOnNumberClick}
-    />
-  );
+    const previousButton = screen.getByText("Pre");
+    fireEvent.click(previousButton);
 
-  // Add your assertions here, for example:
-  expect(screen.getByText('Pre')).toBeInTheDocument();
-  expect(screen.getByText('Next')).toBeInTheDocument();
-  expect(screen.getByText('1')).toBeInTheDocument();
-  // ... add more assertions as needed
+    // Check if onPageChangeMock was called
+    expect(onPageChangeMock).toHaveBeenCalled();
+
+    // Check if onPageChangeMock was called with the correct argument
+    expect(onPageChangeMock).toHaveBeenCalledWith(1);
+  });
+  test("handles the 'Next' button correctly", () => {
+    // Create a mock function for onPageChange
+    const onPageChangeMock = jest.fn();
+
+    render(
+      <Pagination
+        currentPage={1}
+        totalPages={12}
+        onPageChange={onPageChangeMock}
+        onNumberClick={() => {}}
+      />
+    );
+
+    const nextButton = screen.getByText("Next");
+    fireEvent.click(nextButton);
+
+    // Check if onPageChangeMock was called
+    expect(onPageChangeMock).toHaveBeenCalled();
+
+    // Check if onPageChangeMock was called with the correct argument
+    expect(onPageChangeMock).toHaveBeenCalledWith(2);
+  });
 });
-
-test('handles page change correctly', () => {
-  // Render the Pagination component
-  render(
-    <Pagination
-      currentPage={3}
-      totalPages={5}
-      onPageChange={mockOnPageChange}
-      onNumberClick={mockOnNumberClick}
-    />
-  );
-
-  // Simulate a click on the "Pre" button
-  const preButton = screen.getByText('Pre');
-  fireEvent.click(preButton);
-
-  // Verify that the onPageChange function was called with the correct argument
-  expect(mockOnPageChange).toHaveBeenCalledWith(2);
-
-  // Simulate a click on the "Next" button
-  const nextButton = screen.getByText('Next');
-  fireEvent.click(nextButton);
-
-  // Verify that the onPageChange function was called with the correct argument
-  expect(mockOnPageChange).toHaveBeenCalledWith(4);
-});
-
-// Add more test cases to cover other component behavior
