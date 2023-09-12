@@ -1,8 +1,8 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import Pagination from "./Pagination";
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import Pagination from './Pagination';
 
-describe("Pagination Component", () => {
+describe('Pagination Component', () => {
   test("handles the 'Previous' button correctly", () => {
     // Create a mock function for onPageChange
     const onPageChangeMock = jest.fn();
@@ -16,7 +16,7 @@ describe("Pagination Component", () => {
       />
     );
 
-    const previousButton = screen.getByText("Pre");
+    const previousButton = screen.getByText('Pre');
     fireEvent.click(previousButton);
 
     // Check if onPageChangeMock was called
@@ -38,7 +38,7 @@ describe("Pagination Component", () => {
       />
     );
 
-    const nextButton = screen.getByText("Next");
+    const nextButton = screen.getByText('Next');
     fireEvent.click(nextButton);
 
     // Check if onPageChangeMock was called

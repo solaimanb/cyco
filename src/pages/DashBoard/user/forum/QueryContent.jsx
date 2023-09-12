@@ -40,12 +40,7 @@ const QueryPost = ({ query }) => {
     }
   }, [timestamp]);
 
-  // // COUNT VIEWS:
-  // const handleViewClick = (query) => {
-  //   query.views += 1;
-  // };
-
-  const handleViewClick = async (query) => {
+  const handleQueryClick = async (query) => {
     const updatedViewCount = query.views + 1; // Increment the view count locally
     console.log(updatedViewCount);
     // console.log(query);
@@ -65,11 +60,13 @@ const QueryPost = ({ query }) => {
     } catch (error) {
       console.log('Error updating query views', error);
     }
+
+    // 
   };
 
   return (
     <div
-      onClick={() => handleViewClick(query)}
+      onClick={() => handleQueryClick(query)}
       className="cursor-pointer flex flex-col md:flex-row justify-between gap-2 p-2 border rounded-sm border-zinc-800"
     >
       <div className="p-2 mt-2">
