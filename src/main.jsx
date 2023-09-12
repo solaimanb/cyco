@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <NextUIProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <NextUIProvider className="dark text-foreground bg-background">
+          <NextUIProvider className=" ">
             <Container>
               <Provider store={store}>
                 <RouterProvider router={router} />
