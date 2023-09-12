@@ -1,8 +1,8 @@
-import React from "react";
-import HistoryCard from "./HistoryCard";
-import useMovies from "../../../../hooks/useMovies";
-import useHistory from "../../../../hooks/useHistory";
-import useAuth from "../../../../hooks/useAuth";
+import React from 'react';
+import useAuth from '../../../../hooks/useAuth';
+import useHistory from '../../../../hooks/useHistory';
+import useMovies from '../../../../hooks/useMovies';
+import HistoryCard from './HistoryCard';
 
 const History = () => {
   const user = useAuth();
@@ -10,27 +10,23 @@ const History = () => {
 
   const [history] = useHistory();
 
-
-
-  // Check if localStorage is supported
-
-  const filter = history.filter((h) => h.email === user.email);
-  console.log(filter);
+  const filteredHistory = history.filter((h) => h.email === user?.email);
+  console.log(filteredHistory);
 
   return (
-    <div className="min-h-screen">
-      <div className="navbar bg-base-100">
-        <p className="border-l-4 border-white mt-5 ml-5 inline-block px-5">
-          Subscription Plans
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      {/* HISTORY HEADER */}
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+          History
         </p>
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 xl:grid-cols-5">
-        {filter &&
-          filter.map((data) => <HistoryCard refetch={refetch} data={data} />)}
+        {filteredHistory &&
+          filteredHistory.map((data) => <HistoryCard key={data?._id} refetch={refetch} data={data} />)}
       </div>
-      
-    </div>
+    </section>
   );
 };
 

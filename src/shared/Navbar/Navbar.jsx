@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RiNotificationBadgeFill } from 'react-icons/ri';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
