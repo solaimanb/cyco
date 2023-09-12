@@ -173,6 +173,8 @@ const Dashboard = () => {
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
               />
+
+              {/* NOTIFICATION INDICATOR */}
               <>
                 <Button onPress={onOpen} color="">
                   <Badge
