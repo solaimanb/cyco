@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaPlayCircle, FaShare } from 'react-icons/fa';
+import { FaShare } from 'react-icons/fa';
 import ReactPlayer from 'react-player';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CommentSection from '../../../liveTv/CommentSection';
 
 const WatchParty = () => {
@@ -87,11 +87,11 @@ const WatchParty = () => {
             </div>
 
             <div className="flex flex-row gap-3">
-              <Link to="watch-party-public" state={{ party }}>
+              {/* <Link to="watch-party-public" state={{ party }}>
                 <button className="btn bg-zinc-800/80 rounded-full capitalize font-bold">
                   <FaPlayCircle size={22} /> Play
                 </button>
-              </Link>
+              </Link> */}
               <button className="btn bg-zinc-800/80 rounded-full">
                 <FaShare size={16} />
               </button>
