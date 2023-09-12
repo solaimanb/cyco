@@ -93,7 +93,7 @@ svg.recharts-surface tspan {
   }
   
 }
-@media screen and(min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 993px) and (max-width: 1200px) {
   /* Desktops and larger laptops go here */
   .custom-container {
     width: 100%;
@@ -106,7 +106,7 @@ svg.recharts-surface tspan {
   }
   
 }
-@media screen and(min-width: 1201px) {
+@media (min-width: 1201px) {
   /* Large desktops and widescreen displays go here */
   .custom-container {
     width: 100%;

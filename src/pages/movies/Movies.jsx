@@ -77,7 +77,7 @@ const Movies = () => {
         )}
       </div>
 
-      {/* Pagination */}
+      {/* PAGINATION */}
       {(isSearchClicked && filteredMovies.length > 0) ||
       (!isSearchClicked && movies.length > 0) ? (
         <Pagination

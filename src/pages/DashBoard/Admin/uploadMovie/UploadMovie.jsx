@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
-import Swal from "sweetalert2";
-import { addNewMovie } from "../../../../api/addNewMovie";
-import { imageUpload } from "../../../../api/imgUpload";
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { addNewMovie } from '../../../../api/addNewMovie';
+import { imageUpload } from '../../../../api/imgUpload';
 
 const socket = io('http://localhost:8080');
 // const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 const UploadMovie = () => {
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState('');
 
   console.log(notification);
   const sendNotification = () => {
-    socket.emit("send_notification", { notification: notification });
+    socket.emit('send_notification', { notification: notification });
     console.log(notification);
   };
 
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
-  
+  const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');
+
   //handle from submit
   const onSubmit = async (data) => {
     setLoading(true);
     const Poster = data.Poster[0]; // Access the uploaded file
-    const { Title, movieCode, Year, Genre, Rated, Released, Runtime,Trailer, Director, Writer, Actors, Plot, Language, Country, Awards, Thumbnail, imdbRating, imdbVotes,  } = data;
+    const {
+      Title,
+      movieCode,
+      Year,
+      Genre,
+      Rated,
+      Released,
+      Runtime,
+      Trailer,
+      Director,
+      Writer,
+      Actors,
+      Plot,
+      Language,
+      Country,
+      Awards,
+      Thumbnail,
+      imdbRating,
+      imdbVotes,
+    } = data;
 
     try {
       const posterUploadResponse = await imageUpload(Poster);
@@ -49,7 +68,7 @@ const UploadMovie = () => {
         Awards,
         Thumbnail,
         imdbRating,
-        imdbVotes
+        imdbVotes,
       };
 
       const movieUploadResponse = await addNewMovie(movieData);
@@ -75,35 +94,35 @@ const UploadMovie = () => {
   };
 
   return (
-    <div className=" w-full flex flex-col bg-zinc-900 p-3 rounded-sm h-full">
-      <div className="w-full">
-        <div className="bg-cyred/60 w-full py-10 flex justify-center items-center rounded-sm">
-          <p>Upload New Movies</p>
-        </div>
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold bor7er ml-2 px-smmd:px-5">
+          Upload New Movie
+        </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className=" w-full pt-10">
         <div className="md:flex justify-between items-start gap-4 pb-6">
-              <div className="w-full space-y-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="Title" className="block text-gray-600">
-                  Title
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                  type="text"
-                  placeholder="Title"
-                  {...register('Title', { required: true })}
-                />
-              </div>
+          <div className="w-full space-y-2">
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Title" className="block text-gray-500">
+                Title
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                type="text"
+                placeholder="Title"
+                {...register('Title', { required: true })}
+              />
+            </div>
 
-              <div className="flex space-x-4">
+            <div className="flex space-x-4">
               <div className="space-y-1 text-sm">
-                <label htmlFor="movieCode" className="block text-gray-600">
-                Movie Code
+                <label htmlFor="movieCode" className="block text-gray-500">
+                  Movie Code
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="number"
                   placeholder="Movie Code"
                   {...register('movieCode', { required: true })}
@@ -111,25 +130,25 @@ const UploadMovie = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="Year" className="block text-gray-600">
-                Year
+                <label htmlFor="Year" className="block text-gray-500">
+                  Year
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Year"
                   {...register('Year', { required: true })}
                 />
               </div>
-              </div>
+            </div>
 
-              <div className="flex space-x-4">
+            <div className="flex space-x-4">
               <div className="space-y-1 text-sm">
-                <label htmlFor="Genre" className="block text-gray-600">
+                <label htmlFor="Genre" className="block text-gray-500">
                   Genre
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Genre"
                   {...register('Genre', { required: true })}
@@ -137,63 +156,63 @@ const UploadMovie = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="Rated" className="block text-gray-600">
-                Rated
+                <label htmlFor="Rated" className="block text-gray-500">
+                  Rated
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="PG-13"
                   {...register('Rated', { required: true })}
                 />
               </div>
-              </div>
+            </div>
 
-             <div className="flex space-x-4">
-             <div className="space-y-1 text-sm">
-                  <label htmlFor="Released" className="block text-gray-600">
-                    Released
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                    type="text"
-                    placeholder="Released"
-                    {...register('Released', { required: true })}
-                  />
-                </div>
-
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="Runtime" className="block text-gray-600">
-                    Runtime
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                    type="text"
-                    placeholder="Runtime"
-                    {...register('Runtime', { required: true })}
-                  />
-                </div>
-             </div>
-
-                <div className="space-y-1 text-sm">
-                <label htmlFor="Trailer" className="block text-gray-600">
-                Trailer
+            <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Released" className="block text-gray-500">
+                  Released
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
-                  placeholder="Provide the movie's trailer link"
-                  {...register('Trailer', { required: true })}
+                  placeholder="Released"
+                  {...register('Released', { required: true })}
                 />
               </div>
 
-              <div className="flex space-x-4">
               <div className="space-y-1 text-sm">
-                <label htmlFor="Director" className="block text-gray-600">
+                <label htmlFor="Runtime" className="block text-gray-500">
+                  Runtime
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                  type="text"
+                  placeholder="Runtime"
+                  {...register('Runtime', { required: true })}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Trailer" className="block text-gray-500">
+                Trailer
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                type="text"
+                placeholder="Provide the movie's trailer link"
+                {...register('Trailer', { required: true })}
+              />
+            </div>
+
+            <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Director" className="block text-gray-500">
                   Director
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Director"
                   {...register('Director', { required: true })}
@@ -201,122 +220,120 @@ const UploadMovie = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="Writer" className="block text-gray-600">
+                <label htmlFor="Writer" className="block text-gray-500">
                   Writer
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Writer"
                   {...register('Writer', { required: true })}
                 />
               </div>
-              </div>
+            </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="Actors" className="block text-gray-600">
-                  Actors
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                  type="text"
-                  placeholder="Actors"
-                  {...register('Actors', { required: true })}
-                />
-              </div>
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Actors" className="block text-gray-500">
+                Actors
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                type="text"
+                placeholder="Actors"
+                {...register('Actors', { required: true })}
+              />
+            </div>
+          </div>
 
-              <div className="w-full space-y-2">
-              
-              <div className="space-y-1 text-sm">
-                <label htmlFor="Plot" className="block text-gray-600">
-                  Plot
-                </label>
-                <textarea
-                  className="w-full h-24 px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm focus:outline-rose-500"
-                  placeholder="Plot"
-                  {...register('Plot', { required: true })}
-                ></textarea>
-              </div>
+          <div className="w-full space-y-2">
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Plot" className="block text-gray-500">
+                Plot
+              </label>
+              <textarea
+                className="w-full h-24 px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm focus:outline-rose-500"
+                placeholder="Plot"
+                {...register('Plot', { required: true })}
+              ></textarea>
+            </div>
 
-              <div className=" p-3 bg-zinc-600 w-full m-auto border-2 border-cyred rounded-sm">
-                <div className="px-5 py-3 relative border-4 border-dotted">
-                  <div className="flex flex-col w-max mx-auto text-center">
-                    <label>
-                      <input
-                        onChange={handleImageChange}
-                        className="text-sm cursor-pointer w-36 hidden text-gray-800 bg-white/60"
-                        type="file"
-                        name="Poster"
-                        accept="image/*"
-                        hidden
-                      />
-                      <div className="bg-rose-500 text-white border border-gray-300 rounded-sm-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
-                        {uploadButtonText}
-                      </div>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-1 text-sm">
-                <label htmlFor="Thumbnail" className="block text-gray-600">
-                  Thumbnail
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                  type="text"
-                  placeholder="Thumbnail"
-                  {...register('Thumbnail', { required: true })}
-                />
-              </div>
-
-             <div className="flex space-x-4">
-
-             <div className="space-y-1 text-sm">
-                  <label htmlFor="Language" className="block text-gray-600">
-                    Language
+            <div className=" p-3 bg-zinc-700 w-full m-a7to rounded-sm">
+              <div className="px-5 py-3 relative border-4 border-dotted">
+                <div className="flex flex-col w-max mx-auto text-center">
+                  <label>
+                    <input
+                      onChange={handleImageChange}
+                      className="text-sm cursor-pointer w-36 hidden text-gray-800 bg-zinc-800/50"
+                      type="file"
+                      name="Poster"
+                      accept="image/*"
+                      hidden
+                    />
+                    <div className="text-white border bg-zinc-800 border-gray-600 rounded-sm cursor-pointer p-1 px-3">
+                      {uploadButtonText}
+                    </div>
                   </label>
-                  <input
-                    className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                    type="text"
-                    placeholder="Language"
-                    {...register('Language', { required: true })}
-                  />
                 </div>
+              </div>
+            </div>
 
-                <div className="space-y-1 text-sm">
-                <label htmlFor="Country" className="block text-gray-600">
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Thumbnail" className="block text-gray-500">
+                Thumbnail
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                type="text"
+                placeholder="Thumbnail"
+                {...register('Thumbnail', { required: true })}
+              />
+            </div>
+
+            <div className="flex space-x-4">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Language" className="block text-gray-500">
+                  Language
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                  type="text"
+                  placeholder="Language"
+                  {...register('Language', { required: true })}
+                />
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="Country" className="block text-gray-500">
                   Country
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Country"
                   {...register('Country', { required: true })}
                 />
               </div>
-             </div>
+            </div>
 
+            <div className="space-y-1 text-sm">
+              <label htmlFor="Awards" className="block text-gray-500">
+                Awards
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                type="text"
+                placeholder="Awards"
+                {...register('Awards', { required: true })}
+              />
+            </div>
+
+            <div className="flex space-x-4">
               <div className="space-y-1 text-sm">
-                <label htmlFor="Awards" className="block text-gray-600">
-                  Awards
+                <label htmlFor="imdbRating" className="block text-gray-500">
+                  IMDB Rating
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
-                  type="text"
-                  placeholder="Awards"
-                  {...register('Awards', { required: true })}
-                />
-              </div>
-
-              <div className="flex space-x-4">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="imdbRating" className="block text-gray-600">
-                IMDB Rating
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="imdbRating"
                   {...register('IMDB Rating', { required: true })}
@@ -324,20 +341,20 @@ const UploadMovie = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="imdbVotes" className="block text-gray-600">
-                IMDB Votes
+                <label htmlFor="imdbVotes" className="block text-gray-500">
+                  IMDB Votes
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 bg-zinc-600 border-2 border-cyred rounded-sm"
+                  className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="imdbVotes"
                   {...register('IMDB Votes', { required: true })}
                 />
               </div>
-              </div>
-              </div>
-            
+            </div>
+          </div>
         </div>
+
         <div className="w-2/3 mx-auto">
           <button
             type="submit"
@@ -371,7 +388,7 @@ const UploadMovie = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

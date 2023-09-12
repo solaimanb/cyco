@@ -105,7 +105,7 @@ const Home = () => {
         }}
       />
 
-      <main className="min-h-screen">
+      <main className="min-h-screen py-10">
         {/* Hero */}
         <Hero />
 

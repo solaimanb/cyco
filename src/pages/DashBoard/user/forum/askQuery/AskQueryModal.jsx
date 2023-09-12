@@ -33,7 +33,6 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
   // HOOKS:
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
-  // console.log(user);
 
   // REACT HOOK FROM:
   const {
@@ -137,7 +136,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           {errors?.description && <span>Description is required</span>}
         </div>
 
-        {/* Forum Topics Select */}
+        {/* FORUM TOPIC SELECTION */}
         <div className="flex flex-col gap-2">
           <label className="text-xs text-white" htmlFor="forumTopic">
             Forum Topic:
@@ -157,7 +156,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           {errors?.forumTopic && <span>Forum Topic is required</span>}
         </div>
 
-        {/* Submit Btn */}
+        {/* QUERY SUBMISSION */}
         <div className="flex flex-row justify-between gap-2">
           <div className="flex flex-row gap-2">
             <button
