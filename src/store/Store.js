@@ -7,6 +7,7 @@ import queriesReducer from './slices/queriesSlice/queriesSlice';
 import searchReducer from './slices/searchSlice/searchSlice';
 import userReducer from './slices/userSlice/userSlice';
 import paymentHistorySlice from './slices/paymenthistorySlice/paymentHistorySlice';
+import manageSubscriptionsSlice from './slices/subscriptionSlice/subscriptionSlice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     forumTopic: forumTopicReducer,
     queries: queriesReducer,
     paymentHistory:paymentHistorySlice,
+    manageSubscriptions:manageSubscriptionsSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

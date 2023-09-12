@@ -3,6 +3,18 @@ import { FaShare } from 'react-icons/fa';
 import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import CommentSection from '../../../liveTv/CommentSection';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookMessengerIcon,
+  LinkedinIcon,
+  LinkedinShareButton,
+  WorkplaceIcon,
+  WorkplaceShareButton,
+  TwitterIcon
+} from 'react-share';
 
 const WatchParty = () => {
   const navigate = useNavigate();
@@ -16,6 +28,9 @@ const WatchParty = () => {
     description:
       'NASA’s Kennedy Space Center in Florida. Following stage separation, Falcon 9’s first stage landed on Landing Zone 1 (LZ-1) at Cape Canaveral Space Force Station.',
   };
+  
+  const currentUrl = window.location.href;
+  
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -87,14 +102,24 @@ const WatchParty = () => {
             </div>
 
             <div className="flex flex-row gap-3">
-              {/* <Link to="watch-party-public" state={{ party }}>
-                <button className="btn bg-zinc-800/80 rounded-full capitalize font-bold">
-                  <FaPlayCircle size={22} /> Play
-                </button>
-              </Link> */}
-              <button className="btn bg-zinc-800/80 rounded-full">
-                <FaShare size={16} />
-              </button>
+              {/* Share on Facebook */}
+              <LinkedinShareButton url={currentUrl}>
+                <LinkedinIcon size={30} className='rounded-lg' />
+              </LinkedinShareButton>
+
+              {/* Share on Twitter */}
+              <TwitterShareButton url={currentUrl}>
+                <TwitterIcon size={30} className='rounded-lg' />
+              </TwitterShareButton>
+
+              {/* Share on WhatsApp */}
+              <WhatsappShareButton title='Share On Whatsapp' url={currentUrl}>
+                <WhatsappIcon size={30} className='rounded-lg' />
+              </WhatsappShareButton>
+              {/* Share On Facebook */}
+              <FacebookShareButton>
+                <FacebookMessengerIcon size={30} className='rounded-lg'/>
+              </FacebookShareButton>
             </div>
           </div>
         </div>
