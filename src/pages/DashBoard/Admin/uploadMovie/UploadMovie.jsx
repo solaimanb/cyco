@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
-
 import io from "socket.io-client";
-
 import Swal from "sweetalert2";
 import { addNewMovie } from "../../../../api/addNewMovie";
 import { imageUpload } from "../../../../api/imgUpload";
@@ -9,13 +7,20 @@ import { AuthContext } from "../../../../providers/AuthProvider";
 
 // const socket = io('http://localhost:8080');
 const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
+
 const UploadMovie = () => {
   const [notification, setNotification] = useState("");
+  const [notifyUsers, setNotifyUsers] = useState(false);
 
-  console.log(notification);
   const sendNotification = () => {
     socket.emit("send_notification", { notification: notification });
-    console.log(notification);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Notification sent successfully",
+      showConfirmButton: false,
+      timer: 1000,
+    });
   };
 
   const { user } = useContext(AuthContext);
@@ -43,6 +48,7 @@ const UploadMovie = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
+
     const Title = event?.target?.Title?.value;
     const Actors = event?.target?.Actors?.value;
     const Thumbnail = event?.target?.Thumbnail?.value;
@@ -60,6 +66,10 @@ const UploadMovie = () => {
     const Released = event?.target?.Released?.value;
     const Year = event?.target?.Year?.value;
     const Plot = event?.target?.Plot?.value;
+
+    if (notifyUsers) {
+      sendNotification();
+    }
 
     imageUpload(Poster)
       .then((data) => {
@@ -81,6 +91,7 @@ const UploadMovie = () => {
           Released,
           Year,
           Plot,
+          NotifyUsers: notifyUsers ? notification : "",
         };
 
         addNewMovie(movieData)
@@ -97,9 +108,9 @@ const UploadMovie = () => {
           .catch((err) => console.log(err.message));
       })
       .catch((err) => console.log(err.message));
-    console.log("hello");
 
     setUploadButtonText("Uploading.....");
+    setNotifyUsers(false);
   };
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);
@@ -381,6 +392,28 @@ const UploadMovie = () => {
           </div>
         </div>
         <div className="w-2/3 mx-auto">
+          <div className="space-y-1 text-sm">
+            <label htmlFor="notifyUsers" className="block text-gray-600">
+              Notify Users
+            </label>
+            <input
+              type="checkbox"
+              name="notifyUsers"
+              id="notifyUsers"
+              onChange={(event) => {
+                const isChecked = event.target.checked;
+                setNotifyUsers(isChecked); 
+              
+                if (isChecked) {
+                  const title = event.target.form.Title.value; // Get movie title from the form
+                  const actors = event.target.form.Actors.value; // Get actors from the form
+                  const director = event.target.form.Director.value; // Get director from the form
+                  // 
+                  sendNotification(`Movie: ${title}, Actors: ${actors}, Director: ${director}`);
+                }
+              }}
+            />
+          </div>
           <button
             type="submit"
             className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-white/60 hover:bg-cyred"
