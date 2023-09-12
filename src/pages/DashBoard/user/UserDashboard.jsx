@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaRegEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 
@@ -166,6 +167,7 @@ const UserDashboard = () => {
 
     setMessage('Password changed successfully.');
   };
+
   const data = [
     {
       name: 'Day 1',
@@ -208,23 +210,36 @@ const UserDashboard = () => {
   ];
 
   return (
-    <section className="min-h-screen flex flex-col p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950 gap-3">
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      {/* Forum Header */}
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+          User Profile
+        </p>
+      </div>
+
       {/* USER INFO */}
-      <div className="flex flex-col md:flex-row gap-5 p-3 bg-zinc-900/50">
-        <div className="space-y-3">
-          <div className="border border-zinc-700 rounded-sm w-60 h-80">
+      <div className="flex flex-col mt-40 gap-5 px-4 pb-10 bg-zinc-800/40">
+        <div className="relative">
+          <div className="absolute -top-24 border-8 border-zinc-950 w-40 h-40 rounded-full text-xs items-center flex justify-center">
             <img
               src={user?.photoURL}
               alt="user-photo"
-              className="w-full h-full object-cover bg-black/60"
+              className="w-full h-full rounded-full object-cover"
             />
+          </div>
+
+          <div className="h-16 flex justify-end">
+            <button className="absolute top-4 right-0 hover:text-cyred/60">
+              <FaRegEdit size={20} />
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-row justify-between">
           <div className="">
-            <div>
-              <h3 className="font-bold md:text-lg">
+            <div className="flex items-center gap-2">
+              <h3 className="font-bold md:text-lg capitalize">
                 {user?.displayName || 'Anonymous'}
               </h3>
 
@@ -235,18 +250,12 @@ const UserDashboard = () => {
 
             <div className="mt-5">
               <span className="text-sm">
-                <span className="font-bold">Email:</span> {user?.email}
+                <span className="font-bold"></span> {user?.email}
               </span>
             </div>
-            <div className="text-sm">
+            <div className="text-xs text-zinc-400">
               Joined <span> {timeAgo}</span>
             </div>
-          </div>
-
-          <div>
-            <button className="btn btn-wide btn-sm capitalize border bg-zinc-800 hover:bg-cyred/60">
-              Edit Profile
-            </button>
           </div>
         </div>
 
@@ -271,8 +280,18 @@ const UserDashboard = () => {
       </div>
 
       {/* USER ANALYTICS */}
-      <div className="flex flex-col md:flex-row gap-5 p-3 bg-zinc-900/50">
-        D
+      <div className="flex flex-col mt-5 gap-5 p-3 bg-zinc-800/40 h-full justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-5 h-full">
+          <div className="w-full border border-zinc-800 rounded-sm p-2">1</div>
+
+          <div className="w-full border border-zinc-800 rounded-sm p-2">2</div>
+
+          <div className="w-full border border-zinc-800 rounded-sm p-2">3</div>
+
+          <div className="w-full border border-zinc-800 rounded-sm p-2">4</div>
+        </div>
+
+        <div></div>
       </div>
     </section>
   );
