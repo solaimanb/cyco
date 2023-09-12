@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../hooks/useAuth";
+import React, { useEffect, useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../hooks/useAuth';
 
-import { MdAccountCircle } from 'react-icons/md';
-
-import {
-  Button,
-  useDisclosure,
-  Badge,
-} from "@nextui-org/react";
-import { MdOutlineNotificationsActive } from "react-icons/md";
-import NotificationModal from "../shared/modal/NotificationModal";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../store/slices/paymenthistorySlice/paymentHistorySlice";
+import { Badge, Button, useDisclosure } from '@nextui-org/react';
+import { MdOutlineNotificationsActive } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import NotificationModal from '../shared/modal/NotificationModal';
+import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -27,31 +21,31 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.paymentHistory.data);
   useEffect(() => {
-      dispatch(fetchData());
-    }, [dispatch]);
-      const filters = data.filter((d)=>d.email === user?.email)
-     
-      console.log(filters);
+    dispatch(fetchData());
+  }, [dispatch]);
+  const filters = data.filter((d) => d.email === user?.email);
+
+  console.log(filters);
 
   const handleLogOut = async () => {
-    console.log("Logging out...");
+    console.log('Logging out...');
     try {
       const response = await Swal.fire({
-        title: "",
-        text: "Ary you sure you want to log out?",
-        confirmButtonText: "Logout",
-        cancelButtonText: "Cancel",
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
         showCancelButton: true,
       });
       if (response.isConfirmed) {
         await logOut();
 
-        navigate("/login");
+        navigate('/login');
       }
 
       return;
     } catch (error) {
-      console.log("Logout failed", error);
+      console.log('Logout failed', error);
     }
   };
 
@@ -60,7 +54,7 @@ const Dashboard = () => {
   };
 
   const userNavLinks = [
-    { to: 'users-home', text: 'Profile' },
+    { to: 'user-dashboard', text: 'Profile' },
     { to: 'wishlist', text: 'Wishlist' },
     // { to: 'downloads', text: 'Downloads' },
     { to: 'subscriptions', text: 'Subscriptions' },
@@ -73,15 +67,14 @@ const Dashboard = () => {
   ];
 
   const adminNavLinks = [
-    { to: "admin-home", text: "Analytics" },
-    { to: "upload-movie", text: "Upload Movie" },
-    { to: "revenue", text: "Ad Revenue Tracking" },
-    { to: "logs", text: "System Logs" },
-    { to: "manage-subscription", text: "Manage Subscriptions" },
-    { to: "modernization", text: "Moderation" },
-    { to: "user-panel-list", text: "User Panel Lists" },
-    { to: "user-feedback", text: "User Feedback" },
-    { to: "admin/paymentHistory", text: "Payment History" },
+    { to: 'admin-dashboard', text: 'Dashboard' },
+    { to: 'upload-movie', text: 'Upload Movie' },
+    { to: 'revenue', text: 'Ad Revenue Tracking' },
+    { to: 'logs', text: 'System Logs' },
+    { to: 'admin/manage-subscription', text: 'Manage Subscriptions' },
+    { to: 'user-panel', text: 'User Panel' },
+    { to: 'user-feedback', text: 'User Feedback' },
+    { to: 'admin/paymentHistory', text: 'Payment History' },
   ];
 
   const [isAdmin, setAdmin] = useState(false);
@@ -109,7 +102,7 @@ const Dashboard = () => {
       {/* Dashboard Sidebar */}
       <div
         className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-          isSidebarOpen ? "block" : "hidden lg:block"
+          isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
         {isAdmin ? (
@@ -140,15 +133,19 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {adminNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" &&
+                  {navLink?.to === 'admin/manage-subscription' &&
                     index < adminNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "btn-active" : "sidebar-btn"
+                      isActive ? 'btn-active' : 'sidebar-btn'
                     }
                     to={navLink?.to}
-                    style={navLink?.to === "forum" ? { marginTop: "40px" } : {}}
+                    style={
+                      navLink?.to === 'admin/manage-subscription'
+                        ? { marginTop: '40px' }
+                        : {}
+                    }
                   >
                     {navLink?.text}
                   </NavLink>
@@ -156,7 +153,7 @@ const Dashboard = () => {
               ))}
             </ul>
 
-            <div className="group:mb-0">
+            <div className="flex flex-col gap-1 mt-auto mb-2">
               <div className="sidebar-btn">
                 <button>Settings</button>
               </div>
@@ -176,17 +173,26 @@ const Dashboard = () => {
                 src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
                 alt="user-profile"
               />
+
+              {/* NOTIFICATION INDICATOR */}
               <>
-                {" "}
-                <Button onPress={onOpen} color="secondary">
-                  <Badge color="danger" content={filters?.length} shape="circle">
+                <Button onPress={onOpen} color="">
+                  <Badge
+                    color="danger"
+                    content={filters?.length}
+                    shape="circle"
+                  >
                     <MdOutlineNotificationsActive
                       className="fill-current"
                       size={30}
                     />
                   </Badge>
                 </Button>
-              <NotificationModal filters={filters} onOpenChange={onOpenChange} isOpen={isOpen}/>
+                <NotificationModal
+                  filters={filters}
+                  onOpenChange={onOpenChange}
+                  isOpen={isOpen}
+                />
               </>
 
               <div onClick={() => setAdmin(!isAdmin)} className="">
@@ -206,15 +212,17 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {userNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "forum" &&
+                  {navLink.to === 'watch-party' &&
                     index < userNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "btn-active" : "sidebar-btn"
+                      isActive ? 'btn-active' : 'sidebar-btn'
                     }
                     to={navLink?.to}
-                    style={navLink?.to === "forum" ? { marginTop: "40px" } : {}}
+                    style={
+                      navLink?.to === 'watch-party' ? { marginTop: '40px' } : {}
+                    }
                   >
                     {navLink?.text}
                   </NavLink>
@@ -223,7 +231,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-              <NavLink to={"help"} className="sidebar-btn">
+              <NavLink to={'help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -240,7 +248,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? "" : "blur-none"
+          isSidebarOpen ? '' : 'blur-none'
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />

@@ -4,7 +4,7 @@ import Navbar from '../shared/navbar/Navbar';
 
 const Root = () => {
   return (
-    <div className="w-full container mx-auto">
+    <div className="w-full mx-auto">
       <Navbar />
 
       <div className="min-h-[calc(100vh-160px)]">

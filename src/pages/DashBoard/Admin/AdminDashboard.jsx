@@ -2,8 +2,6 @@ import React from 'react';
 import { BsBell, BsPeopleFill, BsSearch } from 'react-icons/bs';
 import { CgPerformance } from 'react-icons/cg';
 import { MdContentPasteSearch, MdSpatialTracking } from 'react-icons/md';
-
-
 import {
   Bar,
   BarChart,
@@ -16,12 +14,12 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import useMonthlyRevenue from '../../../hooks/useMonthlyRevenue';
 import useMovies from '../../../hooks/useMovies';
 import useUsers from '../../../hooks/useUsers';
-import useMonthlyRevenue from '../../../hooks/useMonthlyRevenue';
-const AdminHome = () => {
+
+const AdminDashboard = () => {
   const [movies, loading] = useMovies();
-  // console.log(movies.length);
   const currentDate = new Date();
 
   console.log(currentDate);
@@ -70,20 +68,16 @@ const AdminHome = () => {
     },
   ];
 
-const [users ] = useUsers();
-const totalUsers = users.length*111;
-const dailyActiveUsers = Math.floor(totalUsers/7);
-const monthlyActiveUsers = Math.floor(dailyActiveUsers*29);
+  const [users] = useUsers();
+  const totalUsers = users.length * 111;
+  const dailyActiveUsers = Math.floor(totalUsers / 7);
+  const monthlyActiveUsers = Math.floor(dailyActiveUsers * 29);
 
-// console.log(users.length);
+  // console.log(users.length);
 
-const {monthlyRevenue} = useMonthlyRevenue();
+  const { monthlyRevenue } = useMonthlyRevenue();
 
-console.log(monthlyRevenue);
-
-
-
-
+  console.log(monthlyRevenue);
 
   return (
     <div className="min-h-screen p-4 bg-zinc-950 overflow-y-auto">
@@ -122,9 +116,9 @@ console.log(monthlyRevenue);
           <BsPeopleFill className="text-3xl bg-zinc-300 text-emerald-600 rounded-full p-2 w-12 h-12 mx-auto mb-2" />
           <h2 className="font-semibold mb-3">User Analytics</h2>
           <div className="text-sm space-y-2">
-            
             <p>
-              Total Users: <span className="font-bold text-white">{totalUsers}</span>
+              Total Users:{' '}
+              <span className="font-bold text-white">{totalUsers}</span>
             </p>
             <p>
               Daily Active Users:{' '}
@@ -281,4 +275,4 @@ console.log(monthlyRevenue);
   );
 };
 
-export default AdminHome;
+export default AdminDashboard;
