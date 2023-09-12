@@ -1,6 +1,6 @@
 const Container = ({children}) => {
     return (
-        <div className="w-[] mx-auto">
+        <div className="page-container">
             {children}
         </div>
     );

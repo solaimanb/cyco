@@ -9,6 +9,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import { addHistory } from "../../../api/historyPostData";
+import Container from "../../../components/container/Container";
 
 const MovieInfo = () => {
   const dispatch = useDispatch();
@@ -127,7 +128,8 @@ const MovieInfo = () => {
   };
 
   return (
-    <div
+    <Container>
+      <div
       className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh] mt-2 md:mt-5 lg:mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
@@ -217,6 +219,7 @@ const MovieInfo = () => {
         </div>
       </div>
     </div>
+    </Container>
   );
 };
 

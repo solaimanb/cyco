@@ -1,10 +1,12 @@
 import React from 'react';
 import { FaFacebook, FaGithub, FaInstagramSquare } from 'react-icons/fa';
 import Divider from '../../components/divider/Divider';
+import Container from '../../components/container/Container';
 
 const About = () => {
   return (
-    <div className="md:w-[80%] mx-auto">
+    <Container>
+      <div className="mx-auto text-zinc-300">
       <h2 className="text-center xl:text-xl mt-4 bg-base-100 opacity-60 py-4 rounded-3xl hover:text-white">
         About Cyco Tv
       </h2>
@@ -270,6 +272,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </Container>
   );
 };
 

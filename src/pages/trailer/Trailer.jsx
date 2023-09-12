@@ -3,6 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
+import Container from '../../components/container/Container';
 
 const Trailer = () => {
   const [movies] = useMovies();
@@ -43,8 +44,8 @@ const Trailer = () => {
   };
 
   return (
-    <>
-      <div className="flex items-center gap-3 justify-center mt-10">
+    <Container>
+      <div className="flex items-center gap-3 justify-center pt-10">
         <input
           type="search"
           className="rounded-full px-3 py-2 w-[30%]"
@@ -112,7 +113,7 @@ const Trailer = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </Container>
   );
 };
 
