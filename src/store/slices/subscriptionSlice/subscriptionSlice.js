@@ -16,20 +16,20 @@ export const fetchItems = () => async (dispatch) => {
 };
 
 // Action to update an item
-export const updateItemRequest = (itemId, updatedItem) => async (dispatch) => {
+export const updateItemRequest = (id, updatedItem) => async (dispatch) => {
   try {
-    const response = await axios.put(`${ import.meta.env.VITE_SERVER_URL }/items/${itemId}`, updatedItem);
+    const response = await axios.put(`${ import.meta.env.VITE_SERVER_URL }/updateManageSubscriptions/${id}`, updatedItem);
     dispatch(updateItem(updatedItem));
     console.log('Item updated successfully:', response.data.message);
   } catch (error) {
     console.error('Error updating item:', error);
   }
 };
-// const initialState = {
-//   data: [],
-//   status: 'null',
-//   error: null,
-// };
+const initialState = {
+  data: [],
+  status: 'null',
+  error: null,
+};
 
 const manageSubscriptionsSlice = createSlice({
   name: 'items',
