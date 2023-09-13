@@ -5,6 +5,7 @@ import {
   FaInstagramSquare,
 } from 'react-icons/fa';
 import Divider from '../../components/divider/Divider';
+import Container from '../../components/container/Container';
 
 const members = [
   {
@@ -81,8 +82,9 @@ const About = () => {
   );
 
   return (
-    <div className="md:w-[80%] mx-auto pt-28">
-      <div className="text-center">
+    <Container>
+      <div className="mx-auto text-zinc-300">
+      <div className="text-center pt-10">
         <h2 className="text-2xl font-bold">About US</h2>
         <p className="text-center py-4 text-sm md:text-base w-[60%] mx-auto">
           CYCO is a streaming platform. It offers a range of movies, TV shows,
@@ -101,6 +103,7 @@ const About = () => {
         {members && members.map((member, index) => renderMember(member, index))}
       </div>
     </div>
+    </Container>
   );
 };
 
