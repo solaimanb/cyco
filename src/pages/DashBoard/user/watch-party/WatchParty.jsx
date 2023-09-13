@@ -18,19 +18,29 @@ import {
 
 const WatchParty = () => {
   const navigate = useNavigate();
+  const events = [
+    {
+      title: ' Avenger team includes Iron Man',
+      banner: 'https://freepngimg.com/thumb/avengers/24591-2-avengers.png'
+    },
+    {
+      title: 'Avengers Party',
+      banner: 'https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png'
+    }
+  ]
 
   const party = {
     title:
       'SpaceX Falcon 9 launched Axiom Space’s Axiom Mission 2 (Ax-2) to the ISS',
     banner:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1f-hjggaP6l4ZdXf6v8hVA4LW_OVNKtelQ&usqp=CAU',
-    source: 'https://www.youtube.com/live/Nv6b9JYiaBY?si=Gv60n9n-IuE-TjfK',
+    source: "https://www.youtube.com/embed/Iz6qdzVCN9g?si=qDDW7kWx6bKS3R5W",
     description:
       'NASA’s Kennedy Space Center in Florida. Following stage separation, Falcon 9’s first stage landed on Landing Zone 1 (LZ-1) at Cape Canaveral Space Force Station.',
   };
-  
+
   const currentUrl = window.location.href;
-  
+
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -69,7 +79,24 @@ const WatchParty = () => {
 
             {/* TODO: dummy events---> (make these dynamic) */}
             <div className="">
-              <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
+              {
+                events.map(item =>
+                  <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
+                    <div>
+                      <img
+                        src={item?.banner}
+                        className="w-full object-cover rounded-sm"
+                      />
+                    </div>
+                    <h4 className="text-sm font-semibold">
+                      {item?.title}
+                    </h4>
+                  </div>
+                )
+              }
+
+
+              {/* <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
                 <div>
                   <img
                     src={party?.banner}
@@ -79,18 +106,7 @@ const WatchParty = () => {
                 <h4 className="text-sm font-semibold">
                   Could baker mayfield be this season's geno smith.
                 </h4>
-              </div>
-              <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
-                <div>
-                  <img
-                    src={party?.banner}
-                    className="w-full object-cover rounded-sm"
-                  />
-                </div>
-                <h4 className="text-sm font-semibold">
-                  Could baker mayfield be this season's geno smith.
-                </h4>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -118,7 +134,7 @@ const WatchParty = () => {
               </WhatsappShareButton>
               {/* Share On Facebook */}
               <FacebookShareButton>
-                <FacebookMessengerIcon size={30} className='rounded-lg'/>
+                <FacebookMessengerIcon size={30} className='rounded-lg' />
               </FacebookShareButton>
             </div>
           </div>
