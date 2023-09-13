@@ -1,7 +1,11 @@
 import React from 'react';
 import Divider from '../../components/divider/Divider';
 
-const NotificationsDropdown = ({ notificationCount, notificationHistory, onClose }) => {
+const NotificationsDropdown = ({
+  notificationCount,
+  notificationHistory,
+  onClose,
+}) => {
   return (
     <div className="notification-dropdown absolute z-20 bg-black/60 rounded-lg p-4 text-sky-700">
       <h3>My Notifications</h3>
@@ -11,7 +15,9 @@ const NotificationsDropdown = ({ notificationCount, notificationHistory, onClose
         ))}
       </ul>
       <Divider />
-      <button className='text-cyred' onClick={onClose}>Close</button>
+      <button className="text-cyred" onClick={onClose}>
+        Close
+      </button>
     </div>
   );
 };

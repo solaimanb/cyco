@@ -99,21 +99,22 @@ const Forum = () => {
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
-      {/* Forum Header */}
+      {/* FORUM HEADER */}
       <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
         <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
-          Cyco Forum
+          Forum
         </p>
 
-        {/* Search Module Slot */}
+        {/* SEARCH MODULE */}
         <SearchSlot />
       </div>
 
       <div className="sticky top-0 pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
-        {/* Forum Posts */}
+        {/* FORUM POST */}
         <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col justify-between gap-2 rounded-sm">
           <div>
-            {/* Ask Query Slot */}
+            
+            {/* ASK QUERY SLOT */}
             <div className="flex justify-end items-center px-2 pb-2 border-b border-zinc-800">
               <button
                 onClick={handleRefresh}

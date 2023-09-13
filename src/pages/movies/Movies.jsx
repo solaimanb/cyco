@@ -5,6 +5,7 @@ import MovieCard from '../../components/movieCard/MovieCard';
 
 import Pagination from '../../components/paginaition/Pagination';
 import useMovies from '../../hooks/useMovies';
+import Container from '../../components/container/Container';
 
 const Movies = () => {
   const [movies, loading] = useMovies();
@@ -40,8 +41,8 @@ const Movies = () => {
   }
 
   return (
-    <div className="mt-10">
-      <div className="flex items-center gap-3 justify-center">
+    <Container>
+      <div className="flex items-center gap-3 justify-center pt-10">
         <input
           type="search"
           className="rounded-full px-3 py-2 w-[80%] md:w-[50%] lg:w-[30%]"
@@ -49,12 +50,12 @@ const Movies = () => {
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <FaSearch size={22} onClick={searchHandle} />
+        <FaSearch size={22} onClick={searchHandle} className='text-cyred' />
       </div>
 
       <div className="mt-10 w-full grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-2">
         {isSearchClicked && filteredMovies.length === 0 ? (
-          <div>No results found.</div>
+          <div className='h-[calc(100vh-200px)] text-zinc-300'>No results found.</div>
         ) : searchQuery && isSearchClicked ? (
           filteredMovies
             .slice(
@@ -76,7 +77,7 @@ const Movies = () => {
         )}
       </div>
 
-      {/* Pagination */}
+      {/* PAGINATION */}
       {(isSearchClicked && filteredMovies.length > 0) ||
       (!isSearchClicked && movies.length > 0) ? (
         <Pagination
@@ -88,7 +89,7 @@ const Movies = () => {
           onNumberClick={handleNumberClick}
         />
       ) : null}
-    </div>
+    </Container>
   );
 };
 

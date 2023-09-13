@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RiNotificationBadgeFill } from 'react-icons/ri';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
@@ -96,7 +96,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="stick absolute z-50 top-0 left-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
+    <div className="absolute z-50 top-0 left-0 backdrop-blur-lg md:backdrop-blur-2xl w-full">
       {/* NAVIGATION BAR */}
       <div className="gray-800 flex flex-row lg:px-24 mx-auto text-white items-center justify-between py-2 lg:py-5">
         <Link className="hidden lg:flex" to="/">

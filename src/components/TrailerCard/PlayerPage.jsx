@@ -18,7 +18,7 @@ const PlayerPage = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
         <ReactPlayer
-          url={movie.Trailer?.Source}
+          url={movie.Trailer}
           controls
           width="100%"
           height="100%"

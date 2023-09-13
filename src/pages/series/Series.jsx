@@ -3,6 +3,7 @@ import { MdOutlinePlaylistAdd } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import usePlayList from '../../hooks/usePlayList';
 import Loading from '../../components/loading/Loading';
+import Container from '../../components/container/Container';
 
 const Series = () => {
     const [playList, loading] = usePlayList();
@@ -15,7 +16,8 @@ const Series = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -pl-4 -ml-4">
+        <Container>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -pl-4 -ml-4">
             {playList.map((item, index) => (
                 <Link
                     key={`${item?.id}-${index}`}
@@ -40,6 +42,7 @@ const Series = () => {
                 </Link>
             ))}
         </div>
+        </Container>
     );
 };
 

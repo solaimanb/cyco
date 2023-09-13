@@ -2,7 +2,7 @@ import TestimonialSlider from './TestimonialsSlider';
 
 const Testimonials = () => {
   return (
-    <div className="h-full mt-20 pb-10 md:w-[80%] lg:w-[70%] mx-auto backdrop-blur-sm backdrop-opacity-80 border-b-2 border-cyred py-20 text-center">
+    <section className="h-full mt-20 pb-10 md:w-[80%] lg:w-[70%] mx-auto backdrop-blur-sm backdrop-opacity-80 border-b-2 border-cyred py-20 text-center">
       <div className="container mx-auto h-full flex flex-col justify-center">
         {/* title */}
         <h2 className="h2 mb-8 xl:mb-0">
@@ -14,7 +14,7 @@ const Testimonials = () => {
           <TestimonialSlider />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
