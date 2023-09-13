@@ -49,6 +49,7 @@ import Testimonials from "../pages/testimonials/Testimonials";
 import Trailer from "../pages/trailer/Trailer";
 import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
 import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
+import MoviePlayer from "../components/moviePlayer/MoviePlayer";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,8 @@ const router = createBrowserRouter([
       { path: "video-player", element: <VideoPlayer /> },
 
       { path: "movieinfo", element: <MovieInfo /> },
-      { path: "watch-video", element: <Play /> },
+      // { path: "watch-video", element: <Play /> },
+      { path: "watch-video", element: <MoviePlayer /> },
       { path: "popular-tvs", element: <PopularTvs /> },
       { path: "popular-tv", element: <PopularTv /> },
       { path: "PrivacyPolicy", element: <PrivacyPolicy /> },

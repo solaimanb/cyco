@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
@@ -9,6 +9,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import { addHistory } from "../../../api/historyPostData";
+import WatchTimer from "../../../components/watchTimer/WatchTimer";
 
 const MovieInfo = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,10 @@ const MovieInfo = () => {
   const { movie } = location?.state;
   const { user, setLoading } = useAuth();
   const email = user?.email;
+  const movieId = movie?._id; // Get the movie ID
+  const userId = "64f89f19746d2fab49ffb3f9";
 
-  console.log(location);
+  const [watching, setWatching] = useState(false);
 
   const {
     _id,
@@ -38,24 +41,15 @@ const MovieInfo = () => {
     Trailer,
   } = movie || {};
 
-  // const movieSource = Trailer?.Source;
-  // const source = movieSource.split('=');
-  // const sourceId = source[1];
-  // console.log(sourceId);
+  const handleWatchStart = () => {
+    // Your logic to start watching
+    setWatching(true); // This sets the watching state to true
+  };
 
-  // const dispatch = useDispatch();
-
-  // const [currentWishlist, setCurrentWishlist] = useState(
-  //   JSON.parse(localStorage.getItem('wishlist')) || []
-  // );
-
-  // const isAlreadyInWishlist = currentWishlist.some(
-  //   (wishlistMovie) => wishlistMovie.Title === Title
-  // );
-
-  // const handleHistory = (id) => {
-  //   dispatch(pushToHistory(id))
-  // }
+  const handleWatchStop = () => {
+    // Your logic to stop watching
+    setWatching(false); // This sets the watching state to false
+  };
 
   const handleHistory = async (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
@@ -78,35 +72,35 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = await Swal.fire({
-          text: 'Please login to add to your wishlist',
-          icon: 'warning',
-          background: '#222',
-          confirmButtonText: 'login',
+          text: "Please login to add to your wishlist",
+          icon: "warning",
+          background: "#222",
+          confirmButtonText: "login",
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate('/login');
+          navigate("/login");
         }
         return;
       }
 
-      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      const response = await axiosSecure.post("/wishlist", wishlistItem);
       console.log(response);
 
       if (response?.status === 200) {
-        if (response?.data?.message === 'Already added to wishlist!') {
+        if (response?.data?.message === "Already added to wishlist!") {
           Swal.fire({
-            text: 'Movie is already in your wishlist',
-            icon: 'info',
-            background: '#222',
+            text: "Movie is already in your wishlist",
+            icon: "info",
+            background: "#222",
           });
         } else {
-          console.log('Movie added to wishlist', response?.data);
+          console.log("Movie added to wishlist", response?.data);
           Swal.fire({
-            text: 'Added to wishlist!',
-            icon: 'success',
-            background: '#222',
+            text: "Added to wishlist!",
+            icon: "success",
+            background: "#222",
             reverseButtons: true,
           });
         }
@@ -114,11 +108,11 @@ const MovieInfo = () => {
         //
       }
     } catch (error) {
-      console.log('An error occurred while adding to wishlist:', error);
+      console.log("An error occurred while adding to wishlist:", error);
 
       if (error.response) {
         console.error(
-          'Server responded with:',
+          "Server responded with:",
           error.response.status,
           error.response.data
         );
@@ -128,9 +122,15 @@ const MovieInfo = () => {
 
   return (
     <div
-      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh] mt-2 md:mt-5 lg:mt-10 rounded-sm"
+      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh]  mt-2 md:mt-5 lg:mt-10 rounded-sm md:mb-24"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
+      <WatchTimer
+        movieId={movieId}
+        userId={userId}
+        onStart={handleWatchStart}
+        onStop={handleWatchStop}
+      />
       <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
         {/* Movie Poster */}
         <div className="md:w-2/5">
@@ -155,7 +155,6 @@ const MovieInfo = () => {
                 <div className="flex gap-5 text-sm">
                   IMDb Rating:<span className="font-bold">{imdbRating}</span>
                 </div>
-                {/* <div className="divider divider-horizontal"></div> */}
                 <div className="flex gap-5 text-sm">
                   Genre:<span className="font-bold">{Genre}</span>
                 </div>
@@ -171,15 +170,11 @@ const MovieInfo = () => {
                 {/* WISHLIST BTN*/}
                 <button
                   onClick={handleAddToWishlist}
-                  // disabled={isAlreadyInWishlist}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
                   <span className="">
                     <LuListVideo size={20} />
-                  </span>{' '}
-                  {/* {isAlreadyInWishlist
-                    ? 'Added to Wishlist'
-                    : 'Add to Wishlist'} */}
+                  </span>
                   Add to wishlist
                 </button>
 
@@ -189,15 +184,15 @@ const MovieInfo = () => {
                   state={{ movie }}
                   className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                 >
-                  <button className="flex" onClick={() => handleHistory(Title, email, Poster)}>
+                  <button
+                    className="flex"
+                    onClick={() => {
+                      handleHistory(Title, email, Poster);
+                    }}
+                  >
                     <span>
                       <FaCloudDownloadAlt size={20} />
-                    </span>{' '}
-                    {/*<button onClick={() => handleHistory(_id)}>
-                    <span>
-                      <FaCloudDownloadAlt size={20} />
-                    </span>*/}
-
+                    </span>
                     Watch now
                   </button>
                 </Link>
@@ -206,7 +201,7 @@ const MovieInfo = () => {
           </div>
 
           {/* Recommended Movies */}
-          <div className="w-full mt-5">
+          <div className="w-full mt-5 ">
             <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
             <div className="">
               <Marquee speed={5}>
