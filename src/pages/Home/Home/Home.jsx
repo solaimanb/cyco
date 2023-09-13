@@ -13,6 +13,7 @@ import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MovieSlot from '../movieSlot/MovieSlot';
 import PopularTvs from '../popularTvs/PopularTvs';
+import Container from '../../../components/container/Container'
 
 const Home = () => {
   const [loading] = useMovies();
@@ -108,8 +109,10 @@ const Home = () => {
         {/* Hero */}
         <Hero />
 
+        <div className='custom-container'>
+          
         {/* Featured Movies */}
-        <div className="z-10 py-6 md:py-8 mt-[55%]">
+        <div className="z-10 py-6 md:py-8">
           <Title title={'Featured Movies'} />
           <Marquee speed={10}>
             <FeaturedMovies />
@@ -124,14 +127,14 @@ const Home = () => {
 
         {/* Movies/Categories */}
         <div className="flex justify-between gap-5 mt-20">
-          <div className="md:w-[85%]">
+          <div className="lg:w-[85%]">
             <div className="mt-10">
               <Title title={'Most Recent'} />
               <MovieSlot />
               {/* Category wise movies will show hereby */}
             </div>
           </div>
-          <div className="mt-5 md:w-[15%] hidden md:block">
+          <div className="mt-5 lg:w-[15%] hidden lg:block">
             <Title title={'Categories'} />
             <Categories />
           </div>
@@ -149,6 +152,8 @@ const Home = () => {
 
         {/* testimonials */}
         <Testimonials />
+
+        </div>
       </main>
     </>
   );

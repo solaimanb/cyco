@@ -40,10 +40,10 @@ const TestimonialSlider = () => {
       }}
       slidesPerView={1}
       navigation={true}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Autoplay, Navigation, Pagination]}
+      // pagination={{
+      //   clickable: true,
+      // }}
+      modules={[Autoplay, Navigation, ]}
       // className="h-[440px]"
     >
       {testimonialData?.map((feedBack, index) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
 import LiveVideoList from './LiveVideoList';
+import Container from '../../components/container/Container';
 
 const LiveTv = () => {
   const [selectedChannel, setSelectedChannel] = useState(null);
@@ -18,7 +19,8 @@ const LiveTv = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center lg:flex-row p-4 gap-10">
+    <Container>
+      <div className="flex flex-col items-center lg:flex-row p-4 gap-10 h-screen">
       <div className="w-full h-full md:w-3/4 mx-auto md:pr-4">
         <VideoPlayer channel={selectedChannel} />
       </div>
@@ -26,6 +28,7 @@ const LiveTv = () => {
         <LiveVideoList onSelectChannel={handleSelectChannel} />
       </div>
     </div>
+    </Container>
   );
 };
 

@@ -13,16 +13,15 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <NextUIProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <NextUIProvider className="dark text-foreground bg-background">
-            <Provider store={store}>
-              <RouterProvider router={router} />
-            </Provider>
+          <NextUIProvider>
+              <Provider store={store}>
+                <RouterProvider router={router} />
+              </Provider>
           </NextUIProvider>
         </AuthProvider>
       </QueryClientProvider>
-    </NextUIProvider>
+    
   </React.StrictMode>
 );
