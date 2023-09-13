@@ -40,13 +40,13 @@ svg.recharts-surface tspan {
 }
 
 .btn-active {
-  @apply bg-cyred block text-white mb-2 px-2 py-1 text-sm;
+  @apply bg-cyred block text-white mb-2 px-2 py-1 text-sm rounded-sm;
 }
 .sidebar-btn {
-  @apply bg-zinc-300 block text-zinc-800 mb-2 px-2 py-1 text-sm;
+  @apply bg-zinc-300 block text-black mb-2 px-2 py-1 text-sm rounded-sm;
 }
 .sidebar-btn:hover {
-  @apply bg-cyred text-white duration-200;
+  @apply bg-cyred text-white duration-300;
 }
 
 /* CSS BREAKPOINTS */
