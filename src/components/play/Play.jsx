@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactPlayer from 'react-player';
-import { useLocation, useParams } from 'react-router-dom';
-
+import React from "react";
+import ReactPlayer from "react-player";
+import { useLocation, useParams } from "react-router-dom";
 
 const Play = () => {
   const location = useLocation();
   // console.log(location);
   const movie = location.state?.movie;
   console.log(movie);
-
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -18,7 +16,7 @@ const Play = () => {
           controls
           width="100%"
           height="100%"
-          style={{ position: 'absolute', top: 0, left: 0 }}
+          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
   // console.log(movie);
 
   const openMovie = () => {
-    navigate('/movieInfo', { state: { movie } });
+    navigate("/movieInfo", { state: { movie } });
   };
 
   return (

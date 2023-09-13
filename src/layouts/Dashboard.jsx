@@ -1,31 +1,27 @@
+import { Badge, Button, useDisclosure } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { MdOutlineNotificationsActive } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
-
-import { Badge, Button, useDisclosure } from '@nextui-org/react';
-import { MdOutlineNotificationsActive } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
 import NotificationModal from '../shared/modal/NotificationModal';
 import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
+
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { user, logOut } = useAuth();
-  // console.log(user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state?.paymentHistory?.data);
+  const filters = data.filter((d) => d?.email === user?.email);
 
   //Notification user dashboard
-
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.paymentHistory.data);
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
-  const filters = data.filter((d) => d.email === user?.email);
-
-  console.log(filters);
 
   const handleLogOut = async () => {
     console.log('Logging out...');
@@ -99,7 +95,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Dashboard Sidebar */}
+      {/* DASHBOARD SIDEBAR */}
       <div
         className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
           isSidebarOpen ? 'block' : 'hidden lg:block'
