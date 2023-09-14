@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
 import Swal from 'sweetalert2';
-import useAuth from '../../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import ReviewModal from './ReviewModal';
+import useAuth from '../../../../../hooks/useAuth';
 
 
 
-const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaReviewOpen }) => {
+const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaReviewOpen }) => {
   // STATE:
   const [showWarning, setShowWarning] = useState(false);
 
@@ -35,7 +35,7 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
   // QUERY SUBMISSION:
   const onSubmit = async (review) => {
     try {
-      if (review?.forumTopic === 'choose a categorie') {
+      if (review?.categorie === 'choose a categorie') {
         Swal.fire({
           text: 'Please select a Categorie!',
           icon: 'warning',
@@ -51,25 +51,25 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
       review.views = 0;
 
       // QUERY SUBMISSION:
-      const querySlot = {
+      const reviewSlot = {
         user,
-        query: review,
+        review: review,
       };
 
       // CLOSE MODAL:
       reset();
       setIsWriteaReviewOpen(false);
       Swal.fire({
-        text: 'Query submitted successfully!',
+        text: 'Review submitted successfully!',
         icon: 'success',
         background: '#222',
         reverseButtons: true,
       });
 
       // SEND QUERY TO THE SERVER:
-      const forumResponseSlot = await axiosSecure.post('/forumQueries', review);
-      const userResponseSlot = await axiosSecure.post('/query', querySlot);
-      console.log(forumResponseSlot, userResponseSlot);
+      const reviewResponseSlot = await axiosSecure.post('/movieReviews', review);
+      const userResponseSlot = await axiosSecure.post('/reviews', reviewSlot);
+      console.log(reviewResponseSlot, userResponseSlot);
 
       refetch();
     } catch (error) {
@@ -122,7 +122,7 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
           {errors?.description && <span>Description is required</span>}
         </div>
 
-        {/* FORUM TOPIC SELECTION */}
+        {/* MOVIE CATEGORIE SELECTION */}
         <div className="flex flex-col gap-2">
           <label className="text-xs text-white" htmlFor="movieReview">
             Choose The Categorie
@@ -142,14 +142,13 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
           {errors?.movieReview && <span>Movie categorie is required</span>}
         </div>
 
-        {/* QUERY SUBMISSION */}
+        {/* REVIEW SUBMISSION */}
         <div className="flex flex-row justify-between gap-2">
           <div className="flex flex-row gap-2">
             <button
               type="submit"
               className="btn btn-sm rounded-sm border hover:border-green-900 hover:text-green-900 mt-2"
               disabled={!isValid}
-              // onClick={() => setIsOpen(false)}
             >
               Submit
             </button>
@@ -166,7 +165,7 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
           <div className="flex flex-row items-center text-cyred">
             {showWarning && !isValid && (
               <p className="text-red-600 text-xs">
-                Please fill the form to submit your query!
+                Please fill the form to submit your review!
               </p>
             )}
             {!isValid && (
@@ -179,4 +178,4 @@ const AskQueryModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaRevie
   );
 };
 
-export default AskQueryModal;
+export default WriteAReviewModal;
