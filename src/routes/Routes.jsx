@@ -1,18 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import PlayerPage from "../components/TrailerCard/PlayerPage";
-import Play from "../components/play/Play";
 import SeriesParts from "../components/series/SeriesParts";
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 import Dashboard from "../layouts/Dashboard";
 import Root from "../layouts/Root";
-import AdminHome from "../pages/DashBoard/Admin/AdminHome";
+// import AdminHome from "../pages/DashBoard/Admin/AdminHome";
 import Payments from "../pages/DashBoard/Admin/Payments/Payment";
-import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
+// import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
 // import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
-import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
-import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
-import UsersHome from "../pages/DashBoard/user/UsersHome";
+// import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
 import Downloads from "../pages/DashBoard/user/downloads/Downloads";
 import History from "../pages/DashBoard/user/history/History";
 import Recommendation from "../pages/DashBoard/user/recommendation/Recommendation";
@@ -22,6 +19,14 @@ import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Revenue from "../pages/dashBoard/admin/revenue/Revenue";
 // import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
+import MoviePlayer from "../components/moviePlayer/MoviePlayer";
+import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
+import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
+import AdminDashboard from "../pages/dashBoard/admin/AdminDashboard";
+import ManageSubscription from "../pages/dashBoard/admin/manageSubscription/ManageSubscription";
+import UserFeedback from "../pages/dashBoard/admin/userFeedback/UserFeedback";
+import UserPanel from "../pages/dashBoard/admin/userPanel/UserPanel";
+import UserDashboard from "../pages/dashBoard/user/UserDashboard";
 import Forum from "../pages/dashBoard/user/forum/Forum";
 import PaymentHistory from "../pages/dashBoard/user/paymentHistory/PaymentHistory";
 import UpdatePaymentInfo from "../pages/dashBoard/user/paymentInfo/PaymentInfo";
@@ -47,9 +52,6 @@ import Series from "../pages/series/Series";
 import TermsConditions from "../pages/terms/TermsConditions";
 import Testimonials from "../pages/testimonials/Testimonials";
 import Trailer from "../pages/trailer/Trailer";
-import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
-import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
-import MoviePlayer from "../components/moviePlayer/MoviePlayer";
 
 
 const router = createBrowserRouter([

@@ -83,13 +83,10 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
       const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
       const userResponseSlot = await axiosSecure.post('/query', querySlot);
       console.log(forumResponseSlot, userResponseSlot);
+
+      refetch();
     } catch (error) {
       console.error('Error while submitting query', error);
-      Swal.fire(
-        'Error!',
-        'An error occurred while submitting the query',
-        'error'
-      );
     }
   };
 
@@ -109,6 +106,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       reset={reset}
+      refetch={refetch}
       title={'Ask your query'}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
@@ -124,7 +122,8 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
           />
           {errors?.title && <span>Title is required</span>}
         </div>
-        <div className="flex flex-col gap-2">
+
+        {/* <div className="flex flex-col gap-2">
           <label className="text-xs text-white" htmlFor="description">
             Description:
           </label>
@@ -134,7 +133,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
             {...register('description', { required: true })}
           />
           {errors?.description && <span>Description is required</span>}
-        </div>
+        </div> */}
 
         {/* FORUM TOPIC SELECTION */}
         <div className="flex flex-col gap-2">
@@ -176,6 +175,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
               Cancel
             </button>
           </div>
+          
           <div className="flex flex-row items-center text-cyred">
             {showWarning && !isValid && (
               <p className="text-red-600 text-xs">

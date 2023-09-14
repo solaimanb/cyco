@@ -8,7 +8,7 @@ const Wishlist = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useContext(AuthContext);
   const [wishlist, setWishlist] = useState([]);
-  console.log( wishlist );
+  console.log(wishlist);
 
   // if (loading) {
   //   return <Loading />;
@@ -18,7 +18,7 @@ const Wishlist = () => {
     if (user) {
       axiosSecure
         .get(`/user/${user?.email}`)
-        .then( ( response ) => {
+        .then((response) => {
           console.log(response);
           setWishlist(response?.data?.wishlist);
         })
@@ -71,9 +71,12 @@ const Wishlist = () => {
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
-      <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
-        My wishlist
-      </p>
+      {/* WISHLIST HEADER */}
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+          Forum
+        </p>
+      </div>
 
       {wishlist && wishlist?.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
