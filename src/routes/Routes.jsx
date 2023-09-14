@@ -1,18 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import PlayerPage from "../components/TrailerCard/PlayerPage";
-import Play from "../components/play/Play";
+// import Play from "../components/play/Play";
 import SeriesParts from "../components/series/SeriesParts";
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 import Dashboard from "../layouts/Dashboard";
 import Root from "../layouts/Root";
-import AdminHome from "../pages/DashBoard/Admin/AdminHome";
+// import AdminHome from "../pages/DashBoard/Admin/AdminHome";
 import Payments from "../pages/DashBoard/Admin/Payments/Payment";
-import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
+// import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
 // import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
-import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
-import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
-import UsersHome from "../pages/DashBoard/user/UsersHome";
+
+// import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
+// import UsersHome from "../pages/DashBoard/user/UsersHome";
 import Downloads from "../pages/DashBoard/user/downloads/Downloads";
 import History from "../pages/DashBoard/user/history/History";
 import Recommendation from "../pages/DashBoard/user/recommendation/Recommendation";
@@ -27,7 +27,7 @@ import PaymentHistory from "../pages/dashBoard/user/paymentHistory/PaymentHistor
 import UpdatePaymentInfo from "../pages/dashBoard/user/paymentInfo/PaymentInfo";
 import ProfileSettings from "../pages/dashBoard/user/profileSettings/ProfileSettings";
 import WatchLive from "../pages/dashBoard/user/watch-party/Watch-live/WatchLive";
-import WatchParty from "../pages/dashBoard/user/watch-party/WatchParty";
+// import WatchParty from "../pages/dashBoard/user/watch-party/WatchParty";
 import Wishlist from "../pages/dashBoard/user/wishlist/WishList";
 import { default as Help } from "../pages/help/Help";
 import Home from "../pages/home/home/Home";
@@ -50,27 +50,32 @@ import Trailer from "../pages/trailer/Trailer";
 import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
 import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
 import MoviePlayer from "../components/moviePlayer/MoviePlayer";
-
+import ManageSubscription from "../pages/DashBoard/Admin/manageSubscription/ManageSubscription";
+import UserFeedback from "../pages/DashBoard/Admin/userFeedback/UserFeedback";
+import WatchParty from "../pages/DashBoard/user/watch-party/WatchParty";
+import UserDashboard from "../pages/DashBoard/user/UserDashboard";
+import AdminDashboard from "../pages/DashBoard/Admin/AdminDashboard";
+import UserPanel from "../pages/DashBoard/Admin/userPanel/UserPanel";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: 'trailer', element: <Trailer /> },
-      { path: 'trailer/:index', element: <PlayerPage /> },
-      { path: 'movies', element: <Movies /> },
-      { path: 'series', element: <Series /> },
-      { path: 'series/seriesParts', element: <SeriesParts /> },
-      { path: 'live-tv', element: <LiveTv /> },
-      { path: 'podcast', element: <Podcast /> },
-      { path: 'about', element: <About /> },
-      { path: 'contact', element: <Contact /> },
-      { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
-      { path: 'checkout', element: <Payment /> },
-      { path: 'video-player', element: <VideoPlayer /> },
+      { path: "/", element: <Home /> },
+      { path: "trailer", element: <Trailer /> },
+      { path: "trailer/:index", element: <PlayerPage /> },
+      { path: "movies", element: <Movies /> },
+      { path: "series", element: <Series /> },
+      { path: "series/seriesParts", element: <SeriesParts /> },
+      { path: "live-tv", element: <LiveTv /> },
+      { path: "podcast", element: <Podcast /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      { path: "checkout", element: <Payment /> },
+      { path: "video-player", element: <VideoPlayer /> },
       { path: "movieinfo", element: <MovieInfo /> },
       // { path: "watch-video", element: <Play /> },
       { path: "watch-video", element: <MoviePlayer /> },
@@ -84,36 +89,35 @@ const router = createBrowserRouter([
       { path: "notify", element: <Notify /> },
       { path: "receive-notification", element: <ReceiveNotification /> },
       { path: "help", element: <Help /> },
-
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { path: 'admin-dashboard', element: <AdminDashboard /> },
-      { path: 'user-dashboard', element: <UserDashboard /> },
-      { path: 'wishlist', element: <Wishlist /> },
-      { path: 'downloads', element: <Downloads /> },
-      { path: 'subscriptions', element: <Subscriptions /> },
-      { path: 'forum', element: <Forum /> },
-      { path: 'watch-party', element: <WatchParty /> },
-      { path: 'watch-party/watch-party-public', element: <WatchLive /> },
-      { path: 'recommendation', element: <Recommendation /> },
-      { path: 'admin/paymentHistory', element: <AdminPaymentHistory /> },
-      { path: 'payment-info', element: <UpdatePaymentInfo /> },
-      { path: 'payment-history', element: <PaymentHistory /> },
-      { path: 'settings', element: <ProfileSettings /> },
-      { path: 'history', element: <History /> },
-      { path: 'upload-movie', element: <UploadMovie /> },
-      { path: 'revenue', element: <Revenue /> },
-      { path: 'logs', element: <SystemLogs /> },
-      { path: 'help', element: <Help /> },
-      { path: 'admin/manage-subscription', element: <ManageSubscription /> },
+      { path: "admin-dashboard", element: <AdminDashboard /> },
+      { path: "user-dashboard", element: <UserDashboard /> },
+      { path: "wishlist", element: <Wishlist /> },
+      { path: "downloads", element: <Downloads /> },
+      { path: "subscriptions", element: <Subscriptions /> },
+      { path: "forum", element: <Forum /> },
+      { path: "watch-party", element: <WatchParty /> },
+      { path: "watch-party/watch-party-public", element: <WatchLive /> },
+      { path: "recommendation", element: <Recommendation /> },
+      { path: "admin/paymentHistory", element: <AdminPaymentHistory /> },
+      { path: "payment-info", element: <UpdatePaymentInfo /> },
+      { path: "payment-history", element: <PaymentHistory /> },
+      { path: "settings", element: <ProfileSettings /> },
+      { path: "history", element: <History /> },
+      { path: "upload-movie", element: <UploadMovie /> },
+      { path: "revenue", element: <Revenue /> },
+      { path: "logs", element: <SystemLogs /> },
+      { path: "help", element: <Help /> },
+      { path: "admin/manage-subscription", element: <ManageSubscription /> },
       // { path: 'modernization', element: <Modernization /> },
-      { path: 'user-panel', element: <UserPanel /> },
-      { path: 'user-feedback', element: <UserFeedback /> },
-      { path: 'payment', element: <Payments /> },
+      { path: "user-panel", element: <UserPanel /> },
+      { path: "user-feedback", element: <UserFeedback /> },
+      { path: "payment", element: <Payments /> },
       // {
       //   path: 'live-tv/live/:id',
       //   element: <LiveVideo />,
@@ -124,7 +128,7 @@ const router = createBrowserRouter([
       // },
     ],
   },
-  { path: '*', element: <ErrorPage /> },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 export default router;
