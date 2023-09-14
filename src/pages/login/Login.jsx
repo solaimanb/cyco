@@ -5,8 +5,14 @@ import Swal from 'sweetalert2';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import './Login.css';
-
+import { useDisclosure,} from "@nextui-org/react";
+import ResetModal from '../../modal/ResetModal';
 const Login = () => {
+  let [isOpen, setIsOpen] = useState(false)
+const closeModal = () => {
+    setIsOpen(false)
+}
+console.log(isOpen);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -35,27 +41,29 @@ const Login = () => {
     }
   };
 
-  // const handleResetPassword = (event) => {
-  //         const email = (emailRef.current.value);
-  //         if (!email){
-  //           alert('please provide your email address first')
-  //           return;
-  //         }
+  const handleResetPassword = (event) => {
+          const email = (emailRef.current.value);
+          if (!email){
+            alert('please provide your email address first')
+            return;
+          }
 
-  //         sendPasswordResetEmail(auth, email)
-  //         .then(() => {
-  //           alert('Please check your email')
-  //         })
-  //         .catch(error => {
-  //           console.log(error);
-  //           setErrorMessage(error.message)
-  //         })
-  // }
+          sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert('Please check your email')
+          })
+          .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message)
+          })
+  }
 
   return (
     <div className="flex justify-center items-center h-screen">
+    <ResetModal isOpen={isOpen}
+            closeModal={closeModal} />
       <div id="loginAnimation">
-        <div className="z-40">
+        <div className="z-10">
           <div className="absolute top-0 left-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
@@ -93,9 +101,7 @@ const Login = () => {
                 className="mt-1 p-2 w-full border rounded-sm"
                 required
               />
-              {/* <label className="flex justify-end">
-             <p className="text-sm pt-2 "> <button onClick={handleResetPassword}>Forgot password?</button> </p>
-            </label> */}
+             
             </div>
             {errorMessage && (
               <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
@@ -109,7 +115,9 @@ const Login = () => {
               </button>
             </div>
           </form>
-
+          <label className="flex justify-end">
+             <p className="text-sm pt-2 "> <button onClick={() =>setIsOpen(true)}>Forgot password?</button> </p>
+            </label>
           <div className="flex mx-auto gap-2 ">
             <div className="text-center mx-auto">
               <SocialLogin />

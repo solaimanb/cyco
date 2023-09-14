@@ -5,20 +5,19 @@ import SeriesParts from "../components/series/SeriesParts";
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 import Dashboard from "../layouts/Dashboard";
 import Root from "../layouts/Root";
-import AdminHome from "../pages/DashBoard/Admin/AdminHome";
 import Payments from "../pages/DashBoard/Admin/Payments/Payment";
-import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
+
 // import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
-import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
-import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
-import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
-import UsersHome from "../pages/DashBoard/user/UsersHome";
+// import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
+// import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
+// import UserPannelList from "../pages/DashBoard/Admin/user-panel-lists/UserPannelList";
+// import UsersHome from "../pages/DashBoard/user/UsersHome";
 import Downloads from "../pages/DashBoard/user/downloads/Downloads";
 import History from "../pages/DashBoard/user/history/History";
 import Recommendation from "../pages/DashBoard/user/recommendation/Recommendation";
 import Subscriptions from "../pages/DashBoard/user/subscriptions/Subscriptions";
 import ErrorPage from "../pages/Error/ErrorPage";
-import About from "../pages/about/About";
+// import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Revenue from "../pages/dashBoard/admin/revenue/Revenue";
 // import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
@@ -50,6 +49,12 @@ import Trailer from "../pages/trailer/Trailer";
 import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
 import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
 import MoviePlayer from "../components/moviePlayer/MoviePlayer";
+import ManageSubscription from "../pages/DashBoard/Admin/manageSubscription/ManageSubscription";
+import AdminDashboard from "../pages/DashBoard/Admin/AdminDashboard";
+import UserDashboard from "../pages/DashBoard/user/UserDashboard";
+import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
+import UserPanel from "../pages/DashBoard/Admin/userPanel/UserPanel";
+import UserFeedback from "../pages/DashBoard/Admin/userFeedback/UserFeedback";
 
 
 const router = createBrowserRouter([
@@ -65,7 +70,7 @@ const router = createBrowserRouter([
       { path: 'series/seriesParts', element: <SeriesParts /> },
       { path: 'live-tv', element: <LiveTv /> },
       { path: 'podcast', element: <Podcast /> },
-      { path: 'about', element: <About /> },
+      // { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
