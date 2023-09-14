@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
-import { updateQueryViews } from '../../../../store/slices/queriesSlice/queriesSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
@@ -76,26 +75,26 @@ const Forum = () => {
   //     });
   // };
 
-  const handleViewClick = async (query) => {
-    const updatedViewCount = query.views + 1; // Increment the view count locally
-    console.log(updatedViewCount);
+  // const handleViewClick = async (query) => {
+  //   const updatedViewCount = query.views + 1; // Increment the view count locally
+  //   console.log(updatedViewCount);
 
-    try {
-      // Send the updated view count to the server
-      const response = await axiosSecure.post(`/forumQueries/${query?._id}`, {
-        views: updatedViewCount,
-      });
+  //   try {
+  //     // Send the updated view count to the server
+  //     const response = await axiosSecure.post(`/forumQueries/${query?._id}`, {
+  //       views: updatedViewCount,
+  //     });
 
-      if (response?.data?.success) {
-        // Update the view count in the Redux state
-        dispatch(updateQueryViews(query?._id, updatedViewCount));
-      } else {
-        console.log('Failed to update query views count.');
-      }
-    } catch (error) {
-      console.log('Error updating query views', error);
-    }
-  };
+  //     if (response?.data?.success) {
+  //       // Update the view count in the Redux state
+  //       dispatch(updateQueryViews(query?._id, updatedViewCount));
+  //     } else {
+  //       console.log('Failed to update query views count.');
+  //     }
+  //   } catch (error) {
+  //     console.log('Error updating query views', error);
+  //   }
+  // };
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
