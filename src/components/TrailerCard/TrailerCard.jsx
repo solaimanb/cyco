@@ -4,7 +4,7 @@ const TrailerCard = ({ movie, index }) => {
     <div className="card w-full pb-8 group">
       <Link to={`/trailer/${index}`}>
         <img
-          className="w-96 h-80 mx-auto rounded-sm hover:brightness-110 group-hover:scale-105"
+          className="w-96 h-72 mx-auto rounded-sm hover:brightness-110 group-hover:scale-105"
           src={movie?.Thumbnail}
           alt=""
         />

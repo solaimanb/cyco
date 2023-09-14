@@ -14,10 +14,10 @@ const MovieCard = ({ movie }) => {
   return (
     <div
       onClick={openMovie}
-      className="card w-full my-2 md:mt-10 md:mb-12 border border-zinc-600 rounded-sm backdrop-blur-sm backdrop-opacity-80 backdrop-brightness-10"
+      className="card w-full border border-zinc-600 rounded-sm mb-12"
     >
       <LazyLoadImage
-        className="w-full h-60 md:h-80 lg:h-96 object-cover rounded-sm hover:brightness-110"
+        className="w-full h-60 md:h-80 2xl:h-96 object-cover rounded-sm hover:brightness-110"
         alt={movie.alt}
         effect="blur"
         height={movie?.height}
@@ -26,9 +26,9 @@ const MovieCard = ({ movie }) => {
         width={movie?.width}
       />
       <div className="p-2 text-white">
-        <h2 className="text- font-semibold">{movie?.Title}</h2>
-        <p className="mt-2 text-xs">{movie?.Runtime}</p>
-        <p className="text-xs">Released: {movie?.Released}</p>
+        <h2 className="text-sm lg:text-md  lg:font-semibold">{movie?.Title}</h2>
+        <p className="mt-2 text-xs font-thin lg:font-normal">{movie?.Runtime}</p>
+        <p className="text-xs font-thin lg:font-normal">Released: {movie?.Released}</p>
       </div>
 
       {/* {isMovieOpen && (

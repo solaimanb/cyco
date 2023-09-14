@@ -48,7 +48,7 @@ const Trailer = () => {
       <div className="flex items-center gap-3 justify-center pt-10">
         <input
           type="search"
-          className="rounded-full px-3 py-2 w-[30%]"
+          className="rounded-full px-3 py-2 md:w-[30%]"
           placeholder="Search for Trailer"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
