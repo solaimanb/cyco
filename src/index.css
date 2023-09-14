@@ -51,7 +51,7 @@ svg.recharts-surface tspan {
 
 /* CSS BREAKPOINTS */
 
-@media screen and(max-width: 576px) {
+@media (max-width: 768px) {
   /* Mobile phones go here */
   .custom-container {
     width: 100%;

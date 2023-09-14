@@ -120,13 +120,13 @@ const Home = () => {
         </div>
 
         {/* Popular TVs */}
-        <div className="mt-20">
+        <div className="mt-10">
           <Title title={'Popular TVs'} />
           <PopularTvs />
         </div>
 
         {/* Movies/Categories */}
-        <div className="flex justify-between gap-5 mt-20">
+        <div className="lg:flex justify-between gap-5 mt-10">
           <div className="lg:w-[85%]">
             <div className="mt-10">
               <Title title={'Most Recent'} />

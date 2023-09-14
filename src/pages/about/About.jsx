@@ -5,7 +5,7 @@ import {
   FaGithubSquare,
   FaInstagramSquare,
 } from "react-icons/fa";
-import Divider from "../../components/divider/Divider";
+// import Divider from "../../components/divider/Divider";
 import CanvasComponent from "../../components/canvas/CanvasComponent";
 import FeedBack from "../../components/feedback/FeedBack";
 import "./About.css";
@@ -81,7 +81,7 @@ const About = () => {
 
           <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
         </div>
-      </figure>
+      
       <div className="relative flex flex-row text-start p-4 gap-2 h-full">
         <div className="flex flex-col justify-between space-y-2">
           <FaFacebookSquare size={22} />
