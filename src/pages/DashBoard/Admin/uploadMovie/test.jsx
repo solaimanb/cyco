@@ -1,23 +1,23 @@
-import React, { useContext, useState } from "react";
-import io from "socket.io-client";
-import Swal from "sweetalert2";
-import { addNewMovie } from "../../../../api/addNewMovie";
-import { imageUpload } from "../../../../api/imgUpload";
-import { AuthContext } from "../../../../providers/AuthProvider";
+import React, { useContext, useState } from 'react';
+import io from 'socket.io-client';
+import Swal from 'sweetalert2';
+import { addNewMovie } from '../../../../api/addNewMovie';
+import { imageUpload } from '../../../../api/imgUpload';
+import { AuthContext } from '../../../../providers/AuthProvider';
 
 // const socket = io('http://localhost:8080');
 const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const UploadMovie = () => {
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState('');
   const [notifyUsers, setNotifyUsers] = useState(false);
 
   const sendNotification = () => {
-    socket.emit("send_notification", { notification: notification });
+    socket.emit('send_notification', { notification: notification });
     Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Notification sent successfully",
+      position: 'top-end',
+      icon: 'success',
+      title: 'Notification sent successfully',
       showConfirmButton: false,
       timer: 1000,
     });
@@ -25,26 +25,27 @@ const UploadMovie = () => {
 
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload image");
+  const [uploadButtonText, setUploadButtonText] = useState('Upload image');
+
   const categories = [
     {
-      label: "Action",
+      label: 'Action',
     },
     {
-      label: "Adventure",
+      label: 'Adventure',
     },
     {
-      label: "Sci-Fi",
+      label: 'Sci-Fi',
     },
     {
-      label: "Emotional",
+      label: 'Emotional',
     },
     {
-      label: "Sad",
+      label: 'Sad',
     },
   ];
 
-  //handle from submit
+  // FORM SUBMIT HANDLER:
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
@@ -91,16 +92,16 @@ const UploadMovie = () => {
           Released,
           Year,
           Plot,
-          NotifyUsers: notifyUsers ? notification : "",
+          NotifyUsers: notifyUsers ? notification : '',
         };
 
         addNewMovie(movieData)
           .then((data) => {
             console.log(data);
             Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Movie uploaded successfully",
+              position: 'top-end',
+              icon: 'success',
+              title: 'Movie uploaded successfully',
               showConfirmButton: false,
               timer: 1500,
             });
@@ -109,7 +110,7 @@ const UploadMovie = () => {
       })
       .catch((err) => console.log(err.message));
 
-    setUploadButtonText("Uploading.....");
+    setUploadButtonText('Uploading.....');
     setNotifyUsers(false);
   };
   const handleImageChange = (image) => {
@@ -402,14 +403,16 @@ const UploadMovie = () => {
               id="notifyUsers"
               onChange={(event) => {
                 const isChecked = event.target.checked;
-                setNotifyUsers(isChecked); 
-              
+                setNotifyUsers(isChecked);
+
                 if (isChecked) {
                   const title = event.target.form.Title.value; // Get movie title from the form
                   const actors = event.target.form.Actors.value; // Get actors from the form
                   const director = event.target.form.Director.value; // Get director from the form
-                  // 
-                  sendNotification(`Movie: ${title}, Actors: ${actors}, Director: ${director}`);
+                  //
+                  sendNotification(
+                    `Movie: ${title}, Actors: ${actors}, Director: ${director}`
+                  );
                 }
               }}
             />
@@ -422,7 +425,7 @@ const UploadMovie = () => {
               // <TbFidgetSpinner className="m-auto animate-spin" size={24} />
               <h2>Loading...</h2>
             ) : (
-              "Save & Continue"
+              'Save & Continue'
             )}
           </button>
         </div>

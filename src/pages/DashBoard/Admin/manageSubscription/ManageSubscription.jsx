@@ -1,11 +1,8 @@
-import {
-  Button,
-  useDisclosure
-} from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ManageSubscriptionFirst from "../../../../shared/manageSubscriptionShared/ManageSubscriptionFirst";
-import { fetchItems } from "../../../../store/slices/subscriptionSlice/subscriptionSlice";
+import { Button, useDisclosure } from '@nextui-org/react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ManageSubscriptionFirst from '../../../../shared/manageSubscriptionShared/ManageSubscriptionFirst';
+import { fetchItems } from '../../../../store/slices/subscriptionSlice/subscriptionSlice';
 
 const ManageSubscription = () => {
   const items = useSelector((state) => state.manageSubscriptions);
@@ -20,14 +17,17 @@ const ManageSubscription = () => {
   const handlePassDataBasic = (id) => {
     setIsDataBasic(id);
   };
-  return (
-    <>
-      <div className="min-h-screen items-center ">
-        <h1 className=" text-3xl text-center m-5">
-          Manage Subscription for Admin
-        </h1>
 
-        {/* 1nd number card */}
+  return (
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      {/* MANAGE SUBSCRIPTION HEADER */}
+      <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+          Manage Subscription
+        </p>
+      </div>
+
+      <div className="mt-5">
         {items &&
           items.map((item) => (
             <div
@@ -54,9 +54,8 @@ const ManageSubscription = () => {
         items={isDataBasic}
         onOpenChange={onOpenChange}
         isOpen={isOpen}
-        
       />
-    </>
+    </section>
   );
 };
 

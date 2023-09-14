@@ -120,8 +120,6 @@ const About = () => {
                 CYCO is a streaming platform. It offers a range of movies, TV
                 shows, and other forms of entertainment content for users to
                 watch online. <span className="">⚔️</span>
-                {/* Streaming platforms have become increasingly popular for
-              their convenience and wide selection of content. */}
               </p>
             </div>
           </div>
@@ -143,7 +141,7 @@ const About = () => {
 
         <div className="my-8"></div>
 
-        <div className='my-20'>
+        <div className="my-20">
           <FeedBack />
         </div>
       </div>
