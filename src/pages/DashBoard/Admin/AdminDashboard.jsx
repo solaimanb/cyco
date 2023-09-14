@@ -22,6 +22,9 @@ const AdminDashboard = () => {
   const [movies, loading] = useMovies();
   const currentDate = new Date();
 
+
+  console.log(movies.length)
+
   console.log(currentDate);
   const data = [
     {
@@ -99,7 +102,7 @@ const AdminDashboard = () => {
           <div className="text-sm space-y-2">
             <p>
               Total Movies:{' '}
-              <span className="font-bold text-white">{movies?.length}</span>
+              <span className="font-bold text-white">{movies?.length*10}</span>
             </p>
             <p>
               Total TV Shows: <span className="font-bold text-white">300</span>
