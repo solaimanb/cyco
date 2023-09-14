@@ -116,7 +116,7 @@ const About = () => {
             </div>
 
             <div className="md:w-[50%] ml-4 lg:ml-20">
-              <p className="z-20 text-start py-4 text-sm md:text-base mx-aut">
+              <p className="z-20 text-start py-4 text-sm md:text-base italic">
                 CYCO is a streaming platform. It offers a range of movies, TV
                 shows, and other forms of entertainment content for users to
                 watch online. <span className="">⚔️</span>
