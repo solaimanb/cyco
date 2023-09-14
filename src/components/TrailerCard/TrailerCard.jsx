@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 const TrailerCard = ({ movie, index }) => {
   return (
-    <div className="card w-full mt-10 mb-20 h-[200px] md:h-[250px] lg:h-[350px]">
+    <div className="card w-full pb-8 group">
       <Link to={`/trailer/${index}`}>
         <img
-          className="w-full h-full object-cover rounded-sm hover:brightness-110"
+          className="w-96 h-80 mx-auto rounded-sm hover:brightness-110 group-hover:scale-105"
           src={movie?.Thumbnail}
           alt=""
         />
-        <div className="p-2 text-white">
+        <div className="pt-4 text-white text-center">
           <h2 className="text- font-semibold">{movie?.Title}</h2>
           <p className="text-sm">Will Be Release: {movie?.Year}</p>
         </div>
