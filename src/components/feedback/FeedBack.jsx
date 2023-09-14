@@ -17,7 +17,7 @@ const FeedBack = () => {
           ></textarea>
         </div>
 
-        <div className='bg-cyred skew-y-1'>
+        <div className="bg-cyred skew-y-1">
           <button className="cyco-btn btn btn-sm text-gray-400 italic uppercase">
             Submit
           </button>
