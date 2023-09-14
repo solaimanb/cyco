@@ -113,7 +113,6 @@ const Forum = () => {
         {/* FORUM POST */}
         <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col justify-between gap-2 rounded-sm">
           <div>
-            
             {/* ASK QUERY SLOT */}
             <div className="flex justify-end items-center px-2 pb-2 border-b border-zinc-800">
               <button
