@@ -7,20 +7,20 @@ const FeedBack = () => {
        <div className='-z-10 absolute'>
        <CanvasComponent />
        </div>
-      <h3> Would You Like to leave a feedback to Grow Us:</h3>
+      <h3 className='text-3xl text-gray-700 text-center'> Would You Like to leave a feedback <br /> to Grow Us:</h3>
 
       <div className='text-start mx-auto lg:my-16'>
-        <label className='pb-2 text-white/80' htmlFor="feedBack">Your feedBack Please</label>
+        <label className='pb-2 text-gray-700' htmlFor="feedBack">Your feedBack Please</label>
         <br />
 
-        <textarea className='bg-black/60 text-white/60 p-8 mt-2 border border-cyred/40' name="feedBack" id="feedBack" cols="60" rows="4"></textarea>
+        <textarea className='bg-black/60 text-gray-700 p-8 mt-2 border border-gray-700' name="feedBack" id="feedBack" cols="60" rows="4"></textarea>
         <br />
         
       </div>
-      <button className='-mt-12' type='feedBack'>Send Feedback </button>
+      <button className='-mt-12 text-gray-700' type='feedBack'>Send Feedback </button>
 
       <div>
-        <h3 className='lg:my-16'>
+        <h3 className='lg:my-16 text-gray-700 text-3xl'>
         Thank You For Your Patience 
         </h3>
       </div>
