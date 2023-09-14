@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       { path: 'series/seriesParts', element: <SeriesParts /> },
       { path: 'live-tv', element: <LiveTv /> },
       { path: 'podcast', element: <Podcast /> },
-      // { path: 'about', element: <About /> },
+      { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },

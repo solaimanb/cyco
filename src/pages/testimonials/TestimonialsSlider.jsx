@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -5,6 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import axios from 'axios';
 
 // testimonial data
 const testimonialData = [
@@ -32,6 +34,30 @@ const testimonialData = [
 ];
 
 const TestimonialSlider = () => {
+const [feedbacks, setFeedbacks] = useState([]);
+
+console.log(feedbacks)
+
+  useEffect(() => {
+    // Fetch feedbacks when the component mounts
+    const fetchFeedbacks = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/feedbacks');
+        setFeedbacks(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchFeedbacks();
+  }, []);
+
+
+
+
+
+
+
   return (
     <Swiper
       autoplay={{
@@ -46,7 +72,7 @@ const TestimonialSlider = () => {
       modules={[Autoplay, Navigation, ]}
       // className="h-[440px]"
     >
-      {testimonialData?.map((feedBack, index) => {
+      {feedbacks?.map((feedBack, index) => {
         return (
           <SwiperSlide key={index}>
             <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-10">
@@ -56,17 +82,17 @@ const TestimonialSlider = () => {
                   {/* avater */}
                   <div>
                     <img
-                      src={feedBack.image}
+                      src={feedBack.photoURL}
                       alt="feedback giver Image"
                       width={110}
                       height={110}
                     />
                   </div>
                   {/* name */}
-                  <div className="text-lg ">{feedBack.name}</div>
+                  <div className="text-lg ">{feedBack.displayName}</div>
                   {/* position */}
                   <div className="text-[12px] uppercase font-extralight tracking-widest">
-                    {feedBack.position}
+                    {/* {feedBack.position} */} <p>Honorable Speaker</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +105,7 @@ const TestimonialSlider = () => {
                   <FaQuoteLeft className="text-4xl xl:text-6xl text-cyred mx-auto md:mx-0 " />
                 </div>
                 <div className="xl:text-lg text-center md:text-left mb-4 text-white">
-                  {feedBack.message}
+                  {feedBack.feedback}
                 </div>
               </div>
             </div>
