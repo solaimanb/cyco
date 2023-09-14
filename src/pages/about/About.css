@@ -1,49 +1,28 @@
-
-
-#aboutDiv{
-    position: relative;
+#aboutDiv {
+  position: relative;
 }
-#aboutDiv li {
-    position: relative;
-    list-style: none;
-}
-
-#aboutDiv li a {
-    font: 700;
-    font-size: 3rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-
-    position: relative;
-    text-decoration: none;
-}
-
-
-/* 
 #about {
-    font: 700;
-    font-size: 3rem;
-    color: aqua;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-
-    position: relative;
-    text-decoration: none;
-    
-} */
-
-#aboutDiv li a::before {
-    content: attr(data-text);
-    position: absolute;
-    color: #700000;
-    width: 0;
-    overflow: hidden;
-    border-right: 3px solid #700000;
-    transition: 1s;
-
+  position: relative;
+  list-style: none;
 }
 
-#aboutDiv li a:hover::before {
-    width: 100%;
+#aboutDiv h2 {
+  font: 700;
+  /* font-size: 8rem; */
+  position: relative;
+  text-decoration: none;
+}
 
+#aboutDiv div h2::before {
+  content: attr(data-text);
+  position: absolute;
+  color: #700000;
+  width: 0;
+  overflow: hidden;
+  border-right: 3px solid #700000;
+  transition: 1s;
+}
+
+#aboutDiv div h2:hover::before {
+  width: 100%;
 }
