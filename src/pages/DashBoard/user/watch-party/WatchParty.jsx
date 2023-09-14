@@ -1,8 +1,8 @@
-import React from 'react';
-import { FaShare } from 'react-icons/fa';
-import ReactPlayer from 'react-player';
-import { useNavigate } from 'react-router-dom';
-import CommentSection from '../../../liveTv/CommentSection';
+import React from "react";
+// import { FaShare } from "react-icons/fa";
+import ReactPlayer from "react-player";
+import { useNavigate } from "react-router-dom";
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -11,36 +11,35 @@ import {
   FacebookMessengerIcon,
   LinkedinIcon,
   LinkedinShareButton,
-  WorkplaceIcon,
-  WorkplaceShareButton,
-  TwitterIcon
-} from 'react-share';
+  TwitterIcon,
+} from "react-share";
+// import CommentSection from "../../../liveTv/CommentSection";
 
 const WatchParty = () => {
   const navigate = useNavigate();
   const events = [
     {
-      title: ' Avenger team includes Iron Man',
-      banner: 'https://freepngimg.com/thumb/avengers/24591-2-avengers.png'
+      title: " Avenger team includes Iron Man",
+      banner: "https://freepngimg.com/thumb/avengers/24591-2-avengers.png",
     },
     {
-      title: 'Avengers Party',
-      banner: 'https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png'
-    }
-  ]
+      title: "Avengers Party",
+      banner:
+        "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
+    },
+  ];
 
   const party = {
     title:
-      'SpaceX Falcon 9 launched Axiom Space’s Axiom Mission 2 (Ax-2) to the ISS',
+      "SpaceX Falcon 9 launched Axiom Space’s Axiom Mission 2 (Ax-2) to the ISS",
     banner:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1f-hjggaP6l4ZdXf6v8hVA4LW_OVNKtelQ&usqp=CAU',
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1f-hjggaP6l4ZdXf6v8hVA4LW_OVNKtelQ&usqp=CAU",
     source: "https://www.youtube.com/embed/Iz6qdzVCN9g?si=qDDW7kWx6bKS3R5W",
     description:
-      'NASA’s Kennedy Space Center in Florida. Following stage separation, Falcon 9’s first stage landed on Landing Zone 1 (LZ-1) at Cape Canaveral Space Force Station.',
+      "NASA’s Kennedy Space Center in Florida. Following stage separation, Falcon 9’s first stage landed on Landing Zone 1 (LZ-1) at Cape Canaveral Space Force Station.",
   };
 
   const currentUrl = window.location.href;
-
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -59,14 +58,14 @@ const WatchParty = () => {
               className="w-full object-cover rounded-sm"
             /> */}
 
-            <div className="relative" style={{ paddingBottom: '66.25%' }}>
+            <div className="relative" style={{ paddingBottom: "66.25%" }}>
               <ReactPlayer
                 url={party?.source}
                 width="100%"
                 height="100%"
                 controls
                 playing // Auto-play the video
-                style={{ position: 'absolute', top: 0, left: 0 }}
+                style={{ position: "absolute", top: 0, left: 0 }}
               />
             </div>
           </div>
@@ -79,22 +78,17 @@ const WatchParty = () => {
 
             {/* TODO: dummy events---> (make these dynamic) */}
             <div className="">
-              {
-                events.map(item =>
-                  <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
-                    <div>
-                      <img
-                        src={item?.banner}
-                        className="w-full object-cover rounded-sm"
-                      />
-                    </div>
-                    <h4 className="text-sm font-semibold">
-                      {item?.title}
-                    </h4>
+              {events.map((item) => (
+                <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
+                  <div>
+                    <img
+                      src={item?.banner}
+                      className="w-full object-cover rounded-sm"
+                    />
                   </div>
-                )
-              }
-
+                  <h4 className="text-sm font-semibold">{item?.title}</h4>
+                </div>
+              ))}
 
               {/* <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
                 <div>
@@ -120,30 +114,28 @@ const WatchParty = () => {
             <div className="flex flex-row gap-3">
               {/* Share on Facebook */}
               <LinkedinShareButton url={currentUrl}>
-                <LinkedinIcon size={30} className='rounded-lg' />
+                <LinkedinIcon size={30} className="rounded-lg" />
               </LinkedinShareButton>
 
               {/* Share on Twitter */}
               <TwitterShareButton url={currentUrl}>
-                <TwitterIcon size={30} className='rounded-lg' />
+                <TwitterIcon size={30} className="rounded-lg" />
               </TwitterShareButton>
 
               {/* Share on WhatsApp */}
-              <WhatsappShareButton title='Share On Whatsapp' url={currentUrl}>
-                <WhatsappIcon size={30} className='rounded-lg' />
+              <WhatsappShareButton title="Share On Whatsapp" url={currentUrl}>
+                <WhatsappIcon size={30} className="rounded-lg" />
               </WhatsappShareButton>
               {/* Share On Facebook */}
               <FacebookShareButton>
-                <FacebookMessengerIcon size={30} className='rounded-lg' />
+                <FacebookMessengerIcon size={30} className="rounded-lg" />
               </FacebookShareButton>
             </div>
           </div>
         </div>
       </div>
 
-      <div>
-        <CommentSection />
-      </div>
+      <div>{/* <CommentSection /> */}</div>
     </section>
   );
 };

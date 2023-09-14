@@ -50,7 +50,7 @@ import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       { path: '/', element: <Home /> },
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       { path: 'series/seriesParts', element: <SeriesParts /> },
       { path: 'live-tv', element: <LiveTv /> },
       { path: 'podcast', element: <Podcast /> },
-      // { path: 'about', element: <About /> },
+      { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
       { path: 'admin-dashboard', element: <AdminDashboard /> },
@@ -109,7 +109,7 @@ const router = createBrowserRouter([
       { path: 'payment', element: <Payments /> },
     ],
   },
-  { path: '*', element: <ErrorPage /> },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 export default router;
