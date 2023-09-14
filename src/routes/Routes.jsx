@@ -4,21 +4,15 @@ import SeriesParts from "../components/series/SeriesParts";
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 import Dashboard from "../layouts/Dashboard";
 import Root from "../layouts/Root";
-// import AdminHome from "../pages/DashBoard/Admin/AdminHome";
 import Payments from "../pages/DashBoard/Admin/Payments/Payment";
-// import ManageSubscription from "../pages/DashBoard/Admin/manage-subscription/ManageSubscription";
-// import Modernization from '../pages/DashBoard/Admin/modernization/Modernization';
 import SystemLogs from "../pages/DashBoard/Admin/system-logs/SystemLogs";
-// import UserFeedback from "../pages/DashBoard/Admin/user-feedback/UserFeedback";
 import Downloads from "../pages/DashBoard/user/downloads/Downloads";
 import History from "../pages/DashBoard/user/history/History";
 import Recommendation from "../pages/DashBoard/user/recommendation/Recommendation";
 import Subscriptions from "../pages/DashBoard/user/subscriptions/Subscriptions";
 import ErrorPage from "../pages/Error/ErrorPage";
-import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Revenue from "../pages/dashBoard/admin/revenue/Revenue";
-// import UploadMovie from '../pages/dashBoard/admin/uploadMovie/UploadMovie';
 import MoviePlayer from "../components/moviePlayer/MoviePlayer";
 import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
 import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
@@ -53,7 +47,6 @@ import TermsConditions from "../pages/terms/TermsConditions";
 import Testimonials from "../pages/testimonials/Testimonials";
 import Trailer from "../pages/trailer/Trailer";
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,7 +60,7 @@ const router = createBrowserRouter([
       { path: 'series/seriesParts', element: <SeriesParts /> },
       { path: 'live-tv', element: <LiveTv /> },
       { path: 'podcast', element: <Podcast /> },
-      { path: 'about', element: <About /> },
+      // { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },

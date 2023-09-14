@@ -122,10 +122,10 @@ const Register = () => {
                   id="password"
                   name="password"
                   {...register('password', {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    // required: true,
+                    // minLength: 6,
+                    // maxLength: 20,
+                    // pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   className="mt-1 p-2 w-full border rounded-sm focus:ring pr-12"
                   required
