@@ -65,7 +65,7 @@ const Dashboard = () => {
   const adminNavLinks = [
     { to: 'admin-dashboard', text: 'Dashboard' },
     { to: 'upload-movie', text: 'Upload Movie' },
-    { to: 'revenue', text: 'Ad Revenue Tracking' },
+    // { to: 'revenue', text: 'Ad Revenue Tracking' },
     { to: 'logs', text: 'System Logs' },
     { to: 'admin/manage-subscription', text: 'Manage Subscriptions' },
     { to: 'user-panel', text: 'User Panel' },

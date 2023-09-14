@@ -15,6 +15,8 @@ const UserDashboard = () => {
 
   const userEntry = user?.metadata?.createdAt;
 
+  console.log(user);
+
   // SETTING POST TIME:
   useEffect(() => {
     const currentTime = new Date().getTime();
