@@ -8,6 +8,7 @@ import Divider from "../../components/divider/Divider";
 import CanvasComponent from "../../components/canvas/CanvasComponent";
 import FeedBack from "../../components/feedback/FeedBack";
 import "./About.css";
+import Container from '../../components/container/Container';
 
 const members = [
   {
@@ -101,6 +102,11 @@ const About = () => {
           </a>
         </li>
         <p className="text-gray-700 text-center py-8 text-sm md:text-base w-[60%] mx-auto">
+//     <Container>
+//       <div className="mx-auto text-zinc-300">
+//       <div className="text-center pt-10">
+//         <h2 className="text-2xl font-bold">About US</h2>
+//         <p className="text-center py-4 text-sm md:text-base w-[60%] mx-auto">
           CYCO is a streaming platform. It offers a range of movies, TV shows,
           and other forms of entertainment content for users to watch online.
           Streaming platforms have become increasingly popular for their
@@ -123,6 +129,7 @@ const About = () => {
         <FeedBack />
       </div>
     </div>
+//     </Container>
   );
 };
 

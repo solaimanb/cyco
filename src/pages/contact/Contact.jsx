@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Contact.css';
+import Container from '../../components/container/Container';
 
 const Contacts = () => {
 
@@ -41,7 +42,8 @@ const Contacts = () => {
   ];
   const [isFormVisible, setIsFormVisible] = useState(false);
   return (
-    <div className="flex flex-col w-[80%] mx-auto mt-20 lg:mt-40">
+    <Container>
+      <div className="flex flex-col mt-20 mx-auto h-screen">
       {/* Contact Form */}
       <section id="contact" className="w-full md:[50%] xl:w-[40%]">
         <div className="sectionheader">
@@ -101,6 +103,7 @@ const Contacts = () => {
         </div>
       </div> */}
     </div>
+    </Container>
   );
 };
 
