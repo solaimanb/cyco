@@ -77,9 +77,9 @@ const About = () => {
           </div>
 
           <div className="flex flex-col justify-between space-y-4 text-start">
-            <h2 className="card-title text-lg font-bold">{member?.name}</h2>
+            <h2 className="card-title text-lg font-bold text-gray-700">{member?.name}</h2>
 
-            <p className="text-xs">[ {member?.role} ]</p>
+            <p className="text-xs text-gray-700">[ {member?.role} ]</p>
           </div>
 
           <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
@@ -89,7 +89,7 @@ const About = () => {
   );
 
   return (
-    <div className="md:w-[80%] mx-auto p-28">
+    <div className="md:w-[80%] mx-auto p-28 bg-black/60">
       <div id="aboutDiv" className="flex flex-col justify-center items-center w-full">
         <li className="text-center"
           style={{ "--clr": "#700000", 'width': '350px', }}
@@ -100,7 +100,7 @@ const About = () => {
           &nbsp;&nbsp;AboutUs&nbsp;&nbsp;
           </a>
         </li>
-        <p className="text-center py-4 text-sm md:text-base w-[60%] mx-auto">
+        <p className="text-gray-700 text-center py-8 text-sm md:text-base w-[60%] mx-auto">
           CYCO is a streaming platform. It offers a range of movies, TV shows,
           and other forms of entertainment content for users to watch online.
           Streaming platforms have become increasingly popular for their
