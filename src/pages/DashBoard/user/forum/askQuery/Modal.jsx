@@ -5,7 +5,8 @@ export default function Modal({ isOpen, setIsOpen, title, children, reset }) {
   function closeModal () {
     console.log( 'closing modal' );
     reset();
-    setIsOpen(false);
+    setIsOpen( false );
+    refetch()
   }
 
   return (

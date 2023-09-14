@@ -18,10 +18,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(" ");
   const [loading, setLoading] = useState(true);
-  // const {axiosSecure} = useAxiosSecure();
-  // console.log(user);
-
-  // console.log(user);
 
   // PROVIDERS:
   const googleProvider = new GoogleAuthProvider();
