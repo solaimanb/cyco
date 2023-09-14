@@ -4,9 +4,11 @@ import {
   FaFacebookSquare,
   FaGithubSquare,
   FaInstagramSquare,
-} from 'react-icons/fa';
-import FeedBack from '../../components/feedback/FeedBack';
-import './About.css';
+} from "react-icons/fa";
+import Divider from "../../components/divider/Divider";
+import CanvasComponent from "../../components/canvas/CanvasComponent";
+import FeedBack from "../../components/feedback/FeedBack";
+import "./About.css";
 
 const members = [
   {
@@ -42,13 +44,7 @@ const members = [
 ];
 
 const About = () => {
-  // MEMBERS INFO RENDERING COMPONENT:
   const renderMember = (member, index) => (
-    <>
-      {/* <div className="flex justify-center items-center">
-        <CanvasComponent />
-      </div> */}
-
       <div
         key={index}
         className="w-[80%] md:w-[250px] mx-auto bg-black mb-4 rounded-sm overflow-hidden flex flex-col justify-between"
@@ -85,8 +81,22 @@ const About = () => {
 
           <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
         </div>
+      </figure>
+      <div className="relative flex flex-row text-start p-4 gap-2 h-full">
+        <div className="flex flex-col justify-between space-y-2">
+          <FaFacebookSquare size={22} />
+          <FaGithubSquare size={22} />
+          <FaInstagramSquare size={22} />
+        </div>
+        <div className="flex flex-col justify-between space-y-4 text-start">
+          <h2 className="card-title text-lg font-bold text-gray-700">
+            {member?.name}
+          </h2>
+          <p className="text-xs text-gray-700">[ {member?.role} ]</p>
+        </div>
+        <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
       </div>
-    </>
+    </div>
   );
 
   return (

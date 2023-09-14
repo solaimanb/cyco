@@ -50,7 +50,7 @@ import Trailer from '../pages/trailer/Trailer';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       { path: '/', element: <Home /> },
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
       { path: 'admin-dashboard', element: <AdminDashboard /> },
@@ -109,7 +109,7 @@ const router = createBrowserRouter([
       { path: 'payment', element: <Payments /> },
     ],
   },
-  { path: '*', element: <ErrorPage /> },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 export default router;
