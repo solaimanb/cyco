@@ -11,10 +11,12 @@ import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
+import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
+  const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
   const [queries, loading] = useForumQueries();
   const [page, setPage] = useState(1);
   const queriesPerPage = 10;
@@ -122,6 +124,14 @@ const Forum = () => {
               </button>
 
               <button
+                onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Write a Review</h3>
+              </button>
+
+              <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
               >
@@ -129,6 +139,7 @@ const Forum = () => {
                 <h3 className="text-sm">Ask Query</h3>
               </button>
               <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
+              <WriteAReviewModal isOpen={isWriteaReviewOpen} setIsOpen={setIsWriteaReviewOpen} />
             </div>
 
             {/* Query Content */}
