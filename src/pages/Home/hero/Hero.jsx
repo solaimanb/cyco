@@ -69,7 +69,7 @@ const Hero = () => {
 
   return (
     <CanvasAnimation>
-      <section className="relative h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 p-0">
+      <section className="relative h-[60vh] lg:h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 pt-5 md:pt-10 lg:pt-20">
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -95,8 +95,8 @@ const Hero = () => {
         >
           {movies?.map((movie, index) => (
             <SwiperSlide key={index}>
-              <img src={movie?.Thumbnail} alt="" />
-              <h1 className="text-lg md:text-2xl text-zinc-300 text-center">
+              <img src={movie?.Thumbnail} alt="featured-image" className="" />
+              <h1 className="text-lg md:text-2xl text-zinc-300 text-center font-bold italic">
                 {movie?.Title}
               </h1>
             </SwiperSlide>
