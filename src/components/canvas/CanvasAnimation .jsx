@@ -23,8 +23,7 @@ class CanvasAnimation extends Component {
     class Symbol {
       constructor(x, y, fontSize, canvasHeight) {
         this.characters = `
-          アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン
-          0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ ♔♕♖♗♘♙CHESS♚♛♜♝♞♟ ☀☁❆WEATHER❅❄ ♪MUSIC♫`;
+          CYCO`;
         this.x = x;
         this.y = y;
         this.fontSize = fontSize;
