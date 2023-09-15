@@ -95,7 +95,7 @@ const About = () => {
               id="about"
             >
               <h2
-                className="text-3xl md:text-5xl lg:text-7xl xl:text-9xl text-gray-300 font-bold text-start"
+                className="text-3xl md:text-4xl lg:text-6xl 2xl:text-9xl text-gray-300 font-bold text-start"
                 data-text="&nbsp;&nbsp;About&nbsp;&nbsp;"
               >
                 <span>&nbsp;&nbsp;About&nbsp;&nbsp;</span>
@@ -104,7 +104,7 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="md:w-[50%] ml-4 lg:ml-20">
+            <div className="md:w-[50%] ml-4 lg:ml-10 2xl:ml-20">
               <p className="z-20 text-start py-4 text-sm md:text-base italic">
                 CYCO is a streaming platform. It offers a range of movies, TV
                 shows, and other forms of entertainment content for users to
