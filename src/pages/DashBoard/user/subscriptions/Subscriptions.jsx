@@ -10,54 +10,7 @@ const Subscriptions = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchItems());
-  }, [dispatch]);
-  const subscriptionPlans = [
-    {
-      title: 'Basic Plan',
-      price: '9.99',
-      features: [
-        'Access to a library of 1000+ movies',
-        'Stream on one device at a time',
-        'Standard video quality',
-        'Cancel anytime',
-      ],
-      buttonText: 'Subscribe Now',
-    },
-    {
-      title: 'Standard Plan',
-      price: '19.99',
-      features: [
-        'Access to a library of 3000+ movies and TV shows',
-        'Stream on two devices simultaneously',
-        'HD video quality',
-        'Cancel anytime',
-      ],
-      buttonText: 'Subscribe Now',
-    },
-    {
-      title: 'Premium Plan',
-      price: '29.99',
-      features: [
-        'Access to a library of 5000+ movies and TV shows',
-        'Stream on four devices simultaneously',
-        'Ultra HD (4K) video quality',
-        'Cancel anytime',
-      ],
-      buttonText: 'Subscribe Now',
-    },
-    {
-      title: 'Family Plan',
-      price: '39.99',
-      features: [
-        'Access to a library of 5000+ movies and TV shows',
-        'Stream on four devices simultaneously',
-        'Ultra HD (4K) video quality',
-        'Create up to 5 user profiles',
-        'Cancel anytime',
-      ],
-      buttonText: 'Subscribe Now',
-    },
-  ];
+  }, [dispatch, ]);
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -69,13 +22,10 @@ const Subscriptions = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 px-10 md:px-5 lg:px-0 gap-3 p-5">
-        {subscriptionPlans.map((plan, index) => (
+        {items.map((plan, index) => (
           <SubscriptionCard
             key={index}
-            title={plan.title}
-            price={plan.price}
-            features={plan.features}
-            buttonText={plan.buttonText}
+            plan={plan}
           />
         ))}
       </div>

@@ -5,17 +5,25 @@ import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import EditUserModal from "../../../modal/EditUserModal";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser, updateData } from "../../../store/slices/editUserSlice/editUserSlice";
+
+
 const UserDashboard = () => {
   let [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.editUserSlice);
+  const status = useSelector((state) => state.editUserSlice.status);
+   console.log(data.todos);
+   console.log(status);
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(getUser());
+    }
+  }, [status, dispatch]);
+
+
   const openModal = () => {
     setIsOpen(true);
   };

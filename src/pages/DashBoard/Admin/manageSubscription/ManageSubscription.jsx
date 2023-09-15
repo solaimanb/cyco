@@ -44,7 +44,8 @@ const ManageSubscription = () => {
                 Edit
               </Button>
               <div className="">
-                <h2 className="text-2xl font-semibold mb-4">{item?.name}</h2>
+                <h2 className="text-2xl font-semibold mb-2">{item?.title}</h2>
+                <h2 className="">Price: {item?.price}</h2>
               </div>
             </div>
           ))}
