@@ -24,7 +24,6 @@ const Forum = () => {
 
   const searchQuery = useSelector((state) => state.search.searchQuery);
   const filteredQueries = useSelector((state) => state.search.filteredQueries);
-  // console.log(filteredQueries);
 
   // FORUM FILTERED QUERIES:
   const forumTopicQueries = useSelector(selectFilteredQueries);
@@ -55,49 +54,6 @@ const Forum = () => {
     setPage(1);
   };
 
-  // REFRESH:
-  const handleRefresh = () => {};
-
-  // COUNT VIEWS:
-  // const handleViewClick = async (query) => {
-  //   console.log(query);
-  //   const viewCount = (query.views += 1);
-
-  //   const saveViewCount = await axiosSecure
-  //     .post(`/forumQueries/${query?._id}`, viewCount)
-  //     .then((res) => {
-  //       if (res?.data?.success) {
-  //         dispatch(updateQueryViews(query?._id, viewCount));
-  //       } else {
-  //         console.log(' Failed to update query views count.');
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error updating query views', error);
-  //     });
-  // };
-
-  // const handleViewClick = async (query) => {
-  //   const updatedViewCount = query.views + 1; // Increment the view count locally
-  //   console.log(updatedViewCount);
-
-  //   try {
-  //     // Send the updated view count to the server
-  //     const response = await axiosSecure.post(`/forumQueries/${query?._id}`, {
-  //       views: updatedViewCount,
-  //     });
-
-  //     if (response?.data?.success) {
-  //       // Update the view count in the Redux state
-  //       dispatch(updateQueryViews(query?._id, updatedViewCount));
-  //     } else {
-  //       console.log('Failed to update query views count.');
-  //     }
-  //   } catch (error) {
-  //     console.log('Error updating query views', error);
-  //   }
-  // };
-
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* FORUM HEADER */}
@@ -117,7 +73,7 @@ const Forum = () => {
             {/* ASK QUERY SLOT */}
             <div className="flex justify-end items-center px-2 pb-2 border-b border-zinc-800">
               <button
-                onClick={handleRefresh}
+                // onClick={handleRefresh}
                 className="hidden btn btn-sm border-zinc-800 rounded-sm items-center gap-1 text-sm"
               >
                 <IoMdRefresh /> Refresh
