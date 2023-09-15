@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
@@ -11,7 +12,7 @@ import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import { addHistory } from "../../../api/historyPostData";
 import WatchTimer from "../../../components/watchTimer/WatchTimer";
 import Container from "../../../components/container/Container";
-
+import MovieReviews from "../../../components/movieDetails/MovieReviews";
 
 const MovieInfo = () => {
   const dispatch = useDispatch();
@@ -124,8 +125,9 @@ const MovieInfo = () => {
 
   return (
     <Container>
+    <div className="pb-20">
     <div
-      className="hero flex flex-row w-full lg:w-[80vw] mx-auto lg:h-[80vh]  mt-2 md:mt-5 lg:mt-10 rounded-sm md:mb-24"
+      className="hero flex flex-row w-full h-full mt-2 md:mt-5 lg:mt-10 rounded-sm"
       style={{ backgroundImage: `url(${Thumbnail})` }}
     >
       <WatchTimer
@@ -134,7 +136,7 @@ const MovieInfo = () => {
         onStart={handleWatchStart}
         onStop={handleWatchStop}
       />
-      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
+      <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full gap-5 p-2 md:p-5">
         {/* Movie Poster */}
         <div className="md:w-2/5">
           <img
@@ -142,18 +144,28 @@ const MovieInfo = () => {
             alt={`movie-poster of ${Title}`}
             className="w-full h-full object-cover"
             // onClick={()=>PlayButton()}
+
           />
-        </div>
+          <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
+            {/* Movie Poster */}
+            <div className="md:w-2/5">
+              <img
+                src={Poster}
+                alt={`movie-poster of ${Title}`}
+                className="w-full h-full object-cover"
+                // onClick={()=>PlayButton()}
+              />
+            </div>
 
         {/* Movie Info */}
         <div className="md:w-3/5 flex flex-col justify-between">
           <div>
-            <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
+            <h2 className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold">
               {Title} [{Year}]
             </h2>
-            <p className="mt-5 text-xs md:text-sm">{Plot}</p>
+            <p className="mt-5 lg:mt-3 text-xs md:text-sm">{Plot}</p>
 
-            <div className="mt-10 flex flex-col w-[60%] text-sm md:text-base gap-2">
+            <div className="mt-10 lg:mt-3 2xl:mt-10 flex flex-col w-[60%] text-sm md:text-base gap-2">
               <div className="flex flex-col gap-2">
                 <div className="flex gap-5 text-sm">
                   IMDb Rating:<span className="font-bold">{imdbRating}</span>
@@ -169,7 +181,7 @@ const MovieInfo = () => {
                 </div>
               </div>
 
-              <div className="mt-5 flex flex-col md:flex-row gap-5">
+              <div className="mt-5 lg:mt-3 2xl:mt-5 flex flex-col md:flex-row gap-5">
                 {/* WISHLIST BTN*/}
                 <button
                   onClick={handleAddToWishlist}
@@ -204,9 +216,9 @@ const MovieInfo = () => {
           </div>
 
           {/* Recommended Movies */}
-          <div className="w-full mt-5 ">
+          <div className="w-full h-full mt-5 ">
             <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
-            <div className="">
+            <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
               <Marquee speed={5}>
                 <FeaturedMovies />
               </Marquee>
@@ -214,6 +226,7 @@ const MovieInfo = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
     </Container>
   );
