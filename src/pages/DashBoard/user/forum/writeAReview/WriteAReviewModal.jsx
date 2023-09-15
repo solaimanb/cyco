@@ -94,7 +94,7 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
       setIsOpen={setIsWriteaReviewOpen}
       reset={reset}
       refetch={refetch}
-      title={'Ask your query'}
+      title={'Write a Movie Review '}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
         <div className="flex flex-col gap-2">
