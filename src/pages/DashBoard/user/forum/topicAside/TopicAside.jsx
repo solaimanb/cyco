@@ -6,7 +6,7 @@ import { setForumTopic } from '../../../../../store/slices/forumTopicSlice/forum
 
 const TopicAside = () => {
   const dispatch = useDispatch();
-  const [isTopicVisible, setIsTopicVisible] = useState(true);
+  const [isTopicVisible, setIsTopicVisible] = useState(false);
   const [queries] = useForumQueries();
 
   const toggleTopicList = () => {
