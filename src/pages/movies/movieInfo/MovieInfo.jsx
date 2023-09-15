@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
@@ -12,8 +13,11 @@ import { addHistory } from "../../../api/historyPostData";
 import WatchTimer from "../../../components/watchTimer/WatchTimer";
 import Container from "../../../components/container/Container";
 
-
 const MovieInfo = () => {
+  const [movieReviews, setMovieReviews] = useState("");
+
+  console.log(movieReviews);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
@@ -122,6 +126,21 @@ const MovieInfo = () => {
     }
   };
 
+  useEffect(() => {
+    // asyncFynction
+    const fetchMovieReviews = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/movieReviews");
+        console.log(response);
+        setMovieReviews(response.data);
+      } catch (error) {
+        console.log("Data fetching Unsuccessfull", error);
+      }
+    };
+
+    fetchMovieReviews();
+  }, []);
+
   return (
     <Container>
     <div className="pb-20">
@@ -143,8 +162,18 @@ const MovieInfo = () => {
             alt={`movie-poster of ${Title}`}
             className="w-full h-full object-cover"
             // onClick={()=>PlayButton()}
+
           />
-        </div>
+          <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full lg:h-[80vh] gap-5 p-2 md:p-5">
+            {/* Movie Poster */}
+            <div className="md:w-2/5">
+              <img
+                src={Poster}
+                alt={`movie-poster of ${Title}`}
+                className="w-full h-full object-cover"
+                // onClick={()=>PlayButton()}
+              />
+            </div>
 
         {/* Movie Info */}
         <div className="md:w-3/5 flex flex-col justify-between">

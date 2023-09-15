@@ -109,7 +109,18 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
           />
           {errors?.title && <span>Title is required</span>}
         </div>
-
+        {/* image Url */}
+        <div className="flex flex-col gap-2">
+            <label className="text-xs text-white" htmlFor="imageUrl">Image URL:</label>
+            <input 
+            type="text" 
+            id='imageUrl' 
+            placeholder='Please Pest the Movie Image Url'
+            {...register('imageUrl')}
+            />
+           
+        </div>
+        
         <div className="flex flex-col gap-2">
           <label className="text-xs text-white" htmlFor="description">
             Description:
