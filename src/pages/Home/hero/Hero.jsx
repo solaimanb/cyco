@@ -14,6 +14,10 @@ import {
   Navigation,
   Pagination,
 } from 'swiper/modules';
+import {Autoplay, EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+
+import useMovies from '../../../hooks/useMovies';
+import CanvasAnimation from '../../../components/canvas/CanvasAnimation ';
 
 const Hero = () => {
   // const [movies] = useMovies();
@@ -66,40 +70,43 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden md:h-[60vh] xl:h-[100vh] bg-black/40 md:pt-10 lg:pt-20 xl:pt-40">
-      <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={window.innerWidth < 768 ? 1.7 : 2.2}
-        coverflowEffect={{
-          rotate: -45,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {movies?.map((movie, index) => (
-          <SwiperSlide key={index}>
-            <img src={movie?.Thumbnail} alt="featured-image" className='rounded-md h-80vh'/>
-            <h1 className="text-lg md:text-2xl text-zinc-300 text-center italic font-bold">
-              {movie?.Title}
-            </h1>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+    <CanvasAnimation >
+      <section className="relative h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 p-0">
+
+<Swiper
+  effect={'coverflow'}
+  grabCursor={true}
+  centeredSlides={true}
+  slidesPerView={window.innerWidth < 768 ? 1.7 : 2.2}
+  coverflowEffect={{
+    rotate: -45,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  }}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+  }}
+  pagination={{
+    clickable: true,
+  }}
+  navigation={true}
+  modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
+  className="mySwiper"
+>
+  {movies?.map((movie, index) => (
+    <SwiperSlide key={index}>
+      <img src={movie?.Thumbnail} alt="" />
+      <h1 className='text-lg md:text-2xl text-zinc-300 text-center'>{movie?.Title}</h1>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+</section>
+
+    </CanvasAnimation>
   );
 };
 
