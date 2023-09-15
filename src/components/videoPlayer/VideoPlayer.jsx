@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 const VideoPlayer = ( { channel} ) => {
 
   return (
-    <div className="h-full rounded-sm relative">
+    <div className="h-full w-full rounded-sm relative">
       {channel ? (
         <div className="relative" style={{ paddingBottom: '66.25%' }}>
           <ReactPlayer

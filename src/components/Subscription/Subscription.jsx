@@ -156,20 +156,21 @@ const Subscription = () => {
 
             {/* Premium Plan */}
             <div className="relative z-[1]">
-              <div className="ribbon absolute -top-2 -left-2 h-40 w-40 overflow-hidden before:absolute before:top-0 before:right-0 before:-z-[1] before:border-4 before:border-blue-500 after:absolute after:left-0 after:bottom-0 after:-z-[1] after:border-4 after:border-blue-500">
-                <div className="absolute -left-14 top-[43px] w-60 -rotate-45 bg-gradient-to-br from-blue-600 via-blue-400 to-blue-500 py-2.5 text-center text-white shadow-md">
+              <div className="ribbon absolute -top-4 -left-4 h-36 w-36 overflow-hidden before:absolute before:top-0
+               before:right-0 before:-z-[1] before:border-[10px] before:border-blue-500 after:absolute after:left-0 after:bottom-0 after:-z-[1] after:border-[10px] after:border-blue-500">
+                <div className="absolute -left-14 top-[43px] w-60 -rotate-45 bg-gradient-to-br from-blue-600 via-blue-400 to-blue-500 py-2 text-center text-white text-xs shadow-md">
                   Most Popular
                 </div>
               </div>
-              <div className="w-full bg-red-900 p-6 text-white mb-10 md:mb-0 flex flex-col">
-                <h3 className="text-lg ml-4">Premium</h3>
+              <div className="w-full h-full bg-red-900 p-6 text-white mb-10 md:mb-0 flex flex-col">
+                <h3 className="text-lg lg:ml-6">Premium</h3>
                 <div className=" text-white mt-5">
                   <small className="line-through">$199.96</small>
                   <span className=" bg-zinc-800 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
                     SAVE 75%
                   </span>
 
-                  <h1 className="mt-4 flex-1">
+                  <h1 className="mt-4">
                     $<span className="text-3xl font-bold">49.99</span>/month
                     <p className="text-blue-400 text-lg">+2 months FREE</p>
                   </h1>
@@ -178,7 +179,7 @@ const Subscription = () => {
                   Full library, 4K quality, ad-free, on four devices.
                 </p>
                 <hr />
-                <ul className="pb-4 list-disc">
+                <ul className="pb-4 flex-1 list-disc">
                   <li className="flex items-center font-thin mt-2">
                     <FaAlignJustify className="mr-2" />
                     Top Features
