@@ -369,8 +369,8 @@ const UploadMovie = () => {
           </div>
         </div>
 
-        <div className="w-2/3 mx-auto ">
-          <div className="space-y-1 text-sm flex justify-center items-center">
+        <div className="w-2/3 mx-auto">
+          <div className="space-y- text-sm flex justify-center items-center">
             <label htmlFor="notifyUsers" className="block text-gray-600">
               Notify Users
             </label>

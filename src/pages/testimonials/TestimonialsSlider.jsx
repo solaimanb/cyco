@@ -53,11 +53,6 @@ console.log(feedbacks)
   }, []);
 
 
-
-
-
-
-
   return (
     <Swiper
       autoplay={{

@@ -20,11 +20,11 @@ const LiveTv = () => {
 
   return (
     <Container>
-      <div className="flex flex-col items-center lg:flex-row p-4 gap-10 h-screen">
-      <div className="w-full h-full md:w-3/4 mx-auto md:pr-4">
+      <div className="lg:grid grid-cols-3 items-center gap-6 2xl:gap-12 py-10 h-full">
+      <div className="w-full md:w-2/3 mx-auto lg:w-full h-full pb-12 col-span-2">
         <VideoPlayer channel={selectedChannel} />
       </div>
-      <div className="mt-10">
+      <div className="w-5/6 mx-auto lg:w-full 2xl:mt-10">
         <LiveVideoList onSelectChannel={handleSelectChannel} />
       </div>
     </div>

@@ -42,51 +42,40 @@ const members = [
 ];
 
 const About = () => {
-  // MEMBERS INFO RENDERING COMPONENT:
   const renderMember = (member, index) => (
-    <>
-      {/* <div className="flex justify-center items-center">
-        <CanvasComponent />
-      </div> */}
-
-      <div
-        key={index}
-        className="w-[80%] md:w-[250px] mx-auto bg-black mb-4 rounded-sm overflow-hidden flex flex-col justify-between"
-      >
-        <figure className="relative w-full h-[250px] p-4 opacity-70">
-          <img
-            src={member?.image}
-            alt="A Person Image"
-            className="rounded-sm object-cover w-full h-full"
-          />
-
-          <div className="absolute top-3 -left-1 -rotate-45">
-            <div className="w-12 h-6 bg-black"></div>
-          </div>
-          <div className="absolute bottom-3 -right-1 -rotate-45">
-            <div className="w-12 h-6 bg-black"></div>
-          </div>
-        </figure>
-
-        <div className="relative flex flex-row text-start p-4 gap-2 h-full">
-          <div className="flex flex-col justify-between space-y-2">
-            <FaFacebookSquare size={22} />
-            <FaGithubSquare size={22} />
-            <FaInstagramSquare size={22} />
-          </div>
-
-          <div className="flex flex-col justify-between space-y-4 text-start">
-            <h2 className="card-title text-lg font-bold text-gray-300">
-              {member?.name}
-            </h2>
-
-            <p className="text-xs text-gray-400">[ {member?.role} ]</p>
-          </div>
-
-          <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
+    <div
+      key={index}
+      className="w-[80%] md:w-[250px] mx-auto bg-black mb-4 rounded-sm overflow-hidden flex flex-col justify-between"
+    >
+      <figure className="relative w-full h-[250px] p-4 opacity-70">
+        <img
+          src={member?.image}
+          alt="A Person Image"
+          className="rounded-sm object-cover w-full h-full"
+        />
+        <div className="absolute bottom-3 -right-1 -rotate-45">
+          <div className="w-12 h-6 bg-black"></div>
         </div>
+      </figure>
+
+      <div className="relative flex flex-row text-start p-4 gap-2 h-full">
+        <div className="flex flex-col justify-between space-y-2">
+          <FaFacebookSquare size={22} />
+          <FaGithubSquare size={22} />
+          <FaInstagramSquare size={22} />
+        </div>
+
+        <div className="flex flex-col justify-between space-y-4 text-start">
+          <h2 className="card-title text-lg font-bold text-gray-300">
+            {member?.name}
+          </h2>
+
+          <p className="text-xs text-gray-400">[ {member?.role} ]</p>
+        </div>
+
+        <div className="absolute bottom-4 right-4 border-r-2 border-b-2 border-cyred w-10 h-10"></div>
       </div>
-    </>
+    </div>
   );
 
   return (
@@ -106,7 +95,7 @@ const About = () => {
               id="about"
             >
               <h2
-                className="text-3xl md:text-5xl lg:text-7xl xl:text-9xl text-gray-300 font-bold text-start"
+                className="text-3xl md:text-4xl lg:text-6xl 2xl:text-9xl text-gray-300 font-bold text-start"
                 data-text="&nbsp;&nbsp;About&nbsp;&nbsp;"
               >
                 <span>&nbsp;&nbsp;About&nbsp;&nbsp;</span>
@@ -115,7 +104,7 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="md:w-[50%] ml-4 lg:ml-20">
+            <div className="md:w-[50%] ml-4 lg:ml-10 2xl:ml-20">
               <p className="z-20 text-start py-4 text-sm md:text-base italic">
                 CYCO is a streaming platform. It offers a range of movies, TV
                 shows, and other forms of entertainment content for users to
