@@ -20,7 +20,7 @@ const MovieSlot = () => {
   });
 
   return (
-    <div className="w-full gap-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    <div className="w-full gap-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
       {filteredMovies?.map((movie, index) => (
         <MovieCard key={index} movie={movie}></MovieCard>
       ))}

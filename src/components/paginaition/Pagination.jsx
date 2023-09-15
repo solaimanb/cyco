@@ -32,7 +32,7 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex items-center gap-2 justify-center mt-auto">
+    <div className="flex items-center gap-2 justify-center pb-8">
       <button
         className={`px-2 py-1 rounded-sm flex items-center gap-2 ${
           isFirstPage ? 'bg-[#800000] cursor-not-allowed' : 'bg-white'

@@ -45,7 +45,7 @@ const Movies = () => {
       <div className="flex items-center gap-3 justify-center pt-10">
         <input
           type="search"
-          className="rounded-full px-3 py-2 w-[80%] md:w-[50%] lg:w-[30%]"
+          className="rounded-full px-3 py-2 md:w-[50%] lg:w-[30%]"
           placeholder="Search movies"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
@@ -53,7 +53,7 @@ const Movies = () => {
         <FaSearch size={22} onClick={searchHandle} className='text-cyred' />
       </div>
 
-      <div className="mt-10 w-full grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-2">
+      <div className="mt-20 w-full grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-6 pb-10">
         {isSearchClicked && filteredMovies.length === 0 ? (
           <div className='h-[calc(100vh-200px)] text-zinc-300'>No results found.</div>
         ) : searchQuery && isSearchClicked ? (

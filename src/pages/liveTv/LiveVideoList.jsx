@@ -16,21 +16,21 @@ const LiveVideoList = ({ onSelectChannel }) => {
   ];
 
   return (
-    <div className="space-y-7 md:space-y-0 grid md:grid-cols-5 lg:grid-cols-5 gap-10">
+    <div className=" grid grid-cols-3 md:grid-cols-5 lg:grid-cols-4 2xl:grid-cols-5 gap-6 2xl:gap-10">
     {channels?.map((channel, index) => (
       <div
         key={index}
-        className="avatar space-y-3 flex flex-col items-center gap-4 text-white font-bold"
+        className="text-white font-bold mx-auto"
         onClick={() => onSelectChannel(channel)}
       >
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
+        <div className="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full overflow-hidden mb-4">
           <img
             src={channel.imageSrc}
-            className="object-cover w-full h-full"
+            className="w-full h-full"
             alt={channel.name}
           />
         </div>
-        <span>{channel.name}</span>
+        <h5 className='text-xs 2xl:text-'>{channel.name}</h5>
       </div>
     ))}
   </div>
