@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Container from '../../components/container/Container';
 import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
 import LiveVideoList from './LiveVideoList';
-import Container from '../../components/container/Container';
 
 const LiveTv = () => {
   const [selectedChannel, setSelectedChannel] = useState(null);
@@ -15,7 +15,7 @@ const LiveTv = () => {
   };
 
   const channels = [
-    { name: 'FOX', imageSrc: '/fox.png', videoId: 'Nv6b9JYiaBY&ab_channel=OuterSpace' },
+    { name: 'FOX', imageSrc: '/fox.png', videoId: '6-KswuFDJkc&ab_channel=NBCNews&ab_channel=OuterSpace' },
   ];
 
   return (
