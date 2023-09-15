@@ -60,20 +60,20 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
       reset();
       setIsWriteaReviewOpen(false);
       Swal.fire({
-        text: 'Review submitted successfully!',
+        text: 'Thank You for Posting Review!',
         icon: 'success',
         background: '#222',
         reverseButtons: true,
       });
 
-      // SEND QUERY TO THE SERVER:
-      const reviewResponseSlot = await axiosSecure.post('/movieReviews', review);
+      // SEND Reviews TO THE SERVER:
+      const reviewResponseSlot = await axiosSecure.post('/movieReviews', reviewSlot);
       const userResponseSlot = await axiosSecure.post('/reviews', reviewSlot);
       console.log(reviewResponseSlot, userResponseSlot);
 
       refetch();
     } catch (error) {
-      console.error('Error while submitting query', error);
+      console.error('Error while submitting reviews', error);
     }
   };
 
@@ -144,6 +144,18 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
 
         {/* REVIEW SUBMISSION */}
         <div className="flex flex-row justify-between gap-2">
+          
+          <div className="flex flex-row items-center text-cyred">
+            {showWarning && !isValid && (
+              <p className="text-red-600 text-xs">
+                Please fill the form to submit your review!
+              </p>
+            )}
+            {!isValid && (
+              <PiWarningOctagonDuotone size={20} onClick={handleWarning} />
+            )}
+          </div>
+
           <div className="flex flex-row gap-2">
             <button
               type="submit"
@@ -160,17 +172,6 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
             >
               Cancel
             </button>
-          </div>
-          
-          <div className="flex flex-row items-center text-cyred">
-            {showWarning && !isValid && (
-              <p className="text-red-600 text-xs">
-                Please fill the form to submit your review!
-              </p>
-            )}
-            {!isValid && (
-              <PiWarningOctagonDuotone size={20} onClick={handleWarning} />
-            )}
           </div>
         </div>
       </form>
