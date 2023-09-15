@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-      <footer className="absolute left-0 bottom- w-full mt- bg-zinc-950 bg-opacity-60 text-zinc-400 py-12">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <footer className="absolute left-0 w-full mt- bg-zinc-950 bg-opacity-60 text-zinc-400 py-12">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-12">
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
             <h2 className="z-10 font-bold text-2xl lg:text-3xl -rotate-3 text-[#800000]">
               CYCO
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-12 text-center text-sm border-t-2 pt-2">
-          <p>&copy; {new Date().getFullYear()} CYCO, Inc.</p>
+          <p>&copy; {new Date().getFullYear()} CYCO, All rights reserved by CyberCorps Team</p>
         </div>
       </footer>
   );
