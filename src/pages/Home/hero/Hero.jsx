@@ -14,7 +14,7 @@ import {
   Navigation,
   Pagination,
 } from 'swiper/modules';
-import {Autoplay, EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+
 
 import useMovies from '../../../hooks/useMovies';
 import CanvasAnimation from '../../../components/canvas/CanvasAnimation ';
