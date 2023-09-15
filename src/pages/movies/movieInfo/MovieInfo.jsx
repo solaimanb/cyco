@@ -12,12 +12,9 @@ import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import { addHistory } from "../../../api/historyPostData";
 import WatchTimer from "../../../components/watchTimer/WatchTimer";
 import Container from "../../../components/container/Container";
+import MovieReviews from "../../../components/movieDetails/MovieReviews";
 
 const MovieInfo = () => {
-  const [movieReviews, setMovieReviews] = useState("");
-
-  console.log(movieReviews);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
@@ -126,21 +123,6 @@ const MovieInfo = () => {
     }
   };
 
-  useEffect(() => {
-    // asyncFynction
-    const fetchMovieReviews = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/movieReviews");
-        console.log(response);
-        setMovieReviews(response.data);
-      } catch (error) {
-        console.log("Data fetching Unsuccessfull", error);
-      }
-    };
-
-    fetchMovieReviews();
-  }, []);
-
   return (
     <>
       <Container>
@@ -240,10 +222,11 @@ const MovieInfo = () => {
           </div>
         </div>
       </Container>
+      {/* Movie Review Section */}
       <section>
         <div className="">
           <div>
-            <h3>This is Movie Review section</h3>
+            <MovieReviews />
           </div>
         </div>
       </section>
