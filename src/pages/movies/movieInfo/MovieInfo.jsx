@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
