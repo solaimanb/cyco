@@ -51,7 +51,7 @@ svg.recharts-surface tspan {
 
 /* CSS BREAKPOINTS */
 
-@media screen and(max-width: 576px) {
+@media (max-width: 768px) {
   /* Mobile phones go here */
   .custom-container {
     width: 100%;
@@ -63,24 +63,10 @@ svg.recharts-surface tspan {
     padding: 90px 30px 0;
     background: #111;
   }
-  .hero-container{
-    height: 60vh;
-  }
+  
 }
-@media screen and(min-width: 577px) and (max-width: 768px) {
-  /* Tablets go here */
-  .custom-container {
-    width: 100%;
-    padding: 0 30px;
 
-  }
-  .page-container {
-    width: 100%;
-    padding: 90px 30px 0;
-    background: #111;
-  }
-}
-@media screen and(min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 992px) {
   /* Small desktops and laptops go here */
   .custom-container {
     width: 100%;
@@ -88,7 +74,7 @@ svg.recharts-surface tspan {
   }
   .page-container {
     width: 100%;
-    padding: 90px 50px 0;
+    padding: 80px 50px 0;
     background: #111;
   }
   

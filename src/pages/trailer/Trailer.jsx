@@ -48,15 +48,15 @@ const Trailer = () => {
       <div className="flex items-center gap-3 justify-center pt-10">
         <input
           type="search"
-          className="rounded-full px-3 py-2 w-[30%]"
+          className="rounded-full px-3 py-2 md:w-[30%]"
           placeholder="Search for Trailer"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <FaSearch size={22} onClick={searchHandle} />
+        <FaSearch className='text-cyred' size={22} onClick={searchHandle} />
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5  gap-8 my-20">
         {isSearchClicked && filteredMovies.length === 0 ? (
           <div>No results found.</div>
         ) : searchQuery && isSearchClicked ? (
@@ -75,8 +75,8 @@ const Trailer = () => {
       </div>
 
       {/* Pagination */}
-      <nav>
-        <ul className="flex justify-center space-x-2 mt-4">
+      <nav className='pb-8'>
+        <ul className="flex justify-center space-x-2">
           <li>
             <button
               className={`bg-gray-800 px-2 py-1 rounded ${
