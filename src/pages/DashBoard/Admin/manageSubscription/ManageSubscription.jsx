@@ -12,7 +12,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     dispatch(fetchItems());
-  }, [dispatch, items]);
+  }, [dispatch]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const handlePassDataBasic = (id) => {
     setIsDataBasic(id);

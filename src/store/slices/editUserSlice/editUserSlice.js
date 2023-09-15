@@ -16,15 +16,19 @@ export const getUser = createAsyncThunk('data/getUser', async () => {
 });
 // src/features/dataSlice.js (continued)
 
-export const updateData = createAsyncThunk('data/updateData', async ({email,data}) => {
-    try {
-      const response = await axios.put(`${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`, data);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  });
+export const updateUser = async ( id, roomData) => {
+    console.log(id);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/updateUserData/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(roomData),
+    })
   
+    const data = await response.json()
+    return data
+  }
   // ... (continued from previous code)
   
 // Define an initial state
@@ -51,14 +55,7 @@ const editUserSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(updateData.fulfilled, (state, action) => {
-        const updatedData = action.payload;
-        const existingDataIndex = state.data.findIndex((item) => item.email === updatedData.email);
-        if (existingDataIndex !== -1) {
-          state.data[existingDataIndex] = updatedData;
-        }
-      });
-      
+    
   },
 });
 export const { addCase } = editUserSlice.actions;

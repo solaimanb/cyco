@@ -6,16 +6,16 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import EditUserModal from "../../../modal/EditUserModal";
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, updateData } from "../../../store/slices/editUserSlice/editUserSlice";
+import { getUser } from "../../../store/slices/editUserSlice/editUserSlice";
 
 
 const UserDashboard = () => {
   let [isOpen, setIsOpen] = useState(false);
-
+  const { user, createUser, updateUserProfile } = useAuth();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.editUserSlice);
+  const {todos} = useSelector((state) => state.editUserSlice);
   const status = useSelector((state) => state.editUserSlice.status);
-   console.log(data.todos);
+ 
    console.log(status);
   useEffect(() => {
     if (status === 'idle') {
@@ -23,7 +23,13 @@ const UserDashboard = () => {
     }
   }, [status, dispatch]);
 
+  // Handle data filtering if user is defined
 
+    const filter = todos && todos.filter((item) => item?.email == user?.email);
+    
+const newUser = filter
+console.log(newUser);
+      
   const openModal = () => {
     setIsOpen(true);
   };
@@ -34,7 +40,7 @@ const UserDashboard = () => {
 
   console.log(isOpen);
 
-  const { user, createUser, updateUserProfile } = useAuth();
+ 
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [message, setMessage] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -261,7 +267,7 @@ const UserDashboard = () => {
          
         </div>
       </div>
-      <EditUserModal isOpen={isOpen} closeModal={closeModal} />
+      <EditUserModal isOpen={isOpen} data={filter} closeModal={closeModal} />
     </section>
   );
 };
