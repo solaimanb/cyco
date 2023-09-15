@@ -9,6 +9,7 @@ import queriesReducer from './slices/queriesSlice/queriesSlice';
 import searchReducer from './slices/searchSlice/searchSlice';
 import manageSubscriptionsSlice from './slices/subscriptionSlice/subscriptionSlice';
 import userReducer from './slices/userSlice/userSlice';
+import editUserSlice from './slices/editUserSlice/editUserSlice';
 
 const rootReducer = {
   home: homeSlice,
@@ -20,6 +21,7 @@ const rootReducer = {
   queries: queriesReducer,
   paymentHistory: paymentHistorySlice,
   manageSubscriptions: manageSubscriptionsSlice,
+  editUserSlice:editUserSlice
 };
 
 const store = configureStore({
