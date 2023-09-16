@@ -13,7 +13,7 @@ function CanvasComponent() {
     ctx.fillRect(50, 50, 200, 100);
   }, []);
 
-  return <canvas ref={canvasRef} width={800} height={600} />;
+  return <canvas ref={canvasRef} width={800} height={500} />;
 }
 
 export default CanvasComponent;
