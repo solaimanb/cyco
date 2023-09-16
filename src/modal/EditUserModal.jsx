@@ -7,35 +7,31 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const EditUserModal = ({ closeModal, isOpen, data }) => {
-const [isData, setData] = useState()
-
+  const [isData, setData] = useState();
 
   const { register, handleSubmit, control } = useForm({
     defaultValues: {},
   });
 
   // Submit your data into Redux store
-  const handleUpdateData = (data,isData) => {
-    updateUser(data?._id, isData)
-    .then((data) => {
-      console.log(data);
-      Swal.fire({
-        icon: "success",
-        title: "Update Successful",
-        showConfirmButton: false,
-        timer: 1500,
+  const handleUpdateData = (data, isData) => {
+    updateUser(isData, data?._id)
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          icon: "success",
+          title: "Update Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-    
-  
+  };
+
   const onSubmit = (data) => {
     setData(data);
-
-    
   };
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -80,7 +76,7 @@ const [isData, setData] = useState()
                         User Name:
                       </label>
                       <input
-                      // defaultValue={data[0]?._id}
+                        defaultValue={data?.username}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         {...register("username")}
                       />
@@ -94,7 +90,7 @@ const [isData, setData] = useState()
                       </label>
                       <input
                         disabled
-                        defaultValue={""}
+                        defaultValue={data?.email}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="email"
                         {...register("email")}
@@ -108,7 +104,7 @@ const [isData, setData] = useState()
                         Phone Number
                       </label>
                       <input
-                        defaultValue={""}
+                        defaultValue={data?.phoneNumber}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="number"
                         {...register("phoneNumber")}
@@ -138,7 +134,7 @@ const [isData, setData] = useState()
                         Address
                       </label>
                       <input
-                        defaultValue={""}
+                        defaultValue={data?.address}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="text"
                         {...register("address")}
@@ -147,7 +143,7 @@ const [isData, setData] = useState()
                     <hr className="mt-8 " />
                     <div className="flex mt-2 justify-around">
                       <input
-                        onClick={() => handleUpdateData(data[0], isData)}
+                        onClick={() => handleUpdateData(data, isData)}
                         type="Submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                       />

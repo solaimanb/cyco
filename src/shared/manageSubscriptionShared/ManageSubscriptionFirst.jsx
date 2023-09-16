@@ -8,19 +8,13 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { useForm } from "react-hook-form";
 
-import {
-  fetchItems,
-  updateItemRequest,
-} from "../../store/slices/subscriptionSlice/subscriptionSlice";
 import { updateSubscription } from "../../api/updateSubscription";
 import Swal from "sweetalert2";
 
 const ManageSubscriptionFirst = ({ isOpen, onOpenChange, items }) => {
-  console.log(items);
-
   const { register, handleSubmit, setValue } = useForm({});
 
   // Submit your data into Redux store
