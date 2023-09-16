@@ -14,14 +14,21 @@ export const CheckoutForm = ({ price, selectedPlan }) => {
   console.log(clientSecret);
 
   const [processing, setProcessing] = useState(false);
-  const [transectionId, setTransectionId] = useState('');
+  const [transectionId, setTransactionId] = useState('');
 
   useEffect(() => {
-    if(price > 0){
-      axiosSecure.post("/create-payment-intent", { price })
-      .then((res) => {
-        setClientSecret(res.data.clientSecret);
-      });
+    if (price > 0) {
+      setProcessing(true); // Start processing
+      axiosSecure.post('/create-payment-intent', { price })
+        .then((res) => {
+          setClientSecret(res.data.clientSecret);
+          setProcessing(false); // Finish processing
+          setTransactionId(res.data.transactionId); // Update transactionId if it's available in the response
+        })
+        .catch((error) => {
+          setProcessing(false); // Finish processing even if there's an error
+          console.error('Error creating payment intent:', error);
+        });
     }
   }, [price]);
 

@@ -14,7 +14,7 @@ const Payment = () => {
   const price = amount;
 
   // Function to format the date as "MMM DD, YYYY"
-  const formatDate = (date) => {
+  const formatDate = (date) => { 
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(date).toLocaleDateString(undefined, options);
   };
