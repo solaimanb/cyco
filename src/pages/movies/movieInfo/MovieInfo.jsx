@@ -51,7 +51,7 @@ const MovieInfo = () => {
     setWatching(false); // This sets the watching state to false
   };
 
-  const handleHistory = async (Title, email, Poster) => {
+  const handleHistory = (Title, email, Poster) => {
     addHistory({ Title, email, Poster })
       .then((data) => {
         console.log(data);
