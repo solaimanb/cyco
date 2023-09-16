@@ -14,17 +14,16 @@ class CanvasAnimation extends Component {
 
     let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "red");
-    gradient.addColorStop(0.2, "yellow");
-    gradient.addColorStop(0.4, "green");
-    gradient.addColorStop(0.6, "cyan");
-    gradient.addColorStop(0.8, "blue");
-    gradient.addColorStop(1, "magenta");
+    gradient.addColorStop(0.2, "red");
+    gradient.addColorStop(0.4, "red");
+    gradient.addColorStop(0.6, "red");
+    gradient.addColorStop(0.8, "red");
+    gradient.addColorStop(0.9, "red");
 
     class Symbol {
       constructor(x, y, fontSize, canvasHeight) {
         this.characters = `
-          アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン
-          0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ ♔♕♖♗♘♙CHESS♚♛♜♝♞♟ ☀☁❆WEATHER❅❄ ♪MUSIC♫`;
+          CYCO`;
         this.x = x;
         this.y = y;
         this.fontSize = fontSize;
