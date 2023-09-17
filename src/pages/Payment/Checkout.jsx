@@ -1,12 +1,15 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 export const CheckoutForm = ({ price, selectedPlan }) => {
+  
   const stripe = useStripe();
-  console.log(stripe);
+  
   const elements = useElements();
+console.log(stripe, elements);
   const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [axiosSecure] = useAxiosSecure();
@@ -14,21 +17,14 @@ export const CheckoutForm = ({ price, selectedPlan }) => {
   console.log(clientSecret);
 
   const [processing, setProcessing] = useState(false);
-  const [transectionId, setTransactionId] = useState('');
+  const [transectionId, setTransectionId] = useState('');
 
   useEffect(() => {
-    if (price > 0) {
-      setProcessing(true); // Start processing
-      axiosSecure.post('/create-payment-intent', { price })
-        .then((res) => {
-          setClientSecret(res.data.clientSecret);
-          setProcessing(false); // Finish processing
-          setTransactionId(res.data.transactionId); // Update transactionId if it's available in the response
-        })
-        .catch((error) => {
-          setProcessing(false); // Finish processing even if there's an error
-          console.error('Error creating payment intent:', error);
-        });
+    if(price > 0){
+      axiosSecure.post("/create-payment-intent", { price })
+      .then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
     }
   }, [price]);
 
@@ -135,7 +131,7 @@ setProcessing(true)
       {transectionId && <h5 className="pt-4 text-green-700 text-sm">Transection Seccessfull</h5>}
       <button
         type="submit"
-        disabled={!stripe || !clientSecret}
+        // disabled={!stripe || !clientSecret}
       
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >
