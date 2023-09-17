@@ -109,7 +109,7 @@ class CanvasAnimation extends Component {
     return (
       <div className="relative">
         <canvas ref={this.canvasRef}></canvas>
-        <div className="absolute top-0 left-0 w-full h-full z-10">
+        <div className="absolute top-0 left-0 w-full z-10">
           {this.props.children}
         </div>
       </div>

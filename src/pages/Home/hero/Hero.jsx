@@ -68,42 +68,42 @@ const Hero = () => {
   ];
 
   return (
+    <section className="relative h-[70vh] md:h-[85vh] lg:h-screen 2xl:h-[75vh] overflow-hidden bg-black/60  m-0 p-0">
     <CanvasAnimation>
-      <section className="relative h-[60vh] lg:h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 pt-5 md:pt-10 lg:pt-20">
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={window.innerWidth < 768 ? 1.7 : 2.2}
-          coverflowEffect={{
-            rotate: -45,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          {movies?.map((movie, index) => (
-            <SwiperSlide key={index}>
-              <img src={movie?.Thumbnail} alt="featured-image" className="" />
-              <h1 className="text-lg md:text-2xl text-zinc-300 text-center font-bold italic">
-                {movie?.Title}
-              </h1>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
+    <Swiper
+      effect={'coverflow'}
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView={window.innerWidth < 768 ? 1.7 : 2.2}
+      coverflowEffect={{
+        rotate: -45,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
+      className="mySwiper"
+    >
+      {movies?.map((movie, index) => (
+        <SwiperSlide key={index}>
+          <img src={movie?.Thumbnail} alt="featured-image" className="" />
+          <h1 className="text-lg md:text-2xl text-zinc-300 text-center font-bold italic">
+            {movie?.Title}
+          </h1>
+        </SwiperSlide>
+      ))}
+    </Swiper>
     </CanvasAnimation>
+  </section>
   );
 };
 
