@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
-import { FaCloudDownloadAlt } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { addHistory } from '../../../api/historyPostData';
-import WatchTimer from '../../../components/watchTimer/WatchTimer';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { LuListVideo } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { addHistory } from "../../../api/historyPostData";
+import WatchTimer from "../../../components/watchTimer/WatchTimer";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 
 const MovieInfo = () => {
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
@@ -20,9 +20,12 @@ const MovieInfo = () => {
   const { user, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id; // Get the movie ID
-  const userId = '64f89f19746d2fab49ffb3f9';
-
+  const userId = "64f89f19746d2fab49ffb3f9";
   const [watching, setWatching] = useState(false);
+ 
+  // if(isFirstElement){
+  //    console.log('jj');
+  // }
 
   const {
     _id,
@@ -72,35 +75,35 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = await Swal.fire({
-          text: 'Please login to add to your wishlist',
-          icon: 'warning',
-          background: '#222',
-          confirmButtonText: 'login',
+          text: "Please login to add to your wishlist",
+          icon: "warning",
+          background: "#222",
+          confirmButtonText: "login",
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate('/login');
+          navigate("/login");
         }
         return;
       }
 
-      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      const response = await axiosSecure.post("/wishlist", wishlistItem);
       console.log(response);
 
       if (response?.status === 200) {
-        if (response?.data?.message === 'Already added to wishlist!') {
+        if (response?.data?.message === "Already added to wishlist!") {
           Swal.fire({
-            text: 'Movie is already in your wishlist',
-            icon: 'info',
-            background: '#222',
+            text: "Movie is already in your wishlist",
+            icon: "info",
+            background: "#222",
           });
         } else {
-          console.log('Movie added to wishlist', response?.data);
+          console.log("Movie added to wishlist", response?.data);
           Swal.fire({
-            text: 'Added to wishlist!',
-            icon: 'success',
-            background: '#222',
+            text: "Added to wishlist!",
+            icon: "success",
+            background: "#222",
             reverseButtons: true,
           });
         }
@@ -108,11 +111,11 @@ const MovieInfo = () => {
         //
       }
     } catch (error) {
-      console.log('An error occurred while adding to wishlist:', error);
+      console.log("An error occurred while adding to wishlist:", error);
 
       if (error.response) {
         console.error(
-          'Server responded with:',
+          "Server responded with:",
           error.response.status,
           error.response.data
         );
