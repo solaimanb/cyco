@@ -69,7 +69,7 @@ const Hero = () => {
 
   return (
     <CanvasAnimation>
-      <section className="relative h-[60vh] lg:h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 pt-5 md:pt-10 lg:pt-20">
+      <section className="relative h-[60vh] lg:h-[70vh] overflow-hidden md:h-[90vh] bg-black/60  m-0 pt-5 md:pt-10 lg:pt-40">
         <Swiper
           effect={'coverflow'}
           grabCursor={true}

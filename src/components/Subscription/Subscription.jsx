@@ -2,9 +2,9 @@ import React from 'react';
 import { FaAlignJustify, FaCheckDouble } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSelectedPlan } from '../../store/slices/paymentSlice/paymentSlice';
-import { useEffect } from 'react';
 import { fetchItems } from '../../store/slices/subscriptionSlice/subscriptionSlice';
 
 const Subscription = () => {
@@ -14,9 +14,6 @@ const Subscription = () => {
   useEffect(() => {
     dispatch(fetchItems());
   }, [dispatch, ]);
-
-
- 
 
   const handlePlanSelection = (selectedPlan, amount) => {
     dispatch(updateSelectedPlan({ selectedPlan, amount }));
@@ -29,8 +26,8 @@ const Subscription = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 justify-items-center">
             {/* Basic Plan */}
             {
-              items && items.map((item)=>
-               <div className="w-full p-6 text-white glass mb-10 md:mb-0 flex flex-col">
+              items && items.map((item, index)=>
+               <div key={index} className="w-full p-6 text-white glass mb-10 md:mb-0 flex flex-col">
               <h3 className="text-lg">{item?.title}</h3>
               <div className=" text-white mt-5">
                 <small className="line-through">${item.previous_pay}</small>
