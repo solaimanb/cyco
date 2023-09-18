@@ -19,7 +19,6 @@ const useTVChannel = () => {
 
 export default useTVChannel;
 
-// BookMark user Email
 export const liveTVFetch = () => {
   const { user } = useAuth();
   const { data: tvChannel = [], refetch } = useQuery({
