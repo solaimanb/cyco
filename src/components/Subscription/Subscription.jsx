@@ -79,7 +79,7 @@ const Subscription = () => {
                 <Link to="/payment">
                   {' '}
                   <button
-                    onClick={() => handlePlanSelection('basic', 12.99)}
+                    onClick={() => handlePlanSelection(item?.title, item?.price)}
                     className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4"
                   >
                     Choose Plan

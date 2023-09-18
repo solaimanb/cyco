@@ -1,12 +1,15 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 export const CheckoutForm = ({ price, selectedPlan }) => {
+  
   const stripe = useStripe();
-  console.log(stripe);
+  
   const elements = useElements();
+console.log(stripe, elements);
   const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [axiosSecure] = useAxiosSecure();
@@ -128,7 +131,7 @@ setProcessing(true)
       {transectionId && <h5 className="pt-4 text-green-700 text-sm">Transection Seccessfull</h5>}
       <button
         type="submit"
-        disabled={!stripe || !clientSecret}
+        // disabled={!stripe || !clientSecret}
       
         className="md:mt-6 rounded-sm w-full transition duration-300 border py-2 border-cyred bg-zinc-100 font-bold text-cyred"
       >

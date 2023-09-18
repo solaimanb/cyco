@@ -2,19 +2,26 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import { FaFulcrum } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
 import { CheckoutForm } from './Checkout';
 import './payment.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchItems } from '../../store/slices/subscriptionSlice/subscriptionSlice';
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
+  const dispatch = useDispatch()
   const { selectedPlan, amount } = useSelector((state) => state.payment);
+  useEffect(()=>{
+    dispatch(fetchItems)
+  },[])
   // const price = parseFloat(amount.tofixed(2))
+  console.log(selectedPlan, amount);
   const price = amount;
-
+   
   // Function to format the date as "MMM DD, YYYY"
-  const formatDate = (date) => {
+  const formatDate = (date) => { 
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(date).toLocaleDateString(undefined, options);
   };

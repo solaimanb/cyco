@@ -6,14 +6,20 @@ import MovieCard from '../../components/movieCard/MovieCard';
 import Pagination from '../../components/paginaition/Pagination';
 import useMovies from '../../hooks/useMovies';
 import Container from '../../components/container/Container';
+import CategoryMovies from './catagoryMovies/CategoryMovies';
+
 
 const Movies = () => {
   const [movies, loading] = useMovies();
+const firstElement = CategoryMovies()
+console.log(firstElement);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
   const [filteredMovies, setFilteredMovies] = useState([]); // State for filtered movies
   const [isSearchClicked, setIsSearchClicked] = useState(false); // State to track whether the search button is clicked
   const moviesPerPage = 12;
+ 
+
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);

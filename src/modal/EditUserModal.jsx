@@ -1,27 +1,37 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { updateData } from "../store/slices/editUserSlice/editUserSlice";
-import useAuth from "../hooks/useAuth";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 
-const EditUserModal = ({ closeModal, isOpen }) => {
-  const {user} = useAuth()
-  const [isData, setIsData] = useState()
-  console.log(isData);
+import { updateUser } from "../store/slices/editUserSlice/editUserSlice";
+import { useState } from "react";
+import Swal from "sweetalert2";
+
+const EditUserModal = ({ closeModal, isOpen, data }) => {
+  const [isData, setData] = useState();
+
   const { register, handleSubmit, control } = useForm({
     defaultValues: {},
   });
-  const dispatch = useDispatch();
+
   // Submit your data into Redux store
-  const handleUpdateData = (email, data) => {
-    console.log(email,'hh', data);
-    dispatch(updateData({email, data}));
+  const handleUpdateData = (data, isData) => {
+    updateUser(isData, data?._id)
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          icon: "success",
+          title: "Update Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   const onSubmit = (data) => {
-    setIsData(data)
-    console.log(data);
+    setData(data);
   };
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -66,6 +76,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                         User Name:
                       </label>
                       <input
+                        defaultValue={data?.username}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         {...register("username")}
                       />
@@ -79,7 +90,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                       </label>
                       <input
                         disabled
-                        defaultValue={""}
+                        defaultValue={data?.email}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="email"
                         {...register("email")}
@@ -93,7 +104,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                         Phone Number
                       </label>
                       <input
-                        defaultValue={""}
+                        defaultValue={data?.phoneNumber}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="number"
                         {...register("phoneNumber")}
@@ -108,7 +119,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                           <input
                             className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                             type="file"
-                            id="photo"
+                            id="photoUrl"
                             {...field}
                             accept="image/*" // Specify accepted file types (images in this case)
                           />
@@ -123,7 +134,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                         Address
                       </label>
                       <input
-                        defaultValue={""}
+                        defaultValue={data?.address}
                         className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                         type="text"
                         {...register("address")}
@@ -132,7 +143,7 @@ const EditUserModal = ({ closeModal, isOpen }) => {
                     <hr className="mt-8 " />
                     <div className="flex mt-2 justify-around">
                       <input
-                      onClick={()=>handleUpdateData(user?.email, isData)}
+                        onClick={() => handleUpdateData(data, isData)}
                         type="Submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                       />
