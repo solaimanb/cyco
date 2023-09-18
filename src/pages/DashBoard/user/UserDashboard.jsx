@@ -7,34 +7,36 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import EditUserModal from "../../../modal/EditUserModal";
 import { getUser } from "../../../store/slices/editUserSlice/editUserSlice";
-
+// import { setUser } from "../../../store/slices/editUserSlice/passData";
 
 const UserDashboard = () => {
   let [isOpen, setIsOpen] = useState(false);
-
+  let [data, setData ] = useState()
+  const { user, createUser, updateUserProfile } = useAuth();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.editUserSlice);
+  const { todos } = useSelector((state) => state.editUserSlice);
   const status = useSelector((state) => state.editUserSlice.status);
-   console.log(data.todos);
-   console.log(status);
   useEffect(() => {
-    if (status === 'idle') {
+    if (status === "loading") {
       dispatch(getUser());
+
     }
-  }, [status, dispatch]);
 
+  }, [status, dispatch, todos]);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
+  // Handle data filtering if user is defined
 
+  const filter = todos && todos.filter((item) => item?.email == user?.email);
+
+  useEffect(()=>{
+  dispatch(setUser(filter));
+  },[])
+  const userData = useSelector((state) => state.passData.data);
+  console.log(userData);
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  console.log(isOpen);
-
-  const { user, createUser, updateUserProfile } = useAuth();
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [message, setMessage] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -42,8 +44,6 @@ const UserDashboard = () => {
   const [timeAgo, setTimeAgo] = useState("");
 
   const userEntry = user?.metadata?.createdAt;
-
-  console.log(user);
 
   // SETTING POST TIME:
   useEffect(() => {
@@ -192,7 +192,7 @@ const UserDashboard = () => {
 
           <div className="h-16 flex justify-end">
             <button
-              onClick={() =>setIsOpen(true)}
+              onClick={() => setIsOpen(true)}
               type="button"
               className="absolute top-4 right-0 hover:text-cyred/60"
             >
@@ -256,12 +256,14 @@ const UserDashboard = () => {
           <div className="w-full border border-zinc-800 rounded-sm p-2">4</div>
         </div>
 
-        <div>
           {" "}
          
         </div> */}
       </div>
-      <EditUserModal isOpen={isOpen} closeModal={closeModal} />
+      {filter &&
+        filter.map((data) => (
+          <EditUserModal key={data?._id} isOpen={isOpen} data={data} closeModal={closeModal} />
+        ))}
     </section>
   );
 };

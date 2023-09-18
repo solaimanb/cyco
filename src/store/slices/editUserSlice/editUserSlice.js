@@ -14,27 +14,42 @@ export const getUser = createAsyncThunk('data/getUser', async () => {
 });
 // src/features/dataSlice.js (continued)
 
-export const updateData = createAsyncThunk(
-  'data/updateData',
-  async ({ email, data }) => {
-    try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`,
-        data
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-);
+// export const updateData = createAsyncThunk(
+//   'data/updateData',
+//   async ({ email, data }) => {
+//     try {
+//       const response = await axios.put(
+//         `${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`,
+//         data
+//       );
+//       return response.data;
+//     } catch (error) {
+//       throw error;
+//     }
+//   }
+// );
 
+export const updateUser = async (roomData, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_SERVER_URL}/updateUserData/${id}`,
+    {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(roomData),
+    }
+  );
+
+  const data = await response.json();
+  return data;
+};
 // ... (continued from previous code)
 
 // Define an initial state
 const initialState = {
   data: [],
-  status: 'idle',
+  status: 'loading',
   error: null,
 };
 // Create a slice
