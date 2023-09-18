@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
-// import io from 'socket.io-client'
-// const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`)
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`)
 
 const Notify = () => {
 
-// const [notification, setNotification] = useState('');
-// const [rNotify, setRNotify] = useState('');
+const [notification, setNotification] = useState('');
+const [rNotify, setRNotify] = useState('');
 
-// const sendNotification = () => {
-//     socket.emit('send_notification', {notification: notification})
-// }
+const sendNotification = () => {
+    socket.emit('send_notification', {notification: notification})
+}
 
 
 
-// useEffect(() => {
-//     socket.on('receive_notification', (data) => {
-//         console.log(data.notification);
-//         setRNotify(data.notification);
-//     })
-// }, [socket]);
+useEffect(() => {
+    socket.on('receive_notification', (data) => {
+        console.log(data.notification);
+        setRNotify(data.notification);
+    })
+}, [socket]);
 
 
 
@@ -26,7 +26,7 @@ const Notify = () => {
   return (
     <div className='flex flex-col justify-center items-center '>
        
-       {/* <div className='py-4 px-8 my-16 rounded-lg bg-cyred/60'>
+       <div className='py-4 px-8 my-16 rounded-lg bg-cyred/60'>
         <h3>SEND NOTIFICATIO</h3>
         <p>
             {rNotify}
@@ -53,7 +53,7 @@ const Notify = () => {
             
             </button>
 
-        </div> */}
+        </div>
       
     </div>
   )
