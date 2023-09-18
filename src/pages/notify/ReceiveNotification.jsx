@@ -20,7 +20,7 @@
 //       setReceiveNotification(data.notification);
 //       setNCount((prevCount) => prevCount + 1);
 //       setShowNotification(showNotification);
-      
+
 //       // Update notification history and store it in local storage
 //       const updatedHistory = [data.notification, ...notificationHistory];
 //       setNotificationHistory(updatedHistory);
