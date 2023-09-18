@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import EditUserModal from "../../../modal/EditUserModal";
 import { getUser } from "../../../store/slices/editUserSlice/editUserSlice";
-// import { setUser } from "../../../store/slices/editUserSlice/passData";
+import { setUser } from "../../../store/slices/editUserSlice/passData";
 
 const UserDashboard = () => {
   let [isOpen, setIsOpen] = useState(false);

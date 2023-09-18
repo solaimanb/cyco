@@ -14,20 +14,20 @@ export const getUser = createAsyncThunk('data/getUser', async () => {
 });
 // src/features/dataSlice.js (continued)
 
-// export const updateData = createAsyncThunk(
-//   'data/updateData',
-//   async ({ email, data }) => {
-//     try {
-//       const response = await axios.put(
-//         `${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`,
-//         data
-//       );
-//       return response.data;
-//     } catch (error) {
-//       throw error;
-//     }
-//   }
-// );
+export const updateData = createAsyncThunk(
+  'data/updateData',
+  async ({ email, data }) => {
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`,
+        data
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
 
 export const updateUser = async (roomData, id) => {
   const response = await fetch(
