@@ -1,4 +1,4 @@
-#loginAnimation {
+/* #loginAnimation {
   position: relative;
   overflow: hidden;
   width: 370px;
@@ -44,5 +44,71 @@
   }
   #loginAnimation::after {
     width: 300px;
+  }
+} */
+
+#loginAnimation {
+  position: relative;
+  overflow: hidden;
+  width: 30vw;
+  margin-top: 50px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loginAnimation::before {
+  content: '';
+  background-image: conic-gradient(#ff0000 20deg, transparent 120deg);
+  width: 350%;
+  height: 350%;
+  position: absolute;
+  animation: rotate 10s linear infinite;
+}
+
+#loginAnimation::after {
+  content: '';
+  width: 29.7vw;
+  height:99%;
+  background: #111;
+  position: absolute;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+@media (max-width: 768px) {
+  #loginAnimation {
+    width: 70vw;
+  }
+  #loginAnimation::after {
+    width: 69.7vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px){
+  #loginAnimation {
+    width: 40vw;
+  }
+  #loginAnimation::after {
+    width: 39.7vw;
+  }
+}
+@media (min-width: 1350px) {
+  #loginAnimation {
+    width: 20vw;
+  }
+  #loginAnimation::after {
+    width: 19.7vw;
   }
 }
