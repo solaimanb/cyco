@@ -184,6 +184,134 @@ const router = createBrowserRouter([
       },
       // { path: 'notify', element: <Notify /> },
       // { path: "receive-notification", element: <ReceiveNotification /> },
+      { path: "/", element: <Home /> },
+      {
+        path: "trailer",
+        element: (
+          <PrivateRoute>
+            <Trailer />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "trailer/:index",
+        element: (
+          <PrivateRoute>
+            <PlayerPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "movies",
+        element: (
+          <PrivateRoute>
+            <Movies />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "series",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Series />{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "series/seriesParts",
+        element: (
+          <PrivateRoute>
+            <SeriesParts />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "live-tv",
+        element: (
+          <PrivateRoute>
+            <LiveTv />
+          </PrivateRoute>
+        ),
+      },
+      { path: "podcast", element: <Podcast /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      {
+        path: "checkout",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment />{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "video-player",
+        element: (
+          <PrivateRoute>
+            <VideoPlayer />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "movieinfo",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MovieInfo />{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "watch-video",
+        element: (
+          <PrivateRoute>
+            <MoviePlayer />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "popular-tvs",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <PopularTvs />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "popular-tv",
+        element: (
+          <PrivateRoute>
+            <PopularTv />
+          </PrivateRoute>
+        ),
+      },
+      { path: "PrivacyPolicy", element: <PrivacyPolicy /> },
+      { path: "TermsConditions", element: <TermsConditions /> },
+      {
+        path: "testpayments",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      { path: "testimonials", element: <Testimonials /> },
+      {
+        path: "payment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      // { path: 'notify', element: <Notify /> },
+      // { path: 'receive-notification', element: <ReceiveNotification /> },
       // { path: "notify", element: <Notify /> },
       // { path: "receive-notification", element: <ReceiveNotification /> },
       { path: "help", element: <Help /> },

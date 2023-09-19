@@ -1,5 +1,6 @@
 import { Accordion, AccordionItem } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import {
   BiDownvote,
   BiSolidDownvote,
@@ -9,6 +10,7 @@ import {
 import { FaComment, FaEye, FaTrashAlt } from 'react-icons/fa';
 import { IoSendSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import {
   updateViewCount,
@@ -171,6 +173,64 @@ const QueryPost = ({ query }) => {
     }
   };
 
+  // REPORT A QUERY:
+  const handleReportQuery = async (queryId) => {
+    console.log(queryId);
+
+    const { value } = await Swal.fire({
+      text: 'Please select the type of report!',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Report Query',
+      cancelButtonText: 'Cancel',
+      background: '#222',
+    });
+    console.log(value);
+
+    if (value === true) {
+      try {
+        const response = await axiosSecure.post('/report/query', { queryId });
+        console.log(response);
+
+        if (response.data.success) {
+          Swal.fire({
+            title: 'Reported Successfully',
+            text: 'The query has been reported.',
+            icon: 'success',
+            background: '#222',
+          });
+        } else if (
+          response.data.message ===
+          'Query has already been reported by this user.'
+        ) {
+          Swal.fire({
+            title: 'Already Reported',
+            text: 'You have already reported this query.',
+            icon: 'info',
+            background: '#222',
+          });
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: 'Failed to report the query.',
+            icon: 'error',
+            background: '#222',
+          });
+        }
+      } catch (error) {
+        console.error('Error reporting query:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'An error occurred while reporting the query.',
+          icon: 'error',
+          background: '#222',
+        });
+      }
+    } else if (value === null) {
+      console.log('User canceled the report.');
+    }
+  };
+
   return (
     <div
       onClick={() => handleQueryClick()}
@@ -249,9 +309,21 @@ const QueryPost = ({ query }) => {
               </button>
             </div>
 
-            <div>
-              <button onClick={() => handleDeleteQuery(_id)} className="">
+            <div className="flex flex-row items-center gap-1">
+              {/* TRASH TRIGGER */}
+              <button
+                onClick={() => handleDeleteQuery(_id)}
+                className="text-[#800000]"
+              >
                 <FaTrashAlt size={18} />
+              </button>
+
+              {/* REPORT TRIGGER */}
+              <button
+                onClick={() => handleReportQuery(_id)}
+                className="text-[#800000]"
+              >
+                <AiOutlineQuestionCircle size={22} />
               </button>
             </div>
           </div>

@@ -41,6 +41,7 @@ const MovieInfo = () => {
     Thumbnail,
     imdbRating,
     Genre,
+    history,
     Trailer,
   } = movie || {};
 
@@ -107,8 +108,26 @@ const MovieInfo = () => {
             reverseButtons: true,
           });
         }
+        console.log("Movie added to wishlist", response?.data);
+        Swal.fire({
+          text: "Added to wishlist!",
+          icon: "success",
+          background: "#222",
+          reverseButtons: true,
+        });
+      } else if (response?.status === 409) {
+        Swal.fire({
+          text: response?.data?.message || "Movie is already in your wishlist",
+          icon: "info",
+          background: "#222",
+        });
       } else {
-        //
+        // Handle other error cases
+        Swal.fire({
+          text: "An error occurred while adding to wishlist. Please try again later.",
+          icon: "error",
+          background: "#222",
+        });
       }
     } catch (error) {
       console.log("An error occurred while adding to wishlist:", error);
@@ -236,6 +255,7 @@ const MovieInfo = () => {
             </div> */}
         </div>
       </div>
+      //{" "}
     </div>
   );
 };
