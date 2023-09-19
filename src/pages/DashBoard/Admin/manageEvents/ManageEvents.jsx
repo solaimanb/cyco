@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useForm } from "react-hook-form";
 import EventCard from './eventCard/EventCard';
+import { addNewEvent } from '../../../../api/addNewEvent';
 
 const ManageEvents = () => {
   const { register, handleSubmit, setValue } = useForm({});
@@ -32,8 +33,16 @@ const ManageEvents = () => {
         "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
     },
   ];
-  const onSubmit = (data) => {
-
+  const onSubmit = async (data) => {
+    const event = { title: data.title, banner: data.banner, relase: data.relase }
+    console.log(event);
+    try {
+      const EventAdded = await addNewEvent(event)
+      console.log(EventAdded);
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
   return (
     <section >
@@ -47,8 +56,8 @@ const ManageEvents = () => {
             eventsContainerRef.current.scrollIntoView({ behavior: 'smooth' });
           }
         }} className='btn btn-outline rounded-lg textarea-info sm-mt-2' style={{ backgroundColor: 'transparent', transition: 'background-color 0.3s' }}
-        onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
-        onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>Add New Event</p>
+          onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>Add New Event</p>
       </div>
 
       {/* Total Events  */}
@@ -111,9 +120,9 @@ const ManageEvents = () => {
               </div>
 
               <button type='submit' className='btn btn-outline w-[80%] mx-auto textarea-info rounded-lg my-4 focus' style={{ backgroundColor: 'transparent', transition: 'background-color 0.3s' }}
-  onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
-  onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>
-                      Add New Upcoming Event
+                onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
+                onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>
+                Add New Upcoming Event
               </button>
             </form>
           </div>
