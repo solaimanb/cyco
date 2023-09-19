@@ -39,6 +39,7 @@ import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
 // import Notify from "../pages/notify/Notify";
 // import ReceiveNotification from "../pages/notify/ReceiveNotification";
+import LiveChannels from '../pages/dashBoard/admin/liveChannels/LiveChannels';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -47,6 +48,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import ManageEvents from '../pages/DashBoard/Admin/manageEvents/ManageEvents';
 
 const router = createBrowserRouter([
   {
@@ -96,6 +98,7 @@ const router = createBrowserRouter([
       { path: 'watch-party/watch-party-public', element: <WatchLive /> },
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'admin/paymentHistory', element: <AdminPaymentHistory /> },
+      { path: 'admin/manage-events', element: <ManageEvents /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'settings', element: <ProfileSettings /> },
@@ -108,6 +111,7 @@ const router = createBrowserRouter([
       { path: 'user-panel', element: <UserPanel /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },
+      { path: 'live-channels', element: <LiveChannels /> },
     ],
   },
   { path: '*', element: <ErrorPage /> },

@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2";
-import { useForm } from "react-hook-form";
-import { imageUpload } from "../../../../api/imgUpload";
-import { addLiveTV } from "../../../../api/liveTv";
-import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { imageUpload } from '../../../../api/imgUpload';
+import { addLiveTV } from '../../../../api/liveTv';
+import useTVChannel, { liveTVFetch } from '../../../../hooks/useTVChannel';
 
-const GoLive = () => {
+const LiveChannels = () => {
   const [Channels] = useTVChannel();
   const [tvChennel, refetch] = liveTVFetch();
   console.log(Channels);
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
+  const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');
   console.log(tvChennel);
-  // Handle form submit
+
   const onSubmit = async (data) => {
     setLoading(true);
     const logo = data.Poster[0];
@@ -32,9 +32,9 @@ const GoLive = () => {
       console.log(movieUploadResponse);
 
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Live TV Channel Added successfully",
+        position: 'top-end',
+        icon: 'success',
+        title: 'Live TV Channel Added successfully',
         showConfirmButton: false,
         timer: 1500,
       });
@@ -43,12 +43,12 @@ const GoLive = () => {
     }
 
     setLoading(false);
-    setUploadButtonText("Upload Poster");
+    setUploadButtonText('Upload Poster');
   };
 
   const handleImageChange = (event) => {
     setUploadButtonText(event.target.files[0].name);
-    setValue("Poster", event.target.files);
+    setValue('Poster', event.target.files);
   };
 
   // handle delete live tv channel
@@ -81,43 +81,39 @@ const GoLive = () => {
   // };
 
   const handleDelete = (channel) => {
-    // Display a confirmation dialog
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // If the user confirms, send a DELETE request to the server
         fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-          method: "DELETE",
+          method: 'DELETE',
         })
           .then((res) => {
             if (res.ok) {
               return res.json();
             } else {
-              throw new Error("Network response was not ok");
+              throw new Error('Network response was not ok');
             }
           })
           .then((data) => {
             if (data.success) {
-              // If the deletion was successful, notify the user and perform any necessary UI updates
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              // Optionally, you can call a function to update your UI here (e.g., refetch())
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             } else {
-              Swal.fire("Error", "Failed to delete the channel.", "error");
+              Swal.fire('Error', 'Failed to delete the channel.', 'error');
             }
           })
           .catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
             Swal.fire(
-              "Error",
-              "An error occurred while deleting the channel.",
-              "error"
+              'Error',
+              'An error occurred while deleting the channel.',
+              'error'
             );
           });
       }
@@ -126,11 +122,15 @@ const GoLive = () => {
 
   return (
     <>
-      <section className="min-h-screen p-3 md:p-6 mt-6 lg:mt-0 backdrop-blur-sm bg-zinc-950">
-        {/* SYSTEM LOGS HEADER */}
-        <p className="md:hidden text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
-          Upload Series
-        </p>
+      <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+        {/* LIVE CHANNELS HEADER */}
+        <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
+          <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+            Live Channels
+          </p>
+        </div>
+
+        <div></div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="w-full pt-10">
           <div className="md:flex justify-between items-start gap-4 pb-6">
@@ -143,7 +143,7 @@ const GoLive = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Channel Name"
-                  {...register("channelName", { required: true })}
+                  {...register('channelName', { required: true })}
                 />
               </div>
 
@@ -155,7 +155,7 @@ const GoLive = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Live Key"
-                  {...register("LiveKey", { required: true })}
+                  {...register('LiveKey', { required: true })}
                 />
               </div>
 
@@ -170,7 +170,7 @@ const GoLive = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Started Streaming"
-                  {...register("StartedStreaming", { required: true })}
+                  {...register('StartedStreaming', { required: true })}
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ const GoLive = () => {
             type="submit"
             className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
           >
-            {loading ? <h2>Loading...</h2> : "Save & Continue"}
+            {loading ? <h2>Loading...</h2> : 'Save & Continue'}
           </button>
         </form>
       </section>
@@ -235,4 +235,4 @@ const GoLive = () => {
   );
 };
 
-export default GoLive;
+export default LiveChannels;
