@@ -3,9 +3,10 @@ import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import { saveUser } from "../../api/saveUser";
 
 const SocialLogin = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,41 +14,56 @@ const SocialLogin = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((data) => {
-        const loggedUser = data.user;
-
-        const userData = {
-          username: loggedUser.displayName,
-          role: "user",
-          email: loggedUser.email,
-          photoUrl: loggedUser.photoURL,
-        };
-
-        navigate(from, { replace: true });
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        saveUser(loggedUser)
+        navigate(from, { replace: true })
       })
-      .catch((error) => {
+      .catch(error => {
+        setLoading(false)
         console.error("Registration error:", error);
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: error.message || "Something went wrong during registration.",
-        });
+          text: error.message || "Something went wrong during registration."
+        })
       });
-  };
+  }
+  // const handleGoogleSignIn = () => {
+  //   googleSignIn()
+  //     .then((data) => {
+  //       const loggedUser = data.user;
+
+  //       const userData = {
+  //         username: loggedUser.displayName,
+  //         role: "user",
+  //         email: loggedUser.email,
+  //         photoUrl: loggedUser.photoURL,
+  //       };
+
+  //       navigate(from, { replace: true });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Registration error:", error);
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: error.message || "Something went wrong during registration.",
+  //       });
+  //     });
+  // };
 
   return (
-    <>
-      <div className="divider"></div>
-      <div className="">
-        <button
-          onClick={handleGoogleSignIn}
-          className="text-cyred font-bold text- flex items-center"
-        >
-          <FaGoogle size={25} />
-          oogle
-        </button>
-      </div>
-    </>
+    <div className="w-full">
+      <button
+        onClick={handleGoogleSignIn}
+        className="text-cyred mx-auto font-bold flex items-center pb-2"
+      >
+        <FaGoogle size={25} />
+        oogle
+      </button>
+    </div>
   );
 };
 
