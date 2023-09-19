@@ -1,5 +1,5 @@
 export const addNewEvent =async (eventData) =>{
-    const response = await fetch(`http://localhost:8080/newEvent`,{
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/newEvent`,{
         method: 'POST',
         headers: {
             'content-type': 'application/json',

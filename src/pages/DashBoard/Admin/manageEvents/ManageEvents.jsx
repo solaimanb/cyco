@@ -3,8 +3,12 @@ import { useForm } from "react-hook-form";
 import EventCard from './eventCard/EventCard';
 import { addNewEvent } from '../../../../api/addNewEvent';
 import Swal from 'sweetalert2';
+import useEvents from '../../../../hooks/useEvents';
+import Loading from '../../../../components/loading/Loading';
 
 const ManageEvents = () => {
+  const [Events,loading] = useEvents();
+  console.log(Events);
   const { register, handleSubmit, setValue } = useForm({});
   const eventsContainerRef = useRef(null);
 
@@ -51,6 +55,9 @@ const ManageEvents = () => {
       console.log(err);
     }
   }
+  if (loading){
+    return <Loading/>
+  }
   return (
     <section >
       {/* MANAGE Events HEADER */}
@@ -72,7 +79,7 @@ const ManageEvents = () => {
         <p className='font-semibold text-center my-3 textarea-accent '>Upcoming  Event </p>
         <div className='grid md:grid-cols-4 m-2 '>
           {
-            events.map(event => <EventCard event={event}></EventCard>)
+            Events.map(event => <EventCard event={event}></EventCard>)
           }
         </div>
         {/* Add Event  */}
