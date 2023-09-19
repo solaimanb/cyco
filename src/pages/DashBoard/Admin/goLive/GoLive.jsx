@@ -12,7 +12,7 @@ const GoLive = () => {
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
-
+  console.log(tvChennel);
   // Handle form submit
   const onSubmit = async (data) => {
     setLoading(true);
@@ -53,8 +53,35 @@ const GoLive = () => {
 
   // handle delete live tv channel
 
+  // const handleDelete = (channel) => {
+  //   console.log(channel._id);
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     console.log(result);
+  //     if (result.isConfirmed) {
+  //       fetch(`http://localhost:8080/liveTV/${channel._id}`, {
+  //         method: "DELETE",
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           if (data.deletedCount > 0) {
+  //             refetch();
+  //             Swal.fire("Deleted!", "Your file has been deleted.", "success");
+  //           }
+  //         });
+  //     }
+  //   });
+  // };
+
   const handleDelete = (channel) => {
-    console.log(channel._id);
+    // Display a confirmation dialog
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -65,15 +92,33 @@ const GoLive = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/tvChennel/${channel._id}`, {
+        // If the user confirms, send a DELETE request to the server
+        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
           method: "DELETE",
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              throw new Error("Network response was not ok");
             }
+          })
+          .then((data) => {
+            if (data.success) {
+              // If the deletion was successful, notify the user and perform any necessary UI updates
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              // Optionally, you can call a function to update your UI here (e.g., refetch())
+            } else {
+              Swal.fire("Error", "Failed to delete the channel.", "error");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            Swal.fire(
+              "Error",
+              "An error occurred while deleting the channel.",
+              "error"
+            );
           });
       }
     });
