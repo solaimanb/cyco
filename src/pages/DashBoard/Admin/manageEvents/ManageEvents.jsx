@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useForm } from "react-hook-form";
 import EventCard from './eventCard/EventCard';
 import { addNewEvent } from '../../../../api/addNewEvent';
+import Swal from 'sweetalert2';
 
 const ManageEvents = () => {
   const { register, handleSubmit, setValue } = useForm({});
@@ -38,7 +39,13 @@ const ManageEvents = () => {
     console.log(event);
     try {
       const EventAdded = await addNewEvent(event)
-      console.log(EventAdded);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Event Added successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
     catch (err) {
       console.log(err);
