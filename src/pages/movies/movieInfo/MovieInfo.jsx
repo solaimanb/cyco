@@ -12,7 +12,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import CategoryMovies from "../catagoryMovies/CategoryMovies";
 
-
 const MovieInfo = () => {
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
@@ -23,11 +22,10 @@ const MovieInfo = () => {
   const { user, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id;
-  const userId = '64f89f19746d2fab49ffb3f9';
+  const userId = "64f89f19746d2fab49ffb3f9";
   const [watching, setWatching] = useState(false);
 
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
-
 
   const {
     _id,
@@ -77,35 +75,35 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = await Swal.fire({
-          text: 'Please login to add to your wishlist',
-          icon: 'warning',
-          background: '#222',
-          confirmButtonText: 'login',
+          text: "Please login to add to your wishlist",
+          icon: "warning",
+          background: "#222",
+          confirmButtonText: "login",
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate('/login');
+          navigate("/login");
         }
         return;
       }
 
-      const response = await axiosSecure.post('/wishlist', wishlistItem);
+      const response = await axiosSecure.post("/wishlist", wishlistItem);
       console.log(response);
 
       if (response?.status === 200) {
-        if (response?.data?.message === 'Already added to wishlist!') {
+        if (response?.data?.message === "Already added to wishlist!") {
           Swal.fire({
-            text: 'Movie is already in your wishlist',
-            icon: 'info',
-            background: '#222',
+            text: "Movie is already in your wishlist",
+            icon: "info",
+            background: "#222",
           });
         } else {
-          console.log('Movie added to wishlist', response?.data);
+          console.log("Movie added to wishlist", response?.data);
           Swal.fire({
-            text: 'Added to wishlist!',
-            icon: 'success',
-            background: '#222',
+            text: "Added to wishlist!",
+            icon: "success",
+            background: "#222",
             reverseButtons: true,
           });
         }
@@ -113,11 +111,11 @@ const MovieInfo = () => {
         //
       }
     } catch (error) {
-      console.log('An error occurred while adding to wishlist:', error);
+      console.log("An error occurred while adding to wishlist:", error);
 
       if (error.response) {
         console.error(
-          'Server responded with:',
+          "Server responded with:",
           error.response.status,
           error.response.data
         );
@@ -189,42 +187,46 @@ const MovieInfo = () => {
                   {/* WATCH-NOW FUNC */}
                   {firstElement && firstElement ? (
                     <Link
-                    to="/watch-video"
-                    state={{ movie }}
-                    className="btn capitalize bg-cyred font-bold border-none rounded-sm"
-                  >
-                    <button
-                      className="flex"
-                      onClick={() => {
-                        handleHistory(Title, email, Poster);
-                      }}
+                      to="/watch-video"
+                      state={{ movie }}
+                      className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                     >
-                      <span>
-                        <FaCloudDownloadAlt size={20} />
-                      </span>
-                      Watch now
-                    </button>
-                  </Link>
+                      <button
+                        className="flex"
+                        onClick={() => {
+                          handleHistory(Title, email, Poster);
+                        }}
+                      >
+                        <span>
+                          <FaCloudDownloadAlt size={20} />
+                        </span>
+                        Watch now
+                      </button>
+                    </Link>
                   ) : (
-                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscriptions Now</Link>
+                    <Link
+                      className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                      to="/dashboard/subscriptions"
+                    >
+                      Subscriptions Now
+                    </Link>
                   )}
-                 
-                </div> 
                 </div>
-
-                {/* FEEDBACK/REVIEW BTN */}
-                <button
-                  onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                  className="flex flex-row items-center gap-2 mt-2"
-                >
-                  <FaPlus className="text-cyred" />
-                  <h3 className="text-sm">Write a Review</h3>
-                </button>
               </div>
-            </div>
 
-            {/* Recommended Movies */}
-            {/* <div className="w-full h-full mt-auto">
+              {/* FEEDBACK/REVIEW BTN */}
+              <button
+                onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                className="flex flex-row items-center gap-2 mt-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Write a Review</h3>
+              </button>
+            </div>
+          </div>
+
+          {/* Recommended Movies */}
+          {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
                 <Marquee speed={5}>
@@ -232,7 +234,6 @@ const MovieInfo = () => {
                 </Marquee>
               </div>
             </div> */}
-          </div>
         </div>
       </div>
     </div>
