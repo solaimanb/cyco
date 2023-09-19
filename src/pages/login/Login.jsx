@@ -59,11 +59,11 @@ console.log(isOpen);
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="py-12 2xl:py-16 h-full flex justify-center items-center">
     <ResetModal isOpen={isOpen}
             closeModal={closeModal} />
       <div id="loginAnimation">
-        <div className="z-10">
+        <div className="z-10 p-8">
           <div className="absolute top-0 left-0 animate-pulse">
             <FaFulcrum className="text-4xl text-cyred" />
           </div>
@@ -71,7 +71,7 @@ console.log(isOpen);
             Login
           </h2>
 
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} className='w-full'>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -118,8 +118,9 @@ console.log(isOpen);
           <label className="flex justify-end">
              <p className="text-sm pt-2 "> <button onClick={() =>setIsOpen(true)}>Forgot password?</button> </p>
             </label>
-          <div className="flex mx-auto gap-2 ">
-            <div className="text-center mx-auto">
+            <div className="flex flex-col justify-center items-center mx-auto gap-2">
+            <h3 className='divider text-xs'>Sign up with</h3>
+            <div>
               <SocialLogin />
             </div>
           </div>

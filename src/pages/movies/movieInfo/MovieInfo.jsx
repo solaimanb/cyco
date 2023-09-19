@@ -235,7 +235,7 @@ const MovieInfo = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
