@@ -12,6 +12,7 @@ import { IoSendSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { addComment, loadComments } from '../../../../store/slices/commentSlice/commentSlice';
 import {
   updateViewCount,
   updateVoteCount,
@@ -24,8 +25,8 @@ import {
 } from './actions/queryActions';
 
 const QueryPost = ({ query }) => {
-  const { _id, description, title, timestamp, views, comments, voteCount } =
-    query;
+  const { _id, description, title, timestamp, views, voteCount } = query;
+  // console.log(_id);
 
   const [axiosSecure] = useAxiosSecure();
   const [timeAgo, setTimeAgo] = useState(formatTimestamp(timestamp));
@@ -36,10 +37,13 @@ const QueryPost = ({ query }) => {
   const [userData, setUserData] = useState();
   const [hasUpvoted, setHasUpvoted] = useState(false);
   const [hasDownvoted, setHasDownvoted] = useState(false);
-  const [viewClicked, setViewClicked] = useState(false);
+  const [ viewClicked, setViewClicked ] = useState( false );
+
 
   const queries = useSelector((state) => state.queries);
   const dispatch = useDispatch();
+  const comments = useSelector((state) => state.comments[_id]);
+  console.log(initialComments, comments);
 
   // QUERY CLICK HANDLER:(updating the views counter)----->>>>
   const handleQueryClick = async () => {
@@ -114,6 +118,25 @@ const QueryPost = ({ query }) => {
     if (hasUserUpvoted) {
       setUpvoted(true);
     }
+
+    // FETCHING QUERY COMMENTS:
+    const fetchComments = async () => {
+      try {
+        const response = await axiosSecure.get(`/forumQueries/comments/${_id}`);
+        
+        if (response.status === 200 && response.data.success) {
+          const fetchedComments = response.data.comments;
+          dispatch(loadComments({ queryId: _id, comments: fetchedComments }));
+          setInitialComments(fetchedComments);
+        } else {
+          console.log('Failed to load comments!');
+        }
+      } catch (error) {
+        console.error('Error loading comments:', error);
+      }
+    };
+
+    fetchComments();
   }, []);
 
   // COMMENT INPUT FIELD OBSERVER:
@@ -127,36 +150,39 @@ const QueryPost = ({ query }) => {
     }
   };
 
+  // COMMENT SUBMISSION:
+   // Handle comment submission
   const handleCommentSubmit = async () => {
     if (commentInput.trim() === '') {
       return;
     }
 
     try {
-      const response = await axiosSecure.post(`/forumQueries/${_id}/comments`, {
+      const response = await axiosSecure.post(`/forumQueries/comments/${_id}`, {
         comment: commentInput,
         timestamp: new Date().getTime(),
       });
 
-      // const newComment = { text: commentInput, timestamp: Date.now() };
-
-      // dispatch(addCommentToQueryAsync(_id, newComment));
-
-      // if (response.data.success) {
-      //   const newComment = { text: commentInput, timestamp: Date.now() };
-      //   dispatch(addCommentToQuery({ queryId: _id, comment: newComment }));
-
-      //   setCommentInput( '' );
-      //   setInitialComments( [ ...initialComments, newComment ] );
-
-      // } else {
-      //   console.log('Failed to add comment!');
-      // }
-
-      setCommentInput('');
-      // setInitialComments([...initialComments, newComment]);
+      if (response.status === 200 && response.data.success) {
+        const newComment = response.data.comment;
+        setInitialComments([...initialComments, newComment]);
+        dispatch(addComment({ queryId: _id, comment: newComment }));
+        
+        // Clear the input field after submission
+        setCommentInput('');
+      } else {
+        console.log('Failed to add comment!');
+      }
     } catch (error) {
-      console.error('Error adding comment:', error);
+      console.log('Error adding comment:', error);
+    }
+  };
+
+  // Handle 'Enter' key press to submit comment
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleCommentSubmit();
+      setCommentInput(event.target.value = ' ');
     }
   };
 
@@ -233,7 +259,8 @@ const QueryPost = ({ query }) => {
 
   return (
     <div
-      onClick={() => handleQueryClick()}
+      onClick={ () => handleQueryClick() }
+      onKeyUp={handleKeyPress}
       className="cursor-pointer flex flex-col justify-between gap-3 mt-2 border rounded-sm border-zinc-800"
     >
       <Accordion>
@@ -242,20 +269,23 @@ const QueryPost = ({ query }) => {
           className="flex flex-col justify-between w-full font-semibold"
         >
           <div className="flex flex-col mt-2 pt-1 border-t-2 border-zinc-800 gap-1">
-            {/* {initialComments?.map((comment, index) => ( */}
-            {comments?.map((comment, index) => (
-              <div
-                key={index}
-                className="flex flex-row gap-3 items-start bg-zinc-800/60 p-3 rounded-sm"
-              >
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjqrPeW8qKDv2TucX76nWLgPFbAZN9Ke3-5w&usqp=CAU"
-                  alt="user-image"
-                  className="w-6 h-6 rounded-full opacity-60"
-                />
-                <p className="text-xs font-normal">{comment}</p>
-              </div>
-            ))}
+            {comments &&
+              comments?.map((comment, index) => (
+                <div
+                  key={index}
+                  className="flex flex-row gap-3 items-start bg-zinc-800/60 p-3 rounded-sm"
+                >
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjqrPeW8qKDv2TucX76nWLgPFbAZN9Ke3-5w&usqp=CAU"
+                    alt="user-image"
+                    className="w-6 h-6 rounded-full opacity-60"
+                  />
+                  <p className="text-xs font-normal">{comment}</p>
+                </div>
+              ))}
+            {/* {initialComments?.map((comment, index) => (
+              <div key={index}>{comment}</div>
+            ))} */}
           </div>
 
           <div className="flex flex-row items-center justify-between px-1 mt-5">
