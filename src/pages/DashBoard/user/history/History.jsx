@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import useHistory from "../../../../hooks/useHistory";
 import useMovies from "../../../../hooks/useMovies";
@@ -8,9 +8,14 @@ const History = () => {
   const user = useAuth();
 
   const [history, refetch] = useHistory();
-
+  const [isFilteredHistory, setFilteredHistory] = useState()
+  useEffect(()=>{
   const filteredHistory = history.filter((h) => h?.email == user?.user?.email);
-console.log(filteredHistory);
+  setFilteredHistory(filteredHistory);
+
+  },[history, user])
+
+
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* HISTORY HEADER */}
@@ -21,8 +26,8 @@ console.log(filteredHistory);
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 xl:grid-cols-5">
-        {filteredHistory &&
-          filteredHistory.map((data) => (
+        {isFilteredHistory &&
+          isFilteredHistory.map((data) => (
             <HistoryCard key={data?._id} refetch={refetch} data={data} />
           ))}
       </div>

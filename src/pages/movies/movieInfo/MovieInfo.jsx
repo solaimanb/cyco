@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { addHistory } from '../../../api/historyPostData';
-import WatchTimer from '../../../components/watchTimer/WatchTimer';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { LuListVideo } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { addHistory } from "../../../api/historyPostData";
+import WatchTimer from "../../../components/watchTimer/WatchTimer";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
+import CategoryMovies from "../catagoryMovies/CategoryMovies";
+
 
 const MovieInfo = () => {
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
+  const firstElement = CategoryMovies();
+  console.log(firstElement);
   const { movie } = location?.state;
   const { user, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id;
   const userId = '64f89f19746d2fab49ffb3f9';
   const [watching, setWatching] = useState(false);
+
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
+
 
   const {
     _id,
@@ -178,7 +187,8 @@ const MovieInfo = () => {
                   </button>
 
                   {/* WATCH-NOW FUNC */}
-                  <Link
+                  {firstElement && firstElement ? (
+                    <Link
                     to="/watch-video"
                     state={{ movie }}
                     className="btn capitalize bg-cyred font-bold border-none rounded-sm"
@@ -195,6 +205,11 @@ const MovieInfo = () => {
                       Watch now
                     </button>
                   </Link>
+                  ) : (
+                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscriptions Now</Link>
+                  )}
+                 
+                </div> 
                 </div>
 
                 {/* FEEDBACK/REVIEW BTN */}
