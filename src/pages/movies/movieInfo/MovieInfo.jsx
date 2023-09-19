@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import Marquee from "react-fast-marquee";
-import { FaCloudDownloadAlt } from "react-icons/fa";
-import { LuListVideo } from "react-icons/lu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { addHistory } from "../../../api/historyPostData";
-import WatchTimer from "../../../components/watchTimer/WatchTimer";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
+import React, { useState } from 'react';
+import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
+import { LuListVideo } from 'react-icons/lu';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { addHistory } from '../../../api/historyPostData';
+import WatchTimer from '../../../components/watchTimer/WatchTimer';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const MovieInfo = () => {
-
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
@@ -19,9 +16,10 @@ const MovieInfo = () => {
   const { user, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id;
-  const userId = "64f89f19746d2fab49ffb3f9";
+  const userId = '64f89f19746d2fab49ffb3f9';
   const [watching, setWatching] = useState(false);
- 
+  const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
+
   const {
     _id,
     Title,
@@ -70,35 +68,35 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = await Swal.fire({
-          text: "Please login to add to your wishlist",
-          icon: "warning",
-          background: "#222",
-          confirmButtonText: "login",
+          text: 'Please login to add to your wishlist',
+          icon: 'warning',
+          background: '#222',
+          confirmButtonText: 'login',
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate("/login");
+          navigate('/login');
         }
         return;
       }
 
-      const response = await axiosSecure.post("/wishlist", wishlistItem);
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
       console.log(response);
 
       if (response?.status === 200) {
-        if (response?.data?.message === "Already added to wishlist!") {
+        if (response?.data?.message === 'Already added to wishlist!') {
           Swal.fire({
-            text: "Movie is already in your wishlist",
-            icon: "info",
-            background: "#222",
+            text: 'Movie is already in your wishlist',
+            icon: 'info',
+            background: '#222',
           });
         } else {
-          console.log("Movie added to wishlist", response?.data);
+          console.log('Movie added to wishlist', response?.data);
           Swal.fire({
-            text: "Added to wishlist!",
-            icon: "success",
-            background: "#222",
+            text: 'Added to wishlist!',
+            icon: 'success',
+            background: '#222',
             reverseButtons: true,
           });
         }
@@ -106,11 +104,11 @@ const MovieInfo = () => {
         //
       }
     } catch (error) {
-      console.log("An error occurred while adding to wishlist:", error);
+      console.log('An error occurred while adding to wishlist:', error);
 
       if (error.response) {
         console.error(
-          "Server responded with:",
+          'Server responded with:',
           error.response.status,
           error.response.data
         );
@@ -119,9 +117,10 @@ const MovieInfo = () => {
   };
 
   return (
-    <div className="p-20">
+    <div className="px-5 md:p-20">
       <div
-        className="hero flex flex-row w-full h-full mt-2 md:mt-5 lg:mt-10 rounded-sm"
+        className="hero flex flex-row w-[80%] h-[80%] mx-auto
+         mt-2 md:mt-5 lg:mt-10 rounded-sm"
         style={{ backgroundImage: `url(${Thumbnail})` }}
       >
         <WatchTimer
@@ -130,9 +129,9 @@ const MovieInfo = () => {
           onStart={handleWatchStart}
           onStop={handleWatchStop}
         />
-        <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full gap-5 p-2 md:p-5">
-          {/* Movie Poster */}
-          <div className="md:w-2/5">
+        <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full gap-5 py-2 px-5 md:p-5">
+          {/* MOVIE POSTER */}
+          <div className="md:w-2/5 h-full bg-white">
             <img
               src={Poster}
               alt={`movie-poster of ${Title}`}
@@ -141,7 +140,7 @@ const MovieInfo = () => {
             />
           </div>
 
-          {/* Movie Info */}
+          {/* MOVIE INFO */}
           <div className="md:w-3/5 h-full flex flex-col justify-between">
             <div>
               <h2 className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold">
@@ -197,18 +196,27 @@ const MovieInfo = () => {
                     </button>
                   </Link>
                 </div>
+
+                {/* FEEDBACK/REVIEW BTN */}
+                <button
+                  onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                  className="flex flex-row items-center gap-2 mt-2"
+                >
+                  <FaPlus className="text-cyred" />
+                  <h3 className="text-sm">Write a Review</h3>
+                </button>
               </div>
             </div>
 
             {/* Recommended Movies */}
-            <div className="w-full h-full mt-10 lg:mt-20">
+            {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
                 <Marquee speed={5}>
                   <FeaturedMovies />
                 </Marquee>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
