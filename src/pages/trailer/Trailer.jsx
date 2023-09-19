@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Container from '../../components/container/Container';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
-import Container from '../../components/container/Container';
 
 const Trailer = () => {
   const [movies] = useMovies();
@@ -53,7 +53,7 @@ const Trailer = () => {
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <FaSearch className='text-cyred' size={22} onClick={searchHandle} />
+        <FaSearch className="text-cyred" size={22} onClick={searchHandle} />
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5  gap-8 my-20">
@@ -74,8 +74,8 @@ const Trailer = () => {
         )}
       </div>
 
-      {/* Pagination */}
-      <nav className='pb-8'>
+      {/* PAGINATION */}
+      <nav className="pb-8">
         <ul className="flex justify-center space-x-2">
           <li>
             <button
