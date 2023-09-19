@@ -108,50 +108,48 @@ const Home = () => {
         {/* Hero */}
         <Hero />
 
-        <div className='custom-container'>
-          
-        {/* Featured Movies */}
-        <div className="z-10 py-6 md:py-8">
-          <Title title={'Featured Movies'} />
-          <Marquee speed={10}>
-            <FeaturedMovies />
-          </Marquee>
-        </div>
+        <div className="custom-container">
+          {/* Featured Movies */}
+          <div className="z-10 py-6 md:py-8">
+            <Title title={'Featured Movies'} />
+            <Marquee speed={10}>
+              <FeaturedMovies />
+            </Marquee>
+          </div>
 
-        {/* Popular TVs */}
-        <div className="mt-10">
-          <Title title={'Popular TVs'} />
-          <PopularTvs />
-        </div>
+          {/* Popular TVs */}
+          <div className="mt-10">
+            <Title title={'Popular TVs'} />
+            <PopularTvs />
+          </div>
 
-        {/* Movies/Categories */}
-        <div className="lg:flex justify-between gap-5 mt-10">
-          <div className="lg:w-[85%]">
-            <div className="mt-10">
-              <Title title={'Most Recent'} />
-              <MovieSlot />
-              {/* Category wise movies will show hereby */}
+          {/* Movies/Categories */}
+          <div className="lg:flex justify-between gap-5 mt-10">
+            <div className="lg:w-[85%]">
+              <div className="mt-10">
+                <Title title={'Most Recent'} />
+                <MovieSlot />
+                {/* Category wise movies will show hereby */}
+              </div>
+            </div>
+            <div className="mt-5 lg:w-[15%] hidden lg:block">
+              <Title title={'Categories'} />
+              <Categories />
             </div>
           </div>
-          <div className="mt-5 lg:w-[15%] hidden lg:block">
-            <Title title={'Categories'} />
-            <Categories />
+
+          {/* Ads */}
+          <FeaturedAd />
+
+          {/* Subscription Plan/Tier */}
+          <div className="my-14  text-white text-center">
+            <h1 className="text-4xl font-bold">Tier Plan</h1>
+            <p>Join the whitelist your perfect option below</p>
           </div>
-        </div>
+          <Subscription />
 
-        {/* Ads */}
-        <FeaturedAd />
-
-        {/* Subscription Plan/Tier */}
-        <div className="my-14  text-white text-center">
-          <h1 className="text-4xl font-bold">Tier Plan</h1>
-          <p>Join the whitelist your perfect option below</p>
-        </div>
-        <Subscription />
-
-        {/* testimonials */}
-        <Testimonials />
-
+          {/* testimonials */}
+          <Testimonials />
         </div>
       </main>
     </>

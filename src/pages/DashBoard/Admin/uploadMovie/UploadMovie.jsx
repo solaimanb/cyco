@@ -1,34 +1,30 @@
-import React, { useContext, useState } from "react";
-import io from "socket.io-client";
-import Swal from "sweetalert2";
-import { addNewMovie } from "../../../../api/addNewMovie";
-import { imageUpload } from "../../../../api/imgUpload";
-import { AuthContext } from "../../../../providers/AuthProvider";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { addNewMovie } from '../../../../api/addNewMovie';
+import { imageUpload } from '../../../../api/imgUpload';
 
 // const socket = io('http://localhost:8080');
-const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
+// const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const UploadMovie = () => {
-  const [notification, setNotification] = useState("");
-  const [notifyUsers, setNotifyUsers] = useState(false);
+  // const [notification, setNotification] = useState('');
+  // const [notifyUsers, setNotifyUsers] = useState(false);
 
-  console.log(notification);
-
-  const sendNotification = () => {
-    socket.emit("send_notification", { notification: notification });
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Notification sent successfully",
-      showConfirmButton: false,
-      timer: 1000,
-    });
-  };
+  // const sendNotification = () => {
+  //   socket.emit('send_notification', { notification: notification });
+  //   Swal.fire({
+  //     position: 'top-end',
+  //     icon: 'success',
+  //     title: 'Notification sent successfully',
+  //     showConfirmButton: false,
+  //     timer: 1000,
+  //   });
+  // };
 
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
+  const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');
 
   //handle from submit
   const onSubmit = async (data) => {
@@ -89,9 +85,9 @@ const UploadMovie = () => {
       }
 
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Movie uploaded successfully",
+        position: 'top-end',
+        icon: 'success',
+        title: 'Movie uploaded successfully',
         showConfirmButton: false,
         timer: 1500,
       });
@@ -100,11 +96,11 @@ const UploadMovie = () => {
     }
 
     setLoading(false);
-    setUploadButtonText("Upload Poster");
+    setUploadButtonText('Upload Poster');
   };
   const handleImageChange = (event) => {
     setUploadButtonText(event.target.files[0].name);
-    setValue("Poster", event.target.files);
+    setValue('Poster', event.target.files);
   };
 
   return (
@@ -126,7 +122,7 @@ const UploadMovie = () => {
                 className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                 type="text"
                 placeholder="Title"
-                {...register("Title", { required: true })}
+                {...register('Title', { required: true })}
               />
             </div>
 
@@ -139,7 +135,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="number"
                   placeholder="Movie Code"
-                  {...register("movieCode", { required: true })}
+                  {...register('movieCode', { required: true })}
                 />
               </div>
 
@@ -151,7 +147,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Year"
-                  {...register("Year", { required: true })}
+                  {...register('Year', { required: true })}
                 />
               </div>
             </div>
@@ -165,7 +161,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Genre"
-                  {...register("Genre", { required: true })}
+                  {...register('Genre', { required: true })}
                 />
               </div>
 
@@ -177,7 +173,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="PG-13"
-                  {...register("Rated", { required: true })}
+                  {...register('Rated', { required: true })}
                 />
               </div>
             </div>
@@ -191,7 +187,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Released"
-                  {...register("Released", { required: true })}
+                  {...register('Released', { required: true })}
                 />
               </div>
 
@@ -203,7 +199,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Runtime"
-                  {...register("Runtime", { required: true })}
+                  {...register('Runtime', { required: true })}
                 />
               </div>
             </div>
@@ -216,7 +212,7 @@ const UploadMovie = () => {
                 className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                 type="text"
                 placeholder="Provide the movie's trailer link"
-                {...register("Trailer", { required: true })}
+                {...register('Trailer', { required: true })}
               />
             </div>
 
@@ -229,7 +225,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Director"
-                  {...register("Director", { required: true })}
+                  {...register('Director', { required: true })}
                 />
               </div>
 
@@ -241,7 +237,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Writer"
-                  {...register("Writer", { required: true })}
+                  {...register('Writer', { required: true })}
                 />
               </div>
             </div>
@@ -254,7 +250,7 @@ const UploadMovie = () => {
                 className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                 type="text"
                 placeholder="Actors"
-                {...register("Actors", { required: true })}
+                {...register('Actors', { required: true })}
               />
             </div>
           </div>
@@ -267,7 +263,7 @@ const UploadMovie = () => {
               <textarea
                 className="w-full h-24 px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm focus:outline-rose-500"
                 placeholder="Plot"
-                {...register("Plot", { required: true })}
+                {...register('Plot', { required: true })}
               ></textarea>
             </div>
 
@@ -299,7 +295,7 @@ const UploadMovie = () => {
                 className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                 type="text"
                 placeholder="Thumbnail"
-                {...register("Thumbnail", { required: true })}
+                {...register('Thumbnail', { required: true })}
               />
             </div>
 
@@ -312,7 +308,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Language"
-                  {...register("Language", { required: true })}
+                  {...register('Language', { required: true })}
                 />
               </div>
 
@@ -324,7 +320,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="Country"
-                  {...register("Country", { required: true })}
+                  {...register('Country', { required: true })}
                 />
               </div>
             </div>
@@ -337,7 +333,7 @@ const UploadMovie = () => {
                 className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                 type="text"
                 placeholder="Awards"
-                {...register("Awards", { required: true })}
+                {...register('Awards', { required: true })}
               />
             </div>
 
@@ -350,7 +346,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="imdbRating"
-                  {...register("IMDB Rating", { required: true })}
+                  {...register('IMDB Rating', { required: true })}
                 />
               </div>
 
@@ -362,7 +358,7 @@ const UploadMovie = () => {
                   className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
                   type="text"
                   placeholder="imdbVotes"
-                  {...register("IMDB Votes", { required: true })}
+                  {...register('IMDB Votes', { required: true })}
                 />
               </div>
             </div>
@@ -370,7 +366,7 @@ const UploadMovie = () => {
         </div>
 
         <div className="w-2/3 mx-auto ">
-          <div className="space-y-1 text-sm flex justify-center items-center">
+          {/* <div className="space-y-1 text-sm flex justify-center items-center">
             <label htmlFor="notifyUsers" className="block text-gray-600">
               Notify Users
             </label>
@@ -393,22 +389,13 @@ const UploadMovie = () => {
                 }
               }}
             />
-
-            <div className="flex flex-col gap-4 justify-center items-center mt-4 bg-sky-700/60 hover:bg-sky-700 w-1/2 mx-auto p-4 rounded-lg">
-              <button
-                className="px-4 py-1 bg-sky-900 hover:bg-sky-800 rounded-lg"
-                onClick={sendNotification}
-              >
-                Send Notification
-              </button>
-            </div>
-          </div>
+          </div> */}
           <button
-            onClick={sendNotification}
+            // onClick={sendNotification}
             type="submit"
             className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
           >
-            {loading ? <h2>Loading...</h2> : "Save & Continue"}
+            {loading ? <h2>Loading...</h2> : 'Save & Continue'}
           </button>
         </div>
       </form>
