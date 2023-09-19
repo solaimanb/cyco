@@ -13,7 +13,6 @@ import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MovieSlot from '../movieSlot/MovieSlot';
 import PopularTvs from '../popularTvs/PopularTvs';
-import Container from '../../../components/container/Container'
 
 const Home = () => {
   const [loading] = useMovies();

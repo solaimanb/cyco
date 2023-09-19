@@ -1,5 +1,5 @@
-import React from "react";
-import useTVChannel from "../../../../../hooks/useTVChannel";
+import React from 'react';
+import useTVChannel from '../../../../../hooks/useTVChannel';
 
 const EditLiveChannel = () => {
   const [Channels] = useTVChannel();
