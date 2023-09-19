@@ -1,13 +1,13 @@
-import { Badge, Button, useDisclosure } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { MdOutlineNotificationsActive } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../hooks/useAuth";
-import NotificationModal from "../shared/modal/NotificationModal";
-import { fetchData } from "../store/slices/paymenthistorySlice/paymentHistorySlice";
+import { Badge, Button, useDisclosure } from '@nextui-org/react';
+import React, { useEffect, useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { MdOutlineNotificationsActive } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../hooks/useAuth';
+import NotificationModal from '../shared/modal/NotificationModal';
+import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,24 +24,24 @@ const Dashboard = () => {
   }, [dispatch]);
 
   const handleLogOut = async () => {
-    console.log("Logging out...");
+    console.log('Logging out...');
     try {
       const response = await Swal.fire({
-        title: "",
-        text: "Ary you sure you want to log out?",
-        confirmButtonText: "Logout",
-        cancelButtonText: "Cancel",
+        title: '',
+        text: 'Ary you sure you want to log out?',
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Cancel',
         showCancelButton: true,
       });
       if (response.isConfirmed) {
         await logOut();
 
-        navigate("/login");
+        navigate('/login');
       }
 
       return;
     } catch (error) {
-      console.log("Logout failed", error);
+      console.log('Logout failed', error);
     }
   };
 
@@ -50,28 +50,29 @@ const Dashboard = () => {
   };
 
   const userNavLinks = [
-    { to: "user-dashboard", text: "Profile" },
-    { to: "wishlist", text: "Wishlist" },
+    { to: 'user-dashboard', text: 'Profile' },
+    { to: 'wishlist', text: 'Wishlist' },
     // { to: 'downloads', text: 'Downloads' },
-    { to: "subscriptions", text: "Subscriptions" },
-    { to: "forum", text: "Forum" },
-    { to: "watch-party", text: "Watch Party" },
+    { to: 'subscriptions', text: 'Subscriptions' },
+    { to: 'forum', text: 'Forum' },
+    { to: 'watch-party', text: 'Watch Party' },
     // { to: 'recommendation', text: 'Recommendation' },
-    { to: "payment-info", text: "Payment Info" },
-    { to: "history", text: "History" },
-    { to: "/", text: "Home" },
+    { to: 'payment-info', text: 'Payment Info' },
+    { to: 'history', text: 'History' },
+    { to: '/', text: 'Home' },
   ];
 
   const adminNavLinks = [
-    { to: "admin-dashboard", text: "Dashboard" },
-    { to: "upload-movie", text: "Upload Movie" },
+    { to: 'admin-dashboard', text: 'Dashboard' },
+    { to: 'upload-movie', text: 'Upload Movie' },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
     // { to: 'logs', text: 'System Logs' },
-    { to: "golive", text: "Go Live" },
-    { to: "admin/manage-subscription", text: "Manage Subscriptions" },
-    { to: "user-panel", text: "User Panel" },
-    { to: "user-feedback", text: "User Feedback" },
-    { to: "admin/paymentHistory", text: "Payment History" },
+    { to: 'live-channels', text: 'Live Channels' },
+    { to: 'admin/manage-subscription', text: 'Manage Subscriptions' },
+    { to: 'user-panel', text: 'User Panel' },
+    { to: 'user-feedback', text: 'User Feedback' },
+    { to: 'admin/paymentHistory', text: 'Payment History' },
+    { to: '/', text: 'Home' },
   ];
 
   const [isAdmin, setAdmin] = useState(false);
@@ -99,7 +100,7 @@ const Dashboard = () => {
       {/* DASHBOARD SIDEBAR */}
       <div
         className={`bg-zinc-800 px-4 w-72 h-screen fixed overflow-y-scroll pt-6 lg:pt-0 z-20 ${
-          isSidebarOpen ? "block" : "hidden lg:block"
+          isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
         {isAdmin ? (
@@ -130,17 +131,17 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {adminNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink?.to === "admin/manage-subscription" &&
+                  {navLink?.to === 'admin/manage-subscription' &&
                     index < adminNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "btn-active" : "sidebar-btn"
+                      isActive ? 'btn-active' : 'sidebar-btn'
                     }
                     to={navLink?.to}
                     style={
-                      navLink?.to === "admin/manage-subscription"
-                        ? { marginTop: "40px" }
+                      navLink?.to === 'admin/manage-subscription'
+                        ? { marginTop: '40px' }
                         : {}
                     }
                   >
@@ -209,16 +210,16 @@ const Dashboard = () => {
             <ul className="flex flex-col gap-2">
               {userNavLinks.map((navLink, index) => (
                 <li key={index} className="w-full">
-                  {navLink.to === "watch-party" &&
+                  {navLink.to === 'watch-party' &&
                     index < userNavLinks.length - 1 && <hr className="mt-5" />}
 
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "btn-active" : "sidebar-btn"
+                      isActive ? 'btn-active' : 'sidebar-btn'
                     }
                     to={navLink?.to}
                     style={
-                      navLink?.to === "watch-party" ? { marginTop: "40px" } : {}
+                      navLink?.to === 'watch-party' ? { marginTop: '40px' } : {}
                     }
                   >
                     {navLink?.text}
@@ -228,7 +229,7 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-              <NavLink to={"help"} className="sidebar-btn">
+              <NavLink to={'help'} className="sidebar-btn">
                 <button>Help</button>
               </NavLink>
               <button
@@ -245,7 +246,7 @@ const Dashboard = () => {
       {/* Display Page Content */}
       <div
         className={`drawer-content ${
-          isSidebarOpen ? "" : "blur-none"
+          isSidebarOpen ? '' : 'blur-none'
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
         <Outlet />

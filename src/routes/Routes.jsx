@@ -39,6 +39,7 @@ import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
 // import Notify from "../pages/notify/Notify";
 // import ReceiveNotification from "../pages/notify/ReceiveNotification";
+import LiveChannels from '../pages/dashBoard/admin/liveChannels/LiveChannels';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -108,6 +109,7 @@ const router = createBrowserRouter([
       { path: 'user-panel', element: <UserPanel /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },
+      { path: 'live-channels', element: <LiveChannels /> },
     ],
   },
   { path: '*', element: <ErrorPage /> },
