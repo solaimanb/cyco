@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { addHistory } from "../../../api/historyPostData";
@@ -19,14 +18,10 @@ const MovieInfo = () => {
   const { movie } = location?.state;
   const { user, setLoading } = useAuth();
   const email = user?.email;
-  const movieId = movie?._id; // Get the movie ID
+  const movieId = movie?._id;
   const userId = "64f89f19746d2fab49ffb3f9";
   const [watching, setWatching] = useState(false);
  
-  // if(isFirstElement){
-  //    console.log('jj');
-  // }
-
   const {
     _id,
     Title,
