@@ -30,23 +30,6 @@ const MovieCard = ({ movie }) => {
         <p className="mt-2 text-xs font-thin lg:font-normal">{movie?.Runtime}</p>
         <p className="text-xs font-thin lg:font-normal">Released: {movie?.Released}</p>
       </div>
-
-      {/* {isMovieOpen && (
-        <div className="fixed items-center inset-0 z-50 top-0 flex justify-center backdrop-blur-xl">
-          <video
-            id="my-video"
-            class="video-js"
-            controls
-            preload="auto"
-            width="80%"
-            poster="MY_VIDEO_POSTER.jpg"
-            data-setup="{}"
-          >
-            <source src="MY_VIDEO.mp4" type="video/mp4" />
-            <source src="MY_VIDEO.webm" type="video/webm" />
-          </video>
-        </div>
-      )} */}
     </div>
   );
 };

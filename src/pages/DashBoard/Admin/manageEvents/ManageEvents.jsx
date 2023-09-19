@@ -1,6 +1,33 @@
 import React from 'react';
+import EventCard from './eventCard/EventCard';
 
 const ManageEvents = () => {
+    const events = [
+        {
+          title: " Avenger team includes Iron Man",
+          banner: "https://freepngimg.com/thumb/avengers/24591-2-avengers.png",
+          relase: "21 Aug 2026"
+        },
+        {
+          title: "Avengers Party",
+          banner:
+            "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
+            relase: "21 Aug 2026"
+        },
+        
+        {
+          title: "Avengers Party",
+          relase: "21 Aug 2026",
+          banner:
+            "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
+        },
+        {
+          title: "Avengers Party",
+          relase: "21 Aug 2026",
+          banner:
+            "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
+        },
+      ];
     return (
         <section >
             {/* MANAGE Events HEADER */}
@@ -13,9 +40,11 @@ const ManageEvents = () => {
 
             {/* Total Events  */}
             <div>
-                <p className='font-semibold text-center my-3 textarea-accent'>Upcoming  Event </p>
-                <div>
-                    
+                <p className='font-semibold text-center my-3 textarea-accent '>Upcoming  Event </p>
+                <div className='grid md:grid-cols-2 m-2 '>
+                    {
+                        events.map(event=> <EventCard event={event}></EventCard>)
+                    }
                 </div>
             </div>
 
