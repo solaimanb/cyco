@@ -16,7 +16,6 @@ import ErrorPage from '../pages/Error/ErrorPage';
 import About from '../pages/about/About';
 import Contact from '../pages/contact/Contact';
 import AdminDashboard from '../pages/dashBoard/admin/AdminDashboard';
-import ManageSubscription from '../pages/dashBoard/admin/manageSubscription/ManageSubscription';
 import Revenue from '../pages/dashBoard/admin/revenue/Revenue';
 import SystemLogs from '../pages/dashBoard/admin/systemLogs/SystemLogs';
 import UserFeedback from '../pages/dashBoard/admin/userFeedback/UserFeedback';
@@ -47,6 +46,8 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import ManageSubscription from '../pages/DashBoard/Admin/manageSubscription/ManageSubscription';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -54,28 +55,28 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: '/', element: <Home /> },
-      { path: 'trailer', element: <Trailer /> },
-      { path: 'trailer/:index', element: <PlayerPage /> },
-      { path: 'movies', element: <Movies /> },
-      { path: 'series', element: <Series /> },
-      { path: 'series/seriesParts', element: <SeriesParts /> },
-      { path: 'live-tv', element: <LiveTv /> },
+      { path: 'trailer', element:<PrivateRoute><Trailer /></PrivateRoute>  },
+      { path: 'trailer/:index', element:<PrivateRoute><PlayerPage /></PrivateRoute>  },
+      { path: 'movies', element:<PrivateRoute><Movies /></PrivateRoute>  },
+      { path: 'series', element:<PrivateRoute> <Series /> </PrivateRoute>},
+      { path: 'series/seriesParts', element: <PrivateRoute><SeriesParts /></PrivateRoute> },
+      { path: 'live-tv', element: <PrivateRoute><LiveTv /></PrivateRoute>  },
       { path: 'podcast', element: <Podcast /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
-      { path: 'checkout', element: <Payment /> },
-      { path: 'video-player', element: <VideoPlayer /> },
-      { path: 'movieinfo', element: <MovieInfo /> },
-      { path: 'watch-video', element: <MoviePlayer /> },
-      { path: 'popular-tvs', element: <PopularTvs /> },
-      { path: 'popular-tv', element: <PopularTv /> },
+      { path: 'checkout', element:<PrivateRoute> <Payment /> </PrivateRoute>},
+      { path: 'video-player', element: <PrivateRoute><VideoPlayer /></PrivateRoute>  },
+      { path: 'movieinfo', element:<PrivateRoute> <MovieInfo /> </PrivateRoute> },
+      { path: 'watch-video', element: <PrivateRoute><MoviePlayer /></PrivateRoute>  },
+      { path: 'popular-tvs', element:<PrivateRoute> <PopularTvs /></PrivateRoute> },
+      { path: 'popular-tv', element:<PrivateRoute><PopularTv /></PrivateRoute>  },
       { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
       { path: 'TermsConditions', element: <TermsConditions /> },
-      { path: 'testpayments', element: <Payment /> },
+      { path: 'testpayments', element:<PrivateRoute><Payment /></PrivateRoute>  },
       { path: 'testimonials', element: <Testimonials /> },
-      { path: 'payment', element: <Payment /> },
+      { path: 'payment', element:<PrivateRoute> <Payment /></PrivateRoute> },
       { path: 'notify', element: <Notify /> },
       { path: 'receive-notification', element: <ReceiveNotification /> },
       { path: 'help', element: <Help /> },
@@ -83,7 +84,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute> ,
     children: [
       { path: 'admin-dashboard', element: <AdminDashboard /> },
       { path: 'user-dashboard', element: <UserDashboard /> },

@@ -27,7 +27,7 @@ const UserDashboard = () => {
   // Handle data filtering if user is defined
 
   const filter = todos && todos.filter((item) => item?.email == user?.email);
-
+console.log(filter);
   useEffect(()=>{
   dispatch(setUser(filter));
   },[])
@@ -259,7 +259,7 @@ const UserDashboard = () => {
         <div> </div>
       </div>
       {filter &&
-        filter.map((data) => (
+        filter?.map((data) => (
           <EditUserModal key={data?._id} isOpen={isOpen} data={data} closeModal={closeModal} />
         ))}
     </section>

@@ -7,6 +7,7 @@ const HistoryCard = (data, refetch) => {
   const handleHistoryDelete = (id) => {
     deleteHistory(id)
       .then((data) => {
+ 
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -16,6 +17,7 @@ const HistoryCard = (data, refetch) => {
           cancelButtonColor: '#d33',
           confirmButtonText: 'Yes, delete it!',
         }).then((data) => {
+       
           if (data.isConfirmed) {
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
           }
