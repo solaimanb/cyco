@@ -14,20 +14,25 @@ import {
   TwitterIcon,
 } from "react-share";
 import CommentSection from "../../../liveTv/CommentSection";
+import useEvents from "../../../../hooks/useEvents";
+import Loading from "../../../../components/loading/Loading";
+
 
 const WatchParty = () => {
+  const [Events, loading] = useEvents();
   const navigate = useNavigate();
-  const events = [
-    {
-      title: " Avenger team includes Iron Man",
-      banner: "https://freepngimg.com/thumb/avengers/24591-2-avengers.png",
-    },
-    {
-      title: "Avengers Party",
-      banner:
-        "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
-    },
-  ];
+
+  // const events = [
+  //   {
+  //     title: " Avenger team includes Iron Man",
+  //     banner: "https://freepngimg.com/thumb/avengers/24591-2-avengers.png",
+  //   },
+  //   {
+  //     title: "Avengers Party",
+  //     banner:
+  //       "https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png",
+  //   },
+  // ];
 
   const party = {
     title:
@@ -40,6 +45,10 @@ const WatchParty = () => {
   };
 
   const currentUrl = window.location.href;
+  // Loading 
+  if (loading){
+    return <Loading/>
+  }
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -76,9 +85,9 @@ const WatchParty = () => {
               <h3 className="text-sm font-bold">Upcoming Events</h3>
             </div>
 
-            {/* TODO: dummy events---> (make these dynamic) */}
+            {/* TODO: dummy events---> (make these dynamic)||||| Done */}
             <div className="">
-              {events.map((item) => (
+              {Events.slice(0,2).map((item) => (
                 <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
                   <div>
                     <img
@@ -90,17 +99,7 @@ const WatchParty = () => {
                 </div>
               ))}
 
-              {/* <div className="mt-2 space-y-1 border-b-2 pb-2 border-zinc-800">
-                <div>
-                  <img
-                    src={party?.banner}
-                    className="w-full object-cover rounded-sm"
-                  />
-                </div>
-                <h4 className="text-sm font-semibold">
-                  Could baker mayfield be this season's geno smith.
-                </h4>
-              </div> */}
+
             </div>
           </div>
         </div>
