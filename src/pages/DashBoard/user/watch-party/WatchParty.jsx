@@ -13,7 +13,7 @@ import {
   LinkedinShareButton,
   TwitterIcon,
 } from "react-share";
-// import CommentSection from "../../../liveTv/CommentSection";
+import CommentSection from "../../../liveTv/CommentSection";
 
 const WatchParty = () => {
   const navigate = useNavigate();
@@ -135,7 +135,7 @@ const WatchParty = () => {
         </div>
       </div>
 
-      <div>{/* <CommentSection /> */}</div>
+      <div><CommentSection /></div>
     </section>
   );
 };
