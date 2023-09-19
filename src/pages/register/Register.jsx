@@ -10,7 +10,7 @@ import { saveUser } from '../../api/saveUser';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-  const { createUser, updateUserProfile, setLoading } = useAuth();
+  const { createUser, updateUserProfile,loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -42,9 +42,10 @@ const Register = () => {
     }).then(res => res.json())
       .then(data => {
         const imageUrl = data.data.display_url
+        setLoading(true)
         createUser(email, password)
           .then(result => {
-
+            
             console.log(result.user);
             reset();
             updateUserProfile(name, imageUrl)
@@ -58,6 +59,7 @@ const Register = () => {
                   timer: 1500
                 })
                 saveUser(result.user)
+                setLoading(false)
                 navigate(from, { replace: true })
               }).catch(error => {
                 console.log(error.message);
@@ -232,7 +234,7 @@ const Register = () => {
                 type="submit"
                 className="w-full text-white p-2 rounded-sm border bg-red-950 bg-opacity-20 border-red-800 hover:bg-gradient-to-r hover:from-cyred hover:to-red-900 focus:outline-none"
               >
-                Register
+                {loading? "Loading..." : "Register"}
               </button>
             </div>
           </form>
