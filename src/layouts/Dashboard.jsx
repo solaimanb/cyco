@@ -65,6 +65,7 @@ const Dashboard = () => {
   const adminNavLinks = [
     { to: "admin-dashboard", text: "Dashboard" },
     { to: "upload-movie", text: "Upload Movie" },
+    { to: "admin/manage-events", text: "Manage Events" },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
     // { to: 'logs', text: 'System Logs' },
     { to: "golive", text: "Go Live" },
