@@ -48,6 +48,7 @@ import Series from '../pages/series/Series';
 import TermsConditions from '../pages/terms/TermsConditions';
 import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
+import ManageEvents from '../pages/DashBoard/Admin/manageEvents/ManageEvents';
 
 const router = createBrowserRouter([
   {
@@ -97,6 +98,7 @@ const router = createBrowserRouter([
       { path: 'watch-party/watch-party-public', element: <WatchLive /> },
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'admin/paymentHistory', element: <AdminPaymentHistory /> },
+      { path: 'admin/manage-events', element: <ManageEvents /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'settings', element: <ProfileSettings /> },
