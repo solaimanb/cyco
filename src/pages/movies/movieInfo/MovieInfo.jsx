@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
-import { FaCloudDownloadAlt } from 'react-icons/fa';
-import { LuListVideo } from 'react-icons/lu';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { addHistory } from '../../../api/historyPostData';
-import WatchTimer from '../../../components/watchTimer/WatchTimer';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import FeaturedMovies from '../../home/featuredMovies/FeaturedMovies';
+import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import { LuListVideo } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { addHistory } from "../../../api/historyPostData";
+import WatchTimer from "../../../components/watchTimer/WatchTimer";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
+import CategoryMovies from "../catagoryMovies/CategoryMovies";
+
 
 const MovieInfo = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
+  const firstElement = CategoryMovies();
+  console.log(firstElement);
   const { movie } = location?.state;
   const { user, setLoading } = useAuth();
   const email = user?.email;
-  const movieId = movie?._id; // Get the movie ID
+  const movieId = movie?._id;
   const userId = '64f89f19746d2fab49ffb3f9';
-
   const [watching, setWatching] = useState(false);
+
+  const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
+
 
   const {
     _id,
@@ -121,9 +126,10 @@ const MovieInfo = () => {
   };
 
   return (
-    <div className="p-20">
+    <div className="px-2 md:p-10 xl:p-16 mt-20 lg:mt-10">
       <div
-        className="hero flex flex-row w-full h-full mt-2 md:mt-5 lg:mt-10 rounded-sm"
+        className="hero flex flex-row w-[90%] lg:w-[70%] h-[80%] lg:h-[80%] mx-auto
+         mt-2 md:mt-5 lg:mt-10 rounded-sm"
         style={{ backgroundImage: `url(${Thumbnail})` }}
       >
         <WatchTimer
@@ -132,9 +138,9 @@ const MovieInfo = () => {
           onStart={handleWatchStart}
           onStop={handleWatchStop}
         />
-        <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full gap-5 p-2 md:p-5">
-          {/* Movie Poster */}
-          <div className="md:w-2/5">
+        <div className="hero-overlay backdrop-blur-sm backdrop-brightness-50 flex flex-col md:flex-row h-full gap-5 py-2 px-5 md:p-5">
+          {/* MOVIE POSTER */}
+          <div className="md:w-2/5 h-full bg-white">
             <img
               src={Poster}
               alt={`movie-poster of ${Title}`}
@@ -143,7 +149,7 @@ const MovieInfo = () => {
             />
           </div>
 
-          {/* Movie Info */}
+          {/* MOVIE INFO */}
           <div className="md:w-3/5 h-full flex flex-col justify-between">
             <div>
               <h2 className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold">
@@ -181,7 +187,8 @@ const MovieInfo = () => {
                   </button>
 
                   {/* WATCH-NOW FUNC */}
-                  <Link
+                  {firstElement && firstElement ? (
+                    <Link
                     to="/watch-video"
                     state={{ movie }}
                     className="btn capitalize bg-cyred font-bold border-none rounded-sm"
@@ -198,19 +205,33 @@ const MovieInfo = () => {
                       Watch now
                     </button>
                   </Link>
+                  ) : (
+                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscriptions Now</Link>
+                  )}
+                 
+                </div> 
                 </div>
+
+                {/* FEEDBACK/REVIEW BTN */}
+                <button
+                  onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                  className="flex flex-row items-center gap-2 mt-2"
+                >
+                  <FaPlus className="text-cyred" />
+                  <h3 className="text-sm">Write a Review</h3>
+                </button>
               </div>
             </div>
 
             {/* Recommended Movies */}
-            <div className="w-full h-full mt-10 lg:mt-20">
+            {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
                 <Marquee speed={5}>
                   <FeaturedMovies />
                 </Marquee>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

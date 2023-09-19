@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEdit } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import EditUserModal from "../../../modal/EditUserModal";
-import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../store/slices/editUserSlice/editUserSlice";
 import { setUser } from "../../../store/slices/editUserSlice/passData";
 
@@ -27,7 +27,7 @@ const UserDashboard = () => {
   // Handle data filtering if user is defined
 
   const filter = todos && todos.filter((item) => item?.email == user?.email);
-
+console.log(filter);
   useEffect(()=>{
   dispatch(setUser(filter));
   },[])
@@ -246,7 +246,7 @@ const UserDashboard = () => {
 
       {/* USER ANALYTICS */}
       <div className="flex flex-col mt-5 gap-5 p-3 bg-zinc-800/40 h-full justify-between">
-        <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-5 h-full">
+        {/* <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-5 h-full">
           <div className="w-full border border-zinc-800 rounded-sm p-2">1</div>
 
           <div className="w-full border border-zinc-800 rounded-sm p-2">2</div>
@@ -256,10 +256,12 @@ const UserDashboard = () => {
           <div className="w-full border border-zinc-800 rounded-sm p-2">4</div>
         </div>
 
-        <div> </div>
+          {" "}
+         
+        </div> */}
       </div>
       {filter &&
-        filter.map((data) => (
+        filter?.map((data) => (
           <EditUserModal key={data?._id} isOpen={isOpen} data={data} closeModal={closeModal} />
         ))}
     </section>

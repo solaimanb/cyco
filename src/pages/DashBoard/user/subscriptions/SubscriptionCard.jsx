@@ -6,7 +6,7 @@ import { updateSelectedPlan } from '../../../../store/slices/paymentSlice/paymen
 const SubscriptionCard = ( {plan} ) => {
   const dispatch = useDispatch();
 
-
+console.log(plan);
   const handlePlanSelection = (selectedPlan, amount) => {
     dispatch(updateSelectedPlan({ selectedPlan, amount }));
   };

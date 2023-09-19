@@ -1,18 +1,17 @@
 import ReactPlayer from "react-player";
 
-const VideoPlayer = ( { channel} ) => {
-
+const VideoPlayer = ({ channel }) => {
   return (
     <div className="h-full w-full rounded-sm relative">
       {channel ? (
-        <div className="relative" style={{ paddingBottom: '66.25%' }}>
+        <div className="relative" style={{ paddingBottom: "66.25%" }}>
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${channel?.videoId}`}
+            url={`https://www.youtube.com/watch?v=${channel?.LiveKey}`}
             width="100%"
             height="100%"
             controls
             playing // Auto-play the video
-            style={{ position: 'absolute', top: 0, left: 0 }}
+            style={{ position: "absolute", top: 0, left: 0 }}
           />
         </div>
       ) : (

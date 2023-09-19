@@ -63,14 +63,17 @@ const Dashboard = () => {
   ];
 
   const adminNavLinks = [
-    { to: 'admin-dashboard', text: 'Dashboard' },
-    { to: 'upload-movie', text: 'Upload Movie' },
+    { to: "admin-dashboard", text: "Dashboard" },
+    { to: "upload-movie", text: "Upload Movie" },
+    { to: "admin/manage-events", text: "Manage Events" },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
-    { to: 'logs', text: 'System Logs' },
+    // { to: 'logs', text: 'System Logs' },
+    { to: 'live-channels', text: 'Live Channels' },
     { to: 'admin/manage-subscription', text: 'Manage Subscriptions' },
     { to: 'user-panel', text: 'User Panel' },
     { to: 'user-feedback', text: 'User Feedback' },
     { to: 'admin/paymentHistory', text: 'Payment History' },
+    { to: '/', text: 'Home' },
   ];
 
   const [isAdmin, setAdmin] = useState(false);

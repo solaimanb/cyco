@@ -74,10 +74,10 @@ const ManageSubscriptionFirst = ({ isOpen, onOpenChange, items }) => {
                           className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
                           {...register("title")}
                         >
-                          <option value="Basic">Basic</option>
+                          <option value="Basic Plan">Basic Plan</option>
+                          <option value="Standard">Standard</option>
                           <option value="Premium">Premium</option>
-                          <option value="ulta Premium">ulta Premium</option>
-                          <option value="Business">Business</option>
+                          <option value="Ulta Premium">Ulta Premium</option>
                         </select>
                       </div>
                       <div className="mb-4">
