@@ -58,8 +58,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       if (currentUser && currentUser?.email) {
-        axios
-          .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
             email: currentUser?.email,
           })
           .then((data) => {
