@@ -104,7 +104,7 @@ const ManageEvents = () => {
                 </label>
                 <input
                   className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                  type="text"
+                  type="date"
                   required
                   {...register("relase")}
                 />
