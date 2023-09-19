@@ -36,8 +36,9 @@ import LiveTv from '../pages/liveTv/LiveTv';
 import Login from '../pages/login/Login';
 import Movies from '../pages/movies/Movies';
 import MovieInfo from '../pages/movies/movieInfo/MovieInfo';
-import Notify from '../pages/notify/Notify';
-import ReceiveNotification from '../pages/notify/ReceiveNotification';
+// import Notify from "../pages/notify/Notify";
+// import ReceiveNotification from "../pages/notify/ReceiveNotification";
+import LiveChannels from '../pages/dashBoard/admin/liveChannels/LiveChannels';
 import Payment from '../pages/payment/Payment';
 import Podcast from '../pages/podcast/Podcast';
 import PrivacyPolicy from '../pages/policy/PrivacyPolicy';
@@ -48,10 +49,11 @@ import Testimonials from '../pages/testimonials/Testimonials';
 import Trailer from '../pages/trailer/Trailer';
 import ManageSubscription from '../pages/DashBoard/Admin/manageSubscription/ManageSubscription';
 import PrivateRoute from './PrivateRoute';
+import ManageEvents from '../pages/DashBoard/Admin/manageEvents/ManageEvents';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     children: [
       { path: '/', element: <Home /> },
@@ -79,6 +81,8 @@ const router = createBrowserRouter([
       { path: 'payment', element:<PrivateRoute> <Payment /></PrivateRoute> },
       { path: 'notify', element: <Notify /> },
       { path: 'receive-notification', element: <ReceiveNotification /> },
+      // { path: "notify", element: <Notify /> },
+      // { path: "receive-notification", element: <ReceiveNotification /> },
       { path: 'help', element: <Help /> },
     ],
   },
@@ -86,6 +90,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <PrivateRoute><Dashboard /></PrivateRoute> ,
     children: [
+      { path: '', element: <UserDashboard /> },
       { path: 'admin-dashboard', element: <AdminDashboard /> },
       { path: 'user-dashboard', element: <UserDashboard /> },
       { path: 'wishlist', element: <Wishlist /> },
@@ -96,6 +101,7 @@ const router = createBrowserRouter([
       { path: 'watch-party/watch-party-public', element: <WatchLive /> },
       { path: 'recommendation', element: <Recommendation /> },
       { path: 'admin/paymentHistory', element: <AdminPaymentHistory /> },
+      { path: 'admin/manage-events', element: <ManageEvents /> },
       { path: 'payment-info', element: <UpdatePaymentInfo /> },
       { path: 'payment-history', element: <PaymentHistory /> },
       { path: 'settings', element: <ProfileSettings /> },
@@ -108,9 +114,10 @@ const router = createBrowserRouter([
       { path: 'user-panel', element: <UserPanel /> },
       { path: 'user-feedback', element: <UserFeedback /> },
       { path: 'payment', element: <Payments /> },
+      { path: 'live-channels', element: <LiveChannels /> },
     ],
   },
-  { path: "*", element: <ErrorPage /> },
+  { path: '*', element: <ErrorPage /> },
 ]);
 
 export default router;

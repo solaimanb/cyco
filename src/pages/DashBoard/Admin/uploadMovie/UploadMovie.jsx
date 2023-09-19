@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import io from 'socket.io-client';
 import Swal from 'sweetalert2';
 import { addNewMovie } from '../../../../api/addNewMovie';
 import { imageUpload } from '../../../../api/imgUpload';
 
 // const socket = io('http://localhost:8080');
-const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
+// const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
 
 const UploadMovie = () => {
-  const [notification, setNotification] = useState('');
-  const [notifyUsers, setNotifyUsers] = useState(false);
+  // const [notification, setNotification] = useState('');
+  // const [notifyUsers, setNotifyUsers] = useState(false);
 
-  console.log(notification);
-
-  const sendNotification = () => {
-    socket.emit('send_notification', { notification: notification });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Notification sent successfully',
-      showConfirmButton: false,
-      timer: 1000,
-    });
-  };
+  // const sendNotification = () => {
+  //   socket.emit('send_notification', { notification: notification });
+  //   Swal.fire({
+  //     position: 'top-end',
+  //     icon: 'success',
+  //     title: 'Notification sent successfully',
+  //     showConfirmButton: false,
+  //     timer: 1000,
+  //   });
+  // };
 
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
@@ -108,9 +105,8 @@ const UploadMovie = () => {
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
-      {/* UPLOAD NEW MOVIE HEADER */}
       <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
-        <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
+        <p className="hidden md:flex text-sm md:text-base font-semibold bor7er ml-2 px-smmd:px-5">
           Upload New Movie
         </p>
       </div>
@@ -369,8 +365,8 @@ const UploadMovie = () => {
           </div>
         </div>
 
-        <div className="w-2/3 mx-auto">
-          <div className="space-y- text-sm flex justify-center items-center">
+        <div className="w-2/3 mx-auto ">
+          {/* <div className="space-y-1 text-sm flex justify-center items-center">
             <label htmlFor="notifyUsers" className="block text-gray-600">
               Notify Users
             </label>
@@ -393,18 +389,9 @@ const UploadMovie = () => {
                 }
               }}
             />
-
-            <div className="flex flex-col gap-4 justify-center items-center mt-4 bg-sky-700/60 hover:bg-sky-700 w-1/2 mx-auto p-4 rounded-lg">
-              <button
-                className="px-4 py-1 bg-sky-900 hover:bg-sky-800 rounded-lg"
-                onClick={sendNotification}
-              >
-                Send Notification
-              </button>
-            </div>
-          </div>
+          </div> */}
           <button
-            onClick={sendNotification}
+            // onClick={sendNotification}
             type="submit"
             className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
           >

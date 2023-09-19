@@ -79,13 +79,13 @@ const Forum = () => {
                 <IoMdRefresh /> Refresh
               </button>
 
-              <button
+              {/* <button
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2 mr-5"
               >
                 <FaPlus className="text-cyred" />
                 <h3 className="text-sm">Write a Review</h3>
-              </button>
+              </button> */}
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
