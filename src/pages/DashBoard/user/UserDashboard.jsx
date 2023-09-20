@@ -209,7 +209,7 @@ console.log(filter);
               </h3>
 
               <span className="badge badge-success rounded-full font-semibold text-sm">
-                user
+                {user?.role}
               </span>
             </div>
 

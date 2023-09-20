@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import NotificationModal from '../shared/modal/NotificationModal';
 import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -76,8 +77,7 @@ const Dashboard = () => {
     { to: '/', text: 'Home' },
   ];
 
-  const [isAdmin, setAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+  const [isAdmin] = useAdmin();
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -104,7 +104,7 @@ const Dashboard = () => {
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
-        {isAdmin ? (
+        {!isAdmin ? (
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
               <img
