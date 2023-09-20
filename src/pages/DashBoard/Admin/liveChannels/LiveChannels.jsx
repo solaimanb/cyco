@@ -4,12 +4,14 @@ import Swal from "sweetalert2";
 import { imageUpload } from "../../../../api/imgUpload";
 import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
 import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
+import Modal from "react-modal";
+import { useDisclosure } from "@nextui-org/use-disclosure";
 // import Modal from "react-modal";
 
 const customStyles = {
   content: {
     top: "50%",
-    left: "60%",
+    left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
@@ -19,8 +21,8 @@ const customStyles = {
 
 const LiveChannels = () => {
   // modal
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [selectedLiveSerial, setSelectedLiveSerial] = useState("");
@@ -31,7 +33,7 @@ const LiveChannels = () => {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    // subtitle.style.color = "#f00"; // This line can be removed
   }
 
   function closeModal() {
@@ -39,7 +41,7 @@ const LiveChannels = () => {
   }
 
   const [Channels] = useTVChannel();
-  const [tvChennel, refetch] = liveTVFetch();
+  const [tvChannel, refetch] = liveTVFetch();
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
@@ -204,7 +206,7 @@ const LiveChannels = () => {
         <div className="text-center bg-zinc-950">
           <button
             onClick={openModal}
-            className="text-center text-red-800 justify-center"
+            className="text-center text-white justify-center px-3 py-3 bg-red-900 hover:bg-red-800 "
           >
             New Channel Add
           </button>
@@ -217,11 +219,7 @@ const LiveChannels = () => {
           >
             <div className="flex justify-between">
               <h2>Add New Channel</h2>
-              <button
-                ref={(_subtitle) => (subtitle = _subtitle)}
-                onClick={closeModal}
-                className=" shadow-2xl py-2 px-2"
-              >
+              <button onClick={closeModal} className=" shadow-2xl py-2 px-2">
                 close
               </button>
             </div>
@@ -303,27 +301,36 @@ const LiveChannels = () => {
           </Modal>
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-4 2xl:grid-cols-5 gap-6 2xl:gap-10 text-center">
-          {Channels?.map((channel) => (
-            <div
-              key={channel._id}
-              className="text-white font-bold mx-auto text-center"
-            >
-              <div className="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full overflow-hidden mb-4">
-                <img
-                  src={channel.logo}
-                  className="w-full h-full"
-                  alt={channel.name}
-                />
-              </div>
-              <h5 className="text-xs 2xl:text-">{channel.channelName}</h5>
-              <div className="flex text-white">
-                <button onClick={() => openEditModal(channel)}>E</button>
-                <button onClick={() => handleDelete(channel)}>D</button>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="w-full border-collapse my-10">
+          <thead>
+            <tr className="text-white">
+              <th className="px-4 py-2">Logo</th>
+              <th className="px-4 py-2">Channel Name</th>
+              <th className="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="text-center justify-center">
+            {Channels?.map((channel) => (
+              <tr key={channel._id}>
+                <td className="px-4 py-2 ">
+                  <div className="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full overflow-hidden  mx-auto">
+                    <img
+                      src={channel.logo}
+                      className="w-full h-full"
+                      alt={channel.name}
+                    />
+                  </div>
+                </td>
+                <td className="px-4 py-2">{channel.channelName}</td>
+                <td className="px-4 py-2  space-x-6">
+                  <button onClick={() => openEditModal(channel)}>Edit</button>
+
+                  <button onClick={() => handleDelete(channel)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
     </>
   );
