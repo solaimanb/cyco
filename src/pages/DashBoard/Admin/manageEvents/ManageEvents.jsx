@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import EventCard from './eventCard/EventCard';
 import { addNewEvent } from '../../../../api/addNewEvent';
+import { removEvent } from '../../../../api/removeEvent';
 import Swal from 'sweetalert2';
 import useEvents from '../../../../hooks/useEvents';
 import Loading from '../../../../components/loading/Loading';
@@ -47,6 +48,25 @@ const ManageEvents = () => {
         'https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png',
     },
   ];
+  
+  // Remove Element From Event List from Backend 
+  const handleRemoveEvent =async (id)=>{
+    console.log(id);
+    try {
+      const EventRemove = await removEvent(id)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Event successfully Removed",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
   const onSubmit = async (data) => {
     const event = { title: data.title, banner: data.banner, relase: data.relase }
     console.log(event);
@@ -86,7 +106,7 @@ const ManageEvents = () => {
         <p className='font-semibold text-center my-3 textarea-accent '>Upcoming  Event </p>
         <div className='grid md:grid-cols-4 m-2 '>
           {
-            Events.map(event => <EventCard event={event}></EventCard>)
+            Events.map(event => <EventCard handleRemoveEvent={handleRemoveEvent} event={event}></EventCard>)
           }
 
         </div>
