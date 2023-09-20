@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
@@ -135,169 +135,12 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Manage Subscriptions
+              Ask your query!
             </ModalHeader>
 
             <ModalBody>
               <div className="modal-box w-full mx-auto p-4 rounded shadow-lg">
                 <div className="">
-                  <h2 className="text-2xl font-semibold mb-4">
-                    Subscription Form
-                  </h2>
-                  {/* <form className="grid" onSubmit={handleSubmit(onSubmit)}></form>
-                    <div className="flex gap-2">
-                      <div className="mb-4">
-                        <label
-                          htmlFor="title"
-                          className=" text-sm font-medium text-gray-700"
-                        >
-                          Title
-                        </label>
-                        <select
-                          className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                          {...register('title')}
-                        >
-                          <option value="Basic Plan">Basic Plan</option>
-                          <option value="Standard">Standard</option>
-                          <option value="Premium">Premium</option>
-                          <option value="Ulta Premium">Ulta Premium</option>
-                        </select>
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="price"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Price
-                        </label>
-                        <input
-                          className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                          type="number"
-                          {...register('price')}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      <div className="mb-4">
-                        <label
-                          htmlFor="save_price"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          save_price
-                        </label>
-                        <input
-                          className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                          type="number"
-                          {...register('save_price')}
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="previous_pay"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          previous_pay
-                        </label>
-                        <input
-                          className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                          type="number"
-                          {...register('previous_pay')}
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="title"
-                          className=" text-sm font-medium text-gray-700"
-                        >
-                          Months
-                        </label>
-                        <select
-                          className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                          {...register('months_free')}
-                        >
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                        </select>
-                      </div>
-                    </div>
-
-                  
-                    <div className="mb-4">
-                      <label
-                        htmlFor="feature1"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Feature-1
-                      </label>
-                      <input
-                        className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                        type="text"
-                        {...register('feature1')}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="feature2"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Feature-2
-                      </label>
-                      <input
-                        className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                        type="text"
-                        {...register('feature2')}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="feature3"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Feature-3
-                      </label>
-                      <input
-                        className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                        type="text"
-                        {...register('feature3')}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="feature4"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Feature-4
-                      </label>
-                      <input
-                        className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
-                        type="text"
-                        {...register('feature4')}
-                      />
-                    </div>
-                    <ModalFooter>
-                      <Button
-                        color="foreground"
-                        variant="light"
-                        onPress={onClose}
-                      >
-                        Close
-                      </Button>
-                      <input
-                        className="bg-[#6f4ef2] btn rounded-lg shadow-lg shadow-indigo-500/20"
-                        type="submit"
-                      />
-                    </ModalFooter>
-                  </form> */}
                   <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="mt-2 space-y-3"
@@ -373,6 +216,19 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
                         )}
                       </div>
                     </div>
+                    <ModalFooter>
+                      <Button
+                        color="foreground"
+                        variant="light"
+                        onPress={onClose}
+                      >
+                        Close
+                      </Button>
+                      <input
+                        className="bg-[#6f4ef2] btn rounded-lg shadow-lg shadow-indigo-500/20"
+                        type="submit"
+                      />
+                    </ModalFooter>
                   </form>
                 </div>
               </div>
