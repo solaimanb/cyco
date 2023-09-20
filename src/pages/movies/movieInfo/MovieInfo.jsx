@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Marquee from "react-fast-marquee";
-import { FaCloudDownloadAlt } from "react-icons/fa";
-import { LuListVideo } from "react-icons/lu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { FaPlus } from "react-icons/fa";
-import { addHistory } from "../../../api/historyPostData";
-import WatchTimer from "../../../components/watchTimer/WatchTimer";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import CategoryMovies from "../catagoryMovies/CategoryMovies";
-import WriteAReviewModal from "./writeAReview/WriteAReviewModal";
-import DisplayReviews from "./writeAReview/DisplayReviews";
+import React, { useState } from 'react';
+import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
+import { LuListVideo } from 'react-icons/lu';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { addHistory } from '../../../api/historyPostData';
+import WatchTimer from '../../../components/watchTimer/WatchTimer';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import CategoryMovies from '../catagoryMovies/CategoryMovies';
 
 const MovieInfo = () => {
   const navigate = useNavigate();
@@ -23,7 +19,7 @@ const MovieInfo = () => {
   const { user, loading, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id;
-  const userId = "64f89f19746d2fab49ffb3f9";
+  const userId = '64f89f19746d2fab49ffb3f9';
   const [watching, setWatching] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -78,65 +74,65 @@ const MovieInfo = () => {
 
       if (!user) {
         const response = await Swal.fire({
-          text: "Please login to add to your wishlist",
-          icon: "warning",
-          background: "#222",
-          confirmButtonText: "login",
+          text: 'Please login to add to your wishlist',
+          icon: 'warning',
+          background: '#222',
+          confirmButtonText: 'login',
           showCancelButton: true,
         });
 
         if (response?.isConfirmed) {
-          navigate("/login");
+          navigate('/login');
         }
         return;
       }
 
-      const response = await axiosSecure.post("/wishlist", wishlistItem);
+      const response = await axiosSecure.post('/wishlist', wishlistItem);
       console.log(response);
 
       if (response?.status === 200) {
-        if (response?.data?.message === "Already added to wishlist!") {
+        if (response?.data?.message === 'Already added to wishlist!') {
           Swal.fire({
-            text: "Movie is already in your wishlist",
-            icon: "info",
-            background: "#222",
+            text: 'Movie is already in your wishlist',
+            icon: 'info',
+            background: '#222',
           });
         } else {
-          console.log("Movie added to wishlist", response?.data);
+          console.log('Movie added to wishlist', response?.data);
           Swal.fire({
-            text: "Added to wishlist!",
-            icon: "success",
-            background: "#222",
+            text: 'Added to wishlist!',
+            icon: 'success',
+            background: '#222',
             reverseButtons: true,
           });
         }
-        console.log("Movie added to wishlist", response?.data);
+        console.log('Movie added to wishlist', response?.data);
         Swal.fire({
-          text: "Added to wishlist!",
-          icon: "success",
-          background: "#222",
+          text: 'Added to wishlist!',
+          icon: 'success',
+          background: '#222',
           reverseButtons: true,
         });
       } else if (response?.status === 409) {
         Swal.fire({
-          text: response?.data?.message || "Movie is already in your wishlist",
-          icon: "info",
-          background: "#222",
+          text: response?.data?.message || 'Movie is already in your wishlist',
+          icon: 'info',
+          background: '#222',
         });
       } else {
         // Handle other error cases
         Swal.fire({
-          text: "An error occurred while adding to wishlist. Please try again later.",
-          icon: "error",
-          background: "#222",
+          text: 'An error occurred while adding to wishlist. Please try again later.',
+          icon: 'error',
+          background: '#222',
         });
       }
     } catch (error) {
-      console.log("An error occurred while adding to wishlist:", error);
+      console.log('An error occurred while adding to wishlist:', error);
 
       if (error.response) {
         console.error(
-          "Server responded with:",
+          'Server responded with:',
           error.response.status,
           error.response.data
         );
@@ -229,30 +225,39 @@ const MovieInfo = () => {
                       className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                       to="/dashboard/subscriptions"
                     >
-                      Subscribe Now !!!
+                      Subscriptions Now
                     </Link>
                   )}
-
-                  {/* Movie REVIEW BTN */}
-                  <button
-                    onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                    className="btn capitalize bg-cyred font-bold border-none rounded-sm"
-                  >
-                    <FaPlus className="text-white" />
-                    <h3 className="text-sm">Write a Review</h3>
-                  </button>
                 </div>
               </div>
-              <WriteAReviewModal
-                isOpen={isWriteaReviewOpen}
-                setIsOpen={setIsWriteaReviewOpen}
-                title={Title}
-                thumbnail={Thumbnail}
-                genre={Genre}
-                poster={Poster}
-              />
+
+              {/* FEEDBACK/REVIEW BTN */}
+              <button
+                onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                className="flex flex-row items-center gap-2 mt-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Write a Review</h3>
+              </button>
             </div>
           </div>
+
+          {/* Movie REVIEW BTN */}
+          <button
+            onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+            className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+          >
+            <FaPlus className="text-white" />
+            <h3 className="text-sm">Write a Review</h3>
+          </button>
+          <WriteAReviewModal
+            isOpen={isWriteaReviewOpen}
+            setIsOpen={setIsWriteaReviewOpen}
+            title={Title}
+            thumbnail={Thumbnail}
+            genre={Genre}
+            poster={Poster}
+          />
 
           {/* Recommended Movies */}
           {/* <div className="w-full h-full mt-auto">
@@ -268,9 +273,9 @@ const MovieInfo = () => {
         <div className="absolute bottom-0 left-1/2 ">
           <h2 className="border-l-4 pl-2 font-bold"> Movie Reviews </h2>
           <div className=" lg:overflow-hidden ">
-          <Marquee speed={15}>
+            <Marquee speed={15}>
               <DisplayReviews />
-              </Marquee>
+            </Marquee>
           </div>
         </div>
       </div>

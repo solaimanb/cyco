@@ -6,18 +6,18 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
+import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
-import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
-  const [queries, loading, refetch] = useForumQueries();
+  const [queries, loading] = useForumQueries();
   const [page, setPage] = useState(1);
   const queriesPerPage = 10;
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Forum = () => {
     if (!loading) {
       dispatch(setQueries(queries));
     }
-  }, [loading, queries, dispatch, refetch]);
+  }, [loading, queries, dispatch]);
 
   // PAGINATION FUNC:
   // const queriesToDisplay = searchQuery === ' ' ? queries : filteredQueries;
@@ -54,6 +54,14 @@ const Forum = () => {
     setPage(1);
   };
 
+  // ADD QUERY:
+  // const handleAddQuery = async ( newQuery ) => {
+  //   try {
+  //     const response = await axiosSecure.post( '/forumQueries', newQuery );
+  //     console.log(response);
+  //   }catch(error){}
+  // }
+
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* FORUM HEADER */}
@@ -67,7 +75,6 @@ const Forum = () => {
       </div>
 
       <div className="sticky top-0 pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
-        
         {/* FORUM POST */}
         <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col justify-between gap-2 rounded-sm">
           <div>
