@@ -117,7 +117,7 @@ const handleSave = async () => {
     setIsWriteaReviewOpen(false);
 
     // SEND REVIEW TO THE SERVER:
-    const reviewResponse = await axiosSecure.post('/api/save-review', reviewData); // Replace with your server endpoint
+    const reviewResponse = await axiosSecure.post('/movieReviews', reviewData); // Replace with your server endpoint
     console.log('Review saved:', reviewResponse);
 
     Swal.fire({
