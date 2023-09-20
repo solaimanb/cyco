@@ -17,7 +17,7 @@ const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
-  const [queries, loading] = useForumQueries();
+  const [queries, loading, refetch] = useForumQueries();
   const [page, setPage] = useState(1);
   const queriesPerPage = 10;
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Forum = () => {
     if (!loading) {
       dispatch(setQueries(queries));
     }
-  }, [loading, queries, dispatch]);
+  }, [loading, queries, dispatch, refetch]);
 
   // PAGINATION FUNC:
   // const queriesToDisplay = searchQuery === ' ' ? queries : filteredQueries;
@@ -67,6 +67,7 @@ const Forum = () => {
       </div>
 
       <div className="sticky top-0 pt-2 md:mt-2 gap-2 md:gap-3 flex flex-col-reverse md:flex-row justify-between">
+        
         {/* FORUM POST */}
         <div className="min-h-[100vh] bg-zinc-900 p-1 md:p-2 md:w-3/4 h-ful flex flex-col justify-between gap-2 rounded-sm">
           <div>
@@ -93,7 +94,7 @@ const Forum = () => {
               />
             </div>
 
-            {/* Query Content */}
+            {/* QUERY CONTENTS */}
             {loading ? (
               <div className="flex items-center justify-center">
                 {/* <Loading /> */}

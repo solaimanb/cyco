@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import Marquee from "react-fast-marquee";
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaCloudDownloadAlt, FaPlus } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { addHistory } from "../../../api/historyPostData";
 import WatchTimer from "../../../components/watchTimer/WatchTimer";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import CategoryMovies from "../catagoryMovies/CategoryMovies";
 
 
