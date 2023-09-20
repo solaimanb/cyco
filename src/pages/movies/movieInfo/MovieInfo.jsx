@@ -5,12 +5,14 @@ import { LuListVideo } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import {FaPlus } from  'react-icons/fa';
 import { addHistory } from "../../../api/historyPostData";
 import WatchTimer from "../../../components/watchTimer/WatchTimer";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import CategoryMovies from "../catagoryMovies/CategoryMovies";
+import WriteAReviewModal from "./writeAReview/WriteAReviewModal";
 
 
 const MovieInfo = () => {
@@ -18,7 +20,7 @@ const MovieInfo = () => {
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
   const firstElement = CategoryMovies();
-  console.log(firstElement);
+  // console.log(firstElement);
   const { movie } = location?.state;
   const { user, setLoading } = useAuth();
   const email = user?.email;
@@ -26,6 +28,7 @@ const MovieInfo = () => {
   const userId = '64f89f19746d2fab49ffb3f9';
   const [watching, setWatching] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
 
 
@@ -210,13 +213,10 @@ const MovieInfo = () => {
                     </button>
                   </Link>
                   ) : (
-                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscriptions Now</Link>
+                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscribe Now !!!</Link>
                   )}
-                 
-                </div> 
-                </div>
 
-                {/* FEEDBACK/REVIEW BTN */}
+                   {/* Movie REVIEW BTN */}
                 <button
                   onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                   className="flex flex-row items-center gap-2 mt-2"
@@ -224,6 +224,12 @@ const MovieInfo = () => {
                   <FaPlus className="text-cyred" />
                   <h3 className="text-sm">Write a Review</h3>
                 </button>
+                 
+                </div> 
+                </div>
+                <WriteAReviewModal isOpen={isWriteaReviewOpen} setIsOpen={setIsWriteaReviewOpen} />
+
+               
               </div>
             </div>
 
