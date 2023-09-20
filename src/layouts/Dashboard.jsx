@@ -104,7 +104,7 @@ const Dashboard = () => {
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
-        {!isAdmin ? (
+        {isAdmin ? (
           <div className="h-full w-full flex flex-col">
             <div className="w-full flex  justify-between items-center py-6">
               <img
