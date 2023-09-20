@@ -35,7 +35,7 @@ export default function ReviewModal({ isOpen, setIsOpen, children, reset }) {
             leaveTo="opacity-0 scale-95"
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <Dialog.Panel className="w-full  p-6 text-left align-middle bg-black/80 border border-sky-700 rounded-md shadow-xl transition-all">
+              <Dialog.Panel className="w-full  p-6 text-left align-middle bg-black/90 border border-sky-700 rounded-md shadow-xl transition-all">
                 {children}
               </Dialog.Panel>
             </div>
