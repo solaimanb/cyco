@@ -175,7 +175,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
               Cancel
             </button>
           </div>
-          
+
           <div className="flex flex-row items-center text-cyred">
             {showWarning && !isValid && (
               <p className="text-red-600 text-xs">
