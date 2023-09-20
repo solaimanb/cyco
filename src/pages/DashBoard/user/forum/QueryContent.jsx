@@ -151,7 +151,6 @@ const QueryPost = ({ query }) => {
   };
 
   // COMMENT SUBMISSION:
-   // Handle comment submission
   const handleCommentSubmit = async () => {
     if (commentInput.trim() === '') {
       return;
@@ -163,13 +162,13 @@ const QueryPost = ({ query }) => {
         timestamp: new Date().getTime(),
       });
 
+      // setCommentInput('');
       if (response.status === 200 && response.data.success) {
         const newComment = response.data.comment;
         setInitialComments([...initialComments, newComment]);
         dispatch(addComment({ queryId: _id, comment: newComment }));
         
         // Clear the input field after submission
-        setCommentInput('');
       } else {
         console.log('Failed to add comment!');
       }
