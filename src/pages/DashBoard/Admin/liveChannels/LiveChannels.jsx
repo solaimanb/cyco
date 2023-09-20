@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { imageUpload } from "../../../../api/imgUpload";
 import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
 import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 
 const customStyles = {
   content: {
