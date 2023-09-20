@@ -9,7 +9,8 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import ReviewModal from './ReviewModal';
 import useAuth from '../../../../hooks/useAuth';
 
-const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaReviewOpen }) => {
+const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaReviewOpen, title, thumbnail, genre, poster }) => {
+
   // STATE:
   const [showWarning, setShowWarning] = useState(false);
 
@@ -109,7 +110,7 @@ const handleSave = async () => {
       content: text,
       timestamp: timestamp,
       views: 0,
-      // Add other review properties here as needed
+      title, thumbnail, genre, poster,
     };
 
     // CLOSE MODAL:
