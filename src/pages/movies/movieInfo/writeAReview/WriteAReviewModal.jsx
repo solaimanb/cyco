@@ -146,13 +146,15 @@ const handleSave = async () => {
           <div className="modal-content shadow-md rounded relative">
             {/* Close button */}
             <span
-              className="close w-8 h-8 mx-auto bg-black/80 text-green-700 cursor-pointer absolute top-0 right-0 rounded-full text-center"
+             className={`close w-8 h-8 mx-auto bg-black text-green-700 cursor-pointer absolute top-0 right-0 rounded-full text-center`}
               onClick={handleClose}
             >
               &times;
             </span>
-            <h2 className="text-2xl font-semibold mb-4 text-sky-700">Write a Movie Review</h2>
+<div>
+<h2 className="text-2xl font-semibold mb-4 text-sky-700">Write <span className='text-cyred'>{title}</span> Movie Review</h2>
 
+</div>
             <ReactQuill
               value={text}
               onChange={setText}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { LuListVideo } from "react-icons/lu";
@@ -13,6 +13,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import CategoryMovies from "../catagoryMovies/CategoryMovies";
 import WriteAReviewModal from "./writeAReview/WriteAReviewModal";
+import DisplayReviews from "./writeAReview/DisplayReviews";
 
 const MovieInfo = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const MovieInfo = () => {
   const firstElement = CategoryMovies();
   // console.log(firstElement);
   const { movie } = location?.state;
-  const { user, setLoading } = useAuth();
+  const { user, loading, setLoading } = useAuth();
   const email = user?.email;
   const movieId = movie?._id;
   const userId = "64f89f19746d2fab49ffb3f9";
@@ -149,7 +150,7 @@ const MovieInfo = () => {
     <div className="px-2 md:p-10 xl:p-16 mt-20 lg:mt-10">
       <div
         className="hero flex flex-row w-[90%] lg:w-[70%] h-[80%] lg:h-[80%] mx-auto
-         mt-2 md:mt-5 lg:mt-10 rounded-sm"
+         mt-2 md:mt-5 lg:mt-10 rounded-sm relative"
         style={{ backgroundImage: `url(${Thumbnail})` }}
       >
         <WatchTimer
@@ -237,9 +238,9 @@ const MovieInfo = () => {
                   {/* Movie REVIEW BTN */}
                   <button
                     onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                    className="flex flex-row items-center gap-2 mt-2"
+                    className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                   >
-                    <FaPlus className="text-cyred" />
+                    <FaPlus className="text-white" />
                     <h3 className="text-sm">Write a Review</h3>
                   </button>
                 </div>
@@ -247,10 +248,10 @@ const MovieInfo = () => {
               <WriteAReviewModal
                 isOpen={isWriteaReviewOpen}
                 setIsOpen={setIsWriteaReviewOpen}
-                title={Title} // Pass the dynamic Title
-                thumbnail={Thumbnail} // Pass the dynamic Thumbnail
-                genre={Genre} // Pass the dynamic Genre
-                poster={Poster} // Pass the dynamic Poster
+                title={Title}
+                thumbnail={Thumbnail}
+                genre={Genre}
+                poster={Poster}
               />
             </div>
           </div>
@@ -259,11 +260,20 @@ const MovieInfo = () => {
           {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
-                <Marquee speed={5}>
+               
                   <FeaturedMovies />
                 </Marquee>
               </div>
             </div> */}
+        </div>
+        {/* Movie Reviews */}
+        <div className="absolute bottom-0 left-1/2 ">
+          <h2 className="border-l-4 pl-2 font-bold"> Movie Reviews </h2>
+          <div className=" lg:overflow-hidden ">
+          <Marquee speed={15}>
+              <DisplayReviews />
+              </Marquee>
+          </div>
         </div>
       </div>
     </div>
