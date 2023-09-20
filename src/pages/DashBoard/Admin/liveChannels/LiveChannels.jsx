@@ -6,6 +6,7 @@ import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
 import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
 import Modal from "react-modal";
 import { useDisclosure } from "@nextui-org/use-disclosure";
+// import Modal from "react-modal";
 
 const customStyles = {
   content: {
