@@ -80,11 +80,14 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
       });
 
       // SEND QUERY TO THE SERVER:
-      const forumResponseSlot = await axiosSecure.post('/forumQueries', query);
-      const userResponseSlot = await axiosSecure.post('/query', querySlot);
-      console.log(forumResponseSlot, userResponseSlot);
+      const forumResponseSlot = await axiosSecure.post( '/forumQueries', query );
+      
+      console.log(forumResponseSlot.data);
 
-      refetch();
+      // dispatch(addQuery(forumResponseSlot))
+      
+      // const userResponseSlot = await axiosSecure.post( '/query', querySlot );
+      
     } catch (error) {
       console.error('Error while submitting query', error);
     }
@@ -106,7 +109,6 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       reset={reset}
-      refetch={refetch}
       title={'Ask your query'}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
@@ -175,7 +177,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
               Cancel
             </button>
           </div>
-          
+
           <div className="flex flex-row items-center text-cyred">
             {showWarning && !isValid && (
               <p className="text-red-600 text-xs">

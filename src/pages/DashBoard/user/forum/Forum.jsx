@@ -6,12 +6,12 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
+import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
-import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -54,6 +54,14 @@ const Forum = () => {
     setPage(1);
   };
 
+  // ADD QUERY:
+  // const handleAddQuery = async ( newQuery ) => {
+  //   try {
+  //     const response = await axiosSecure.post( '/forumQueries', newQuery );
+  //     console.log(response);
+  //   }catch(error){}
+  // }
+
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* FORUM HEADER */}
@@ -79,14 +87,6 @@ const Forum = () => {
                 <IoMdRefresh /> Refresh
               </button>
 
-              {/* <button
-                onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2 mr-5"
-              >
-                <FaPlus className="text-cyred" />
-                <h3 className="text-sm">Write a Review</h3>
-              </button> */}
-
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
@@ -95,10 +95,21 @@ const Forum = () => {
                 <h3 className="text-sm">Ask Query</h3>
               </button>
               <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
-              <WriteAReviewModal isOpen={isWriteaReviewOpen} setIsOpen={setIsWriteaReviewOpen} />
+
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Ask Query</h3>
+              </button>
+              <WriteAReviewModal
+                isOpen={isWriteaReviewOpen}
+                setIsOpen={setIsWriteaReviewOpen}
+              />
             </div>
 
-            {/* Query Content */}
+            {/* QUERY CONTENTS */}
             {loading ? (
               <div className="flex items-center justify-center">
                 {/* <Loading /> */}
