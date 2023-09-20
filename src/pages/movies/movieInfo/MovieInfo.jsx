@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { FaCloudDownloadAlt, FaPlus } from "react-icons/fa";
-import { LuListVideo } from "react-icons/lu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { addHistory } from "../../../api/historyPostData";
-import WatchTimer from "../../../components/watchTimer/WatchTimer";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import CategoryMovies from "../catagoryMovies/CategoryMovies";
-
+import React, { useState } from 'react';
+import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
+import { LuListVideo } from 'react-icons/lu';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { addHistory } from '../../../api/historyPostData';
+import WatchTimer from '../../../components/watchTimer/WatchTimer';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import CategoryMovies from '../catagoryMovies/CategoryMovies';
 
 const MovieInfo = () => {
   const navigate = useNavigate();
@@ -24,7 +23,6 @@ const MovieInfo = () => {
   const [watching, setWatching] = useState(false);
 
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
-
 
   const {
     _id,
@@ -190,42 +188,46 @@ const MovieInfo = () => {
                   {/* WATCH-NOW FUNC */}
                   {firstElement && firstElement ? (
                     <Link
-                    to="/watch-video"
-                    state={{ movie }}
-                    className="btn capitalize bg-cyred font-bold border-none rounded-sm"
-                  >
-                    <button
-                      className="flex"
-                      onClick={() => {
-                        handleHistory(Title, email, Poster);
-                      }}
+                      to="/watch-video"
+                      state={{ movie }}
+                      className="btn capitalize bg-cyred font-bold border-none rounded-sm"
                     >
-                      <span>
-                        <FaCloudDownloadAlt size={20} />
-                      </span>
-                      Watch now
-                    </button>
-                  </Link>
+                      <button
+                        className="flex"
+                        onClick={() => {
+                          handleHistory(Title, email, Poster);
+                        }}
+                      >
+                        <span>
+                          <FaCloudDownloadAlt size={20} />
+                        </span>
+                        Watch now
+                      </button>
+                    </Link>
                   ) : (
-                    <Link className="btn capitalize bg-cyred font-bold border-none rounded-sm" to='/dashboard/subscriptions' >Subscriptions Now</Link>
+                    <Link
+                      className="btn capitalize bg-cyred font-bold border-none rounded-sm"
+                      to="/dashboard/subscriptions"
+                    >
+                      Subscriptions Now
+                    </Link>
                   )}
-                 
-                </div> 
                 </div>
-
-                {/* FEEDBACK/REVIEW BTN */}
-                <button
-                  onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                  className="flex flex-row items-center gap-2 mt-2"
-                >
-                  <FaPlus className="text-cyred" />
-                  <h3 className="text-sm">Write a Review</h3>
-                </button>
               </div>
-            </div>
 
-            {/* Recommended Movies */}
-            {/* <div className="w-full h-full mt-auto">
+              {/* FEEDBACK/REVIEW BTN */}
+              <button
+                onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                className="flex flex-row items-center gap-2 mt-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Write a Review</h3>
+              </button>
+            </div>
+          </div>
+
+          {/* Recommended Movies */}
+          {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
                 <Marquee speed={5}>
@@ -233,9 +235,9 @@ const MovieInfo = () => {
                 </Marquee>
               </div>
             </div> */}
-          </div>
         </div>
       </div>
+    </div>
     // </div>
   );
 };
