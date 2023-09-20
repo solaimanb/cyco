@@ -96,6 +96,21 @@ const MovieInfo = () => {
       console.log(response);
 
       if (response?.status === 200) {
+        if (response?.data?.message === "Already added to wishlist!") {
+          Swal.fire({
+            text: "Movie is already in your wishlist",
+            icon: "info",
+            background: "#222",
+          });
+        } else {
+          console.log("Movie added to wishlist", response?.data);
+          Swal.fire({
+            text: "Added to wishlist!",
+            icon: "success",
+            background: "#222",
+            reverseButtons: true,
+          });
+        }
         console.log("Movie added to wishlist", response?.data);
         Swal.fire({
           text: "Added to wishlist!",
@@ -252,7 +267,6 @@ const MovieInfo = () => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
