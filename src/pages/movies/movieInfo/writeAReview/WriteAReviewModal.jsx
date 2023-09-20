@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { PiWarningOctagonDuotone } from 'react-icons/pi';
 import Swal from 'sweetalert2';
+
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import ReviewModal from './ReviewModal';
 
-
-
-const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaReviewOpen }) => {
+const WriteAReviewModal = ({
+  isOpen: isWriteaReviewOpen,
+  setIsOpen: setIsWriteaReviewOpen,
+  title,
+  thumbnail,
+  genre,
+  poster,
+}) => {
   // STATE:
   const [showWarning, setShowWarning] = useState(false);
 
@@ -16,7 +24,7 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
 
-  // REACT HOOK FROM:
+  // REACT HOOK FORM:
   const {
     register,
     handleSubmit,
@@ -27,17 +35,61 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
     mode: 'onChange',
   });
 
+  // Define other state variables and functions here...
+  const [text, setText] = useState('');
+  const [fontSize, setFontSize] = useState('16px');
+  const [fontFamily, setFontFamily] = useState('Arial');
+  const [textColor, setTextColor] = useState('#fff');
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
+  const [isStrikeThrough, setIsStrikeThrough] = useState(false);
+  const [isSubscript, setIsSubscript] = useState(false);
+  const [isSuperscript, setIsSuperscript] = useState(false);
+  const [textAlign, setTextAlign] = useState('');
+  const [listType, setListType] = useState('');
+  const [blockQuote, setBlockQuote] = useState(false);
 
-  const movieCategories = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-  ]
+  const modules = {
+    toolbar: [
+      [{ header: '1' }, { header: '2' }, { header: '3' }],
+      [{ font: [] }],
+      [{ size: ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline', 'strike', 'sub', 'super'],
+      [{ color: [] }],
+      ['align'],
+      ['list', 'bullet', 'ordered'],
+      ['blockquote'],
+    ],
+  };
 
-  // QUERY SUBMISSION:
-  const onSubmit = async (review) => {
+  const formats = [
+    'header',
+    'font',
+    'size',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'color',
+    'align',
+    'list',
+    'blockquote',
+  ];
+
+  // Function to handle closing the modal
+  const handleClose = () => {
+    reset();
+    setIsWriteaReviewOpen(false);
+  };
+
+  // Function to handle saving the review:
+  // Function to handle saving the review:
+  const handleSave = async () => {
     try {
-      if (review?.categorie === 'choose a categorie') {
+      if (!text || text.trim() === '') {
         Swal.fire({
-          text: 'Please select a Categorie!',
+          text: 'Please write your review before saving!',
           icon: 'warning',
           background: '#222',
           reverseButtons: true,
@@ -45,20 +97,42 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
         return;
       }
 
+      // if (review?.categorie === 'choose a categorie') {
+      //   Swal.fire({
+      //     text: 'Please select a Categorie!',
+      //     icon: 'warning',
+      //     background: '#222',
+      //     reverseButtons: true,
+      //   });
+      //   return;
+      // }
+
       // SAVE POSTING TIMESTAMP:
       const timestamp = new Date().getTime();
-      review.timestamp = timestamp;
-      review.views = 0;
 
-      // QUERY SUBMISSION:
-      const reviewSlot = {
-        user,
-        review: review,
+      // Create the review object to send to the server
+      const reviewData = {
+        user: user,
+        content: text,
+        timestamp: timestamp,
+        views: 0,
+        title,
+        thumbnail,
+        genre,
+        poster,
       };
 
       // CLOSE MODAL:
       reset();
       setIsWriteaReviewOpen(false);
+
+      // SEND REVIEW TO THE SERVER:
+      const reviewResponse = await axiosSecure.post(
+        '/movieReviews',
+        reviewData
+      ); // Replace with your server endpoint
+      console.log('Review saved:', reviewResponse);
+
       Swal.fire({
         text: 'Thank You for Posting Review!',
         icon: 'success',
@@ -66,26 +140,10 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
         reverseButtons: true,
       });
 
-      // SEND Reviews TO THE SERVER:
-      const reviewResponseSlot = await axiosSecure.post('/movieReviews', reviewSlot);
-      const userResponseSlot = await axiosSecure.post('/reviews', reviewSlot);
-      console.log(reviewResponseSlot, userResponseSlot);
-
       refetch();
     } catch (error) {
-      console.error('Error while submitting reviews', error);
+      console.error('Error while submitting review', error);
     }
-  };
-
-  // MODAL CANCEL:
-  const onCancel = (data) => {
-    reset();
-    setIsWriteaReviewOpen(false);
-  };
-
-  // MODAL WARNING:
-  const handleWarning = () => {
-    setShowWarning(!showWarning);
   };
 
   return (
@@ -94,98 +152,53 @@ const WriteAReviewModal = ({ isOpen: isWriteaReviewOpen, setIsOpen: setIsWriteaR
       setIsOpen={setIsWriteaReviewOpen}
       reset={reset}
       refetch={refetch}
-      title={'Write a Movie Review '}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-2 space-y-3">
-        <div className="flex flex-col gap-2">
-          <label className="text-xs text-white" htmlFor="title">
-            Title:
-          </label>
-          <input
-            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
-            type="text"
-            id="title"
-            {...register('title', { required: true })}
-          />
-          {errors?.title && <span>Title is required</span>}
-        </div>
-        {/* image Url */}
-        <div className="flex flex-col gap-2">
-            <label className="text-xs text-white" htmlFor="imageUrl">Image URL:</label>
-            <input 
-            type="text" 
-            id='imageUrl' 
-            placeholder='Please Pest the Movie Image Url'
-            {...register('imageUrl')}
+      <>
+        <div className="flex justify-center items-center">
+          <div className="modal-content shadow-md rounded relative">
+            {/* Close button */}
+            <span
+              className={`close w-8 h-8 mx-auto bg-black text-green-700 cursor-pointer absolute top-0 right-0 rounded-full text-center`}
+              onClick={handleClose}
+            >
+              &times;
+            </span>
+            <div>
+              <h2 className="text-2xl font-semibold mb-4 text-sky-700">
+                Write <span className="text-cyred">{title}</span> Movie Review
+              </h2>
+            </div>
+            <ReactQuill
+              value={text}
+              onChange={setText}
+              modules={modules}
+              formats={formats}
+              style={{
+                height: '240px',
+                margin: '2rem',
+                fontSize,
+                fontFamily,
+                color: textColor,
+                fontWeight: isBold ? 'bold' : 'normal',
+                fontStyle: isItalic ? 'italic' : 'normal',
+                textDecoration: isUnderline ? 'underline' : 'none',
+                textAlign,
+              }}
             />
-           
-        </div>
-        
-        <div className="flex flex-col gap-2">
-          <label className="text-xs text-white" htmlFor="description">
-            Description:
-          </label>
-          <textarea
-            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
-            id="description"
-            {...register('description', { required: true })}
-          />
-          {errors?.description && <span>Description is required</span>}
-        </div>
 
-        {/* MOVIE CATEGORIE SELECTION */}
-        <div className="flex flex-col gap-2">
-          <label className="text-xs text-white" htmlFor="movieReview">
-            Choose The Categorie
-          </label>
-          <select
-            className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
-            id="movieReview"
-            {...register('movieCategorie', { required: true })}
-          >
-            <option value="select a Categorie">Select a Categorie</option>
-            {movieCategories.map((categorie) => (
-              <option key={categorie} value={categorie}>
-                {categorie}
-              </option>
-            ))}
-          </select>
-          {errors?.movieReview && <span>Movie categorie is required</span>}
-        </div>
-
-        {/* REVIEW SUBMISSION */}
-        <div className="flex flex-row justify-between gap-2">
-          
-          <div className="flex flex-row items-center text-cyred">
-            {showWarning && !isValid && (
-              <p className="text-red-600 text-xs">
-                Please fill the form to submit your review!
-              </p>
-            )}
-            {!isValid && (
-              <PiWarningOctagonDuotone size={20} onClick={handleWarning} />
-            )}
-          </div>
-
-          <div className="flex flex-row gap-2">
-            <button
-              type="submit"
-              className="btn btn-sm rounded-sm border hover:border-green-900 hover:text-green-900 mt-2"
-              disabled={!isValid}
-            >
-              Submit
-            </button>
-
-            <button
-              onClick={() => onCancel()}
-              type="button"
-              className="btn btn-sm rounded-sm border hover:border-cyred hover:text-cyred mt-2"
-            >
-              Cancel
-            </button>
+            <div className="flex justify-center items-center flex-row w-full gap-7">
+              <div>
+                <button
+                  onClick={handleSave}
+                  className="bg-sky-700 text-white py-2 px-4 rounded-md mt-4 hover:bg-sky-600 transition duration-300"
+                >
+                  Save Review
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+      </>
     </ReviewModal>
   );
 };

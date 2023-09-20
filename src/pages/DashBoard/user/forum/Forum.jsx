@@ -12,7 +12,6 @@ import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
-// import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -96,6 +95,14 @@ const Forum = () => {
                 <h3 className="text-sm">Ask Query</h3>
               </button>
               <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
+
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
+              >
+                <FaPlus className="text-cyred" />
+                <h3 className="text-sm">Ask Query</h3>
+              </button>
               <WriteAReviewModal
                 isOpen={isWriteaReviewOpen}
                 setIsOpen={setIsWriteaReviewOpen}
