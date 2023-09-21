@@ -38,7 +38,7 @@ const Trailer = () => {
     setCurrentPage(1);
     setIsSearchClicked(true);
     const moviesMatchingSearch = movies.filter((movie) =>
-      movie.Title.toLowerCase().includes(searchQuery.toLowerCase())
+      movie?.Title?.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredMovies(moviesMatchingSearch);
   };

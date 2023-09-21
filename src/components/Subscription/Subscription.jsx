@@ -29,12 +29,14 @@ const Subscription = () => {
               items.map((item, index) => (
                 <div
                   key={index}
-                  className="w-full p-6 text-white glass mb-10 md:mb-0 flex flex-col"
+                  className={`w-full p-6 text-white glass mb-10 md:mb-0 flex flex-col ${
+                    index === 2 ? 'bg-cyred' : ''
+                  }`}
                 >
                   <h3 className="text-lg">{item?.title}</h3>
                   <div className=" text-white mt-5">
                     <small className="line-through">${item.previous_pay}</small>
-                    <span className=" bg-red-500 text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100">
+                    <span className={`${ index == 2 ? 'bg-slate-600': "bg-red-500 "} text-white rounded-full p-1 ml-2 text-base border-double border-4 border-t-neutral-100`}>
                       SAVE {item?.save_price}%
                     </span>
 
@@ -85,7 +87,7 @@ const Subscription = () => {
                         onClick={() =>
                           handlePlanSelection(item?.title, item?.price)
                         }
-                        className="w-full text-red-700 border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4"
+                        className={`w-full ${ index == 2 ? 'text-white bg-' : ''}text-red-700  border border-red-700 rounded font-semibold hover:bg-red-700 hover:text-white hover:shadow-xl transition duration-150 ease-in-out py-4 mt-4`}
                       >
                         Choose Plan
                       </button>{' '}
