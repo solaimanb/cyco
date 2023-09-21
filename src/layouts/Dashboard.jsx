@@ -1,15 +1,13 @@
-import { Badge, Button, useDisclosure } from '@nextui-org/react';
+import { useDisclosure } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAuth from '../hooks/useAuth';
-import NotificationModal from '../shared/modal/NotificationModal';
-import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
 import useAdmin from '../hooks/useAdmin';
+import useAuth from '../hooks/useAuth';
 import useUsers from '../hooks/useUsers';
+import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -61,7 +59,6 @@ const Dashboard = () => {
     // { to: 'recommendation', text: 'Recommendation' },
     { to: 'payment-info', text: 'Payment Info' },
     { to: 'history', text: 'History' },
-    
   ];
 
   const adminNavLinks = [
@@ -75,12 +72,11 @@ const Dashboard = () => {
     { to: 'user-panel', text: 'User Panel' },
     { to: 'user-feedback', text: 'User Feedback' },
     { to: 'admin/paymentHistory', text: 'Payment History' },
-    
   ];
 
   const [isAdmin] = useAdmin();
   const [users] = useUsers();
-  console.log(users)
+  console.log(users);
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -108,18 +104,16 @@ const Dashboard = () => {
         }`}
       >
         <div className="w-full flex  justify-between items-center py-6">
-              <Link to='/'>
-              <img
-                className={`w-12 h-12 rounded-full`}
-                src="cy-ico.png"
-                alt="Cyco-logo"
-              />
-              </Link>
-
-            </div>
+          <Link to="/">
+            <img
+              className={`w-12 h-12 rounded-full`}
+              src="cy-ico.png"
+              alt="Cyco-logo"
+            />
+          </Link>
+        </div>
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
-            
             <hr className="pb-8" />
 
             {/* ADMIN NAVIGATION */}
@@ -147,7 +141,6 @@ const Dashboard = () => {
             </ul>
 
             <div className="group:mb-0 mt-auto">
-  
               <button
                 onClick={() => handleLogOut()}
                 className="sidebar-btn w-full text-start"
@@ -158,7 +151,6 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="h-full w-full flex flex-col">
-            
             <hr className="pb-8" />
 
             {/* USER NAVIGATION */}
