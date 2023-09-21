@@ -32,17 +32,19 @@ const ReviewCard = ({ review }) => {
           </div>
           <p className="text-sm text-sky-700 mt-2">Genre: {review.genre}</p>
           <div className="flex justify-between items-center mt-4">
-            <img
+           <div className='flex items-center'>
+           <img
               src={review.poster}
               alt={`Poster for ${review.title}`}
               className="w-10 h-10 rounded-full mr-2"
             />
             <p className="text-sm">{review.user.displayName}</p>
+           </div>
             <button
               onClick={openModal}
               className="bg-cyred/50 hover:bg-cyred/60 px-2 rounded-lg"
             >
-              <span className="text-sm">Read</span>
+              <span className="text-sm">Read More</span>
             </button>
           </div>
         </div>
