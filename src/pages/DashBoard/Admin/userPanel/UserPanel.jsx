@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { AiFillDelete } from "react-icons/ai";
 
 const UserPanel = () => {
   const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -110,22 +111,21 @@ const UserPanel = () => {
         data-aos-duration="1500"
         className="overflow-x-auto mt-10"
       >
-        <table className="table">
+        <table className="table text-center">
           <thead>
             <tr className="text-lg text-white">
-              <th>Image</th>
+              <th className="hidden md:table-cell">Image</th>
               <th>Name</th>
-              <th>Email</th>
+              <th className="hidden md:table-cell">Email</th>
               <th>Role</th>
               <th>Action</th>
-              <th className="pl-14">Remove</th>
+              <th className="">Remove</th>
             </tr>
           </thead>
-
           <tbody>
             {users.map((user) => (
               <tr key={user?._id}>
-                <td>
+                <td className="hidden md:table-cell">
                   <div className="mask mask-squircle w-12 h-12">
                     {user?.photo ? (
                       <img src={user.photo} alt="User Avatar" />
@@ -138,7 +138,9 @@ const UserPanel = () => {
                   </div>
                 </td>
                 <td className="font-semibold">{user?.name}</td>
-                <td className="text-zinc-400">{user?.email}</td>
+                <td className="hidden md:table-cell text-zinc-400">
+                  {user?.email}
+                </td>
                 <td>
                   {user?.role === "admin" ? (
                     <span className="text-sm font-semibold text-green-600">
@@ -170,7 +172,7 @@ const UserPanel = () => {
                 </td>
                 <td>
                   <button onClick={() => handleDelete(user)} className="">
-                    Delete
+                    <AiFillDelete className="text-red-900 text-3xl font-bold" />
                   </button>
                 </td>
               </tr>
