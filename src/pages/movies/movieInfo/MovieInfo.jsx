@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,8 +9,12 @@ import WatchTimer from '../../../components/watchTimer/WatchTimer';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import CategoryMovies from '../catagoryMovies/CategoryMovies';
+import DisplayReviews from './writeAReview/DisplayReviews';
+import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const MovieInfo = () => {
+  const [isHovering, setIsHovering] = useState(false);
+
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
@@ -140,6 +145,14 @@ const MovieInfo = () => {
     }
   };
 
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <div className="px-2 md:p-10 xl:p-16 mt-20 lg:mt-10">
       <div
@@ -228,6 +241,16 @@ const MovieInfo = () => {
                       Subscriptions Now
                     </Link>
                   )}
+
+                  {/* Movie REVIEW BTN */}
+                  <button
+                    onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
+                    className="absolute top-4 right-4 btn capitalize bg-cyred font-bold border-none rounded-sm"
+                  >
+                    <FaPlus className="text-white" />
+                    <h3 className="text-sm">Write a Review</h3>
+                  </button>
+
                 </div>
               </div>
 
@@ -270,10 +293,14 @@ const MovieInfo = () => {
             </div> */}
         </div>
         {/* Movie Reviews */}
-        <div className="absolute bottom-0 left-1/2 ">
-          <h2 className="border-l-4 pl-2 font-bold"> Movie Reviews </h2>
-          <div className=" lg:overflow-hidden ">
-            <Marquee speed={15}>
+        <div className="absolute bottom-0 left-1/2  -ml-20">
+          <h2 className="border-l-4 pl-2 font-bold hidden lg:block">
+            {" "}
+            Movie Reviews{" "}
+          </h2>
+          <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <Marquee speed={isHovering ? 0 : 16}>
+
               <DisplayReviews />
             </Marquee>
           </div>

@@ -6,7 +6,6 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
-import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
@@ -80,13 +79,11 @@ const Forum = () => {
           <div>
             {/* ASK QUERY SLOT */}
             <div className="flex justify-end items-center px-2 pb-2 border-b border-zinc-800">
-              <button
-                // onClick={handleRefresh}
-                className="hidden btn btn-sm border-zinc-800 rounded-sm items-center gap-1 text-sm"
-              >
+              <button className="hidden btn btn-sm border-zinc-800 rounded-sm items-center gap-1 text-sm">
                 <IoMdRefresh /> Refresh
               </button>
 
+              {/* ASK QUERY BTN */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
@@ -94,19 +91,8 @@ const Forum = () => {
                 <FaPlus className="text-cyred" />
                 <h3 className="text-sm">Ask Query</h3>
               </button>
-              <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
 
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
-              >
-                <FaPlus className="text-cyred" />
-                <h3 className="text-sm">Ask Query</h3>
-              </button>
-              <WriteAReviewModal
-                isOpen={isWriteaReviewOpen}
-                setIsOpen={setIsWriteaReviewOpen}
-              />
+              <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
 
             {/* QUERY CONTENTS */}

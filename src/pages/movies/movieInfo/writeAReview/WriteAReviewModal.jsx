@@ -18,7 +18,7 @@ const WriteAReviewModal = ({
   poster,
 }) => {
   // STATE:
-  const [showWarning, setShowWarning] = useState(false);
+  // const [showWarning, setShowWarning] = useState(false);
 
   // HOOKS:
   const [axiosSecure] = useAxiosSecure();
