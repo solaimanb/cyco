@@ -1,12 +1,12 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import axios from 'axios';
 
 // testimonial data
 const testimonialData = [
@@ -34,15 +34,17 @@ const testimonialData = [
 ];
 
 const TestimonialSlider = () => {
-const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
-console.log(feedbacks)
+  console.log(feedbacks);
 
   useEffect(() => {
     // Fetch feedbacks when the component mounts
     const fetchFeedbacks = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/feedbacks');
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/feedbacks`
+        );
         setFeedbacks(response.data);
       } catch (error) {
         console.error(error);
@@ -51,7 +53,6 @@ console.log(feedbacks)
 
     fetchFeedbacks();
   }, []);
-
 
   return (
     <Swiper
@@ -64,7 +65,7 @@ console.log(feedbacks)
       // pagination={{
       //   clickable: true,
       // }}
-      modules={[Autoplay, Navigation, ]}
+      modules={[Autoplay, Navigation]}
       // className="h-[440px]"
     >
       {feedbacks?.map((feedBack, index) => {

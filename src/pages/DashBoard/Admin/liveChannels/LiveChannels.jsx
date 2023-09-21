@@ -1,144 +1,67 @@
-import { useDisclosure } from '@nextui-org/use-disclosure';
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import Modal from 'react-modal';
-import Swal from 'sweetalert2';
-import { imageUpload } from '../../../../api/imgUpload';
-import { addLiveTV, updateLiveTV } from '../../../../api/liveTv';
-import useTVChannel, { liveTVFetch } from '../../../../hooks/useTVChannel';
-// import Modal from "react-modal";
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    // backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  },
-};
+import { useDisclosure } from "@nextui-org/react";
+import React, { useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { updateLiveTV } from "../../../../api/liveTv";
+import useTVChannel from "../../../../hooks/useTVChannel";
+import ChannelModal from "./ChannelModal";
 
 const LiveChannels = () => {
-  // modal
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isClose, setIsClose] = useState(false);
+  const { onOpen, onOpenChange } = useDisclosure();
   const [selectedChannel, setSelectedChannel] = useState(null);
-  const [selectedLiveSerial, setSelectedLiveSerial] = useState('');
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = "#f00"; // This line can be removed
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   const [Channels] = useTVChannel();
-  const [tvChannel, refetch] = liveTVFetch();
-  const { handleSubmit, register, setValue } = useForm();
-  const [loading, setLoading] = useState(false);
-  const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const onSubmit = async (data) => {
-    setLoading(true);
-
-    // Check if 'Poster' exists in 'data' and if it has at least one element
-    if (data.Poster && data.Poster.length > 0) {
-      const logo = data.Poster[0];
-      const { channelName, LiveKey, StartedStreaming } = data;
-
-      try {
-        const posterUploadResponse = await imageUpload(logo);
-        const movieData = {
-          logo: posterUploadResponse.data.display_url,
-          channelName,
-          LiveKey,
-          StartedStreaming,
-        };
-
-        const movieUploadResponse = await addLiveTV(movieData);
-        console.log(movieUploadResponse);
-
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Live TV Channel Added successfully',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } catch (err) {
-        console.log(err.message);
-      }
-    } else {
-      // Handle the case where 'data.Poster' is undefined or empty
-      console.log('No file selected.');
-    }
-
-    setLoading(false);
-    setUploadButtonText('Upload Poster');
+  const closeModal = () => {
+    setSelectedChannel(null);
+    setIsOpen(false); 
   };
 
-  const handleImageChange = (event) => {
-    setUploadButtonText(event.target.files[0].name);
-    setValue('Poster', event.target.files);
-  };
-
-  // Tv channel delete func
-
-  const handleDelete = (channel) => {
+  const handleDelete = async (channel) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-          method: 'DELETE',
-        })
+        fetch(`${import.meta.env.VITE_SERVER_URL}/liveTV/${channel._id}`, {
+          method: "DELETE",
+        });
+
+        axiosSecure
+          .delete(`/liveTV/${channel._id}`)
           .then((res) => {
             if (res.ok) {
               return res.json();
             } else {
-              throw new Error('Network response was not ok');
+              throw new Error("Network response was not ok");
             }
           })
           .then((data) => {
             if (data.success) {
-              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
             } else {
-              Swal.fire('Error', 'Failed to delete the channel.', 'error');
+              Swal.fire("Error", "Failed to delete the channel.", "error");
             }
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error("Error:", error);
             Swal.fire(
-              'Error',
-              'An error occurred while deleting the channel.',
-              'error'
+              "Error",
+              "An error occurred while deleting the channel.",
+              "error"
             );
           });
       }
     });
   };
 
-  useEffect(() => {
-    // Reset the form when the selected channel changes
-    setValue('channelName', selectedChannel?.channelName || '');
-    setValue('LiveKey', selectedChannel?.LiveKey || '');
-    setValue('StartedStreaming', selectedChannel?.StartedStreaming || '');
-  }, [selectedChannel, setValue]);
 
   // Function to open the modal for editing a channel
   const openEditModal = (channel) => {
@@ -154,7 +77,7 @@ const LiveChannels = () => {
     try {
       const updatedData = {
         channelName,
-        LiveKey, // Only updating LiveKey
+        LiveKey,
         StartedStreaming,
       };
 
@@ -171,27 +94,27 @@ const LiveChannels = () => {
 
       if (updatedChannelResponse.success) {
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Live TV Channel Updated successfully',
+          position: "top-end",
+          icon: "success",
+          title: "Live TV Channel Updated successfully",
           showConfirmButton: false,
           timer: 1500,
         });
         closeModal();
       } else {
-        Swal.fire('Error', 'Failed to update the channel.', 'error');
+        Swal.fire("Error", "Failed to update the channel.", "error");
       }
     } catch (err) {
       console.error(err.message);
       Swal.fire(
-        'Error',
-        'An error occurred while updating the channel.',
-        'error'
+        "Error",
+        "An error occurred while updating the channel.",
+        "error"
       );
     }
 
     setLoading(false);
-    setUploadButtonText('Upload Poster');
+    setUploadButtonText("Upload Poster");
   };
 
   return (
@@ -206,100 +129,21 @@ const LiveChannels = () => {
 
         <div className="text-center bg-zinc-950">
           <button
-            onClick={openModal}
+            // onClick={openModal}
+            onClick={() => setIsOpen(!isOpen)}
+            // isOpen={isOpen}
             className="text-center text-white justify-center px-3 py-3 bg-red-900 hover:bg-red-800 "
           >
             New Channel Add
           </button>
-          <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-            <div className="flex justify-between">
-              <h2>Add New Channel</h2>
-              <button onClick={closeModal} className=" shadow-2xl py-2 px-2">
-                close
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full pt-10 ">
-              <div className="md:flex justify-between items-start gap-4 pb-6">
-                <div className="w-full space-y-4 md:space-y-0 md:w-1/2">
-                  <div className="space-y-2 text-sm">
-                    <label
-                      htmlFor="channelName"
-                      className="block text-gray-500"
-                    >
-                      Channel Name
-                    </label>
-                    <input
-                      className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
-                      type="text"
-                      placeholder="Channel Name"
-                      {...register('channelName', { required: true })}
-                    />
-                  </div>
-
-                  <div className="space-y-2 text-sm">
-                    <label htmlFor="LiveKey" className="block text-gray-500">
-                      Live Serial
-                    </label>
-                    <input
-                      className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
-                      type="text"
-                      placeholder="Live Key"
-                      {...register('LiveKey', { required: true })}
-                    />
-                  </div>
-
-                  <div className="space-y-2 text-sm">
-                    <label
-                      htmlFor="StartedStreaming"
-                      className="block text-gray-500"
-                    >
-                      Started Streaming
-                    </label>
-                    <input
-                      className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
-                      type="text"
-                      placeholder="Started Streaming"
-                      {...register('StartedStreaming', { required: true })}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full md:w-1/2">
-                  <label>
-                    <input
-                      onChange={handleImageChange}
-                      className="hidden"
-                      type="file"
-                      name="logo"
-                      accept="image/*"
-                    />
-                    <div className="p-3 bg-zinc-700 w-full m-a7to rounded-sm">
-                      <div className="px-5 py-3 relative border-4 border-dotted">
-                        <div className="flex flex-col w-max mx-auto text-center">
-                          <div className="text-white border bg-zinc-800 border-gray-600 rounded-sm cursor-pointer p-1 px-3">
-                            {uploadButtonText}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
-              >
-                {loading ? <h2>Loading...</h2> : 'Save & Continue'}
-              </button>
-            </form>
-          </Modal>
+          <ChannelModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            isClose={isClose}
+            setIsClose={setIsClose}
+            onOpenChange={onOpenChange}
+            onClose={() => setIsEditModalOpen(false)}
+          />
         </div>
 
         <table className="w-full border-collapse my-10">
@@ -326,7 +170,10 @@ const LiveChannels = () => {
                 <td className="px-4 py-2  space-x-6">
                   <button onClick={() => openEditModal(channel)}>Edit</button>
 
-                  <button onClick={() => handleDelete(channel)}>Delete</button>
+                  <button onClick={() => handleDelete(channel)}>
+                    {" "}
+                    <AiFillDelete className="text-red-700 text-3xl font-bold" />
+                  </button>
                 </td>
               </tr>
             ))}

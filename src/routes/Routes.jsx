@@ -36,8 +36,6 @@ import LiveTv from "../pages/liveTv/LiveTv";
 import Login from "../pages/login/Login";
 import Movies from "../pages/movies/Movies";
 import MovieInfo from "../pages/movies/movieInfo/MovieInfo";
-// import Notify from "../pages/notify/Notify";
-// import ReceiveNotification from "../pages/notify/ReceiveNotification";
 import LiveChannels from "../pages/dashBoard/admin/liveChannels/LiveChannels";
 import Payment from "../pages/payment/Payment";
 import Podcast from "../pages/podcast/Podcast";
@@ -54,20 +52,16 @@ import DashboardHome from "../pages/DashBoard/DashboardHome";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: '/', element: <Home /> },
       {
-        path: "trailer",
-        element: (
-          <PrivateRoute>
-            <Trailer />
-          </PrivateRoute>
-        ),
+        path: 'trailer',
+        element: <Trailer />,
       },
       {
-        path: "trailer/:index",
+        path: 'trailer/:index',
         element: (
           <PrivateRoute>
             <PlayerPage />
@@ -75,24 +69,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "movies",
-        element: (
-          <PrivateRoute>
-            <Movies />
-          </PrivateRoute>
-        ),
+        path: 'movies',
+        element: <Movies />,
       },
       {
-        path: "series",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Series />{" "}
-          </PrivateRoute>
-        ),
+        path: 'series',
+        element: <Series />,
       },
       {
-        path: "series/seriesParts",
+        path: 'series/seriesParts',
         element: (
           <PrivateRoute>
             <SeriesParts />
@@ -100,29 +85,24 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "live-tv",
-        element: (
-          <PrivateRoute>
-            <LiveTv />
-          </PrivateRoute>
-        ),
+        path: 'live-tv',
+        element: <LiveTv />,
       },
-      { path: "podcast", element: <Podcast /> },
-      { path: "about", element: <About /> },
-      { path: "contact", element: <Contact /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
+      { path: 'podcast', element: <Podcast /> },
+      { path: 'about', element: <About /> },
+      { path: 'contact', element: <Contact /> },
+      { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
       {
-        path: "checkout",
+        path: 'checkout',
         element: (
           <PrivateRoute>
-            {" "}
-            <Payment />{" "}
+            <Payment />
           </PrivateRoute>
         ),
       },
       {
-        path: "video-player",
+        path: 'video-player',
         element: (
           <PrivateRoute>
             <VideoPlayer />
@@ -130,16 +110,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "movieinfo",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <MovieInfo />{" "}
-          </PrivateRoute>
-        ),
+        path: 'movieinfo',
+        element: <MovieInfo />,
       },
       {
-        path: "watch-video",
+        path: 'watch-video',
         element: (
           <PrivateRoute>
             <MoviePlayer />
@@ -147,185 +122,38 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "popular-tvs",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <PopularTvs />
-          </PrivateRoute>
-        ),
+        path: 'popular-tvs',
+        element: <PopularTvs />,
       },
       {
-        path: "popular-tv",
-        element: (
-          <PrivateRoute>
-            <PopularTv />
-          </PrivateRoute>
-        ),
+        path: 'popular-tv',
+        element: <PopularTv />,
       },
-      { path: "PrivacyPolicy", element: <PrivacyPolicy /> },
-      { path: "TermsConditions", element: <TermsConditions /> },
+      { path: 'PrivacyPolicy', element: <PrivacyPolicy /> },
+      { path: 'TermsConditions', element: <TermsConditions /> },
       {
-        path: "testpayments",
+        path: 'testpayments',
         element: (
           <PrivateRoute>
             <Payment />
           </PrivateRoute>
         ),
       },
-      { path: "testimonials", element: <Testimonials /> },
+      { path: 'testimonials', element: <Testimonials /> },
       {
-        path: "payment",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Payment />
-          </PrivateRoute>
-        ),
-      },
-      // { path: 'notify', element: <Notify /> },
-      // { path: "receive-notification", element: <ReceiveNotification /> },
-      { path: "/", element: <Home /> },
-      {
-        path: "trailer",
-        element: (
-          <PrivateRoute>
-            <Trailer />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "trailer/:index",
-        element: (
-          <PrivateRoute>
-            <PlayerPage />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "movies",
-        element: (
-          <PrivateRoute>
-            <Movies />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "series",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Series />{" "}
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "series/seriesParts",
-        element: (
-          <PrivateRoute>
-            <SeriesParts />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "live-tv",
-        element: (
-          <PrivateRoute>
-            <LiveTv />
-          </PrivateRoute>
-        ),
-      },
-      { path: "podcast", element: <Podcast /> },
-      { path: "about", element: <About /> },
-      { path: "contact", element: <Contact /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
-      {
-        path: "checkout",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Payment />{" "}
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "video-player",
-        element: (
-          <PrivateRoute>
-            <VideoPlayer />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "movieinfo",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <MovieInfo />{" "}
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "watch-video",
-        element: (
-          <PrivateRoute>
-            <MoviePlayer />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "popular-tvs",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <PopularTvs />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "popular-tv",
-        element: (
-          <PrivateRoute>
-            <PopularTv />
-          </PrivateRoute>
-        ),
-      },
-      { path: "PrivacyPolicy", element: <PrivacyPolicy /> },
-      { path: "TermsConditions", element: <TermsConditions /> },
-      {
-        path: "testpayments",
+        path: 'payment',
         element: (
           <PrivateRoute>
             <Payment />
           </PrivateRoute>
         ),
       },
-      { path: "testimonials", element: <Testimonials /> },
-      {
-        path: "payment",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Payment />
-          </PrivateRoute>
-        ),
-      },
-      // { path: 'notify', element: <Notify /> },
-      // { path: 'receive-notification', element: <ReceiveNotification /> },
-      // { path: "notify", element: <Notify /> },
-      // { path: "receive-notification", element: <ReceiveNotification /> },
-      { path: "help", element: <Help /> },
+      { path: 'help', element: <Help /> },
     ],
   },
   {
-    path: "/dashboard",
-    element: (
-      // <PrivateRoute>
-        <Dashboard />
-      // </PrivateRoute>
-
-    ),
+    path: '/dashboard',
+    element: <Dashboard />,
     children: [
       {path: "", element: <DashboardHome/>},
       { path: "admin-analytics", element: <AdminDashboard /> },
@@ -354,7 +182,7 @@ const router = createBrowserRouter([
       { path: "live-channels", element: <LiveChannels /> },
     ],
   },
-  { path: "*", element: <ErrorPage /> },
+  { path: '*', element: <ErrorPage /> },
 ]);
 
 export default router;
