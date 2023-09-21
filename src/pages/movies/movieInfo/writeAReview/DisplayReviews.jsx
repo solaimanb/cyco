@@ -6,12 +6,12 @@ import ReviewCard from './ReviewCard/ReviewCard';
 const DisplayReviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [reviewsPerPage] = useState(2); // Number of reviews to display per page
+  const [reviewsPerPage] = useState(4); // Number of reviews to display per page
   const { user, loading, setLoading } = useAuth();
+
 
   useEffect(() => {
     const apiUrl = `${import.meta.env.VITE_SERVER_URL}/movieReviews`;
-
     axios
       .get(apiUrl)
       .then((response) => {
