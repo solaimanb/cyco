@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button,
-  useDisclosure,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader
 } from "@nextui-org/react";
+import React from "react";
 
 import { useForm } from "react-hook-form";
 
-import { updateSubscription } from "../../api/updateSubscription";
 import Swal from "sweetalert2";
+import { updateSubscription } from "../../api/updateSubscription";
 
 const ManageSubscriptionFirst = ({ isOpen, onOpenChange, items }) => {
   const { register, handleSubmit, setValue } = useForm({});

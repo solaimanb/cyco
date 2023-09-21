@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,6 +9,8 @@ import WatchTimer from '../../../components/watchTimer/WatchTimer';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import CategoryMovies from '../catagoryMovies/CategoryMovies';
+import DisplayReviews from './writeAReview/DisplayReviews';
+import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const MovieInfo = () => {
   const [isHovering, setIsHovering] = useState(false);
