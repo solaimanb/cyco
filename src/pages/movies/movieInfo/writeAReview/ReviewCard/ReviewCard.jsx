@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ContentModal from './ContentModal'; // Import your modal component
+import ContentModal from './ContentModal'; 
 
 const ReviewCard = ({ review }) => {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +14,7 @@ const ReviewCard = ({ review }) => {
 
   return (
     <div className="">
-      <div className="w-96 h-72 bg-black/40 rounded-md shadow-md p-4 m-4 flex flex-col justify-between">
+      <div className="w-96 h-72 bg-black/80 rounded-md shadow-md p-4 m-4 flex flex-col justify-between">
         <div className="flex justify-between">
           <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
           <img

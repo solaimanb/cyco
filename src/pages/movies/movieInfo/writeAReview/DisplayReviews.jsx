@@ -9,10 +9,9 @@ const DisplayReviews = () => {
   const [reviewsPerPage] = useState(4); 
   const { user, loading, setLoading } = useAuth();
 
- useEffect(() => {
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/movieReviews`)
 
-    axios
-      .get('/movieReviews') 
       .then((response) => {
         const reviewsData = response.data;
         setMovieReviews(reviewsData);
@@ -23,6 +22,9 @@ const DisplayReviews = () => {
         setLoading(false);
       });
   }, []);
+
+  console.log('VITE_SERVER_URL:', import.meta.env.VITE_SERVER_URL);
+
 
   // Calculate the index range of reviews to display on the current page
   const indexOfLastReview = currentPage * reviewsPerPage;

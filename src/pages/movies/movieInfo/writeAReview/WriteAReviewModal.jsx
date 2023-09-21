@@ -122,7 +122,7 @@ const WriteAReviewModal = ({
       console.error("Error while submitting review", error);
     }
   };
-
+//
   return (
     <ReviewModal
       isOpen={isWriteaReviewOpen}
@@ -132,7 +132,7 @@ const WriteAReviewModal = ({
     >
       <>
         <div className="flex justify-center items-center h-full">
-          <div className="modal-content shadow-md rounded relative ">
+          <div className="modal-content shadow-md rounded relative " style={{ width: '350px', height: '480px' }}> 
             <span
               className="close w-8 h-8 mx-auto bg-black text-green-700 cursor-pointer absolute top-0 right-0 rounded-full text-center"
               onClick={handleClose}
