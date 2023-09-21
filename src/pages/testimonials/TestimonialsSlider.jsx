@@ -1,12 +1,12 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import axios from 'axios';
 
 // testimonial data
 const testimonialData = [
@@ -51,7 +51,6 @@ console.log(feedbacks)
 
     fetchFeedbacks();
   }, []);
-
 
   return (
     <Swiper

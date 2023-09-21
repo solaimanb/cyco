@@ -14,13 +14,29 @@ import {
   ModalHeader,
 } from "@nextui-org/react";
 
-const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
+const ChannelModal = ({ isOpen, setIsOpen, isClose, setIsClose }) => {
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register, setValue } = useForm();
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Poster");
+  const [uploadButtonText, setUploadButtonText] = useState("img");
+
+  const handleClose = () => {
+    setIsClose(!isClose); // Close the modal
+    onClose(); // Call the close callback
+  };
+
   const handleImageChange = (event) => {
     setUploadButtonText(event.target.files[0].name);
     setValue("Poster", event.target.files);
+  };
+
+  const onClose = () => {
+    setIsOpen(false); // Close the modal when called
+  };
+
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose(); // Close the modal when clicking outside
+    }
   };
 
   const onSubmit = async (data) => {
@@ -59,29 +75,33 @@ const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
     }
 
     setLoading(false);
-    setUploadButtonText("Upload Poster");
+    setUploadButtonText("img");
   };
+
   return (
     <Modal
       backdrop="opaque"
       isOpen={isOpen}
-      //   setIsOpen={setIsOpen}
       radius="2xl"
       classNames={{
         body: "",
-        backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
-        base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-        header: "border-b-[1px] border-[#292f46]",
-        footer: "border-t-[1px] border-[#292f46]",
+        backdrop: "bg-[#000000]/50 backdrop-opacity-40",
+        base: "border-[#000000] bg-cyred dark:bg-cyred text-red-500",
+        header: "border-b-[1px] border-[#000000]",
+        footer: "border-t-[1px] border-[#000000]",
         closeButton: "hover:bg-white/5 active:bg-white/10",
       }}
+      onClick={handleBackdropClick}
     >
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
+            <ModalHeader
+              onClick={handleBackdropClick}
+              className="flex justify-between"
+            >
               Add New Channel
-              <button onClick={() => setIsClose(!isClose)}>close</button>
+              <button onClick={() => setIsOpen(false)}>Close</button>
             </ModalHeader>
 
             <ModalBody>
@@ -90,7 +110,7 @@ const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
                   <div className="flex justify-between"></div>
                   <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="w-full pt-10 "
+                    className="w-full pt-10"
                   >
                     <div className="md:flex justify-between items-start gap-4 pb-6">
                       <div className="w-full space-y-4 md:space-y-0 md:w-1/2">
@@ -102,7 +122,7 @@ const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
                             Channel Name
                           </label>
                           <input
-                            className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                            className="w-full px-4 py-3 text-red-800 bg-zinc-700 rounded-sm"
                             type="text"
                             placeholder="Channel Name"
                             {...register("channelName", {
@@ -119,7 +139,7 @@ const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
                             Live Serial
                           </label>
                           <input
-                            className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                            className="w-full px-4 py-3 text-red-800 bg-zinc-700 rounded-sm"
                             type="text"
                             placeholder="Live Key"
                             {...register("LiveKey", { required: true })}
@@ -134,7 +154,7 @@ const ChannelModal = ({ isOpen, isClose, setIsClose }) => {
                             Started Streaming
                           </label>
                           <input
-                            className="w-full px-4 py-3 text-gray-800 bg-zinc-700 rounded-sm"
+                            className="w-full px-4 py-3 text-red-800 bg-zinc-700 rounded-sm"
                             type="text"
                             placeholder="Started Streaming"
                             {...register("StartedStreaming", {

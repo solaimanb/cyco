@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -9,15 +9,15 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-} from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
-import app from "../firebase/firebase.config";
+} from 'firebase/auth';
+import { createContext, useEffect, useState } from 'react';
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(" ");
+  const [user, setUser] = useState(' ');
   const [loading, setLoading] = useState(true);
 
   // PROVIDERS:
@@ -47,10 +47,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  const resetPassword = email => {
-    setLoading(true)
-    return sendPasswordResetEmail(auth, email)
-  }
+  const resetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  };
 
   // user state observer:
   useEffect(() => {
@@ -58,17 +58,22 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       if (currentUser && currentUser?.email) {
-        axios.post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {email: currentUser?.email})
-          .then(data => {
-            localStorage.setItem("access_token", data.data.token);
+        console.log('User is logged in:', currentUser);
+        axios
+          .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
+            email: currentUser?.email,
+          })
+          .then((data) => {
+            console.log('Received token data:', data.data.token);
+            localStorage.setItem('access_token', data.data.token);
             setLoading(false);
           })
           .catch((error) => {
-            // console.log(error);
+            console.error('Error fetching token:', error);
             setLoading(false);
           });
       } else {
-        localStorage.removeItem("access_token");
+        localStorage.removeItem('access_token');
         setLoading(false);
       }
     });
@@ -76,6 +81,7 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, [auth]);
+
   // }, [axiosSecure, auth]);
 
   // logging out:
@@ -93,7 +99,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     googleSignIn,
     logOut,
-    resetPassword
+    resetPassword,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
