@@ -294,7 +294,7 @@ const MovieInfo = () => {
         </div>
       </div>
 
-      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40">
+      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40 ">
         <h2 className="border-l-4 pl-2 font-bold">
           Movie Reviews
         </h2>
