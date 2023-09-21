@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const WatchTimer = ({ movieId, userId, onStart, onStop }) => {
   const [startTime, setStartTime] = useState(null);
@@ -15,7 +15,7 @@ const WatchTimer = ({ movieId, userId, onStart, onStop }) => {
         console.log(durationInSeconds);
 
         // Send the duration to the server to save in the database
-        fetch("http://localhost:8080/save-watch-time", {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/save-watch-time`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

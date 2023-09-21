@@ -76,7 +76,8 @@ const Dashboard = () => {
 
   const [isAdmin] = useAdmin();
   const [users] = useUsers();
-  console.log(users);
+  console.log( users );
+  
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
