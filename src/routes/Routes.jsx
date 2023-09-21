@@ -36,8 +36,6 @@ import LiveTv from "../pages/liveTv/LiveTv";
 import Login from "../pages/login/Login";
 import Movies from "../pages/movies/Movies";
 import MovieInfo from "../pages/movies/movieInfo/MovieInfo";
-// import Notify from "../pages/notify/Notify";
-// import ReceiveNotification from "../pages/notify/ReceiveNotification";
 import LiveChannels from "../pages/dashBoard/admin/liveChannels/LiveChannels";
 import Payment from "../pages/payment/Payment";
 import Podcast from "../pages/podcast/Podcast";

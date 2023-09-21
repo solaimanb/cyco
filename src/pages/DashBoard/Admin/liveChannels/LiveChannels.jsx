@@ -30,7 +30,7 @@ const LiveChannels = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/liveTV/${channel._id}`, {
           method: "DELETE",
         });
 
