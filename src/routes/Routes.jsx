@@ -154,8 +154,8 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      { path: '', element: <AdminDashboard /> },
-      { path: '', element: <UserDashboard /> },
+      { path: 'admin-analytics', element: <AdminDashboard /> },
+      { path: 'user-analytics', element: <UserDashboard /> },
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'downloads', element: <Downloads /> },
       { path: 'subscriptions', element: <Subscriptions /> },
