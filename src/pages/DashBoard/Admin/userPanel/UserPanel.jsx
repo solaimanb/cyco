@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import { AiFillDelete } from "react-icons/ai";
 
 const UserPanel = () => {
   const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -67,7 +67,7 @@ const UserPanel = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/user/${user._id}`, {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/user/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => {

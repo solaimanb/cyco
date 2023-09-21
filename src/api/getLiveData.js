@@ -6,13 +6,13 @@ export const getData = async () => {
 
 export const addToWatchList = async (Data) => {
   console.log(Data);
-  const response = await fetch('http://localhost:8080/watchList', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(Data),
+  const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/watchList`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(Data),
   });
   const result = await response.json();
   return result;
-}
+};
