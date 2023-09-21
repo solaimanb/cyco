@@ -63,6 +63,7 @@ const WriteAReviewModal = ({
     ],
   };
 
+
   const formats = [
     'header',
     'font',
@@ -83,8 +84,7 @@ const WriteAReviewModal = ({
     setIsWriteaReviewOpen(false);
   };
 
-  // Function to handle saving the review:
-  // Function to handle saving the review:
+
   const handleSave = async () => {
     try {
       if (!text || text.trim() === '') {
@@ -130,7 +130,7 @@ const WriteAReviewModal = ({
       const reviewResponse = await axiosSecure.post(
         '/movieReviews',
         reviewData
-      ); // Replace with your server endpoint
+      ); 
       console.log('Review saved:', reviewResponse);
 
       Swal.fire({
@@ -186,7 +186,12 @@ const WriteAReviewModal = ({
               }}
             />
 
-            <div className="flex justify-center items-center flex-row w-full gap-7">
+            
+          </div>
+        </div>
+     
+      </>
+      <div className="flex justify-center items-center flex-row w-full gap-7">
               <div>
                 <button
                   onClick={handleSave}
@@ -196,9 +201,6 @@ const WriteAReviewModal = ({
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      </>
     </ReviewModal>
   );
 };
