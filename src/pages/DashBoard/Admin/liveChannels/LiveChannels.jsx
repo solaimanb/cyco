@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
-import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
-import ChannelModal from "./ChannelModal";
 import { useDisclosure } from "@nextui-org/react";
+import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { updateLiveTV } from "../../../../api/liveTv";
+import useTVChannel from "../../../../hooks/useTVChannel";
+import ChannelModal from "./ChannelModal";
 
 const LiveChannels = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,14 +14,9 @@ const LiveChannels = () => {
   const [Channels] = useTVChannel();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const openEditModal = (channel) => {
-    setSelectedChannel(channel);
-    setIsOpen(true); // Open the modal
-  };
-
   const closeModal = () => {
     setSelectedChannel(null);
-    setIsOpen(false); // Close the modal
+    setIsOpen(false); 
   };
 
   const handleDelete = async (channel) => {
