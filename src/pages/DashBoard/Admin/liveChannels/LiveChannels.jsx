@@ -21,7 +21,7 @@ const customStyles = {
 
 const LiveChannels = () => {
   // modal
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState(null);

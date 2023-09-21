@@ -10,165 +10,165 @@ import { getUser } from "../../../store/slices/editUserSlice/editUserSlice";
 import { setUser } from "../../../store/slices/editUserSlice/passData";
 
 const UserDashboard = () => {
-  let [isOpen, setIsOpen] = useState(false);
-  let [data, setData ] = useState()
+  // let [isOpen, setIsOpen] = useState(false);
+  // let [data, setData ] = useState()
   const { user, createUser, updateUserProfile } = useAuth();
-  const dispatch = useDispatch();
-  const { todos } = useSelector((state) => state.editUserSlice);
-  const status = useSelector((state) => state.editUserSlice.status);
-  useEffect(() => {
-    if (status === "loading") {
-      dispatch(getUser());
+  // const dispatch = useDispatch();
+  // const { todos } = useSelector((state) => state.editUserSlice);
+  // const status = useSelector((state) => state.editUserSlice.status);
+  // useEffect(() => {
+  //   if (status === "loading") {
+  //     dispatch(getUser());
 
-    }
+  //   }
 
-  }, [status, dispatch, todos]);
+  // }, [status, dispatch, todos]);
 
   // Handle data filtering if user is defined
 
-  const filter = todos && todos.filter((item) => item?.email == user?.email);
-console.log(filter);
-  useEffect(()=>{
-  dispatch(setUser(filter));
-  },[])
-  const userData = useSelector((state) => state.passData.data);
-  console.log(userData);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+//   const filter = todos && todos.filter((item) => item?.email == user?.email);
+// console.log(filter);
+//   useEffect(()=>{
+//   dispatch(setUser(filter));
+//   },[])
+//   const userData = useSelector((state) => state.passData.data);
+//   console.log(userData);
+//   const closeModal = () => {
+//     setIsOpen(false);
+//   };
 
-  const [showChangePassword, setShowChangePassword] = useState(false);
-  const [message, setMessage] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
-  const { register, handleSubmit, setValue } = useForm();
-  const [timeAgo, setTimeAgo] = useState("");
+//   const [showChangePassword, setShowChangePassword] = useState(false);
+//   const [message, setMessage] = useState("");
+//   const [selectedImage, setSelectedImage] = useState(null);
+//   const { register, handleSubmit, setValue } = useForm();
+//   const [timeAgo, setTimeAgo] = useState("");
 
-  const userEntry = user?.metadata?.createdAt;
+//   const userEntry = user?.metadata?.createdAt;
 
   // SETTING POST TIME:
-  useEffect(() => {
-    const currentTime = new Date().getTime();
-    const timeDifference = currentTime - userEntry;
+  // useEffect(() => {
+  //   const currentTime = new Date().getTime();
+  //   const timeDifference = currentTime - userEntry;
 
-    const minutesAgo = Math.floor(timeDifference / (1000 * 60));
-    const hoursAgo = Math.floor(minutesAgo / 60);
-    const daysAgo = Math.floor(hoursAgo / 24);
-    const weeksAgo = Math.floor(daysAgo / 7);
-    const monthsAgo = Math.floor(daysAgo / 30);
-    const yearsAgo = Math.floor(daysAgo / 365);
+  //   const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+  //   const hoursAgo = Math.floor(minutesAgo / 60);
+  //   const daysAgo = Math.floor(hoursAgo / 24);
+  //   const weeksAgo = Math.floor(daysAgo / 7);
+  //   const monthsAgo = Math.floor(daysAgo / 30);
+  //   const yearsAgo = Math.floor(daysAgo / 365);
 
-    if (yearsAgo > 0) {
-      setTimeAgo(`${yearsAgo} year${yearsAgo === 1 ? "" : "s"} ago`);
-    } else if (monthsAgo > 0) {
-      setTimeAgo(`${monthsAgo} month${monthsAgo === 1 ? "" : "s"} ago`);
-    } else if (weeksAgo > 0) {
-      setTimeAgo(`${weeksAgo} week${weeksAgo === 1 ? "" : "s"} ago`);
-    } else if (daysAgo > 0) {
-      setTimeAgo(`${daysAgo} day${daysAgo === 1 ? "" : "s"} ago`);
-    } else if (hoursAgo > 0) {
-      setTimeAgo(`${hoursAgo} hour${hoursAgo === 1 ? "" : "s"} ago`);
-    } else {
-      setTimeAgo(`${minutesAgo} minute${minutesAgo === 1 ? "" : "s"} ago`);
-    }
-  }, [userEntry]);
+  //   if (yearsAgo > 0) {
+  //     setTimeAgo(`${yearsAgo} year${yearsAgo === 1 ? "" : "s"} ago`);
+  //   } else if (monthsAgo > 0) {
+  //     setTimeAgo(`${monthsAgo} month${monthsAgo === 1 ? "" : "s"} ago`);
+  //   } else if (weeksAgo > 0) {
+  //     setTimeAgo(`${weeksAgo} week${weeksAgo === 1 ? "" : "s"} ago`);
+  //   } else if (daysAgo > 0) {
+  //     setTimeAgo(`${daysAgo} day${daysAgo === 1 ? "" : "s"} ago`);
+  //   } else if (hoursAgo > 0) {
+  //     setTimeAgo(`${hoursAgo} hour${hoursAgo === 1 ? "" : "s"} ago`);
+  //   } else {
+  //     setTimeAgo(`${minutesAgo} minute${minutesAgo === 1 ? "" : "s"} ago`);
+  //   }
+  // }, [userEntry]);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setSelectedImage(file);
+  // };
 
-  const [passwordChangeData, setPasswordChangeData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
-  });
+  // const [passwordChangeData, setPasswordChangeData] = useState({
+  //   currentPassword: "",
+  //   newPassword: "",
+  //   confirmNewPassword: "",
+  // });
 
-  const onSubmit = (data) => {
-    console.log(data.image[0]);
-    const imageUrl = data.image[0];
-    const formData = new FormData();
-    formData.append("image", imageUrl);
+  // const onSubmit = (data) => {
+  //   console.log(data.image[0]);
+  //   const imageUrl = data.image[0];
+  //   const formData = new FormData();
+  //   formData.append("image", imageUrl);
 
-    const url = `https://api.imgbb.com/1/upload?key=${
-      import.meta.env.VITE_IMGBB_KEY
-    }`;
+  //   const url = `https://api.imgbb.com/1/upload?key=${
+  //     import.meta.env.VITE_IMGBB_KEY
+  //   }`;
 
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Image upload failed with status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((imageData) => {
-        const imageAdders = imageData.data.url;
-        createUser(data.email, data.password)
-          .then((result) => {
-            updateUserProfile(data.name, imageAdders).then(() => {
-              axios
-                .post(`${import.meta.env.VITE_SERVER_URL}/users`, {
-                  name: data.name,
-                  email: data.email,
-                  image: imageAdders,
-                  role: data.role,
-                })
-                .then((data) => {
-                  if (data.insertedId) {
-                    Swal.fire({
-                      position: "top-center",
-                      icon: "success",
-                      title: "Your Profile update Successful",
-                      showConfirmButton: false,
-                      timer: 1500,
-                    });
-                  }
-                })
-                .catch((error) => {
-                  Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: `${error.message}`,
-                  });
-                });
-            });
-          })
-          .catch((error) => {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: `${error.message}`,
-            });
-          });
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `${error.message}`,
-        });
-      });
-  };
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         throw new Error(`Image upload failed with status: ${res.status}`);
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((imageData) => {
+  //       const imageAdders = imageData.data.url;
+  //       createUser(data.email, data.password)
+  //         .then((result) => {
+  //           updateUserProfile(data.name, imageAdders).then(() => {
+  //             axios
+  //               .post(`${import.meta.env.VITE_SERVER_URL}/users`, {
+  //                 name: data.name,
+  //                 email: data.email,
+  //                 image: imageAdders,
+  //                 role: data.role,
+  //               })
+  //               .then((data) => {
+  //                 if (data.insertedId) {
+  //                   Swal.fire({
+  //                     position: "top-center",
+  //                     icon: "success",
+  //                     title: "Your Profile update Successful",
+  //                     showConfirmButton: false,
+  //                     timer: 1500,
+  //                   });
+  //                 }
+  //               })
+  //               .catch((error) => {
+  //                 Swal.fire({
+  //                   icon: "error",
+  //                   title: "Oops...",
+  //                   text: `${error.message}`,
+  //                 });
+  //               });
+  //           });
+  //         })
+  //         .catch((error) => {
+  //           Swal.fire({
+  //             icon: "error",
+  //             title: "Oops...",
+  //             text: `${error.message}`,
+  //           });
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: `${error.message}`,
+  //       });
+  //     });
+  // };
 
-  // Function to handle change password form submission
-  const onChangePasswordSubmit = (data) => {
-    const { currentPassword, newPassword, confirmNewPassword } = data;
+  // // Function to handle change password form submission
+  // const onChangePasswordSubmit = (data) => {
+  //   const { currentPassword, newPassword, confirmNewPassword } = data;
 
-    // Check if newPassword and confirmNewPassword match
-    if (newPassword !== confirmNewPassword) {
-      setMessage("New passwords do not match.");
-      return;
-    }
+  //   // Check if newPassword and confirmNewPassword match
+  //   if (newPassword !== confirmNewPassword) {
+  //     setMessage("New passwords do not match.");
+  //     return;
+  //   }
 
-    // Clear the form fields
-    setValue("currentPassword", "");
-    setValue("newPassword", "");
-    setValue("confirmNewPassword", "");
+  //   // Clear the form fields
+  //   setValue("currentPassword", "");
+  //   setValue("newPassword", "");
+  //   setValue("confirmNewPassword", "");
 
-    setMessage("Password changed successfully.");
-  };
+  //   setMessage("Password changed successfully.");
+  // };
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -209,7 +209,7 @@ console.log(filter);
               </h3>
 
               <span className="badge badge-success rounded-full font-semibold text-sm">
-                user
+                {user?.role}
               </span>
             </div>
 
@@ -219,7 +219,7 @@ console.log(filter);
               </span>
             </div>
             <div className="text-xs text-zinc-400">
-              Joined <span> {timeAgo}</span>
+              {/* Joined <span> {timeAgo}</span> */}
             </div>
           </div>
         </div>
@@ -260,10 +260,10 @@ console.log(filter);
          
         </div> */}
       </div>
-      {filter &&
+      {/* {filter &&
         filter?.map((data) => (
           <EditUserModal key={data?._id} isOpen={isOpen} data={data} closeModal={closeModal} />
-        ))}
+        ))} */}
     </section>
   );
 };

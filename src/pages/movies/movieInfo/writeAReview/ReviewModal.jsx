@@ -20,7 +20,7 @@ export default function ReviewModal({
     //     setIsOpen(false);
     //     refetch(); // Assuming refetch is defined somewhere in your component
   }
-}
+
 
 return (
   <Transition appear show={isOpen} as={Fragment}>
@@ -95,3 +95,4 @@ return (
       </Dialog> */}
   </Transition>
 );
+    }
