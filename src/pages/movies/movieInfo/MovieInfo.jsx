@@ -250,7 +250,6 @@ const MovieInfo = () => {
                     <FaPlus className="text-white" />
                     <h3 className="text-sm">Write a Review</h3>
                   </button>
-
                 </div>
               </div>
 
@@ -292,15 +291,14 @@ const MovieInfo = () => {
               </div>
             </div> */}
         </div>
+
         {/* Movie Reviews */}
         <div className="absolute bottom-0 left-1/2  -ml-20">
           <h2 className="border-l-4 pl-2 font-bold hidden lg:block">
-            {" "}
-            Movie Reviews{" "}
+            Movie Reviews
           </h2>
           <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Marquee speed={isHovering ? 0 : 16}>
-
               <DisplayReviews />
             </Marquee>
           </div>

@@ -1,10 +1,10 @@
-import { useDisclosure } from '@nextui-org/use-disclosure';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Modal from 'react-modal';
 import Swal from 'sweetalert2';
 import { imageUpload } from '../../../../api/imgUpload';
 import { addLiveTV, updateLiveTV } from '../../../../api/liveTv';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useTVChannel, { liveTVFetch } from '../../../../hooks/useTVChannel';
 // import Modal from "react-modal";
 
@@ -16,17 +16,15 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    // backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
 };
 
 const LiveChannels = () => {
-  // modal
   // const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState(null);
-  const [selectedLiveSerial, setSelectedLiveSerial] = useState('');
+  const [ selectedLiveSerial, setSelectedLiveSerial ] = useState( '' );
+  const [axiosSecure]= useAxiosSecure()
 
   function openModal() {
     setIsOpen(true);
@@ -93,7 +91,7 @@ const LiveChannels = () => {
 
   // Tv channel delete func
 
-  const handleDelete = (channel) => {
+  const handleDelete = async(channel) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -104,9 +102,11 @@ const LiveChannels = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-          method: 'DELETE',
-        })
+        // fetch(`http://localhost:8080/liveTV/${channel._id}`, {
+        //   method: 'DELETE',
+        // } )
+          
+          axiosSecure.delete(`/liveTV/${channel._id}`)
           .then((res) => {
             if (res.ok) {
               return res.json();
