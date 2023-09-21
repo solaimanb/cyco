@@ -51,7 +51,7 @@ const DisplayReviews = () => {
         )}
 
         {/* Pagination */}
-        {/* <ul className="pagination flex justify-center items-center">
+        {/* <ul className="pagination flex gap-2 justify-center items-center">
           {Array.from({ length: Math.ceil(movieReviews.length / reviewsPerPage) }).map((_, index) => (
             <li key={index} className={`page-item ${index + 1 === currentPage ? "active" : ""}`}>
               <button className="page-link" onClick={() => paginate(index + 1)}>
