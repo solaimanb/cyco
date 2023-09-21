@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import Swal from "sweetalert2";
-
 import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
 import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
 import ChannelModal from "./ChannelModal";
 import { useDisclosure } from "@nextui-org/react";
-
-// import Modal from "react-modal";
+import { AiFillDelete } from "react-icons/ai";
 
 const LiveChannels = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,44 +12,55 @@ const LiveChannels = () => {
   const { onOpen, onOpenChange } = useDisclosure();
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [Channels] = useTVChannel();
-  // Tv channel delete func
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const handleDelete = async(channel) => {
+  const openEditModal = (channel) => {
+    setSelectedChannel(channel);
+    setIsOpen(true); // Open the modal
+  };
+
+  const closeModal = () => {
+    setSelectedChannel(null);
+    setIsOpen(false); // Close the modal
+  };
+
+  const handleDelete = async (channel) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-        //   method: 'DELETE',
-        // } )
-          
-          axiosSecure.delete(`/liveTV/${channel._id}`)
+        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
+          method: "DELETE",
+        });
+
+        axiosSecure
+          .delete(`/liveTV/${channel._id}`)
           .then((res) => {
             if (res.ok) {
               return res.json();
             } else {
-              throw new Error('Network response was not ok');
+              throw new Error("Network response was not ok");
             }
           })
           .then((data) => {
             if (data.success) {
-              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
             } else {
-              Swal.fire('Error', 'Failed to delete the channel.', 'error');
+              Swal.fire("Error", "Failed to delete the channel.", "error");
             }
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error("Error:", error);
             Swal.fire(
-              'Error',
-              'An error occurred while deleting the channel.',
-              'error'
+              "Error",
+              "An error occurred while deleting the channel.",
+              "error"
             );
           });
       }
@@ -66,14 +74,6 @@ const LiveChannels = () => {
   //   setValue("StartedStreaming", selectedChannel?.StartedStreaming || "");
   // }, [selectedChannel, setValue]);
 
-
-  // Function to open the modal for editing a channel
-  const openEditModal = (channel) => {
-    setSelectedChannel(channel);
-    openModal();
-  };
-
-  // Function to handle the update of a channel
   const handleUpdate = async (data) => {
     setLoading(true);
     const { channelName, LiveKey, StartedStreaming } = data;
@@ -98,27 +98,27 @@ const LiveChannels = () => {
 
       if (updatedChannelResponse.success) {
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Live TV Channel Updated successfully',
+          position: "top-end",
+          icon: "success",
+          title: "Live TV Channel Updated successfully",
           showConfirmButton: false,
           timer: 1500,
         });
         closeModal();
       } else {
-        Swal.fire('Error', 'Failed to update the channel.', 'error');
+        Swal.fire("Error", "Failed to update the channel.", "error");
       }
     } catch (err) {
       console.error(err.message);
       Swal.fire(
-        'Error',
-        'An error occurred while updating the channel.',
-        'error'
+        "Error",
+        "An error occurred while updating the channel.",
+        "error"
       );
     }
 
     setLoading(false);
-    setUploadButtonText('Upload Poster');
+    setUploadButtonText("Upload Poster");
   };
 
   return (
@@ -146,6 +146,7 @@ const LiveChannels = () => {
             isClose={isClose}
             setIsClose={setIsClose}
             onOpenChange={onOpenChange}
+            onClose={() => setIsEditModalOpen(false)}
           />
         </div>
 
@@ -173,7 +174,10 @@ const LiveChannels = () => {
                 <td className="px-4 py-2  space-x-6">
                   <button onClick={() => openEditModal(channel)}>Edit</button>
 
-                  <button onClick={() => handleDelete(channel)}>Delete</button>
+                  <button onClick={() => handleDelete(channel)}>
+                    {" "}
+                    <AiFillDelete className="text-red-700 text-3xl font-bold" />
+                  </button>
                 </td>
               </tr>
             ))}
