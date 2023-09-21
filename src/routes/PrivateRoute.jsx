@@ -1,19 +1,17 @@
 import { Navigate, useLocation } from 'react-router';
 
 import Loading from '../components/loading/Loading';
-import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  const [isAdmin] = useAdmin();
 
   if (loading) {
     return <Loading />;
   }
 
-  if (user && isAdmin) {
+  if (user) {
     return children;
   }
 
