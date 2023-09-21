@@ -9,9 +9,9 @@ const DisplayReviews = () => {
   const [reviewsPerPage] = useState(4); // Number of reviews to display per page
   const { user, loading, setLoading } = useAuth();
 
- useEffect(() => {
-    const apiUrl = import.meta.env.VITE_SERVER_URL + '/movieReviews';
 
+  useEffect(() => {
+    const apiUrl = `${import.meta.env.VITE_SERVER_URL}/movieReviews`;
     axios
       .get(apiUrl)
       .then((response) => {
