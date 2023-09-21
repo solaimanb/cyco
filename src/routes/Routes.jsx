@@ -50,6 +50,7 @@ import Trailer from "../pages/trailer/Trailer";
 import ManageSubscription from "../pages/DashBoard/Admin/manageSubscription/ManageSubscription";
 import PrivateRoute from "./PrivateRoute";
 import ManageEvents from "../pages/DashBoard/Admin/manageEvents/ManageEvents";
+import DashboardHome from "../pages/DashBoard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -326,6 +327,7 @@ const router = createBrowserRouter([
 
     ),
     children: [
+      {path: "", element: <DashboardHome/>},
       { path: "admin-analytics", element: <AdminDashboard /> },
       { path: "user-analytics", element: <UserDashboard /> },
       { path: "wishlist", element: <Wishlist /> },
