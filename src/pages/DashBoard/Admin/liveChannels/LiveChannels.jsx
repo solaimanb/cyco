@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-
-import Swal from "sweetalert2";
-
-import { addLiveTV, updateLiveTV } from "../../../../api/liveTv";
-import useTVChannel, { liveTVFetch } from "../../../../hooks/useTVChannel";
-import ChannelModal from "./ChannelModal";
-import { useDisclosure } from "@nextui-org/react";
-
-// import Modal from "react-modal";
+import { useDisclosure } from '@nextui-org/react';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import { updateLiveTV } from '../../../../api/liveTv';
+import useTVChannel from '../../../../hooks/useTVChannel';
+import ChannelModal from './ChannelModal';
 
 const LiveChannels = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +11,8 @@ const LiveChannels = () => {
   const { onOpen, onOpenChange } = useDisclosure();
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [Channels] = useTVChannel();
-  // Tv channel delete func
 
-  const handleDelete = async(channel) => {
+  const handleDelete = async (channel) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -28,11 +23,8 @@ const LiveChannels = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-        //   method: 'DELETE',
-        // } )
-          
-          axiosSecure.delete(`/liveTV/${channel._id}`)
+        axiosSecure
+          .delete(`/liveTV/${channel._id}`)
           .then((res) => {
             if (res.ok) {
               return res.json();
@@ -59,14 +51,6 @@ const LiveChannels = () => {
     });
   };
 
-  // useEffect(() => {
-  //   // Reset the form when the selected channel changes
-  //   setValue("channelName", selectedChannel?.channelName || "");
-  //   setValue("LiveKey", selectedChannel?.LiveKey || "");
-  //   setValue("StartedStreaming", selectedChannel?.StartedStreaming || "");
-  // }, [selectedChannel, setValue]);
-
-
   // Function to open the modal for editing a channel
   const openEditModal = (channel) => {
     setSelectedChannel(channel);
@@ -81,7 +65,7 @@ const LiveChannels = () => {
     try {
       const updatedData = {
         channelName,
-        LiveKey, // Only updating LiveKey
+        LiveKey,
         StartedStreaming,
       };
 

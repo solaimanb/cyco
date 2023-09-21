@@ -13,13 +13,6 @@ const FeedBack = () => {
 
   const handleSubmit = async () => {
     try {
-      // await axios.post('http://localhost:8080/feedbacks', {
-      //   feedback,
-      //   displayName,
-      //   email,
-      //   photoURL,
-      // });
-
       const feedbackInfo = {
         feedback,
         displayName,

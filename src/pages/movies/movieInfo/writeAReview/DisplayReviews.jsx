@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import useAuth from "../../../../hooks/useAuth";
-import ReviewCard from "./ReviewCard/ReviewCard";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import useAuth from '../../../../hooks/useAuth';
+import ReviewCard from './ReviewCard/ReviewCard';
 
 const DisplayReviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
@@ -10,7 +10,7 @@ const DisplayReviews = () => {
   const { user, loading, setLoading } = useAuth();
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8080/movieReviews";
+    const apiUrl = 'http://localhost:8080/movieReviews';
 
     axios
       .get(apiUrl)
@@ -20,7 +20,7 @@ const DisplayReviews = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching movie reviews:", error);
+        console.error('Error fetching movie reviews:', error);
         setLoading(false);
       });
   }, []);
@@ -28,7 +28,10 @@ const DisplayReviews = () => {
   // Calculate the index range of reviews to display on the current page
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-  const currentReviews = movieReviews.slice(indexOfFirstReview, indexOfLastReview);
+  const currentReviews = movieReviews.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
 
   // Function to handle page change
   const paginate = (pageNumber) => {
@@ -38,7 +41,6 @@ const DisplayReviews = () => {
   return (
     <>
       <div className="movie-info-container">
-
         {loading ? (
           <p>Loading...</p>
         ) : (

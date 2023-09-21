@@ -1,16 +1,15 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaFulcrum } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { saveUser } from '../../api/saveUser';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import './Register.css';
-import { saveUser } from '../../api/saveUser';
-import Swal from 'sweetalert2';
 
 const Register = () => {
-  const { createUser, updateUserProfile,loading, setLoading } = useAuth();
+  const { createUser, updateUserProfile, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -33,66 +32,67 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const { email, password, image, name } = data;
-    const formData = new FormData()
+    const formData = new FormData();
     formData.append('image', image[0]);
-    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`
+    const url = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMGBB_KEY
+    }`;
     fetch(url, {
       method: 'POST',
-      body: formData
-    }).then(res => res.json())
-      .then(data => {
-        const imageUrl = data.data.display_url
-        setLoading(true)
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const imageUrl = data.data.display_url;
+        setLoading(true);
         createUser(email, password)
-          .then(result => {
-            
+          .then((result) => {
             console.log(result.user);
             reset();
             updateUserProfile(name, imageUrl)
               .then(() => {
-
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title: 'Congratulations, You Have Successfully registered to CYCO',
+                  title:
+                    'Congratulations, You Have Successfully registered to CYCO',
                   showConfirmButton: false,
-                  timer: 1500
-                })
-                saveUser(result.user)
-                setLoading(false)
-                navigate(from, { replace: true })
-              }).catch(error => {
+                  timer: 1500,
+                });
+                saveUser(result.user);
+                setLoading(false);
+                navigate(from, { replace: true });
+              })
+              .catch((error) => {
                 console.log(error.message);
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
-                  text: (error.message),
-                  
-                })
-                setLoading(false)
-              })
-          }).catch(error => {
+                  text: error.message,
+                });
+                setLoading(false);
+              });
+          })
+          .catch((error) => {
             console.log(error.message);
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: (error.message),
-              
-            })
-            setLoading(false)
-          })
-      }).catch(error => {
-        console.log(error.message);
+              text: error.message,
+            });
+            setLoading(false);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: (error.message),
-          
-        })
-        setLoading(false)
-      })
-
-  }
+          text: error.message,
+        });
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="py-12 2xl:py-16 h-full flex justify-center items-center shadow-xl">
@@ -105,7 +105,7 @@ const Register = () => {
             Register
           </h2>
 
-          <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -213,19 +213,25 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="image" className="block text-xs font-medium pb-2 text-gray-300">
+              <label
+                htmlFor="image"
+                className="block text-xs font-medium pb-2 text-gray-300"
+              >
                 Photo URL:
               </label>
               <input
                 type="file"
                 id="image"
-                accept='image/*'
+                accept="image/*"
                 {...register('image', {
                   required: true,
                 })}
                 className="hidden"
               />
-              <label htmlFor="image" className="p-2 w-full border rounded-sm bg-indigo-500 pr-12 cursor-pointer text-sm">
+              <label
+                htmlFor="image"
+                className="p-2 w-full border rounded-sm bg-indigo-500 pr-12 cursor-pointer text-sm"
+              >
                 Select a file
               </label>
             </div>
@@ -234,12 +240,12 @@ const Register = () => {
                 type="submit"
                 className="w-full text-white p-2 rounded-sm border bg-red-950 bg-opacity-20 border-red-800 hover:bg-gradient-to-r hover:from-cyred hover:to-red-900 focus:outline-none"
               >
-                {loading? "Loading..." : "Register"}
+                {loading ? 'Loading...' : 'Register'}
               </button>
             </div>
           </form>
           <div className="flex flex-col justify-center items-center mx-auto gap-2">
-            <h3 className='divider text-xs'>Sign up with</h3>
+            <h3 className="divider text-xs">Sign up with</h3>
             <div>
               <SocialLogin />
             </div>
@@ -262,36 +268,35 @@ const Register = () => {
 
 export default Register;
 
+// const onSubmit = async (formData) => {
+//   const { username, email, password } = formData;
+//   const role = 'user';
+//   console.log(formData);
+//   if (password !== confirmPassword) {
+//     return;
+//   }
 
-  // const onSubmit = async (formData) => {
-  //   const { username, email, password } = formData;
-  //   const role = 'user';
-  //   console.log(formData);
-  //   if (password !== confirmPassword) {
-  //     return;
-  //   }
+//   try {
+//     const result = await createUser(email, password);
+//     const createdUser = result.user;
 
-  //   try {
-  //     const result = await createUser(email, password);
-  //     const createdUser = result.user;
-
-  //     const response = await axios.post(
-  //       `${import.meta.env.VITE_SERVER_URL}/register`,
-  //       {
-  //         username,
-  //         role,
-  //         email,
-  //         password,
-  //       }
-  //     );
-  //     console.log(response);
-  //     if (response.status === 201) {
-  //       console.log('User registered successfully');
-  //       navigate('/');
-  //     } else {
-  //       console.error('Registration failed');
-  //     }
-  //   } catch (error) {
-  //     console.error('Registration failed', error);
-  //   }
-  // };
+//     const response = await axios.post(
+//       `${import.meta.env.VITE_SERVER_URL}/register`,
+//       {
+//         username,
+//         role,
+//         email,
+//         password,
+//       }
+//     );
+//     console.log(response);
+//     if (response.status === 201) {
+//       console.log('User registered successfully');
+//       navigate('/');
+//     } else {
+//       console.error('Registration failed');
+//     }
+//   } catch (error) {
+//     console.error('Registration failed', error);
+//   }
+// };
