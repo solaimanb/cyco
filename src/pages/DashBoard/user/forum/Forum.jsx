@@ -6,12 +6,12 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useForumQueries from '../../../../hooks/useForumQueries';
 import { setForumTopic } from '../../../../store/slices/forumTopicSlice/forumTopicSlice';
 import { setQueries } from '../../../../store/slices/searchSlice/searchSlice';
+import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 import QueryContent from './QueryContent';
 import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
-import WriteAReviewModal from '../../../movies/movieInfo/writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -53,6 +53,14 @@ const Forum = () => {
     dispatch(setForumTopic(topic));
     setPage(1);
   };
+
+  // ADD QUERY:
+  // const handleAddQuery = async ( newQuery ) => {
+  //   try {
+  //     const response = await axiosSecure.post( '/forumQueries', newQuery );
+  //     console.log(response);
+  //   }catch(error){}
+  // }
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -101,7 +109,7 @@ const Forum = () => {
               />
             </div>
 
-            {/* Query Content */}
+            {/* QUERY CONTENTS */}
             {loading ? (
               <div className="flex items-center justify-center">
                 {/* <Loading /> */}
