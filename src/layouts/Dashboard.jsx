@@ -52,7 +52,7 @@ const Dashboard = () => {
   };
 
   const userNavLinks = [
-    { to: '', text: 'Analytics' },
+    { to: 'user-analytics', text: 'Analytics' },
     { to: 'wishlist', text: 'Wishlist' },
     // { to: 'downloads', text: 'Downloads' },
     { to: 'subscriptions', text: 'Subscriptions' },
@@ -65,7 +65,7 @@ const Dashboard = () => {
   ];
 
   const adminNavLinks = [
-    { to: "", text: "Analytics" },
+    { to: "admin-analytics", text: "Analytics" },
     { to: "upload-movie", text: "Upload Movie" },
     { to: "admin/manage-events", text: "Manage Events" },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
