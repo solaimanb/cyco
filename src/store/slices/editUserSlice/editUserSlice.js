@@ -2,10 +2,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getUser = createAsyncThunk('data/getUser', async () => {
+export const getUser = createAsyncThunk('data/users', async () => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_SERVER_URL}/getUser`
+      `${import.meta.env.VITE_SERVER_URL}/users`
     ); // Replace with your API endpoint
     return response.data;
   } catch (error) {
@@ -29,24 +29,24 @@ export const updateData = createAsyncThunk(
   }
 );
 
-export const updateUser = async (roomData, id) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_SERVER_URL}/updateUserData/${id}`,
-    {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(roomData),
-    }
-  );
+// export const updateUser = async (roomData, id) => {
+//   const response = await fetch(
+//     `${import.meta.env.VITE_SERVER_URL}/updateUserData/${id}`,
+//     {
+//       method: 'PUT',
+//       headers: {
+//         'content-type': 'application/json',
+//       },
+//       body: JSON.stringify(roomData),
+//     }
+//   );
 
-  const data = await response.json();
-  return data;
-};
-// ... (continued from previous code)
+//   const data = await response.json();
+//   return data;
+// };
+// // ... (continued from previous code)
 
-// Define an initial state
+// // Define an initial state
 const initialState = {
   data: [],
   status: 'loading',

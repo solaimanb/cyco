@@ -12,7 +12,6 @@ const Login = () => {
 const closeModal = () => {
     setIsOpen(false)
 }
-console.log(isOpen);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 

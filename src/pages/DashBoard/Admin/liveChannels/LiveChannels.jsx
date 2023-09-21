@@ -15,43 +15,44 @@ const LiveChannels = () => {
   const { onOpen, onOpenChange } = useDisclosure();
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [Channels] = useTVChannel();
-
   // Tv channel delete func
 
-  const handleDelete = (channel) => {
+  const handleDelete = async(channel) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/liveTV/${channel._id}`, {
-          method: "DELETE",
-        })
+        // fetch(`http://localhost:8080/liveTV/${channel._id}`, {
+        //   method: 'DELETE',
+        // } )
+          
+          axiosSecure.delete(`/liveTV/${channel._id}`)
           .then((res) => {
             if (res.ok) {
               return res.json();
             } else {
-              throw new Error("Network response was not ok");
+              throw new Error('Network response was not ok');
             }
           })
           .then((data) => {
             if (data.success) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             } else {
-              Swal.fire("Error", "Failed to delete the channel.", "error");
+              Swal.fire('Error', 'Failed to delete the channel.', 'error');
             }
           })
           .catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
             Swal.fire(
-              "Error",
-              "An error occurred while deleting the channel.",
-              "error"
+              'Error',
+              'An error occurred while deleting the channel.',
+              'error'
             );
           });
       }
@@ -64,6 +65,7 @@ const LiveChannels = () => {
   //   setValue("LiveKey", selectedChannel?.LiveKey || "");
   //   setValue("StartedStreaming", selectedChannel?.StartedStreaming || "");
   // }, [selectedChannel, setValue]);
+
 
   // Function to open the modal for editing a channel
   const openEditModal = (channel) => {
@@ -96,27 +98,27 @@ const LiveChannels = () => {
 
       if (updatedChannelResponse.success) {
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Live TV Channel Updated successfully",
+          position: 'top-end',
+          icon: 'success',
+          title: 'Live TV Channel Updated successfully',
           showConfirmButton: false,
           timer: 1500,
         });
         closeModal();
       } else {
-        Swal.fire("Error", "Failed to update the channel.", "error");
+        Swal.fire('Error', 'Failed to update the channel.', 'error');
       }
     } catch (err) {
       console.error(err.message);
       Swal.fire(
-        "Error",
-        "An error occurred while updating the channel.",
-        "error"
+        'Error',
+        'An error occurred while updating the channel.',
+        'error'
       );
     }
 
     setLoading(false);
-    setUploadButtonText("Upload Poster");
+    setUploadButtonText('Upload Poster');
   };
 
   return (

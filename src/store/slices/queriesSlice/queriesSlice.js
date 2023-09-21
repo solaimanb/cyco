@@ -7,19 +7,8 @@ const queriesSlice = createSlice({
   reducers: {
     addQuery: (state, action) => {
       state.push(action.payload);
+      console.log(state, action.payload);
     },
-    // addCommentToQuery: (state, action) => {
-    //   const { queryId, comment } = action.payload;
-
-    //   const queryToUpdate = state.find((query) => query._id === queryId);
-
-    //   if (queryToUpdate) {
-    //     if (!queryToUpdate.comments) {
-    //       queryToUpdate.comments = [];
-    //     }
-    //     queryToUpdate.comments.push(comment);
-    //   }
-    // },
     incrementQueryView: (state, action) => {
       const { queryId } = action.payload;
       const queryToUpdate = state.find((query) => query._id === queryId);
@@ -69,7 +58,6 @@ const queriesSlice = createSlice({
 
 export const {
   addQuery,
-  // addCommentToQuery,
   incrementQueryView,
   updateQueryViewsInDB,
   updateViewCount,
@@ -78,20 +66,3 @@ export const {
 } = queriesSlice.actions;
 
 export default queriesSlice.reducer;
-
-// export const addCommentToQueryAsync =
-//   (queryId, comment) => async (dispatch) => {
-//     try {
-//       console.log('Adding comment to query...');
-//       dispatch(addCommentToQuery({ queryId, comment }));
-
-//       const response = await saveCommentToDB(queryId, comment);
-//       console.log(response);
-
-//       if (!response.success) {
-//         console.log('Failed to save comment to the database.');
-//       }
-//     } catch (error) {
-//       console.log('Error adding comment:', error);
-//     }
-//   };
