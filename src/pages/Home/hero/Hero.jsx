@@ -68,9 +68,8 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative h-[70vh] md:h-[85vh] lg:h-screen 2xl:h-[75vh] overflow-hidden bg-black/60  m-0 p-0">
     <CanvasAnimation>
-      
+      <section className="relative h-[70vh] md:h-[85vh] lg:h-screen xl:h-[90vh] pt-10 xl:pt-28 overflow-hidden bg-black/60  m-0 p-0">
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -103,8 +102,8 @@ const Hero = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+      </section>
     </CanvasAnimation>
-  </section>
   );
 };
 

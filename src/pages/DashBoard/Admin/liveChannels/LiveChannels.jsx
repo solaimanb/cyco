@@ -67,13 +67,14 @@ const LiveChannels = () => {
     });
   };
 
-  // useEffect(() => {
-  //   // Reset the form when the selected channel changes
-  //   setValue("channelName", selectedChannel?.channelName || "");
-  //   setValue("LiveKey", selectedChannel?.LiveKey || "");
-  //   setValue("StartedStreaming", selectedChannel?.StartedStreaming || "");
-  // }, [selectedChannel, setValue]);
 
+  // Function to open the modal for editing a channel
+  const openEditModal = (channel) => {
+    setSelectedChannel(channel);
+    openModal();
+  };
+
+  // Function to handle the update of a channel
   const handleUpdate = async (data) => {
     setLoading(true);
     const { channelName, LiveKey, StartedStreaming } = data;
@@ -81,7 +82,7 @@ const LiveChannels = () => {
     try {
       const updatedData = {
         channelName,
-        LiveKey, // Only updating LiveKey
+        LiveKey,
         StartedStreaming,
       };
 

@@ -4,17 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
-import './Login.css';
-import { useDisclosure,} from "@nextui-org/react";
 import ResetModal from '../../modal/ResetModal';
+import './Login.css';
+
 const Login = () => {
-  let [isOpen, setIsOpen] = useState(false)
-const closeModal = () => {
-    setIsOpen(false)
-}
+  let [isOpen, setIsOpen] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
-
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = async (event) => {
@@ -24,9 +20,6 @@ const closeModal = () => {
     try {
       const result = await signIn(email?.value, password?.value);
       const loggedUser = result?.user;
-      // console.log(loggedUser);
-
-      // LOGIN SUCCESS NOTIFICATION:
       Swal.fire({
         text: 'Login successful!',
         icon: 'success',
@@ -41,26 +34,28 @@ const closeModal = () => {
   };
 
   const handleResetPassword = (event) => {
-          const email = (emailRef.current.value);
-          if (!email){
-            alert('please provide your email address first')
-            return;
-          }
+    const email = emailRef.current.value;
+    if (!email) {
+      alert('please provide your email address first');
+      return;
+    }
 
-          sendPasswordResetEmail(auth, email)
-          .then(() => {
-            alert('Please check your email')
-          })
-          .catch(error => {
-            console.log(error);
-            setErrorMessage(error.message)
-          })
-  }
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('Please check your email');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="py-12 2xl:py-16 h-full flex justify-center items-center">
-    <ResetModal isOpen={isOpen}
-            closeModal={closeModal} />
+      <ResetModal isOpen={isOpen} closeModal={closeModal} />
       <div id="loginAnimation">
         <div className="z-10 p-8">
           <div className="absolute top-0 left-0 animate-pulse">
@@ -70,7 +65,7 @@ const closeModal = () => {
             Login
           </h2>
 
-          <form onSubmit={handleLogin} className='w-full'>
+          <form onSubmit={handleLogin} className="w-full">
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -100,7 +95,6 @@ const closeModal = () => {
                 className="mt-1 p-2 w-full border rounded-sm"
                 required
               />
-             
             </div>
             {errorMessage && (
               <p className="text-red-500 text-sm mb-2">{errorMessage}</p>
@@ -115,10 +109,15 @@ const closeModal = () => {
             </div>
           </form>
           <label className="flex justify-end">
-             <p className="text-sm pt-2 "> <button onClick={() =>setIsOpen(true)}>Forgot password?</button> </p>
-            </label>
-            <div className="flex flex-col justify-center items-center mx-auto gap-2">
-            <h3 className='divider text-xs'>Sign up with</h3>
+            <p className="text-sm pt-2 ">
+              {' '}
+              <button onClick={() => setIsOpen(true)}>
+                Forgot password?
+              </button>{' '}
+            </p>
+          </label>
+          <div className="flex flex-col justify-center items-center mx-auto gap-2">
+            <h3 className="divider text-xs">Sign up with</h3>
             <div>
               <SocialLogin />
             </div>
