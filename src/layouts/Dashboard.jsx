@@ -105,14 +105,19 @@ const Dashboard = () => {
         }`}
       >
         <div className="w-full flex  justify-between items-center py-6">
-          <Link to="/">
-            <img
-              className={`w-12 h-12 rounded-full`}
-              src="cy-ico.png"
-              alt="Cyco-logo"
+              <Link to='/'>
+              <h1 className='font-bold border-l-4 border-cyred pl-2'>CYCO</h1>
+              </Link>
+              <Link to=''>
+              <img
+              src={user?.photoURL}
+              alt="user-photo"
+              title={isAdmin ? 'Admin' : 'User'}
+              className="w-16 h-16 p-1 border-2 border-cyred rounded-full object-cover"
             />
-          </Link>
-        </div>
+              </Link>
+
+            </div>
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
             <hr className="pb-8" />
@@ -197,6 +202,7 @@ const Dashboard = () => {
           isSidebarOpen ? '' : 'blur-none'
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
+        
         <Outlet />
       </div>
     </div>
