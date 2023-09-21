@@ -34,15 +34,17 @@ const testimonialData = [
 ];
 
 const TestimonialSlider = () => {
-const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
-console.log(feedbacks)
+  console.log(feedbacks);
 
   useEffect(() => {
     // Fetch feedbacks when the component mounts
     const fetchFeedbacks = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/feedbacks');
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/feedbacks`
+        );
         setFeedbacks(response.data);
       } catch (error) {
         console.error(error);
@@ -63,7 +65,7 @@ console.log(feedbacks)
       // pagination={{
       //   clickable: true,
       // }}
-      modules={[Autoplay, Navigation, ]}
+      modules={[Autoplay, Navigation]}
       // className="h-[440px]"
     >
       {feedbacks?.map((feedBack, index) => {

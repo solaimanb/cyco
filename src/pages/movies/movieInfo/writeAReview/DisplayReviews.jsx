@@ -10,7 +10,7 @@ const DisplayReviews = () => {
   const { user, loading, setLoading } = useAuth();
 
   useEffect(() => {
-    const apiUrl = 'http://localhost:8080/movieReviews';
+    const apiUrl = `${import.meta.env.VITE_SERVER_URL}/movieReviews`;
 
     axios
       .get(apiUrl)
