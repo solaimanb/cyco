@@ -27,25 +27,37 @@ const ManageSubscription = () => {
         </p>
       </div>
 
-      <div className="mt-5">
+      <div className="gap-5 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 xl:grid-cols-2">
         {items &&
           items.map((item) => (
             <div
               item={item}
               key={item?._id}
-              className="modal-box max-w-md mx-auto bg-white p-4 rounded shadow-lg text-gray-700"
+              className=" bg-white p-4 rounded shadow-lg text-gray-700 "
             >
-              <Button
+            <div className="card-actions justify-end">
+        <Button
+              
+
                 onClick={() => handlePassDataBasic(item)}
                 onPress={onOpen}
-                className="btn btn-sm  absolute right-2 top-2"
+                className="btn btn-sm absolute "
                 color="secondary"
               >
                 Edit
               </Button>
-              <div className="">
+    </div>
+           
+              <div className=" text-center">
                 <h2 className="text-2xl font-semibold mb-2">{item?.title}</h2>
                 <h2 className="">Price: {item?.price}</h2>
+                <div className="divider">Top Features</div>
+                 <div className=' text-start'>
+                 <h2 className="">#- {item?.feature1}</h2>
+                 <h2 className="">#- {item?.feature2}</h2>
+                 </div>
+            
+                
               </div>
             </div>
           ))}

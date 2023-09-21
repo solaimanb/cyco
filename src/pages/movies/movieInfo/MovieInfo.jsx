@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaCloudDownloadAlt, FaPlus } from "react-icons/Fa";
 import { LuListVideo } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -238,7 +238,7 @@ const MovieInfo = () => {
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 mt-2"
               >
-                <FaPlus className="text-cyred" />
+                
                 <h3 className="text-sm">Write a Review</h3>
               </button>
             </div>
