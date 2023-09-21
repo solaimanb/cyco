@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Marquee from "react-fast-marquee";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import ReviewCard from "./ReviewCard/ReviewCard";
 

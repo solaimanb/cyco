@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -293,7 +292,7 @@ const MovieInfo = () => {
         </div>
 
         {/* Movie Reviews */}
-        <div className="absolute bottom-0 left-1/2  -ml-20">
+        {/* <div className="absolute bottom-0 left-1/2  -ml-20">
           <h2 className="border-l-4 pl-2 font-bold hidden lg:block">
             Movie Reviews
           </h2>
@@ -302,6 +301,15 @@ const MovieInfo = () => {
               <DisplayReviews />
             </Marquee>
           </div>
+        </div> */}
+      </div>
+
+      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40">
+        <h2 className="border-l-4 pl-2 font-bold">
+          Movie Reviews
+        </h2>
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <DisplayReviews />
         </div>
       </div>
     </div>
