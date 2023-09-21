@@ -4,32 +4,14 @@ import Swal from 'sweetalert2';
 import { addNewMovie } from '../../../../api/addNewMovie';
 import { imageUpload } from '../../../../api/imgUpload';
 
-// const socket = io('http://localhost:8080');
-// const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
-
 const UploadMovie = () => {
-  // const [notification, setNotification] = useState('');
-  // const [notifyUsers, setNotifyUsers] = useState(false);
-
-  // const sendNotification = () => {
-  //   socket.emit('send_notification', { notification: notification });
-  //   Swal.fire({
-  //     position: 'top-end',
-  //     icon: 'success',
-  //     title: 'Notification sent successfully',
-  //     showConfirmButton: false,
-  //     timer: 1000,
-  //   });
-  // };
-
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');
 
-  //handle from submit
   const onSubmit = async (data) => {
     setLoading(true);
-    const Poster = data.Poster[0]; // Access the uploaded file
+    const Poster = data.Poster[0];
     const {
       Title,
       movieCode,
@@ -106,7 +88,7 @@ const UploadMovie = () => {
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
-        <p className="hidden md:flex text-sm md:text-base font-semibold bor7er ml-2 px-smmd:px-5">
+        <p className="hidden md:flex text-sm md:text-base font-semibold bor7er ml-2 px-sm md:px-5">
           Upload New Movie
         </p>
       </div>
@@ -366,32 +348,7 @@ const UploadMovie = () => {
         </div>
 
         <div className="w-2/3 mx-auto ">
-          {/* <div className="space-y-1 text-sm flex justify-center items-center">
-            <label htmlFor="notifyUsers" className="block text-gray-600">
-              Notify Users
-            </label>
-            <input
-              type="checkbox"
-              name="notifyUsers"
-              id="notifyUsers"
-              onChange={(event) => {
-                const isChecked = event.target.checked;
-                setNotifyUsers(isChecked);
-
-                if (isChecked) {
-                  const title = event.target.form.Title.value; // Get movie title from the form
-                  const actors = event.target.form.Actors.value; // Get actors from the form
-                  const director = event.target.form.Director.value; // Get director from the form
-                  //
-                  setNotification(
-                    `Movie: ${title}, Actors: ${actors}, Director: ${director}`
-                  );
-                }
-              }}
-            />
-          </div> */}
           <button
-            // onClick={sendNotification}
             type="submit"
             className="w-full p-3 text-center font-medium text-white transition duration-200 rounded-sm-md bg-cyred/60 hover:bg-cyred"
           >

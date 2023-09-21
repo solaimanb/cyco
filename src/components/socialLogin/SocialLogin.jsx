@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { saveUser } from '../../api/saveUser';
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -22,11 +21,11 @@ const SocialLogin = () => {
       .catch((error) => {
         setLoading(false);
         console.error('Registration error:', error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error.message || 'Something went wrong during registration.',
-        });
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: error.message || 'Something went wrong during registration.',
+        // });
       });
   };
 
