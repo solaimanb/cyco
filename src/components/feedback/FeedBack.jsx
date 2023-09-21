@@ -1,28 +1,41 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const FeedBack = () => {
   const { user } = useAuth();
-  const { displayName, email, photoURL } = user; // Destructure user properties
-
+  const { displayName, email, photoURL } = user || {};
   const [feedback, setFeedback] = useState('');
+  const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
 
   const handleSubmit = async () => {
     try {
-      // Send a POST request to your server with feedback and user info
-      await axios.post('http://localhost:8080/feedbacks', {
+      // await axios.post('http://localhost:8080/feedbacks', {
+      //   feedback,
+      //   displayName,
+      //   email,
+      //   photoURL,
+      // });
+
+      const feedbackInfo = {
         feedback,
         displayName,
         email,
         photoURL,
-      });
+      };
 
-      // Clear the feedback textarea
+      const feedbackResponse = await axiosSecure.post(
+        '/feedbacks',
+        feedbackInfo
+      );
+
+      console.log(feedbackResponse);
+
       setFeedback('');
 
-      // Show a success message using SweetAlert2
       Swal.fire({
         icon: 'success',
         title: 'Feedback Submitted',
@@ -30,9 +43,12 @@ const FeedBack = () => {
       });
     } catch (error) {
       console.error(error);
-      // Handle error, e.g., show an error message to the user
     }
   };
+
+  if (!user || !user.displayName) {
+    navigate('/login');
+  }
 
   return (
     <div className="w-[80%] md:w-[60%] mx-auto flex justify-end">

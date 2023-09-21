@@ -11,7 +11,6 @@ import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
-import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 
 const Forum = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -54,6 +53,14 @@ const Forum = () => {
     setPage(1);
   };
 
+  // ADD QUERY:
+  // const handleAddQuery = async ( newQuery ) => {
+  //   try {
+  //     const response = await axiosSecure.post( '/forumQueries', newQuery );
+  //     console.log(response);
+  //   }catch(error){}
+  // }
+
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
       {/* FORUM HEADER */}
@@ -72,13 +79,11 @@ const Forum = () => {
           <div>
             {/* ASK QUERY SLOT */}
             <div className="flex justify-end items-center px-2 pb-2 border-b border-zinc-800">
-              <button
-                // onClick={handleRefresh}
-                className="hidden btn btn-sm border-zinc-800 rounded-sm items-center gap-1 text-sm"
-              >
+              <button className="hidden btn btn-sm border-zinc-800 rounded-sm items-center gap-1 text-sm">
                 <IoMdRefresh /> Refresh
               </button>
 
+              {/* ASK QUERY BTN */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
@@ -86,14 +91,11 @@ const Forum = () => {
                 <FaPlus className="text-cyred" />
                 <h3 className="text-sm">Ask Query</h3>
               </button>
+
               <AskQueryModal isOpen={isOpen} setIsOpen={setIsOpen} />
-              <WriteAReviewModal
-                isOpen={isWriteaReviewOpen}
-                setIsOpen={setIsWriteaReviewOpen}
-              />
             </div>
 
-            {/* Query Content */}
+            {/* QUERY CONTENTS */}
             {loading ? (
               <div className="flex items-center justify-center">
                 {/* <Loading /> */}
