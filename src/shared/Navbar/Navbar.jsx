@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { RiNotificationBadgeFill } from 'react-icons/ri';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-// import { io } from 'socket.io-client';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
-// import NotificationsDropdown from '../../pages/notify/NotificationDropDown';
 import './NavBar.css';
 
 const Navbar = () => {
@@ -14,19 +12,6 @@ const Navbar = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationHistory, setNotificationHistory] = useState([]);
-  // const socket = io.connect(`${import.meta.env.VITE_SERVER_URL}`);
-
-  // NOTIFICATION HANDLERS:---------------------->>>>
-  // useEffect(() => {
-  //   socket.on('receive_notification', (data) => {
-  //     setNotificationCount((prevCount) => prevCount + 0.5);
-  //     setNotificationHistory((prevHistory) => [
-  //       data?.notification,
-  //       ...prevHistory,
-  //     ]);
-  //   });
-  //   // }, []);
-  // }, [socket]);
 
   const handleShowNotificationsClick = () => {
     setShowNotifications(true);

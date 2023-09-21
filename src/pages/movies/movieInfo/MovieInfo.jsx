@@ -1,5 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
 import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -156,7 +157,7 @@ const MovieInfo = () => {
   return (
     <div className="px-2 md:p-10 xl:p-16 mt-20 lg:mt-10">
       <div
-        className="hero flex flex-row w-[90%] lg:w-[70%] h-[80%] lg:h-[80%] mx-auto
+        className="hero flex flex-row w-[90%] lg:w-[80%] h-[90%] mx-auto
          mt-2 md:mt-5 lg:mt-10 rounded-sm relative"
         style={{ backgroundImage: `url(${Thumbnail})` }}
       >
@@ -250,7 +251,6 @@ const MovieInfo = () => {
                     <FaPlus className="text-white" />
                     <h3 className="text-sm">Write a Review</h3>
                   </button>
-
                 </div>
               </div>
 
@@ -259,7 +259,7 @@ const MovieInfo = () => {
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 mt-2"
               >
-                <FaPlus className="text-cyred" />
+                
                 <h3 className="text-sm">Write a Review</h3>
               </button>
             </div>
@@ -292,18 +292,14 @@ const MovieInfo = () => {
               </div>
             </div> */}
         </div>
-        {/* Movie Reviews */}
-        <div className="absolute bottom-0 left-1/2  -ml-20">
-          <h2 className="border-l-4 pl-2 font-bold hidden lg:block">
-            {" "}
-            Movie Reviews{" "}
-          </h2>
-          <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Marquee speed={isHovering ? 0 : 16}>
+      </div>
 
-              <DisplayReviews />
-            </Marquee>
-          </div>
+      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40">
+        <h2 className="border-l-4 pl-2 font-bold">
+          Movie Reviews
+        </h2>
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <DisplayReviews />
         </div>
       </div>
     </div>

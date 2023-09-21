@@ -1,35 +1,34 @@
-import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { AuthContext } from "../../providers/AuthProvider";
-import { saveUser } from "../../api/saveUser";
+import { useContext } from 'react';
+import { FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { saveUser } from '../../api/saveUser';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const SocialLogin = () => {
   const { googleSignIn, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/';
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(result => {
+      .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
-        saveUser(loggedUser)
-        navigate(from, { replace: true })
+        saveUser(loggedUser);
+        navigate(from, { replace: true });
       })
-      .catch(error => {
-        setLoading(false)
-        console.error("Registration error:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: error.message || "Something went wrong during registration."
-        })
+      .catch((error) => {
+        setLoading(false);
+        console.error('Registration error:', error);
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: error.message || 'Something went wrong during registration.',
+        // });
       });
-  }
+  };
+
   // const handleGoogleSignIn = () => {
   //   googleSignIn()
   //     .then((data) => {
