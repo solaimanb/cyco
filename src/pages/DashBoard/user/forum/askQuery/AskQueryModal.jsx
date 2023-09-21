@@ -1,4 +1,4 @@
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/react';
+import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PiWarningOctagonDuotone } from 'react-icons/pi';
@@ -102,20 +102,6 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
   const handleWarning = () => {
     setShowWarning(!showWarning);
   };
-  // <Modal
-  //     backdrop="opaque"
-  //     isOpen={isOpen}
-  //     onOpenChange={onOpenChange}
-  //     radius="2xl"
-  //     classNames={{
-  //       body: "",
-  //       backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
-  //       base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-  //       header: "border-b-[1px] border-[#292f46]",
-  //       footer: "border-t-[1px] border-[#292f46]",
-  //       closeButton: "hover:bg-white/5 active:bg-white/10",
-  //     }}
-  //   ></Modal>
 
   return (
     <Modal
@@ -124,8 +110,8 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
       backdrop="opaque"
       classNames={{
         body: '',
-        backdrop: 'bg-[#292f46]/50 backdrop-opacity-40',
-        base: 'border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]',
+        backdrop: 'bg-[#111]/80 backdrop-opacity-60',
+        base: 'border-[#292f46] bg-[#19172c] dark:bg-[#222] text-[#a8b0d3]',
         header: 'border-b-[1px] border-[#292f46]',
         footer: 'border-t-[1px] border-[#292f46]',
         closeButton: 'hover:bg-white/5 active:bg-white/10',
@@ -139,17 +125,17 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
             </ModalHeader>
 
             <ModalBody>
-              <div className="modal-box w-full mx-auto p-4 rounded shadow-lg">
+              <div className="modal-box w-full mx-auto p-5 rounded shadow-lg">
                 <div className="">
                   <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="mt-2 space-y-3"
+                    className="mt-2 space-y-4"
                   >
                     <div className="flex flex-col gap-2">
                       <label
                         className="text-xs text-white"
                         htmlFor="title"
-                      ></label>
+                      >Query:</label>
                       <input
                         className="text-sm p-1 rounded-sm bg-zinc-300 text-black"
                         type="text"
@@ -216,7 +202,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
                         )}
                       </div>
                     </div>
-                    <ModalFooter>
+                    {/* <ModalFooter>
                       <Button
                         color="foreground"
                         variant="light"
@@ -228,7 +214,7 @@ const AskQueryModal = ({ isOpen, setIsOpen }) => {
                         className="bg-[#6f4ef2] btn rounded-lg shadow-lg shadow-indigo-500/20"
                         type="submit"
                       />
-                    </ModalFooter>
+                    </ModalFooter> */}
                   </form>
                 </div>
               </div>
