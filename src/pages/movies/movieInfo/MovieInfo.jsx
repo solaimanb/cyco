@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from "react-redux";
+import FeaturedMovies from "../../home/featuredMovies/FeaturedMovies";
 import React, { useState } from 'react';
 import { FaCloudDownloadAlt, FaPlus } from 'react-icons/fa';
 import { LuListVideo } from 'react-icons/lu';
@@ -257,7 +259,7 @@ const MovieInfo = () => {
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 mt-2"
               >
-                <FaPlus className="text-cyred" />
+                
                 <h3 className="text-sm">Write a Review</h3>
               </button>
             </div>
