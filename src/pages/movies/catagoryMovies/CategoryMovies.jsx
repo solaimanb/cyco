@@ -10,7 +10,6 @@ const CategoryMovies = () => {
   const { user, setLoading } = useAuth();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.paymentHistory.data);
-  const [isMovieNoSubscriptions, setMovieNoSubscriptions] = useState();
 
   const filter = data && data.find((d) => d?.email === user?.email);
   const [firstElement, setFirstElement] = useState();
@@ -19,13 +18,13 @@ const CategoryMovies = () => {
     dispatch(fetchData());
     //  movies.map(movie=>setMovieArray(movie))
     // Simulating setting the filter array
-    if (filter?.membership == "Ulta Premium") {
+    if (filter?.membership == "2-Year") {
       setFirstElement("Watch now");
-    } else if (filter?.membership == "Premium") {
+    } else if (filter?.membership == "1-Year") {
       setFirstElement("Watch now");
-    } else if (filter?.membership == "Standard") {
+    } else if (filter?.membership == "6-Months") {
       setFirstElement("Watch now");
-    } else if (filter?.membership == "Basic Plan") {
+    } else if (filter?.membership == "1-Months") {
       setFirstElement("Watch now");
     } 
     // else{
