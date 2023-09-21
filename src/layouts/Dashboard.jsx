@@ -1,12 +1,12 @@
-import { Badge, Button, useDisclosure } from '@nextui-org/react';
+import { useDisclosure } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
-import NotificationModal from '../shared/modal/NotificationModal';
+import useUsers from '../hooks/useUsers';
 import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySlice';
 
 const Dashboard = () => {
@@ -50,7 +50,7 @@ const Dashboard = () => {
   };
 
   const userNavLinks = [
-    { to: 'user-dashboard', text: 'Profile' },
+    { to: 'user-analytics', text: 'Analytics' },
     { to: 'wishlist', text: 'Wishlist' },
     // { to: 'downloads', text: 'Downloads' },
     { to: 'subscriptions', text: 'Subscriptions' },
@@ -59,11 +59,10 @@ const Dashboard = () => {
     // { to: 'recommendation', text: 'Recommendation' },
     { to: 'payment-info', text: 'Payment Info' },
     { to: 'history', text: 'History' },
-    { to: '/', text: 'Home' },
   ];
 
   const adminNavLinks = [
-    { to: "admin-dashboard", text: "Dashboard" },
+    { to: "admin-analytics", text: "Analytics" },
     { to: "upload-movie", text: "Upload Movie" },
     { to: "admin/manage-events", text: "Manage Events" },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
@@ -73,11 +72,11 @@ const Dashboard = () => {
     { to: 'user-panel', text: 'User Panel' },
     { to: 'user-feedback', text: 'User Feedback' },
     { to: 'admin/paymentHistory', text: 'Payment History' },
-    { to: '/', text: 'Home' },
   ];
 
-  const [isAdmin, setAdmin] = useState(false);
-  // const [isAdmin, SetAdmin] = useState(true);
+  const [isAdmin] = useAdmin();
+  const [users] = useUsers();
+  console.log(users);
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -104,28 +103,17 @@ const Dashboard = () => {
           isSidebarOpen ? 'block' : 'hidden lg:block'
         }`}
       >
+        <div className="w-full flex  justify-between items-center py-6">
+          <Link to="/">
+            <img
+              className={`w-12 h-12 rounded-full`}
+              src="cy-ico.png"
+              alt="Cyco-logo"
+            />
+          </Link>
+        </div>
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
-            <div className="w-full flex  justify-between items-center py-6">
-              <img
-                className={`w-10 h-10 rounded-full`}
-                src="https://people.com/thmb/ySDyAcr9BJnqRJKcw04-92QlU_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x279:751x281)/nick-fury-cut-iron-man-scene-030223-f25e3aa7570e48efa14155c323161ddb.jpg"
-                alt="admin-profile"
-              />
-
-              <hr className="pb-8" />
-
-              <div onClick={() => setAdmin(!isAdmin)} className="">
-                {/* <FaBell size={22} /> */}
-                <button
-                  className="btn btn-sm"
-                  title="Click to Check User Dash (Test)"
-                >
-                  Check User
-                </button>
-              </div>
-            </div>
-
             <hr className="pb-8" />
 
             {/* ADMIN NAVIGATION */}
@@ -152,10 +140,7 @@ const Dashboard = () => {
               ))}
             </ul>
 
-            <div className="flex flex-col gap-1 mt-auto mb-2">
-              <div className="sidebar-btn">
-                <button>Settings</button>
-              </div>
+            <div className="group:mb-0 mt-auto">
               <button
                 onClick={() => handleLogOut()}
                 className="sidebar-btn w-full text-start"
@@ -166,45 +151,6 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="h-full w-full flex flex-col">
-            <div className="w-full flex  justify-between items-center py-6">
-              <img
-                className={`w-10 h-10 rounded-full object-cover`}
-                src="https://images.teamtalk.com/content/uploads/2023/02/13070521/man-utd-manager-erik-ten-hag.jpg"
-                alt="user-profile"
-              />
-
-              {/* NOTIFICATION INDICATOR */}
-              <>
-                <Button onPress={onOpen} color="">
-                  <Badge
-                    color="danger"
-                    content={filters?.length}
-                    shape="circle"
-                  >
-                    <MdOutlineNotificationsActive
-                      className="fill-current"
-                      size={30}
-                    />
-                  </Badge>
-                </Button>
-                <NotificationModal
-                  filters={filters}
-                  onOpenChange={onOpenChange}
-                  isOpen={isOpen}
-                />
-              </>
-
-              <div onClick={() => setAdmin(!isAdmin)} className="">
-                {/* <FaBell size={22} /> */}
-                <button
-                  className="btn btn-sm"
-                  title="Click to Check Admin Dash (Test)"
-                >
-                  Check Admin
-                </button>
-              </div>
-            </div>
-
             <hr className="pb-8" />
 
             {/* USER NAVIGATION */}

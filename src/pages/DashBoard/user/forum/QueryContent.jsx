@@ -25,8 +25,7 @@ import {
 } from './actions/queryActions';
 
 const QueryPost = ({ query }) => {
-  const { _id, description, title, timestamp, views, voteCount } = query;
-  // console.log(_id);
+  const { _id, title, timestamp, views, voteCount } = query;
 
   const [axiosSecure] = useAxiosSecure();
   const [timeAgo, setTimeAgo] = useState(formatTimestamp(timestamp));
@@ -40,8 +39,8 @@ const QueryPost = ({ query }) => {
   const [ viewClicked, setViewClicked ] = useState( false );
 
 
-  const queries = useSelector((state) => state.queries);
   const dispatch = useDispatch();
+  const queries = useSelector((state) => state.queries);
   const comments = useSelector((state) => state.comments[_id]);
   console.log(initialComments, comments);
 
