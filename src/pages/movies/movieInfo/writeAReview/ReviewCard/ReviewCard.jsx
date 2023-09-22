@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import ContentModal from './ContentModal'; 
+import useUsers from '../../../../../hooks/useUsers';
+
 
 const ReviewCard = ({ review }) => {
   const [showModal, setShowModal] = useState(false);
+  // const [user ] = useUsers();
+  // console.log('user from Review card', user);
+  console.log(review);
+  
 
   const openModal = () => {
     setShowModal(true);
@@ -34,7 +40,7 @@ const ReviewCard = ({ review }) => {
           <div className="flex justify-between items-center mt-4">
            <div className='flex items-center'>
            <img
-              src={review.poster}
+              src={review?.user?.photoURL}
               alt={`Poster for ${review.title}`}
               className="w-10 h-10 rounded-full mr-2"
             />
