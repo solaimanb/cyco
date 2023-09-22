@@ -10,8 +10,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../../../../hooks/useAuth';
 import { fetchData } from '../../../../store/slices/paymenthistorySlice/paymentHistorySlice';
+import useTitle from '../../../../hooks/useTitle';
 
 const AdminPaymentHistory = () => {
+  // title
+  useTitle("Admin Payment History | CYCO")
+  
   const { loading } = useAuth();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.paymentHistory.data);

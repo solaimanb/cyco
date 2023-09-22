@@ -12,8 +12,12 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import CategoryMovies from '../catagoryMovies/CategoryMovies';
 import DisplayReviews from './writeAReview/DisplayReviews';
 import WriteAReviewModal from './writeAReview/WriteAReviewModal';
+import useTitle from '../../../hooks/useTitle';
+
 
 const MovieInfo = () => {
+  // title 
+  useTitle('Movie Details | CYCO')
   const [isHovering, setIsHovering] = useState(false);
 
   const navigate = useNavigate();

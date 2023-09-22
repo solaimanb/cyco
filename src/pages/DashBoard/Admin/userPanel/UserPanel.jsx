@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useTitle from '../../../../hooks/useTitle';
 
 const UserPanel = () => {
+  // title
+  useTitle('User Panel | CYCO ')
   const [isButtonDisabled, setButtonDisabled] = useState(false);
   const [axiosSecure] = useAxiosSecure();
 
