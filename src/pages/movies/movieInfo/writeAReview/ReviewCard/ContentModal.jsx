@@ -2,7 +2,7 @@ import React from "react";
 
 const ContentModal = ({ review, closeModal }) => {
   return (
-    <div className="absolute bottom-10   z-50">
+    <div className=" absolute flex justify-center items-center z-50">
       <div className="bg-black/80 w-1/2 p-4 rounded-lg shadow-lg">
         <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
         <div
@@ -21,3 +21,4 @@ const ContentModal = ({ review, closeModal }) => {
 };
 
 export default ContentModal;
+
