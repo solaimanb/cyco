@@ -6,8 +6,11 @@ import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 import Dashboard from "../layouts/Dashboard";
 import Root from "../layouts/Root";
 import Payments from "../pages/DashBoard/Admin/Payments/Payment";
+import ManageEvents from "../pages/DashBoard/Admin/manageEvents/ManageEvents";
+import ManageSubscription from "../pages/DashBoard/Admin/manageSubscription/ManageSubscription";
 import AdminPaymentHistory from "../pages/DashBoard/Admin/paymentHistory/AdminPaymentHistory";
 import UploadMovie from "../pages/DashBoard/Admin/uploadMovie/UploadMovie";
+import DashboardHome from "../pages/DashBoard/DashboardHome";
 import Downloads from "../pages/DashBoard/user/downloads/Downloads";
 import History from "../pages/DashBoard/user/history/History";
 import Recommendation from "../pages/DashBoard/user/recommendation/Recommendation";
@@ -16,6 +19,7 @@ import ErrorPage from "../pages/Error/ErrorPage";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import AdminDashboard from "../pages/dashBoard/admin/AdminDashboard";
+import LiveChannels from "../pages/dashBoard/admin/liveChannels/LiveChannels";
 import Revenue from "../pages/dashBoard/admin/revenue/Revenue";
 import SystemLogs from "../pages/dashBoard/admin/systemLogs/SystemLogs";
 import UserFeedback from "../pages/dashBoard/admin/userFeedback/UserFeedback";
@@ -36,7 +40,6 @@ import LiveTv from "../pages/liveTv/LiveTv";
 import Login from "../pages/login/Login";
 import Movies from "../pages/movies/Movies";
 import MovieInfo from "../pages/movies/movieInfo/MovieInfo";
-import LiveChannels from "../pages/dashBoard/admin/liveChannels/LiveChannels";
 import Payment from "../pages/payment/Payment";
 import Podcast from "../pages/podcast/Podcast";
 import PrivacyPolicy from "../pages/policy/PrivacyPolicy";
@@ -45,10 +48,7 @@ import Series from "../pages/series/Series";
 import TermsConditions from "../pages/terms/TermsConditions";
 import Testimonials from "../pages/testimonials/Testimonials";
 import Trailer from "../pages/trailer/Trailer";
-import ManageSubscription from "../pages/DashBoard/Admin/manageSubscription/ManageSubscription";
 import PrivateRoute from "./PrivateRoute";
-import ManageEvents from "../pages/DashBoard/Admin/manageEvents/ManageEvents";
-import DashboardHome from "../pages/DashBoard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -155,31 +155,31 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard />,
     children: [
-      {path: "", element: <DashboardHome/>},
-      { path: "admin-analytics", element: <AdminDashboard /> },
-      { path: "user-analytics", element: <UserDashboard /> },
-      { path: "wishlist", element: <Wishlist /> },
-      { path: "downloads", element: <Downloads /> },
-      { path: "subscriptions", element: <Subscriptions /> },
-      { path: "forum", element: <Forum /> },
-      { path: "watch-party", element: <WatchParty /> },
-      { path: "watch-party/watch-party-public", element: <WatchLive /> },
-      { path: "recommendation", element: <Recommendation /> },
-      { path: "admin/paymentHistory", element: <AdminPaymentHistory /> },
-      { path: "admin/manage-events", element: <ManageEvents /> },
-      { path: "payment-info", element: <UpdatePaymentInfo /> },
-      { path: "payment-history", element: <PaymentHistory /> },
-      { path: "settings", element: <ProfileSettings /> },
-      { path: "history", element: <History /> },
-      { path: "upload-movie", element: <UploadMovie /> },
-      { path: "revenue", element: <Revenue /> },
-      { path: "logs", element: <SystemLogs /> },
-      { path: "help", element: <Help /> },
-      { path: "admin/manage-subscription", element: <ManageSubscription /> },
-      { path: "user-panel", element: <UserPanel /> },
-      { path: "user-feedback", element: <UserFeedback /> },
-      { path: "payment", element: <Payments /> },
-      { path: "live-channels", element: <LiveChannels /> },
+      { path: '', element: <DashboardHome /> },
+      { path: 'admin-analytics', element: <AdminDashboard /> },
+      { path: 'user-analytics', element: <UserDashboard /> },
+      { path: 'wishlist', element: <Wishlist /> },
+      { path: 'downloads', element: <Downloads /> },
+      { path: 'subscriptions', element: <Subscriptions /> },
+      { path: 'forum', element: <Forum /> },
+      { path: 'watch-party', element: <WatchParty /> },
+      { path: 'watch-party/watch-party-public', element: <WatchLive /> },
+      { path: 'recommendation', element: <Recommendation /> },
+      { path: 'admin/paymentHistory', element: <AdminPaymentHistory /> },
+      { path: 'admin/manage-events', element: <ManageEvents /> },
+      { path: 'payment-info', element: <UpdatePaymentInfo /> },
+      { path: 'payment-history', element: <PaymentHistory /> },
+      { path: 'settings', element: <ProfileSettings /> },
+      { path: 'history', element: <History /> },
+      { path: 'upload-movie', element: <UploadMovie /> },
+      { path: 'revenue', element: <Revenue /> },
+      { path: 'logs', element: <SystemLogs /> },
+      { path: 'help', element: <Help /> },
+      { path: 'admin/manage-subscription', element: <ManageSubscription /> },
+      { path: 'user-panel', element: <UserPanel /> },
+      { path: 'user-feedback', element: <UserFeedback /> },
+      { path: 'payment', element: <Payments /> },
+      { path: 'live-channels', element: <LiveChannels /> },
     ],
   },
   { path: '*', element: <ErrorPage /> },
