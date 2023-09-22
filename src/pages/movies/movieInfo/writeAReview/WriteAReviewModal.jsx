@@ -108,7 +108,6 @@ const WriteAReviewModal = ({
         "/movieReviews",
         reviewData
       );
-      console.log("Review saved:", reviewResponse);
 
       Swal.fire({
         text: "Thank You for Posting Review!",
@@ -132,9 +131,9 @@ const WriteAReviewModal = ({
     >
       <>
         <div className="flex justify-center items-center h-full">
-          <div className="modal-content shadow-md rounded relative " style={{ width: '350px', height: '480px' }}> 
+          <div className="modal-content shadow-md rounded relative " style={{ width: '350px', height: '460px' }}> 
             <span
-              className="close w-8 h-8 mx-auto bg-black text-green-700 cursor-pointer absolute top-0 right-0 rounded-full text-center"
+              className="close w-8 h-8 mx-auto bg-black text-green-700 cursor-pointer absolute -top-10 -right-10 rounded-full text-center"
               onClick={handleClose}
             >
               &times;
@@ -167,9 +166,9 @@ const WriteAReviewModal = ({
           <div>
             <button
               onClick={handleSave}
-              className="bg-sky-700 text-white py-2 px-4 rounded-md mt-4 hover:bg-sky-600 transition duration-300"
+              className="bg-sky-700 text-white py-1 px-2 rounded-md mt-4 hover:bg-sky-600 transition duration-300"
             >
-              Save Review
+              <span className="text-sm">Save Review</span>
             </button>
           </div>
         </div>

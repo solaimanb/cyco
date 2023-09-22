@@ -78,14 +78,14 @@ const TestimonialSlider = () => {
                   {/* avater */}
                   <div>
                     <img
-                      src={feedBack.photoURL}
+                      src={feedBack?.photoURL}
                       alt="feedback giver Image"
                       width={110}
                       height={110}
                     />
                   </div>
                   {/* name */}
-                  <div className="text-lg ">{feedBack.displayName}</div>
+                  <div className="text-lg ">{feedBack?.displayName}</div>
                   {/* position */}
                   <div className="text-[12px] uppercase font-extralight tracking-widest">
                     {/* {feedBack.position} */} <p>Honorable Speaker</p>
@@ -101,7 +101,7 @@ const TestimonialSlider = () => {
                   <FaQuoteLeft className="text-4xl xl:text-6xl text-cyred mx-auto md:mx-0 " />
                 </div>
                 <div className="xl:text-lg text-center md:text-left mb-4 text-white">
-                  {feedBack.feedback}
+                  {feedBack?.feedback}
                 </div>
               </div>
             </div>
