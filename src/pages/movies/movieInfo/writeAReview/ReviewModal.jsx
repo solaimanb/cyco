@@ -1,5 +1,5 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 export default function ReviewModal({
   isOpen,
@@ -10,7 +10,7 @@ export default function ReviewModal({
   refetch,
 }) {
   function closeModal() {
-    console.log('Write a review modal');
+    console.log("Write a review modal");
     reset();
     setIsOpen(false);
     refetch();
@@ -18,20 +18,23 @@ export default function ReviewModal({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-    <Dialog as="div" className="relative z-20" onClose={closeModal}>
-      <Transition.Child
-        enter="ease-out duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="ease-in duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
+      <Dialog
+        as="div"
+        className="fixed inset-0 overflow-y-auto z-50"
+        onClose={closeModal}
       >
-        <div className="fixed inset-0 bg-black bg-opacity-25" />
-      </Transition.Child>
+        <div className="min-h-screen flex items-center justify-center">
+          <Transition.Child
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
 
-      <div className="fixed inset-0 overflow-y-auto">
-        <div className="flex min-h-full items-center justify-center p-4 text-center">
           <Transition.Child
             enter="ease-out duration-300"
             enterFrom="opacity-0 scale-95"
@@ -40,21 +43,15 @@ export default function ReviewModal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="w-full max-w-md transform overflow-hidden rounded-md bg-zinc-800 border border-cyred p-6 text-left align-middle shadow-xl transition-all">
-              <Dialog.Title
-                as="h3"
-                className="text-lg font-medium leading-6 text-gray-200"
-              >
+            <div className="w-full max-w-md p-6 bg-gray-900 rounded-lg shadow-xl">
+              <Dialog.Title className="text-lg font-medium leading-6 text-white/60">
                 {title}
               </Dialog.Title>
               {children}
             </div>
           </Transition.Child>
         </div>
-      </div>
-    </Dialog>
-
-     
+      </Dialog>
     </Transition>
   );
 }

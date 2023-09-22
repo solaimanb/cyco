@@ -39,7 +39,7 @@ const FeedBack = () => {
     }
   };
 
-  if (!user || !user.displayName) {
+  if (!user || !user?.displayName) {
     navigate('/login');
   }
 
