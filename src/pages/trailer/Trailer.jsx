@@ -56,7 +56,7 @@ const Trailer = () => {
         <FaSearch className="text-cyred" size={22} onClick={searchHandle} />
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5  gap-8 my-20">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5  gap-8 my-10">
         {isSearchClicked && filteredMovies.length === 0 ? (
           <div>No results found.</div>
         ) : searchQuery && isSearchClicked ? (

@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import EventCard from './eventCard/EventCard';
+import { FaPlus } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import { addNewEvent } from '../../../../api/addNewEvent';
 import { removEvent } from '../../../../api/removeEvent';
-import Swal from 'sweetalert2';
-import useEvents from '../../../../hooks/useEvents';
 import Loading from '../../../../components/loading/Loading';
-import { useState } from 'react';
+import useEvents from '../../../../hooks/useEvents';
+import EventCard from './eventCard/EventCard';
 
 const ManageEvents = () => {
   const [Events, loading] = useEvents();
@@ -48,94 +48,92 @@ const ManageEvents = () => {
         'https://freepngimg.com/thumb/avengers/24455-4-avengers-transparent-thumb.png',
     },
   ];
-  
-  // Remove Element From Event List from Backend 
-  const handleRemoveEvent =async (id)=>{
+
+  // Remove Element From Event List from Backend
+  const handleRemoveEvent = async (id) => {
     console.log(id);
     try {
-      const EventRemove = await removEvent(id)
+      const EventRemove = await removEvent(id);
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Event successfully Removed",
+        position: 'top-end',
+        icon: 'success',
+        title: 'Event successfully Removed',
         showConfirmButton: false,
         timer: 1500,
       });
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const onSubmit = async (data) => {
-    const event = { title: data.title, banner: data.banner, relase: data.relase }
+    const event = {
+      title: data.title,
+      banner: data.banner,
+      relase: data.relase,
+    };
     console.log(event);
     try {
-      const EventAdded = await addNewEvent(event)
+      const EventAdded = await addNewEvent(event);
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Event Added successfully",
+        position: 'top-end',
+        icon: 'success',
+        title: 'Event Added successfully',
         showConfirmButton: false,
         timer: 1500,
       });
       closeModal();
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
-    <section>
-      {/* MANAGE Events HEADER */}
+    <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
+      {/* MANAGE EVENT HEADER */}
       <div className="justify-center z-10 top-2 flex flex-row items-center md:justify-between pe-2 bg-zinc-900 py-4 rounded-sm">
         <p className="hidden md:flex text-sm md:text-base font-semibold border-l-4 border-cyred ml-2 px-2 md:px-5">
           Manage Events
         </p>
-        <p datatype='add' id='add' onClick={openModal} className='btn btn-outline rounded-lg textarea-info sm-mt-2' style={{ backgroundColor: 'transparent', transition: 'background-color 0.3s' }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>Add New Event</p>
+
+        {/* ADD EVENT BTN */}
+        <button
+          datatype="add"
+          id="add"
+          onClick={openModal}
+          className="flex flex-row items-center gap-2 border border-zinc-700 bg-zinc-800 rounded-sm w-fit p-2"
+        >
+          <FaPlus className="text-cyred" />
+          <h3 className="text-sm">Add New Event</h3>
+        </button>
       </div>
 
-      {/* Total Events  */}
+      {/* TOTAL EVENTS  */}
       <div>
-        <p className='font-semibold text-center my-3 textarea-accent '>Upcoming  Event </p>
-        <div className='grid md:grid-cols-4 m-2 '>
-          {
-            Events.map(event => <EventCard handleRemoveEvent={handleRemoveEvent} event={event}></EventCard>)
-          }
-
+        <p className="border-b pb-2 font-semibold text-center my-3 textarea-accent ">
+          Upcoming Events..{' '}
+        </p>
+        <div className="grid md:grid-cols-4 m-2 gap-2">
+          {Events.map((event) => (
+            <EventCard
+              handleRemoveEvent={handleRemoveEvent}
+              event={event}
+            ></EventCard>
+          ))}
         </div>
-        {/* Add Event 
-        <div id="add-new-container" ref={eventsContainerRef}>
-          <div className="">
-            <h2 className="text-2xl font-semibold mb-4 text-center">
-              Add New Event
-            </h2>
-            <form className="grid mx-auto" onSubmit={handleSubmit(onSubmit)}>
-
-
-              <button type='submit' className='btn btn-outline w-[80%] mx-auto textarea-info rounded-lg my-4 focus' style={{ backgroundColor: 'transparent', transition: 'background-color 0.3s' }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}>
-                Add New Upcoming Event
-              </button>
-            </form>
-          </div>
-        </div> */}
       </div>
 
-      {/* Modal */}
+      {/* MODAL */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-start justify-center z-50 mt-12">
           <div className="bg-black p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-4 text-center">Add</h2>
+            <h2 className="text-xl border-b pb-2 font-semibold mb-4 text-center">
+              Add Upcoming Event
+            </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Form fields here */}
               <div className="w-[80%] mx-auto">
                 <label
                   htmlFor="title"
@@ -144,7 +142,7 @@ const ManageEvents = () => {
                   Event Title
                 </label>
                 <input
-                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:border-blue-300"
                   type="text"
                   required
                   {...register('title')}
@@ -158,7 +156,7 @@ const ManageEvents = () => {
                   Banner Image(share Image Link)
                 </label>
                 <input
-                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:border-blue-300"
                   type="text"
                   required
                   {...register('banner')}
@@ -173,28 +171,24 @@ const ManageEvents = () => {
                   Event Date
                 </label>
                 <input
-                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 p-2 w-full text-white border rounded focus:outline-none focus:border-blue-300"
                   type="date"
                   required
                   {...register('relase')}
                 />
               </div>
+
               <button
                 type="submit"
-                className="btn btn-outline w-full textarea-info rounded-lg my-4 focus"
-                style={{
-                  backgroundColor: 'transparent',
-                  transition: 'background-color 0.3s',
-                }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = '#800000')}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}
+                className="btn bg-sky-900 capitalize w-full rounded-md my-4"
               >
-                Add New Upcoming Event
+                Add Event
               </button>
             </form>
+
             <button
-              className="btn btn-outline w-full mt-2 textarea-info rounded-lg"
-              onClick={closeModal} // Close the modal when this button is clicked
+              className="btn bg-cyred/60 capitalize w-full mt-2 rounded-md"
+              onClick={closeModal}
             >
               Cancel
             </button>

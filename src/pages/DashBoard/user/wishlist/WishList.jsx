@@ -89,7 +89,7 @@ const Wishlist = () => {
           ))}
         </div>
       ) : (
-        <p className="text-2xl text-center">No movies in your wishlist.</p>
+        <p className="text-xl text-center mt-20">No Movies to Dream About, Yet. !</p>
       )}
 
       {/* <div className="flex justify-center mt-4">
