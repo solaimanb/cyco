@@ -5,8 +5,13 @@ import Swal from "sweetalert2";
 import { updateLiveTV } from "../../../../api/liveTv";
 import useTVChannel from "../../../../hooks/useTVChannel";
 import ChannelModal from "./ChannelModal";
+import useTitle from '../../../../hooks/useTitle';
+
 
 const LiveChannels = () => {
+  // title
+  useTitle('Live Channels | CYCO')
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isClose, setIsClose] = useState(false);
   const { onOpen, onOpenChange } = useDisclosure();

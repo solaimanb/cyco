@@ -3,8 +3,11 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import WishCard from './WishCard';
+import useTitle from '../../../../hooks/useTitle';
 
 const Wishlist = () => {
+  // title
+  useTitle('WishList | CYCO')
   const [axiosSecure] = useAxiosSecure();
   const { user, loading } = useContext(AuthContext);
   const [wishlist, setWishlist] = useState([]);

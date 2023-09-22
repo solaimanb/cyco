@@ -6,8 +6,12 @@ import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import ResetModal from '../../modal/ResetModal';
 import './Login.css';
+import useTitle from '../../hooks/useTitle';
+
 
 const Login = () => {
+  // title
+  useTitle('Login | CYCO')
   let [isOpen, setIsOpen] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();

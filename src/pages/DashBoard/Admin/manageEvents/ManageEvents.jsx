@@ -7,8 +7,11 @@ import Swal from 'sweetalert2';
 import useEvents from '../../../../hooks/useEvents';
 import Loading from '../../../../components/loading/Loading';
 import { useState } from 'react';
+import useTitle from '../../../../hooks/useTitle';
 
 const ManageEvents = () => {
+  // title
+  useTitle('Manage Events | CYCO')
   const [Events, loading] = useEvents();
   console.log(Events);
   const { register, handleSubmit, setValue } = useForm({});

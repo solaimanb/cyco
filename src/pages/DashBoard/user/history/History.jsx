@@ -3,8 +3,11 @@ import useAuth from "../../../../hooks/useAuth";
 import useHistory from "../../../../hooks/useHistory";
 import useMovies from "../../../../hooks/useMovies";
 import HistoryCard from "./HistoryCard";
+import useTitle from '../../../../hooks/useTitle';
 
 const History = () => {
+  // title
+  useTitle('History | CYCO')
   const user = useAuth();
 
   const [history, refetch] = useHistory();
