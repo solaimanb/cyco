@@ -12,7 +12,10 @@ import { IoSendSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
-import { addComment, loadComments } from '../../../../store/slices/commentSlice/commentSlice';
+import {
+  addComment,
+  loadComments,
+} from '../../../../store/slices/commentSlice/commentSlice';
 import {
   updateViewCount,
   updateVoteCount,
@@ -36,8 +39,7 @@ const QueryPost = ({ query }) => {
   const [userData, setUserData] = useState();
   const [hasUpvoted, setHasUpvoted] = useState(false);
   const [hasDownvoted, setHasDownvoted] = useState(false);
-  const [ viewClicked, setViewClicked ] = useState( false );
-
+  const [viewClicked, setViewClicked] = useState(false);
 
   const dispatch = useDispatch();
   const queries = useSelector((state) => state.queries);
@@ -122,7 +124,7 @@ const QueryPost = ({ query }) => {
     const fetchComments = async () => {
       try {
         const response = await axiosSecure.get(`/forumQueries/comments/${_id}`);
-        
+
         if (response.status === 200 && response.data.success) {
           const fetchedComments = response.data.comments;
           dispatch(loadComments({ queryId: _id, comments: fetchedComments }));
@@ -166,7 +168,7 @@ const QueryPost = ({ query }) => {
         const newComment = response.data.comment;
         setInitialComments([...initialComments, newComment]);
         dispatch(addComment({ queryId: _id, comment: newComment }));
-        
+
         // Clear the input field after submission
       } else {
         console.log('Failed to add comment!');
@@ -180,7 +182,7 @@ const QueryPost = ({ query }) => {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleCommentSubmit();
-      setCommentInput(event.target.value = ' ');
+      setCommentInput((event.target.value = ' '));
     }
   };
 
@@ -257,7 +259,7 @@ const QueryPost = ({ query }) => {
 
   return (
     <div
-      onClick={ () => handleQueryClick() }
+      onClick={() => handleQueryClick()}
       onKeyUp={handleKeyPress}
       className="cursor-pointer flex flex-col justify-between gap-3 mt-2 border rounded-sm border-zinc-800"
     >

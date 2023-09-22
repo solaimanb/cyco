@@ -246,7 +246,7 @@ const MovieInfo = () => {
                   {/* Movie REVIEW BTN */}
                   <button
                     onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
-                    className="absolute top-4 right-4 btn capitalize bg-cyred font-bold border-none rounded-sm"
+                    className="hidden md:absolute top-4 right-4 btn capitalize bg-cyred font-bold border-none rounded-sm"
                   >
                     <FaPlus className="text-white" />
                     <h3 className="text-sm">Write a Review</h3>
@@ -255,13 +255,13 @@ const MovieInfo = () => {
               </div>
 
               {/* FEEDBACK/REVIEW BTN */}
-              <button
+              {/* <button
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 mt-2"
               >
                 
                 <h3 className="text-sm">Write a Review</h3>
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -294,7 +294,7 @@ const MovieInfo = () => {
         </div>
       </div>
 
-      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40">
+      <div className="my-20 mx-auto px-10 lg:px-20 xl:px-40 ">
         <h2 className="border-l-4 pl-2 font-bold">
           Movie Reviews
         </h2>
