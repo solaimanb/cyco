@@ -6,14 +6,11 @@ import ReviewCard from './ReviewCard/ReviewCard';
 const DisplayReviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [reviewsPerPage] = useState(4); // Number of reviews to display per page
+  const [reviewsPerPage] = useState(3); 
   const { user, loading, setLoading } = useAuth();
 
-
   useEffect(() => {
-    const apiUrl = `${import.meta.env.VITE_SERVER_URL}/movieReviews`;
-    axios
-      .get(apiUrl)
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/movieReviews`)
       .then((response) => {
         const reviewsData = response.data;
         setMovieReviews(reviewsData);
@@ -52,15 +49,48 @@ const DisplayReviews = () => {
         )}
 
         {/* Pagination */}
-        {/* <ul className="pagination flex gap-2 justify-center items-center">
-          {Array.from({ length: Math.ceil(movieReviews.length / reviewsPerPage) }).map((_, index) => (
-            <li key={index} className={`page-item ${index + 1 === currentPage ? "active" : ""}`}>
-              <button className="page-link" onClick={() => paginate(index + 1)}>
-                {index + 1}
+        <nav className="py-8">
+          <ul className="flex justify-center space-x-2">
+            <li>
+              <button
+                className={`bg-gray-800 px-2 py-1 rounded ${
+                  currentPage === 1 ? 'cursor-not-allowed' : 'cursor-pointer'
+                }`}
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                Prev
               </button>
             </li>
-          ))}
-        </ul> */}
+            {Array.from({ length: Math.ceil(movieReviews.length / reviewsPerPage) }).map((_, index) => (
+              <li key={index}>
+                <button
+                  className={`bg-red-500 text-white px-2 py-1 rounded ${
+                    currentPage === index + 1 ? 'bg-red-700' : ''
+                  }`}
+                  onClick={() => paginate(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button
+                className={`bg-gray-800 px-2 py-1 rounded ${
+                  currentPage === Math.ceil(movieReviews.length / reviewsPerPage)
+                    ? 'cursor-not-allowed'
+                    : 'cursor-pointer'
+                }`}
+                onClick={() => paginate(currentPage + 1)}
+                disabled={
+                  currentPage === Math.ceil(movieReviews.length / reviewsPerPage)
+                }
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </>
   );

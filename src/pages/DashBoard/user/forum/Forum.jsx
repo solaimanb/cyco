@@ -11,8 +11,11 @@ import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
+import useTitle from '../../../../hooks/useTitle';
 
 const Forum = () => {
+  // title
+  useTitle('Forum | CYCO')
   const [axiosSecure] = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);
@@ -33,33 +36,11 @@ const Forum = () => {
     }
   }, [loading, queries, dispatch]);
 
-  // PAGINATION FUNC:
-  // const queriesToDisplay = searchQuery === ' ' ? queries : filteredQueries;
-
-  // const handlePageChange = (newPage) => {
-  //   setPage(newPage);
-  // };
-
-  // const initialDisplayedQueries = queries.slice(0, queriesPerPage);
-
-  // const displayedQueries = queriesToDisplay.slice(
-  //   (page - 1) * queriesPerPage,
-  //   page * queriesPerPage
-  // );
-
   // FORUM TOPIC HANDLER:
   const handleTopicClick = (topic) => {
     dispatch(setForumTopic(topic));
     setPage(1);
   };
-
-  // ADD QUERY:
-  // const handleAddQuery = async ( newQuery ) => {
-  //   try {
-  //     const response = await axiosSecure.post( '/forumQueries', newQuery );
-  //     console.log(response);
-  //   }catch(error){}
-  // }
 
   return (
     <section className="min-h-screen p-2 md:p-3 mt-3 lg:mt-0 backdrop-blur-sm bg-zinc-950">
@@ -104,14 +85,6 @@ const Forum = () => {
             ) : (
               /* Render query content when queries are available */
               <div className="flex flex-col-reverse gap-1 md:p-2">
-                {/* {searchQuery === ''
-                  ? initialDisplayedQueries.map((query, index) => (
-                      <QueryContent query={query} key={index} />
-                    ))
-                  : displayedQueries.map((query, index) => (
-                      <QueryContent query={query} key={index} />
-                    ))} */}
-
                 {searchQuery === ''
                   ? queries.map((query, index) => (
                       <QueryContent
@@ -130,20 +103,10 @@ const Forum = () => {
               </div>
             )}
           </div>
-
-          {/* PAGINATION */}
-          {/* <div>
-            <Pagination
-              currentPage={page}
-              totalPages={Math.ceil(queriesToDisplay.length / queriesPerPage)}
-              onPageChange={handlePageChange}
-            />
-          </div> */}
         </div>
 
         {/* Topic Aside */}
         <TopicAside />
-        {/* <TopicAside onTopicClick={handleTopicClick} /> */}
       </div>
     </section>
   );
