@@ -17,8 +17,11 @@ import {
 import useMonthlyRevenue from '../../../hooks/useMonthlyRevenue';
 import useMovies from '../../../hooks/useMovies';
 import useUsers from '../../../hooks/useUsers';
+import useTitle from '../../../hooks/useTitle';
 
 const AdminDashboard = () => {
+  // title
+  useTitle('Admin Dashbord | CYCO ')
   const [movies, loading] = useMovies();
   const currentDate = new Date();
 

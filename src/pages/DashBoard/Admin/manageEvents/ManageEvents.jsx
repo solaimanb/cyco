@@ -9,6 +9,8 @@ import useEvents from '../../../../hooks/useEvents';
 import EventCard from './eventCard/EventCard';
 
 const ManageEvents = () => {
+  // title
+  useTitle('Manage Events | CYCO')
   const [Events, loading] = useEvents();
   console.log(Events);
   const { register, handleSubmit, setValue } = useForm({});

@@ -3,8 +3,12 @@ import SubscriptionCard from './SubscriptionCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../../../store/slices/subscriptionSlice/subscriptionSlice';
 import { useEffect } from 'react';
+import useTitle from '../../../../hooks/useTitle';
+
 
 const Subscriptions = () => {
+  // title
+  useTitle("Subcriptions | CYCO");
   const items = useSelector((state) => state.manageSubscriptions);
   console.log(items);
   const dispatch = useDispatch();

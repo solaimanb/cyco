@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ManageSubscriptionFirst from '../../../../shared/manageSubscriptionShared/ManageSubscriptionFirst';
 import { fetchItems } from '../../../../store/slices/subscriptionSlice/subscriptionSlice';
+import useTitle from '../../../../hooks/useTitle';
 
 const ManageSubscription = () => {
+  // title
+  useTitle('Manage Subscription | CYCO')
   const items = useSelector((state) => state.manageSubscriptions);
   const [isDataBasic, setIsDataBasic] = useState();
 

@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import FeedBack from '../../components/feedback/FeedBack';
 import './About.css';
+import useTitle from '../../hooks/useTitle';
 
 const members = [
   {
@@ -42,6 +43,8 @@ const members = [
 ];
 
 const About = () => {
+  // Page Title
+  useTitle('About | CYCO')
   const renderMember = (member, index) => (
     <div
       key={index}
