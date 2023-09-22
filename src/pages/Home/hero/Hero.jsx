@@ -69,7 +69,7 @@ const Hero = () => {
 
   return (
     
-      <section className="relative h-[70vh] md:h-[85vh] lg:h-screen xl:h-[90vh] pt-10 2xl:pt-28 overflow-hidden bg-black/60  m-0 p-0">
+      <section className="relative h-[70vh] md:h-[85vh] lg:h-screen xl:h-[90vh] 2xl:pt-28 overflow-hidden bg-black/60  m-0 p-0">
         {/* keep the CanvasAnimation under this section do not change this again */}
         <CanvasAnimation>
         <Swiper
