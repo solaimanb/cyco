@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Loading from '../components/loading/Loading';
 import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
 import useUsers from '../hooks/useUsers';
@@ -12,7 +13,7 @@ import { fetchData } from '../store/slices/paymenthistorySlice/paymentHistorySli
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state?.paymentHistory?.data);
@@ -27,7 +28,6 @@ const Dashboard = () => {
     console.log('Logging out...');
     try {
       const response = await Swal.fire({
-        title: '',
         text: 'Ary you sure you want to log out?',
         confirmButtonText: 'Logout',
         cancelButtonText: 'Cancel',
@@ -62,9 +62,9 @@ const Dashboard = () => {
   ];
 
   const adminNavLinks = [
-    { to: "admin-analytics", text: "Analytics" },
-    { to: "upload-movie", text: "Upload Movie" },
-    { to: "admin/manage-events", text: "Manage Events" },
+    { to: 'admin-analytics', text: 'Analytics' },
+    { to: 'upload-movie', text: 'Upload Movie' },
+    { to: 'admin/manage-events', text: 'Manage Events' },
     // { to: 'revenue', text: 'Ad Revenue Tracking' },
     // { to: 'logs', text: 'System Logs' },
     { to: 'live-channels', text: 'Live Channels' },
@@ -76,8 +76,12 @@ const Dashboard = () => {
 
   const [isAdmin] = useAdmin();
   const [users] = useUsers();
-  console.log( users );
-  
+  console.log(users);
+
+  if (loading) {
+    <Loading />;
+  }
+
   return (
     <div
       className={`container mx-auto relative drawer flex flex-col gap-5 lg:flex-row h-full`}
@@ -105,19 +109,18 @@ const Dashboard = () => {
         }`}
       >
         <div className="w-full flex  justify-between items-center py-6">
-              <Link to='/'>
-              <h1 className='font-bold border-l-4 border-cyred pl-2'>CYCO</h1>
-              </Link>
-              <Link to=''>
-              <img
+          <Link to="/">
+            <h1 className="font-bold border-l-4 border-cyred pl-2">CYCO</h1>
+          </Link>
+          <Link to="">
+            <img
               src={user?.photoURL}
               alt="user-photo"
               title={isAdmin ? 'Admin' : 'User'}
               className="w-16 h-16 p-1 border-2 border-cyred rounded-full object-cover"
             />
-              </Link>
-
-            </div>
+          </Link>
+        </div>
         {isAdmin ? (
           <div className="h-full w-full flex flex-col">
             <hr className="pb-8" />
@@ -202,7 +205,6 @@ const Dashboard = () => {
           isSidebarOpen ? '' : 'blur-none'
         } min-h-screen w-full pt-6 lg:pt-0 lg:ml-72`}
       >
-        
         <Outlet />
       </div>
     </div>
