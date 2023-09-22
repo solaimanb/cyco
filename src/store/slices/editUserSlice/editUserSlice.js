@@ -1,85 +1,53 @@
 // src/features/todoSlice.js
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+
+
 import axios from 'axios';
 
-export const getUser = createAsyncThunk('data/users', async () => {
+
+// Action to get users
+export const getUser = () => async (dispatch) => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_SERVER_URL}/users`
-    ); // Replace with your API endpoint
-    return response.data;
+    const response = await axios.get(`${ import.meta.env.VITE_SERVER_URL }/users`);
+    dispatch(setUsers(response.data));
   } catch (error) {
-    throw error;
+    console.error('Error getting users:', error);
   }
-});
-// src/features/dataSlice.js (continued)
+};
 
-export const updateData = createAsyncThunk(
-  'data/updateData',
-  async ({ email, data }) => {
-    try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_SERVER_URL}/updateUserData/${email}`,
-        data
-      );
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+// Action to update an user
+export const updateUserRequest = (id, updatedUser) => async (dispatch) => {
+  try {
+    const response = await axios.put(`${ import.meta.env.VITE_SERVER_URL }/users/${id}`, updatedUser);
+    dispatch(updateUser(updatedUser));
+    console.log('user profile updated successfully:', response.data.message);
+  } catch (error) {
+    console.error('Error updating user:', error);
   }
-);
-
-// export const updateUser = async (roomData, id) => {
-//   const response = await fetch(
-//     `${import.meta.env.VITE_SERVER_URL}/updateUserData/${id}`,
-//     {
-//       method: 'PUT',
-//       headers: {
-//         'content-type': 'application/json',
-//       },
-//       body: JSON.stringify(roomData),
-//     }
-//   );
-
-//   const data = await response.json();
-//   return data;
-// };
-// // ... (continued from previous code)
-
-// // Define an initial state
+};
 const initialState = {
   data: [],
-  status: 'loading',
+  status: 'null',
   error: null,
 };
+
+
 // Create a slice
 const editUserSlice = createSlice({
   name: 'editUser',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(getUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.todos = action.payload;
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
-      .addCase(updateData.fulfilled, (state, action) => {
-        const updatedData = action.payload;
-        const existingDataIndex = state.data.findIndex(
-          (item) => item.email === updatedData.email
-        );
-        if (existingDataIndex !== -1) {
-          state.data[existingDataIndex] = updatedData;
-        }
-      });
+  reducers: {
+    setUsers: (state, action) => {
+     state.data = action.payload;
+    },
+    updateUser: (state, action) => {
+      const updatedUser = action.payload;
+      return state.map((user) =>
+        user.id === updatedUser.id ? { ...user, ...updatedUser } : user
+      );
+    },
   },
+  
 });
-export const { addCase } = editUserSlice.actions;
+export const { setUsers, updateUser } = editUserSlice.actions;
 export default editUserSlice.reducer;

@@ -22,7 +22,7 @@ const rootReducer = {
   forumTopic: forumTopicReducer,
   paymentHistory: paymentHistorySlice,
   manageSubscriptions: manageSubscriptionsSlice,
-  editUserSlice: editUserSlice,
+  editUser: editUserSlice,
   passData: userSlice,
   queries: queriesReducer,
   comments: commentReducer,
