@@ -6,8 +6,12 @@ import MovieCard from '../../components/movieCard/MovieCard';
 import Pagination from '../../components/paginaition/Pagination';
 import useMovies from '../../hooks/useMovies';
 import Container from '../../components/container/Container';
+import useTitle from '../../hooks/useTitle';
 
 const Movies = () => {
+  // title
+  useTitle('Movies | CYCO')
+  
   const [movies, loading] = useMovies();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(''); // State for search query

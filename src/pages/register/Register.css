@@ -39,12 +39,12 @@
 }
 
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   #regAnimation {
-    width: 35vw;
+    width: 70vw;
   }
   #regAnimation::after {
-    width: 34.7vw;
+    width: 69.7vw;
   }
 }
 @media (min-width: 1350px) {

@@ -28,7 +28,7 @@ const CommentSection = () => {
     }
 
     const updatedComments = [
-      { id: comments.length + 1, author: user.displayName, text: newComment },
+      { id: comments.length + 1, author: user?.displayName, text: newComment },
       ...comments, // Place the new comment at the beginning
     ];
 

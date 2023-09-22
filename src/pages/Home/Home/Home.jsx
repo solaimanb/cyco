@@ -13,8 +13,13 @@ import FeaturedMovies from '../featuredMovies/FeaturedMovies';
 import Hero from '../hero/Hero';
 import MovieSlot from '../movieSlot/MovieSlot';
 import PopularTvs from '../popularTvs/PopularTvs';
+import useTitle from '../../../hooks/useTitle';
+
 
 const Home = () => {
+  // title
+  useTitle('Home | CYCO');
+
   const [loading] = useMovies();
 
   const cycoParticles = async (engine) => {

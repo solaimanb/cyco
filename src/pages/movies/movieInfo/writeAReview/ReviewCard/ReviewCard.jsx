@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import ContentModal from './ContentModal'; // Import your modal component
+import ContentModal from './ContentModal'; 
+import useUsers from '../../../../../hooks/useUsers';
+
 
 const ReviewCard = ({ review }) => {
   const [showModal, setShowModal] = useState(false);
+  // const [user ] = useUsers();
+  // console.log('user from Review card', user);
+  console.log(review);
+  
 
   const openModal = () => {
     setShowModal(true);
@@ -14,7 +20,7 @@ const ReviewCard = ({ review }) => {
 
   return (
     <div className="">
-      <div className="w-80 h-72 bg-black/40 rounded-md shadow-md p-4 m-4 flex flex-col justify-between">
+      <div className="w-96 h-72 bg-black/80 rounded-md shadow-md p-4 m-4 flex flex-col justify-between">
         <div className="flex justify-between">
           <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
           <img
@@ -34,11 +40,11 @@ const ReviewCard = ({ review }) => {
           <div className="flex justify-between items-center mt-4">
            <div className='flex items-center'>
            <img
-              src={review.poster}
+              src={review?.user?.photoURL}
               alt={`Poster for ${review.title}`}
               className="w-10 h-10 rounded-full mr-2"
             />
-            <p className="text-sm">{review.user.displayName}</p>
+            <p className="text-sm">{review?.user?.displayName}</p>
            </div>
             <button
               onClick={openModal}

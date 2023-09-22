@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 import Container from '../../components/container/Container';
 import TrailerCard from '../../components/trailerCard/TrailerCard';
 import useMovies from '../../hooks/useMovies';
+import useTitle from '../../hooks/useTitle';
+
 
 const Trailer = () => {
+  // title
+  useTitle('Trailer | CYCO')
+  
   const [movies] = useMovies();
 
   const [currentPage, setCurrentPage] = useState(1);

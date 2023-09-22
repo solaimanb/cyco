@@ -70,6 +70,8 @@ const Navbar = () => {
     { to: '/trailer', label: 'Trailer', ariaLabel: 'Trailer' },
     { to: '/movies', label: 'Movies', ariaLabel: 'Movies' },
     { to: '/series', label: 'Series', ariaLabel: 'Series' },
+    { to: '/about', label: 'About', ariaLabel: 'about' },
+    { to: '/contact', label: 'Contact US', ariaLabel: 'contact' },
     {
       condition: (user) => user,
       loggedInItems: [
