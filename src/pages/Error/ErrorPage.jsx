@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ErrorPage = () => {
+  // title
+  useTitle('Error 404 | CYCO')
   // const { error, status } = useRouteError()
   // console.log(error);
   return (
