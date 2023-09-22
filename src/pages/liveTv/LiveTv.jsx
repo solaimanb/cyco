@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import Container from "../../components/container/Container";
 import VideoPlayer from "../../components/videoPlayer/VideoPlayer";
 import LiveVideoList from "./LiveVideoList";
+import useTitle from '../../hooks/useTitle';
 
 const LiveTv = () => {
+  // title
+  useTitle('Live Tv | CYCO')
+  
   const [selectedChannel, setSelectedChannel] = useState(null);
 
   useEffect(() => {

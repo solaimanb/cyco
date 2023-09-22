@@ -11,8 +11,11 @@ import SearchSlot from './SearchSlot';
 import AskQueryModal from './askQuery/AskQueryModal';
 import TopicAside from './topicAside/TopicAside';
 import { selectFilteredQueries } from './topicAside/forumSelectors';
+import useTitle from '../../../../hooks/useTitle';
 
 const Forum = () => {
+  // title
+  useTitle('Forum | CYCO')
   const [axiosSecure] = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [isWriteaReviewOpen, setIsWriteaReviewOpen] = useState(false);

@@ -1,6 +1,9 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Help = () => {
+  // title
+  useTitle('Help | CYCO')
   const faqData = [
     {
       question: 'What is the OTT platform?',

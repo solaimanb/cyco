@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { addNewMovie } from '../../../../api/addNewMovie';
 import { imageUpload } from '../../../../api/imgUpload';
+import useTitle from '../../../../hooks/useTitle';
 
 const UploadMovie = () => {
+  useTitle('Upload Movie | CYCO')
   const { handleSubmit, register, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState('Upload Poster');

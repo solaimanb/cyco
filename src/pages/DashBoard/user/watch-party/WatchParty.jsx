@@ -16,9 +16,12 @@ import {
 import CommentSection from "../../../liveTv/CommentSection";
 import useEvents from "../../../../hooks/useEvents";
 import Loading from "../../../../components/loading/Loading";
+import useTitle from '../../../../hooks/useTitle';
 
 
 const WatchParty = () => {
+  // title
+  useTitle('Watch Party | CYCO')
   const [Events, loading] = useEvents();
   const navigate = useNavigate();
 

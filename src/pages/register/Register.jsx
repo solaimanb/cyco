@@ -7,8 +7,13 @@ import { saveUser } from '../../api/saveUser';
 import SocialLogin from '../../components/socialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import './Register.css';
+import useTitle from '../../hooks/useTitle';
+
 
 const Register = () => {
+  // title
+  useTitle('Register | CYCO')
+  
   const { createUser, updateUserProfile, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
