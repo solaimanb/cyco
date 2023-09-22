@@ -259,7 +259,7 @@ const Navbar = () => {
                 <>
                   <NavLink
                     id="nav"
-                    to="/dashboard "
+                    to="/dashboard"
                     aria-label="Dashboard "
                     title="Dashboard "
                     className={({ isActive }) =>
@@ -268,6 +268,7 @@ const Navbar = () => {
                   >
                     Dashboard
                   </NavLink>
+                  
                   <button onClick={handleLogOut} id="nav" className="">
                     Logout
                   </button>

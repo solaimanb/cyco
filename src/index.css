@@ -49,6 +49,7 @@ svg.recharts-surface tspan {
   @apply bg-cyred text-white duration-300;
 }
 
+
 /* CSS BREAKPOINTS */
 
 @media (max-width: 768px) {
