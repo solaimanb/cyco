@@ -76,7 +76,7 @@ const WriteAReviewModal = ({
     setIsWriteaReviewOpen(false);
   };
 
-  const handleSave = async () => {
+  const handlePost = async () => {
     try {
       if (!text || text.trim() === "") {
         Swal.fire({
@@ -162,13 +162,13 @@ const WriteAReviewModal = ({
             />
           </div>
         </div>
-        <div className="flex justify-center items-center flex-row w-full gap-7 absolute z-20 bottom-0 mb-2">
+        <div className="flex justify-end items-center flex-row w-full gap-7 absolute z-20 bottom-0 right-50 mb-2">
           <div>
             <button
-              onClick={handleSave}
-              className="bg-sky-700 text-white py-1 px-2 rounded-md mt-4 hover:bg-sky-600 transition duration-300"
+              onClick={handlePost}
+              className="bg-cyred/80 text-white py-1 px-2 rounded-md mt-4 hover:bg-cyred/90 transition duration-300"
             >
-              <span className="text-sm">Save Review</span>
+              <span className="text-sm">Post Review</span>
             </button>
           </div>
         </div>
@@ -178,3 +178,4 @@ const WriteAReviewModal = ({
 };
 
 export default WriteAReviewModal;
+
