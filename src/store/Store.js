@@ -1,17 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
-import categoryReducer from './slices/categorySlice/categorySlice';
-import commentReducer from './slices/commentSlice/commentSlice';
-import editUserSlice from './slices/editUserSlice/editUserSlice';
-import userSlice from './slices/editUserSlice/passData';
-import forumTopicReducer from './slices/forumTopicSlice/forumTopicSlice';
-import homeSlice from './slices/homeSlice/homeSlice';
-import paymentReducer from './slices/paymentSlice/paymentSlice';
-import paymentHistorySlice from './slices/paymenthistorySlice/paymentHistorySlice';
-import queriesReducer from './slices/queriesSlice/queriesSlice';
-import searchReducer from './slices/searchSlice/searchSlice';
-import manageSubscriptionsSlice from './slices/subscriptionSlice/subscriptionSlice';
-import userReducer from './slices/userSlice/userSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
+import categoryReducer from "./slices/categorySlice/categorySlice";
+import commentReducer from "./slices/commentSlice/commentSlice";
+import editUserSlice from "./slices/editUserSlice/editUserSlice";
+import userSlice from "./slices/editUserSlice/passData";
+import forumTopicReducer from "./slices/forumTopicSlice/forumTopicSlice";
+import homeSlice from "./slices/homeSlice/homeSlice";
+import paymentReducer from "./slices/paymentSlice/paymentSlice";
+import paymentHistorySlice from "./slices/paymenthistorySlice/paymentHistorySlice";
+import queriesReducer from "./slices/queriesSlice/queriesSlice";
+import searchReducer from "./slices/searchSlice/searchSlice";
+import manageSubscriptionsSlice from "./slices/subscriptionSlice/subscriptionSlice";
+import userReducer from "./slices/userSlice/userSlice";
 
 const rootReducer = {
   home: homeSlice,

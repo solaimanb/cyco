@@ -1,4 +1,4 @@
-import YouTubePlaylist from '@codesweetly/react-youtube-playlist';
+import { YouTubePlaylist } from '@codesweetly/react-youtube-playlist';
 import React from 'react';
 import Container from '../container/Container';
 
