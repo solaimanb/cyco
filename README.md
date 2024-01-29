@@ -9,8 +9,6 @@ CYCO is a powerful and versatile streaming web application that allows users to 
     - Content Streaming
     - Stream movies.
     - TV shows.
-    - and music.
-    - seamlessly.
 
 #### License
 
