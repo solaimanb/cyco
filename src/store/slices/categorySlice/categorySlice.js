@@ -1,11 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const categorySlice = createSlice({
-  name: 'category',
-  initialState: 'Action',
+  name: "category",
+  // initialState: 'Action',
+  initialState: {},
   reducers: {
     setCategory: (state, action) => {
-      console.log('Dispatched category', action);
+      console.log("Dispatched category", action);
       return action.payload;
     },
   },

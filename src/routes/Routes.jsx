@@ -47,6 +47,8 @@ import TermsConditions from "../pages/terms/TermsConditions";
 import Testimonials from "../pages/testimonials/Testimonials";
 import Trailer from "../pages/trailer/Trailer";
 import PrivateRoute from "./PrivateRoute";
+import AdminDashboard from "../pages/dashboard/admin/AdminDashboard";
+import LiveChannels from "../pages/dashboard/admin/liveChannels/LiveChannels";
 
 const router = createBrowserRouter([
   {
