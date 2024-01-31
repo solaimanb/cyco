@@ -9,14 +9,12 @@ import { addHistory } from '../../../api/historyPostData';
 import WatchTimer from '../../../components/watchTimer/WatchTimer';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import CategoryMovies from '../catagoryMovies/CategoryMovies';
 import DisplayReviews from './writeAReview/DisplayReviews';
 import WriteAReviewModal from './writeAReview/WriteAReviewModal';
 import useTitle from '../../../hooks/useTitle';
-
+import CategoryMovies from "../categoryMovies/CategoryMovies";
 
 const MovieInfo = () => {
-  // title 
   useTitle('Movie Details | CYCO')
   const [isHovering, setIsHovering] = useState(false);
 
@@ -24,7 +22,7 @@ const MovieInfo = () => {
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
   const firstElement = CategoryMovies();
-  // console.log(firstElement);
+
   const { movie } = location?.state;
   const { user, loading, setLoading } = useAuth();
   const email = user?.email;
@@ -130,7 +128,6 @@ const MovieInfo = () => {
           background: '#222',
         });
       } else {
-        // Handle other error cases
         Swal.fire({
           text: 'An error occurred while adding to wishlist. Please try again later.',
           icon: 'error',
@@ -263,7 +260,7 @@ const MovieInfo = () => {
                 onClick={() => setIsWriteaReviewOpen(!isWriteaReviewOpen)}
                 className="flex flex-row items-center gap-2 mt-2"
               >
-                
+
                 <h3 className="text-sm">Write a Review</h3>
               </button> */}
             </div>
@@ -290,7 +287,7 @@ const MovieInfo = () => {
           {/* <div className="w-full h-full mt-auto">
               <h2 className="border-l-4 pl-2 font-bold">Movies you may like</h2>
               <div className="lg:h-56 lg:overflow-hidden 2xl:h-full">
-               
+
                   <FeaturedMovies />
                 </Marquee>
               </div>

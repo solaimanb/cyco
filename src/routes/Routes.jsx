@@ -37,7 +37,6 @@ import PopularTv from "../pages/home/popularTvs/popularTv";
 import LiveTv from "../pages/liveTv/LiveTv";
 import Login from "../pages/login/Login";
 import Movies from "../pages/movies/Movies";
-import MovieInfo from "../pages/movies/movieInfo/MovieInfo";
 import Payment from "../pages/payment/Payment";
 import Podcast from "../pages/podcast/Podcast";
 import PrivacyPolicy from "../pages/policy/PrivacyPolicy";
@@ -49,6 +48,7 @@ import Trailer from "../pages/trailer/Trailer";
 import PrivateRoute from "./PrivateRoute";
 import AdminDashboard from "../pages/dashboard/admin/AdminDashboard";
 import LiveChannels from "../pages/dashboard/admin/liveChannels/LiveChannels";
+import MovieInfo from "../pages/movies/movieInfo/MovieInfo";
 
 const router = createBrowserRouter([
   {
